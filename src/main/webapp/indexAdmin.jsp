@@ -112,13 +112,13 @@
                 <img src="img/logo.png" alt="" width="100px" height="60px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <form class="mb-2 mb-lg-0">
                     <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
-            <div class="col-lg-4">
+            <div class="col-lg-5">
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="publicarProductos.jsp">Publicar</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
