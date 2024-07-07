@@ -31,6 +31,7 @@
 
         #nave {
             display: flex;
+            align-items: center;
             justify-content: flex-end;
         }
 
@@ -109,14 +110,12 @@
 
 <header>
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-2" id="log">
-                <a href="index.jsp"><img src="logo.png" alt="Logo"></a>
-            </div>
-            <div class="col-lg-10" id="nave">
-                <a href="index.jsp">Catálogo</a>
-                <a href="registrarse.jsp">Registrarse</a>
-            </div>
+        <div id="log">
+            <a href="index.jsp"><img src="logo.png" alt="Logo"></a>
+        </div>
+        <div id="nave">
+            <a href="index.jsp">Catálogo</a>
+            <a href="registrarse.jsp">Registrarse</a>
         </div>
     </div>
 </header>
