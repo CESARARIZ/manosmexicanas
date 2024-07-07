@@ -17,14 +17,18 @@ public class UsuarioServlet extends HttpServlet {
         //1) Obtener la información del formulario
         String correo = req.getParameter("correo");
         String contra = req.getParameter("contra");
-        String ruta = "ingresar.jsp";
+        String ruta;
 
         //2) conectarme a la base de datos y buscar al usuario segun
         // las credenciales del form
         UsuarioDao dao = new UsuarioDao();
-        Usuario u = dao.getOne(correo,contra);
+        Usuario u = dao.getOne(correo, contra);
+
+
+
 
         if(u.getCorreo() == null){
+            ruta = "ingresar.jsp";
             //No existe el usuario en la base de datos
             HttpSession sesion = req.getSession();
             sesion.setAttribute("mensaje","El usuario no existe en la BD");
@@ -32,10 +36,17 @@ public class UsuarioServlet extends HttpServlet {
             resp.sendRedirect(ruta);
         }else{
             //SI EXISTE EL USUARIO SE REDIRIGE AL INDEX CORRESPONDIENTE
-            ruta="indexCliente.jsp";
-            HttpSession sesion = req.getSession();
-            sesion.setAttribute("usuario",u);
-            resp.sendRedirect(ruta);
+            String tipo = u.getTipo_usuario();
+            if(tipo.equals("admin")){
+                ruta="indexAdmin.jsp";
+                resp.sendRedirect(ruta);
+            }else {
+                ruta="indexCliente.jsp";
+                //GUARDAR USUARIO EN LA SESION
+                HttpSession sesion = req.getSession();
+                sesion.setAttribute("usuario",u);
+                resp.sendRedirect(ruta);
+            }
         }
     }
 }

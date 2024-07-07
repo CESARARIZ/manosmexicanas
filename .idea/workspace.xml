@@ -11,7 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="modificacion pag admin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
     &quot;Tomcat Server.Tomcat 10.1.8.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/IdeaProjects/manosMexicanas&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/Documents/practica&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -155,7 +156,10 @@
       <workItem from="1720111442789" duration="23000" />
       <workItem from="1720145903158" duration="222000" />
       <workItem from="1720203196015" duration="473000" />
-      <workItem from="1720217847100" duration="396000" />
+      <workItem from="1720217847100" duration="3140000" />
+      <workItem from="1720224530284" duration="1177000" />
+      <workItem from="1720235493134" duration="634000" />
+      <workItem from="1720325573277" duration="663000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -197,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720111457630</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modificacion pag admin">
+      <option name="closed" value="true" />
+      <created>1720218587685</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720218587685</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -14,7 +14,7 @@ public class UsuarioDao {
     // con el fin de hacer el inicio de sesión
     public Usuario getOne(String correo, String contra) {
         Usuario u = new Usuario();
-        String query = "select * from usuarios where correo = ? and contra = sha2(?,256)";
+        String query = "select * from usuario where correo = ? and contra = sha2(?,256)";
 
         try {
             // 1) Conectarnos a la BD
@@ -29,8 +29,8 @@ public class UsuarioDao {
                 // Entonces llenamos la información del usuario
                 u.setId(rs.getInt("id_usuario"));
                 u.setNombre_usuario(rs.getString("nombre_usuario"));
-                u.setCorreo(rs.getString("correo"));
                 u.setTelefono(rs.getString("telefono"));
+                u.setCorreo(rs.getString("correo"));
                 u.setDireccion(rs.getString("direccion"));
                 u.setContra(rs.getString("contra"));
                 u.setEstado(rs.getString("estado"));
