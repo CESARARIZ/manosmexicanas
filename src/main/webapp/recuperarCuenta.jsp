@@ -3,53 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Correo</title>
+    <title>Ingresar Correo</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
     <style>
         body {
+            background-color: #F2F2F2;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
         }
+
+        header {
+            width: 100%;
+            background-color: #061029;
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+        }
+
+        .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #log img {
+            width: 100px;
+            height: 60px;
+        }
+
+        #nave {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        #nave a {
+            color: #fff;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
         .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 5%;
+            background-color: #F2F2F2;
+        }
+
+        .sidebar {
+            background-color: #fff;
             padding: 20px;
-            width: 300px;
+            border-radius: 10px;
+            border: 1px solid black;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .formu {
             text-align: center;
         }
-        .logo {
-            width: 150px;
-            margin-bottom: 20px;
+
+        #titulo {
+            text-align: center;
+            font-family: Sansita;
+            font-size: 30px;
         }
-        .title {
-            font-size: 24px;
-            margin-bottom: 20px;
+
+        .form-group {
+            text-align: left;
         }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .input-group input {
+
+        .form-group input {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
         }
-        .link {
-            display: block;
-            margin-bottom: 20px;
-            color: #007bff;
-            text-decoration: none;
-        }
-        .link:hover {
-            text-decoration: underline;
-        }
-        .btn {
+
+        .text-center button {
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -57,17 +84,20 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        .btn:hover {
+
+        .text-center button:hover {
             background-color: #0056b3;
         }
-        .header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 10px;
-            text-align: right;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+
+        .text-center a {
+            color: #007bff;
+            text-decoration: none;
         }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+
         .header a {
             color: #fff;
             text-decoration: none;
@@ -76,19 +106,44 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="#">Catálogo</a>
-            <a href="#">Crea tu cuenta</a>
+
+<header>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-2" id="log">
+                <a href="index.jsp"><img src="logo.png" alt="Logo"></a>
+            </div>
+            <div class="col-lg-10" id="nave">
+                <a href="index.jsp">Catálogo</a>
+                <a href="registrarse.jsp">Registrarse</a>
+            </div>
         </div>
-        <img src="logo.png" alt="Manos Mexicanas" class="logo">
-        <div class="title">Bienvenido</div>
-        <div class="input-group">
-            <label for="correo">Correo</label>
-            <input type="email" id="correo" placeholder="Ingresa tu correo">
-        </div>
-        <a href="#" class="link">¿Olvidaste tu correo?</a>
-        <button class="btn">Recuperar correo</button>
     </div>
+</header>
+<center>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="sidebar bg-light">
+                <div class="formu">
+                    <form method="post" action="login">
+                        <h2 id="titulo"><b>Bienvenido</b></h2>
+                        <br>
+                        <div class="form-group mb-3">
+                            <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electrónico</label>
+                            <input type="email" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="Ingresa tu correo">
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Recuperar correo</button>
+                            <br><br>
+                            <a href="#">¿Olvidaste tu correo?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></center>
 </body>
 </html>
