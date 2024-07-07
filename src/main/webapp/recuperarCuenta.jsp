@@ -1,17 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dan-a
-  Date: 23/06/2024
-  Time: 11:00 p. m.
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña</title>
+    <title>Recuperar Correo</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,21 +76,19 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <a href="#">Catálogo</a>
-        <a href="#">Crea tu cuenta</a>
+    <div class="container">
+        <div class="header">
+            <a href="#">Catálogo</a>
+            <a href="#">Crea tu cuenta</a>
+        </div>
+        <img src="logo.png" alt="Manos Mexicanas" class="logo">
+        <div class="title">Bienvenido</div>
+        <div class="input-group">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" placeholder="Ingresa tu correo">
+        </div>
+        <a href="#" class="link">¿Olvidaste tu correo?</a>
+        <button class="btn">Recuperar correo</button>
     </div>
-    <img src="logo.png" alt="Manos Mexicanas" class="logo">
-    <div class="title">Bienvenido</div>
-    <div class="input-group">
-        <input type="email" placeholder="cuentadepersona@correo.com" disabled>
-    </div>
-    <div class="input-group">
-        <input type="password" placeholder="Ingresa tu contraseña...">
-    </div>
-    <a href="#" class="link">¿Olvidaste la contraseña?</a>
-    <button class="btn">Recuperar contraseña</button>
-</div>
 </body>
 </html>
