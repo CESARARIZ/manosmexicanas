@@ -130,13 +130,12 @@
                         <br>
                         <div class="form-group mb-3">
                             <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electrónico</label>
-                            <input type="email" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="Ingresa tu correo">
+                            <input type="email" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
                         </div>
                         <br>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Recuperar correo</button>
                             <br><br>
-                            <a href="#">¿Olvidaste tu correo?</a>
                         </div>
                     </form>
                 </div>

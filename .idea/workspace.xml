@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="modificacion pag admin">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="identificacion tipo usuario">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +159,9 @@
       <workItem from="1720224530284" duration="1177000" />
       <workItem from="1720235493134" duration="634000" />
       <workItem from="1720325573277" duration="663000" />
+      <workItem from="1720367429970" duration="1336000" />
+      <workItem from="1720381351767" duration="1598000" />
+      <workItem from="1720391236814" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -209,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720218587685</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="identificacion tipo usuario">
+      <option name="closed" value="true" />
+      <created>1720367602313</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720367602313</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +229,7 @@
     <MESSAGE value="INICIO DE SESION FUNCIONAL" />
     <MESSAGE value="AGREGE TODAS LAS PAGINAS" />
     <MESSAGE value="modificacion pag admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificacion pag admin" />
+    <MESSAGE value="identificacion tipo usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="identificacion tipo usuario" />
   </component>
 </project>
