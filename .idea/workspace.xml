@@ -10,24 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="modificacion pag admin">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/carritoB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/img/logoMM.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionPedidos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionPedidos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/carrito.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/newContraseña.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/newContraseña.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +166,7 @@
       <workItem from="1720224530284" duration="1177000" />
       <workItem from="1720235493134" duration="634000" />
       <workItem from="1720325573277" duration="663000" />
-      <workItem from="1720407319054" duration="992000" />
+      <workItem from="1720407319054" duration="7023000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />

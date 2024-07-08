@@ -97,7 +97,7 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                         <br><br>
-                        <p><a href="#">Olvide mi contraseña</a></p>
+                        <p><a href="recuperarCuenta.jsp">Olvidé mi contraseña</a></p>
                         <p>¿No tienes una cuenta? <a href="registrarse.jsp">Crear cuenta</a></p>
                     </div>
                 </form>
