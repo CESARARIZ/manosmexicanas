@@ -111,7 +111,7 @@
 <header>
     <div class="container-fluid">
         <div id="log">
-            <a href="index.jsp"><img src="logo.png" alt="Logo"></a>
+            <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
         </div>
         <div id="nave">
             <a href="index.jsp">Catálogo</a>
@@ -129,7 +129,7 @@
                         <h2 id="titulo"><b>Bienvenido</b></h2>
                         <br>
                         <div class="form-group mb-3">
-                            <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electrónico</label>
+                            <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electronico</label>
                             <input type="email" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
                         </div>
                         <br>

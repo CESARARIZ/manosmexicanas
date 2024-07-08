@@ -38,6 +38,9 @@
         font-family: Sansita;
         font-size: 50px;
     }
+    #mar{
+        background-color: #F2F2F2;
+    }
     </style>
 
 
@@ -71,7 +74,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5 col-sm-8 col-12 sidebar bg-light">
+        <div class="col-md-5 col-sm-8 col-12 sidebar" id="mar">
             <div class="formu">
                 <form method="post" action="login" >
                 <h2 id="titulo"><b>Inicia sesión</b></h2>

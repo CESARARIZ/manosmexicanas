@@ -36,7 +36,7 @@ public class RecuperarContraServlet extends HttpServlet {
 
             if (dao.updateCodigo(correo, codigo)){
                 String asunto= "Recuperar contraseña";
-                String mensaje = "<a href=\"http://localhost:8080/manosmexicanas_war/recuperarContra?codigo="+codigo+"&id=" + id +"\"> Haz click aqui para recuperar tu contraseña </a> ";
+                String mensaje = "<a href=\"http://localhost:8080/manosMexicanas_war_exploded/recuperarContra?codigo="+codigo+"&id=" + id +"\"> Haz click aqui para recuperar tu contraseña </a> ";
 
             /*
                 try {
