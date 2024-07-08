@@ -22,7 +22,7 @@
         }
         header {
             width: 100%;
-            background-color: #f8f9fa;
+            background-color: #061029;
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
@@ -109,7 +109,7 @@
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logo.png" alt="" width="100px" height="60px"></a>
+                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
             <div class="col-lg-6">
@@ -123,7 +123,7 @@
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Crear cuenta</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
                     <a href="html/carrito.html">
-                        <img src="img/carrito.png" alt="" width="35px" height="35px"></a>
+                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
                 </nav>
             </div>
         </div>

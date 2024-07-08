@@ -1,103 +1,177 @@
-
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña</title>
+    <title>Manos Mexicanas</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        .sidebar{
+
+            padding: 20px 0;
+            position: relative; /* Fijar la barra de filtros */
+            top: 20px; /* Ajustar la posición superior según sea necesario */
+        }
+        .card-free {
+            background-color: #f8f9fa;
+        }
+        .card-pro {
+            background-color: #e9ecef;
+        }
+        .card-enterprise {
+            background-color: #dee2e6;
+        }
+        header {
+            width: 100%;
+            background-color: #061029;
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+        }
+        .header-content {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
-        .container {
-            background-color: #ffffff;
+        .search-form {
+            flex-grow: 1;
+            margin: 0 15px;
+        }
+        .filter-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .logo {
-            width: 150px;
+            padding: 10px;
             margin-bottom: 20px;
         }
-        .title {
-            font-size: 24px;
+        .filter-box h5 {
             margin-bottom: 10px;
         }
-        .subtitle {
-            font-size: 16px;
-            margin-bottom: 20px;
-            color: #777;
-        }
-        .input-group {
-            margin-bottom: 20px;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .link {
+        .filter-box label {
             display: block;
-            margin-bottom: 20px;
-            color: #007bff;
-            text-decoration: none;
         }
-        .link:hover {
-            text-decoration: underline;
+        #log {
+            text-align: left;
         }
-        .btn {
-            background-color: #007bff;
-            color: #fff;
+        /* Nuevas clases */
+        .navbar {
+            padding: 5px 0;
+        }
+        .filter-box {
+            margin: 0 20px; /* Añadir un poco de espacio a los lados */
+            margin-top: 20px;
+        }
+        #nave, #log{
+            text-align: center;
+        }
+        img{
+            max-width: 190px;
+            border-radius: 10px;
+        }
+        .item{
+            border-radius: 10px;
+            border: 1px solid black;
+            margin-right: 10px;
+            margin-top: 20px;
+        }
+
+        /*esto degine la sombrita que le sale a los cuadraditos*/
+        .item:hover{
+            box-shadow: 0 10px 20px rgb(0, 0, 0);
+        }
+        /*esto ordena tanto texto como boton*/
+        .info-producto{
+            padding: 1px 20px;
+            display: flex;
+            flex-direction: column;
+            gap:5px;
+        }
+
+
+        /*esto le da estilo al boton de busqueda*/
+        .info-producto button{
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            background: none;
+            background-color: #000;
+            color: #fff;
+            padding: 15px 10px;
             cursor: pointer;
+            border-radius: 10px;
+            margin: 7px;
         }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .header {
-            background-color: #2c3e50;
-            color: #fff;
+        .text-bordered {
+            border: 1px solid #dee2e6;
             padding: 10px;
-            text-align: right;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .header a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <a href="#">Catálogo</a>
-        <a href="#">Crea tu cuenta</a>
-    </div>
-    <img src="logo.png" alt="Manos Mexicanas" class="logo">
-    <div class="title">Recuperar Contraseña</div>
-    <div class="subtitle">Ingresa tu nueva contraseña</div>
-    <div class="input-group">
-        <input type="password" placeholder="Ingresa tu nueva contraseña...">
-    </div>
-    <div class="input-group">
-        <input type="password" placeholder="Ingresa de nuevo tu contraseña...">
-    </div>
-    <button class="btn">Recuperar contraseña</button>
-</div>
-</body>
-</html>
 
+<header class="">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
+            <div class="col-lg-2" id="log"><a href="index.jsp">
+                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            </div>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
+            <div class="col-lg-6">
+                <form class="mb-2 mb-lg-0">
+                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+                </form>
+            </div>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
+            <div class="col-lg-4">
+                <nav id="nave">
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Crear cuenta</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
+                    <a href="html/carrito.html">
+                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5 col-sm-8 col-12 sidebar bg-light">
+            <div class="sidebar bg-light">
+                <div class="formu text-bordered">
+                    <form method="post" action="login">
+
+                            <h2 id="titulo"><b>Recuperar Contraseña</b></h2>
+                            <br>
+                            <p style="font-family: Roboto; font-size: 18px">Ingresa tu nueva contraseña</p>
+                            <br>
+
+                            <div class="form-group mb-3">
+                                <label for="correo" style="font-family: Roboto; font-size: 18px">Nueva contraseña</label>
+                                <input type="email"  style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="Ingresa tu contraseña">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="contra" style="font-family: Roboto; font-size: 18px">Contraseña</label>
+                                <input type="password" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="contra" name="contra" required placeholder="Ingresa de nuevo tu contraseña...">
+                            </div>
+                            <br>
+                            <%-- Mensaje de error desde la sesión --%>
+                            <% HttpSession sesion = request.getSession();
+                                String mensaje = (String) sesion.getAttribute("mensaje");
+                                if (mensaje != null) { %>
+                            <p style="color: red;"><%= mensaje %></p>
+                            <% } %>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Recuperar Contraseña</button>
+                                <br><br>
+
+
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
