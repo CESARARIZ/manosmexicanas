@@ -11,11 +11,12 @@ public class Usuario implements Serializable {
     private String contra;
     private String estado;
     private String tipo_usuario;
+    private String codigo;
 
     public Usuario() {
     }
 
-    public Usuario (int id_usuario, String nombre_usuario, String correo, String telefono, String direccion, String contra, String estado, String tipo_usuario) {
+    public Usuario (int id_usuario, String nombre_usuario, String correo, String telefono, String direccion, String contra, String estado, String tipo_usuario, String codigo) {
         this.id_usuario = id_usuario;
         this.nombre_usuario = nombre_usuario;
         this.correo = correo;
@@ -24,6 +25,7 @@ public class Usuario implements Serializable {
         this.contra = contra;
         this.estado = estado;
         this.tipo_usuario = tipo_usuario;
+        this.codigo = codigo;
     }
 
     public int getId() {
@@ -88,5 +90,13 @@ public class Usuario implements Serializable {
 
     public void setTipo_usuario(String tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 }

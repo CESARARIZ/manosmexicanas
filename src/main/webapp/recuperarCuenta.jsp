@@ -125,7 +125,7 @@
         <div class="col-12 d-flex justify-content-center">
             <div class="sidebar bg-light">
                 <div class="formu">
-                    <form method="post" action="login">
+                    <form method="post" action="recuperarContra">
                         <h2 id="titulo"><b>Bienvenido</b></h2>
                         <br>
                         <div class="form-group mb-3">
@@ -134,7 +134,7 @@
                         </div>
                         <br>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Recuperar correo</button>
+                            <button type="submit" class="btn btn-primary">Verificar</button>
                             <br><br>
                         </div>
                     </form>

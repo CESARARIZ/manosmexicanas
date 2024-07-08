@@ -80,4 +80,86 @@ public class UsuarioDao {
         }
         return lista;
     }
+
+    //OBTENER CORREO
+    public  Usuario getCorreo(String correo) {
+        Usuario u = new Usuario();
+        String query = "select * from usuario where correo = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,correo);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                u.setId(rs.getInt("id_usuario"));
+                u.setNombre_usuario(rs.getString("nombre_usuario"));
+                u.setCorreo(rs.getString("correo"));
+                u.setTelefono(rs.getString("telefono"));
+                u.setContra(rs.getString("contra"));
+                u.setEstado(rs.getString("estado"));
+                u.setTipo_usuario(rs.getString("tipo_usuario"));
+                u.setCodigo(rs.getString("codigo"));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return u;
+    }
+
+    //ACTUALIZAR CODIGO
+    public boolean updateCodigo(String correo, String codigo) {
+        boolean flag = false;
+        String query = "update usuario set codigo = ? where correo = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,codigo);
+            ps.setString(2,correo);
+            if (ps.executeUpdate()>0){
+                flag = true;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    //OBTENER CODIGO
+    public boolean getCodigo(String codigo) {
+        boolean flag = false;
+        String query = "select * from usuario where codigo = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,codigo);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                flag = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    //ACTUALIZAR CONTRASEÑA Y CODIGO
+    public boolean updateContra (int id, String contra){
+        boolean flag = false;
+        String query = "update usuario set contra = sha2(?,256), codigo = NULL where id = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,contra);
+            ps.setInt(2,id);
+            if (ps.executeUpdate()>0){
+                flag = true;
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }
