@@ -49,7 +49,7 @@
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logo.png" alt="" width="100px" height="60px"></a>
+                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LsuA BARRA DE BUSQUEDA-->
             <div class="col-lg-6">

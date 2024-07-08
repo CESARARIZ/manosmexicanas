@@ -111,7 +111,7 @@
 <header>
     <div class="container-fluid">
         <div id="log">
-            <a href="index.jsp"><img src="logo.png" alt="Logo"></a>
+            <a href="index.jsp"><img src="logoMM.png" alt="Logo"></a>
         </div>
         <div id="nave">
             <a href="index.jsp">Catálogo</a>

@@ -87,7 +87,7 @@
         <a href="#">Catálogo</a>
         <a href="#">Crea tu cuenta</a>
     </div>
-    <img src="logo.png" alt="Manos Mexicanas" class="logo">
+    <img src="logoMM.png" alt="Manos Mexicanas" class="logo">
     <div class="title">Recuperar Contraseña</div>
     <div class="subtitle">Ingresa tu nueva contraseña</div>
     <div class="input-group">
