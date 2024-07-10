@@ -1,10 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dan-a
-  Date: 30/06/2024
-  Time: 01:29 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.UsuarioDao" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,6 +24,7 @@
             margin: 10px;
             margin-top: 10px;
             border-radius: 10px;
+            border: 3px solid #333;
         }
         .search-bar-container {
             position: relative;
@@ -39,7 +36,11 @@
         td, th{
             font-family: Sansita;
             font-size: 20px;
+            padding: 10px;
 
+        }
+        tbody tr:nth-child(even) {
+            background-color: #FEE9F5; /* Color para las filas pares */
         }
     </style>
 </head>
@@ -87,9 +88,9 @@
         </div>
     </div>
 
-    <table class="table-striped table-hover">
+    <table class="table">
         <thead>
-        <tr style="background-color: #FE7DCC">
+        <tr style="background-color: #FE7DCC; margin-bottom: 3px">
             <th>Id</th>
             <th>Nombre</th>
             <th>Telefono</th>
@@ -99,6 +100,33 @@
             <th>Acción</th>
         </tr>
         </thead>
+        <tbody>
+        <%
+            UsuarioDao dao = new UsuarioDao();
+            ArrayList<Usuario> lista = dao.getAll();
+            for( Usuario u : lista){
+        %>
+        <tr>
+            <td><%=u.getId()%></td>
+            <td><%=u.getNombre_usuario()%></td>
+            <td><%=u.getCorreo()%></td>
+            <td><%=u.getTelefono()%></td>
+            <td><%=u.getDireccion()%></td>
+            <td><%=u.getEstado()%></td>
+            <td>
+                <form action="eliminar" method="post">
+                    <input type="hidden" name="id" class="" value="<%= u.getId() %>">
+                    <input type="hidden" name="estado" value="<%= u.getEstado() %>">
+                    <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %>">
+                        <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
+
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+        <% } %>
+        </tbody>
     </table>
 </div>
 

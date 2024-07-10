@@ -11,15 +11,6 @@
             position: relative; /* Fijar la barra de filtros */
             top: 20px; /* Ajustar la posición superior según sea necesario */
         }
-        .card-free {
-            background-color: #f8f9fa;
-        }
-        .card-pro {
-            background-color: #e9ecef;
-        }
-        .card-enterprise {
-            background-color: #dee2e6;
-        }
         header {
             width: 100%;
             background-color: #061029;

@@ -70,9 +70,12 @@ public class UsuarioDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario u = new Usuario();
+                u.setId(rs.getInt("id_usuario"));
                 u.setNombre_usuario(rs.getString("nombre_usuario"));
                 u.setCorreo(rs.getString("correo"));
                 u.setTelefono(rs.getString("telefono"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setEstado(rs.getString("estado"));
                 lista.add(u);
             }
         } catch (SQLException e) {
