@@ -11,40 +11,17 @@
             position: relative; /* Fijar la barra de filtros */
             top: 20px; /* Ajustar la posición superior según sea necesario */
         }
-        .card-free {
-            background-color: #f8f9fa;
-        }
-        .card-pro {
-            background-color: #e9ecef;
-        }
-        .card-enterprise {
-            background-color: #dee2e6;
-        }
+
         header {
             width: 100%;
             background-color: #061029;
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+        body{
+            background-color: #F2F2F2;
         }
-        .search-form {
-            flex-grow: 1;
-            margin: 0 15px;
-        }
-        .filter-box {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
+
         .filter-box h5 {
             margin-bottom: 10px;
         }
@@ -54,14 +31,7 @@
         #log {
             text-align: left;
         }
-        /* Nuevas clases */
-        .navbar {
-            padding: 5px 0;
-        }
-        .filter-box {
-            margin: 0 20px; /* Añadir un poco de espacio a los lados */
-            margin-top: 20px;
-        }
+
         #nave, #log{
             text-align: center;
         }
@@ -69,37 +39,7 @@
             max-width: 190px;
             border-radius: 10px;
         }
-        .item{
-            border-radius: 10px;
-            border: 1px solid black;
-            margin-right: 10px;
-            margin-top: 20px;
-        }
 
-        /*esto degine la sombrita que le sale a los cuadraditos*/
-        .item:hover{
-            box-shadow: 0 10px 20px rgb(0, 0, 0);
-        }
-        /*esto ordena tanto texto como boton*/
-        .info-producto{
-            padding: 1px 20px;
-            display: flex;
-            flex-direction: column;
-            gap:5px;
-        }
-
-
-        /*esto le da estilo al boton de busqueda*/
-        .info-producto button{
-            border: none;
-            background: none;
-            background-color: #000;
-            color: #fff;
-            padding: 15px 10px;
-            cursor: pointer;
-            border-radius: 10px;
-            margin: 7px;
-        }
         .text-bordered {
             border: 1px solid #dee2e6;
             padding: 10px;

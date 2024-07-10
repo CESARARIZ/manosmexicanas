@@ -14,6 +14,9 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
+        body{
+            background-color: #F2F2F2;
+        }
 
         .formu {
             border-radius: 10px;

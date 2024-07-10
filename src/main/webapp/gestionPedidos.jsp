@@ -29,6 +29,42 @@
             width: 100%;
 
         }
+        table{
+            width: 100%;
+            margin: 10px;
+            margin-top: 10px;
+        }
+
+        td, th{
+            font-family: Sansita;
+            font-size: 20px;
+            padding: 10px;
+
+        }
+        tbody tr{
+            border: 0.5px solid #A7A7A7;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #FEE9F5; /* Color para las filas pares */
+        }
+
+        /* Aplica el borde redondeado a las esquinas de la cabecera */
+        #tabla-redondeada thead th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        #tabla-redondeada thead th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        /* Aplica el borde redondeado a las esquinas del pie de la tabla */
+        #tabla-redondeada tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        #tabla-redondeada tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -64,7 +100,7 @@
 <div class="container">
     <div class="row align-items-center" style="margin-top: 30px; margin: 30px">
         <div class="col-md-8">
-            <h1 style="font-family: Sansita; font-size: 36px"><b>Usuarios Registrados</b></h1>
+            <h1 style="font-family: Sansita; font-size: 36px"><b>Pedidos</b></h1>
         </div>
         <div class="col-md-4">
             <div class="form-inline justify-content-end">
@@ -74,6 +110,19 @@
             </div>
         </div>
     </div>
+    <table class="table" id="tabla-redondeada">
+        <thead>
+        <tr style="background-color: #FE7DCC; margin-bottom: 3px">
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Descripcion</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Accion</th>
+        </tr>
+        </thead>
+    </table>
 </div>
 </body>
 </html>

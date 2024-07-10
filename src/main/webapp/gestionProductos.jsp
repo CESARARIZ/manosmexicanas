@@ -29,6 +29,43 @@
             width: 100%;
 
         }
+        table{
+            width: 100%;
+            margin: 10px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: 3px solid #333;
+        }
+        td, th{
+            font-family: Sansita;
+            font-size: 20px;
+            padding: 10px;
+
+        }
+        tbody tr{
+            border: 0.5px solid #A7A7A7;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #FEE9F5; /* Color para las filas pares */
+        }
+
+        /* Aplica el borde redondeado a las esquinas de la cabecera */
+        #tabla-redondeada thead th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        #tabla-redondeada thead th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        /* Aplica el borde redondeado a las esquinas del pie de la tabla */
+        #tabla-redondeada tbody tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+
+        #tabla-redondeada tbody tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +110,19 @@
             </div>
         </div>
     </div>
+    <table class="table" id="tabla-redondeada">
+        <thead>
+        <tr style="background-color: #FE7DCC; margin-bottom: 3px">
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acción</th>
+        </tr>
+        </thead>
+    </table>
 </div>
 </body>
 </html>

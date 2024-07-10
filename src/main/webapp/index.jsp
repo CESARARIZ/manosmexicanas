@@ -17,17 +17,8 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .search-form {
-            flex-grow: 1;
-            margin: 0 15px;
+        body{
+            background-color: #F2F2F2;
         }
         .filter-box {
             background-color: #f8f9fa;
@@ -165,6 +156,7 @@
                         </figure>
                         <div class="info-producto">
                             <h4>ropa </h4>
+                            <p>Descripcion: </p>
                             <p class="precio">$50</p>
                             <button><h6>añadir al carrito</h6></button>
                         </div>

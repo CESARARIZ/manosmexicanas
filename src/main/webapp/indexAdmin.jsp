@@ -11,32 +11,15 @@
             position: relative; /* Fijar la barra de filtros */
             top: 20px; /* Ajustar la posición superior según sea necesario */
         }
-        .card-free {
-            background-color: #f8f9fa;
-        }
-        .card-pro {
-            background-color: #e9ecef;
-        }
-        .card-enterprise {
-            background-color: #dee2e6;
-        }
+
         header {
             width: 100%;
-            background-color: #f8f9fa;
+            background-color: #061029;
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        .search-form {
-            flex-grow: 1;
-            margin: 0 15px;
+        body{
+            background-color: #F2F2F2;
         }
         .filter-box {
             background-color: #f8f9fa;
