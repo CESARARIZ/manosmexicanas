@@ -112,63 +112,84 @@
     </div>
 </header>
 
-<div class="container">
-    <div class="sidebar">
-        <img src="user-placeholder.png" alt="Usuario Administrador">
-        <h2>Usuario Administrador</h2>
-        <p>Nombre: administrador</p>
-        <p>Correo Electrónico: administrador@utez.edu.mx</p>
-        <p>Teléfono: 7771234567</p>
-    </div>
-    <div class="main">
-        <h1>Publicar producto</h1>
-        <div class="form-group">
-            <label for="nombre-producto">Nombre del producto:</label>
-            <input type="text" id="nombre-producto">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <img src="perfil.png" alt="Usuario Administrador">
+            <h2>Usuario Administrador</h2>
+            <p>Nombre: administrador</p>
+            <p>Correo Electrónico: administrador@utez.edu.mx</p>
+            <p>Teléfono: 7771234567</p>
         </div>
-        <div class="form-group">
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" rows="4"></textarea>
+        <div class="col-md-9">
+            <h1>Publicar producto</h1>
+            <form>
+                <div class="form-group">
+                    <label for="nombre-producto">Nombre del producto:</label>
+                    <input type="text" class="form-control" id="nombre-producto">
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea class="form-control" id="descripcion" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="unidades">Unidades disponibles:</label>
+                    <input type="number" class="form-control" id="unidades">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <input type="text" class="form-control" id="categoria">
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio:</label>
+                    <input type="number" class="form-control" id="precio">
+                </div>
+                <div class="form-group">
+                    <label>Colores:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Color 1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Color 2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tallas:</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Talla 1">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Talla 2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Adjuntar imagen del producto:</label>
+                    <div class="d-flex flex-wrap">
+                        <img src="imagen_chochet_1.jpg" alt="imagen_chochet_1" class="img-thumbnail">
+                        <img src="imagen_chochet_2.jpg" alt="imagen_chochet_2" class="img-thumbnail">
+                        <img src="imagen_chochet_3.jpg" alt="imagen_chochet_3" class="img-thumbnail">
+                        <button class="btn btn-outline-secondary" type="button">Adjuntar imagen...</button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="unidades">Unidades disponibles:</label>
-            <input type="number" id="unidades">
-        </div>
-        <div class="form-group">
-            <label for="categoria">Categoría:</label>
-            <input type="text" id="categoria">
-        </div>
-        <div class="form-group">
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio">
-        </div>
-        <div class="form-group colors">
-            <label>Colores:</label>
-            <input type="text" placeholder="Color 1">
-            <button>+</button>
-        </div>
-        <div class="form-group colors">
-            <input type="text" placeholder="Color 2">
-            <button>+</button>
-        </div>
-        <div class="form-group sizes">
-            <label>Tallas:</label>
-            <input type="text" placeholder="Talla 1">
-            <button>+</button>
-        </div>
-        <div class="form-group sizes">
-            <input type="text" placeholder="Talla 2">
-            <button>+</button>
-        </div>
-        <div class="form-group images">
-            <label>Adjuntar imagen del producto:</label>
-            <img src="imagen_chochet_1.jpg" alt="imagen_chochet_1">
-            <img src="imagen_chochet_2.jpg" alt="imagen_chochet_2">
-            <img src="imagen_chochet_3.jpg" alt="imagen_chochet_3">
-            <button>Adjuntar imagen...</button>
-        </div>
-        <button class="submit-button">Publicar</button>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
