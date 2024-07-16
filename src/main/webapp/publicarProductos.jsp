@@ -111,11 +111,10 @@
         </div>
     </div>
 </header>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 sidebar">
-            <img src="perfil.png" alt="Usuario Administrador">
+            <img src="user-placeholder.png" alt="Usuario Administrador">
             <h2>Usuario Administrador</h2>
             <p>Nombre: administrador</p>
             <p>Correo Electrónico: administrador@utez.edu.mx</p>
@@ -124,25 +123,29 @@
         <div class="col-md-9">
             <h1>Publicar producto</h1>
             <form>
-                <div class="form-group">
-                    <label for="nombre-producto">Nombre del producto:</label>
-                    <input type="text" class="form-control" id="nombre-producto">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="nombre-producto">Nombre del producto:</label>
+                        <input type="text" class="form-control" id="nombre-producto">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="unidades">Unidades disponibles:</label>
+                        <input type="number" class="form-control" id="unidades">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea class="form-control" id="descripcion" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="unidades">Unidades disponibles:</label>
-                    <input type="number" class="form-control" id="unidades">
-                </div>
-                <div class="form-group">
-                    <label for="categoria">Categoría:</label>
-                    <input type="text" class="form-control" id="categoria">
-                </div>
-                <div class="form-group">
-                    <label for="precio">Precio:</label>
-                    <input type="number" class="form-control" id="precio">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea class="form-control" id="descripcion" rows="4"></textarea>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="categoria">Categoría:</label>
+                        <input type="text" class="form-control" id="categoria">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="precio">Precio:</label>
+                        <input type="number" class="form-control" id="precio">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Colores:</label>
@@ -188,8 +191,6 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
