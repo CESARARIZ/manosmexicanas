@@ -39,6 +39,8 @@ public class UsuarioServlet extends HttpServlet {
             String tipo = u.getTipo_usuario();
             if(tipo.equals("admin")){
                 ruta="indexAdmin.jsp";
+                HttpSession sesion = req.getSession();
+                sesion.setAttribute("usuario",u);
                 resp.sendRedirect(ruta);
             }else {
                 ruta="indexCliente.jsp";

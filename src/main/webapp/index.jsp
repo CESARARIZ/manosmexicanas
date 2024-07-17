@@ -1,3 +1,6 @@
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -49,14 +52,14 @@
             text-align: center;
         }
         img{
-            max-width: 190px;
+            max-width: 150px;
             border-radius: 10px;
         }
         .item{
             border-radius: 10px;
             border: 1px solid black;
             margin-right: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         /*esto degine la sombrita que le sale a los cuadraditos*/
@@ -65,7 +68,7 @@
         }
         /*esto ordena tanto texto como boton*/
         .info-producto{
-            padding: 1px 20px;
+            padding: 1px 10px;
             display: flex;
             flex-direction: column;
             gap:5px;
@@ -76,12 +79,13 @@
         .info-producto button{
             border: none;
             background: none;
-            background-color: #000;
-            color: #fff;
-            padding: 15px 10px;
+            background-color: #FE7DCC;
+            color: #000000;
+            padding: 8px 4px;
             cursor: pointer;
             border-radius: 10px;
-            margin: 7px;
+            margin: 2px;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -151,20 +155,25 @@
                 <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 20px;">
                     <!--TARJETA DE PRODUCTO-->
 
-                    <c:forEach var="producto" items="${productos}">
-                        <div class="item">
-                            <figure>
-                                <a href="#"><img src="" alt="producto"></a>
-                            </figure>
-                            <div class="info-producto">
-                                <h4>${producto.getNombre()} </h4>
-                                <p>Descripcion: <br>
-                                ${producto.getDescripcion()}</p>
-                                <p class="precio">$.${producto.getPrecio()}</p>
-                                <button><h6>añadir al carrito</h6></button>
-                            </div>
+                    <%
+                        ProductoDao dao = new ProductoDao();
+                        ArrayList<Producto> lista = dao.obtenerProductos();
+                        for( Producto p : lista){
+                    %>
+
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet1.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h6><%=p.getNombre()%> </h6>
+                            <p class="precio" style="color: #898686; font-family: Roboto Mono">$<%=p.getPrecio()%> </p>
+                            <button>Añadir al carrito</button>
                         </div>
-                    </c:forEach>
+                    </div>
+
+                    <% } %>
                 </div>
 
 

@@ -136,9 +136,18 @@
             <td><%=p.getId_producto()%></td>
             <td><%=p.getNombre()%></td>
             <td><%=p.getDescripcion()%></td>
+            <td><%=p.getCategoria()%></td>
             <td><%=p.getPrecio()%></td>
             <td><%=p.getStock()%></td>
-            <td><%=p.getId_categoria()%></td>
+            <td>
+                <button style="border: none;">
+                    <img src="img/agregarProd.png" alt="" style="width: 20px; height: 20px;">
+                </button>
+                <button style="border: none;">
+                    <img src="img/bloquearProd.png" alt="" style="width: 20px; height: 20px; ">
+                </button>
+            </td>
+
 
 
 

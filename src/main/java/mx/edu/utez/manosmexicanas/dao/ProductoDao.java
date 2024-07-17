@@ -1,5 +1,7 @@
 package mx.edu.utez.manosmexicanas.dao;
 
+
+
 import mx.edu.utez.manosmexicanas.model.ColorProducto;
 import mx.edu.utez.manosmexicanas.model.Imagen;
 import mx.edu.utez.manosmexicanas.model.Producto;
@@ -18,7 +20,7 @@ public class ProductoDao {
 
     public ArrayList<Producto> obtenerProductos() {
         ArrayList<Producto> productos = new ArrayList<Producto>();
-        String query = "select * from producto";
+        String query = "select p.id_producto, p.nombre, p.descripción, c.nombre, p.precio, p.stock from producto p join categoria c on p.id_categoria = c.id_categoria ;";
 
         try{
             Connection con = DatabaseConnectionManager.getConnection();
@@ -29,9 +31,9 @@ public class ProductoDao {
                 p.setId_producto(rs.getInt("id_producto"));
                 p.setNombre(rs.getString("nombre"));
                 p.setDescripcion(rs.getString("descripción"));
-                p.setPrecio(rs.getFloat("precio"));
+                p.setPrecio(rs.getDouble("precio"));
                 p.setStock(rs.getInt("stock"));
-                p.setId_categoria(rs.getInt("id_categoria"));
+                p.setCategoria(rs.getString("c.nombre"));
                 productos.add(p);
 
             }

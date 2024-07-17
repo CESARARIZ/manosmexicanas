@@ -90,7 +90,7 @@
     <div class="row justify-content-center" style="background-color: #F2F2F2;">
         <div class="col-md-6 sidebar">
 
-            <form class="formulario" id="formRegistro" onsubmit="actualizarRegistro(event)">
+            <form method="post" action="sign_in" class="formulario" id="formRegistro">
                 <h4 id="titulo">CREAR CUENTA</h4>
                 <h8 id="sub">Ingresa tus datos para crear una cuenta nueva.</h8><br>
                 <label for="nombre">Nombre</label>
@@ -100,14 +100,20 @@
                 <label for="email">Correo electronico</label>
                 <input class="form-control mb-3" type="text" name="email" id="email" placeholder="ejemplo@gmail.com" required>
                 <label for="contraseña1">Contraseña</label>
-                <input class="form-control mb-3" type="password" name="contraseña1" id="contraseña1" placeholder="Ingresa tu contraseña" required>
+                <input class="form-control mb-3" type="password" name="pass1" id="contraseña1" placeholder="Ingresa tu contraseña" required>
                 <label for="contraseña2">Confirmar contraseña</label>
-                <input class="form-control mb-3" type="password" name="contraseña2" id="contraseña2" placeholder="Confirma tu contraseña" required>
-                <input type="hidden" id="id" name="id">
+                <input class="form-control mb-3" type="password" name="pass2" id="contraseña2" placeholder="Confirma tu contraseña" required>
+                <%
+                    HttpSession sesion1 = request.getSession();
+                    String mensaje2 = (String) sesion1.getAttribute("mensaje2");
+
+                    if(mensaje2 !=null){ %>
+                <p style="color: red;"><%=mensaje2%></p>
+                <% } %>
                 <br>
                 <center>
                     <button class="btn btn-primary mb-3" type="submit">Crear cuenta</button><br>
-                    <label for="login" id="enl">¿Ya tienes una cuenta? <a href="login.html">inicia sesión</a> </label>
+                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="index.jsp">inicia sesión</a> </label>
                 </center>
             </form>
         </div>

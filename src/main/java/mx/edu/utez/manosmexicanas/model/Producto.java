@@ -9,21 +9,21 @@ public class Producto {
     private String descripcion;
     private double precio;
     private int stock;
-    private int id_categoria;
-    private List<Talla> tallasDisponibles;
-    private List<ColorProducto> coloresDisponibles;
-    private List<String> imagenes;
+    private String categoria;
+    private ArrayList<Talla> tallasDisponibles;
+    private ArrayList<ColorProducto> coloresDisponibles;
+    private ArrayList<String> imagenes;
 
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre, String descripcion, double precio,int stock, int id_categoria, ArrayList<Talla> tallasDisponibles, ArrayList<ColorProducto> coloresDisponibles, ArrayList <String> imagenes) {
+    public Producto(int id_producto, String nombre, String descripcion, double precio, int stock, String categoria, ArrayList<Talla> tallasDisponibles, ArrayList<ColorProducto> coloresDisponibles, ArrayList<String> imagenes) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
-        this.id_categoria = id_categoria;
+        this.categoria = categoria;
         this.tallasDisponibles = tallasDisponibles;
         this.coloresDisponibles = coloresDisponibles;
         this.imagenes = imagenes;
@@ -61,43 +61,43 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getId_categoria() {
-        return id_categoria;
-    }
-
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
-    }
-
-    public List<Talla> getTallasDisponibles() {
-        return tallasDisponibles;
-    }
-
-    public void setTallasDisponibles(List<Talla> tallasDisponibles) {
-        this.tallasDisponibles = tallasDisponibles;
-    }
-
-    public List<ColorProducto> getColoresDisponibles() {
-        return coloresDisponibles;
-    }
-
-    public void setColoresDisponibles(List<ColorProducto> coloresDisponibles) {
-        this.coloresDisponibles = coloresDisponibles;
-    }
-
-    public List<String> getImagenes() {
-        return imagenes;
-    }
-
-    public void setImagenes(List<String> imagenes) {
-        this.imagenes = imagenes;
-    }
-
     public int getStock() {
         return stock;
     }
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public ArrayList<Talla> getTallasDisponibles() {
+        return tallasDisponibles;
+    }
+
+    public void setTallasDisponibles(ArrayList<Talla> tallasDisponibles) {
+        this.tallasDisponibles = tallasDisponibles;
+    }
+
+    public ArrayList<ColorProducto> getColoresDisponibles() {
+        return coloresDisponibles;
+    }
+
+    public void setColoresDisponibles(ArrayList<ColorProducto> coloresDisponibles) {
+        this.coloresDisponibles = coloresDisponibles;
+    }
+
+    public ArrayList<String> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(ArrayList<String> imagenes) {
+        this.imagenes = imagenes;
     }
 }

@@ -44,13 +44,13 @@ public class UsuarioDao {
 
     public boolean insert(Usuario u) {
         boolean flag = false;
-        String query = "insert into usuario(nombre_usuario,correo,telefono,contraseña) values(?,?,?,sha2(?,256))";
+        String query = "insert into usuario(nombre_usuario,telefono,correo,contra) values(?,?,?,sha2(?,256))";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, u.getNombre_usuario());
-            ps.setString(2, u.getCorreo());
-            ps.setString(3, u.getTelefono());
+            ps.setString(2, u.getTelefono());
+            ps.setString(3, u.getCorreo());
             ps.setString(4, u.getContra());
             if (ps.executeUpdate() == 1) {
                 flag = true;
