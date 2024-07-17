@@ -14,7 +14,7 @@ import java.util.List;
 public class ImagenDao {
     public List<Imagen> ImagenProducto(int id_producto) throws SQLException {
         List<Imagen> imagenes = new ArrayList<>();
-        String query = "SELECT i.id_color, i.id_producto ,i.url FROM imagen i " +
+        String query = "SELECT i.id_imagen, i.id_producto ,i.url FROM imagen i " +
                 "JOIN producto p ON i.id_producto = p.id_producto " +
                 "WHERE p.id_producto = ?";
         try{

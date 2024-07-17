@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,153 +150,21 @@
                 <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
                 <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 20px;">
                     <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet1.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p>Descripcion: </p>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
+
+                    <c:forEach var="producto" items="${productos}">
+                        <div class="item">
+                            <figure>
+                                <a href="#"><img src="" alt="producto"></a>
+                            </figure>
+                            <div class="info-producto">
+                                <h4>${producto.getNombre()} </h4>
+                                <p>Descripcion: <br>
+                                ${producto.getDescripcion()}</p>
+                                <p class="precio">$.${producto.getPrecio()}</p>
+                                <button><h6>añadir al carrito</h6></button>
+                            </div>
                         </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet2.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet3.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet4.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet5.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet6.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                </div>
-                <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
-                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="mostrarProducto.jsp">
-                                <img src="img/crochet7.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="mostrarProducto.jsp">
-                                <img src="img/traje1.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="mostrarProducto.jsp">
-                                <img src="img/traje2.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet8.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet9.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="mostrarProducto.jsp">
-                                <img src="img/traje3.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
 
 

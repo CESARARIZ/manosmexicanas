@@ -1,4 +1,8 @@
-<%--
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: dan-a
   Date: 30/06/2024
@@ -122,6 +126,25 @@
             <th>Acción</th>
         </tr>
         </thead>
+        <tbody>
+        <%
+            ProductoDao dao = new ProductoDao();
+            ArrayList<Producto> lista = dao.obtenerProductos();
+            for( Producto p : lista){
+        %>
+        <tr>
+            <td><%=p.getId_producto()%></td>
+            <td><%=p.getNombre()%></td>
+            <td><%=p.getDescripcion()%></td>
+            <td><%=p.getPrecio()%></td>
+            <td><%=p.getStock()%></td>
+            <td><%=p.getId_categoria()%></td>
+
+
+
+        </tr>
+        <% } %>
+        </tbody>
     </table>
 </div>
 </body>

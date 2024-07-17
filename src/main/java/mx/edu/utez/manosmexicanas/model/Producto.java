@@ -8,24 +8,25 @@ public class Producto {
     private String nombre;
     private String descripcion;
     private double precio;
-    private int calificacion;
+    private int stock;
+    private int id_categoria;
     private List<Talla> tallasDisponibles;
     private List<ColorProducto> coloresDisponibles;
-    private List<Imagen> imagenes;
-    private int stockTotal;
+    private List<String> imagenes;
+
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre, String descripcion, double precio, int calificacion, ArrayList<Talla> tallasDisponibles, ArrayList<ColorProducto> coloresDisponibles, ArrayList <Imagen> imagenes,int stockTotal) {
+    public Producto(int id_producto, String nombre, String descripcion, double precio,int stock, int id_categoria, ArrayList<Talla> tallasDisponibles, ArrayList<ColorProducto> coloresDisponibles, ArrayList <String> imagenes) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.calificacion = calificacion;
+        this.stock = stock;
+        this.id_categoria = id_categoria;
         this.tallasDisponibles = tallasDisponibles;
         this.coloresDisponibles = coloresDisponibles;
         this.imagenes = imagenes;
-        this.stockTotal = stockTotal;
     }
 
     public int getId_producto() {
@@ -60,12 +61,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getCalificacion() {
-        return calificacion;
+    public int getId_categoria() {
+        return id_categoria;
     }
 
-    public void setCalificacion(int calificacion) {
-        this.calificacion = calificacion;
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public List<Talla> getTallasDisponibles() {
@@ -84,19 +85,19 @@ public class Producto {
         this.coloresDisponibles = coloresDisponibles;
     }
 
-    public List<Imagen> getImagenes() {
+    public List<String> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<Imagen> imagenes) {
+    public void setImagenes(List<String> imagenes) {
         this.imagenes = imagenes;
     }
 
-    public int getStockTotal() {
-        return stockTotal;
+    public int getStock() {
+        return stock;
     }
 
-    public void setStockTotal(int stockTotal) {
-        this.stockTotal = stockTotal;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
