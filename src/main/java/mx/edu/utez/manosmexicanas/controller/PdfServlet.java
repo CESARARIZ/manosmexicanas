@@ -1,4 +1,4 @@
-package mx.edu.utez.manosmexicanas.controller;
+/*package mx.edu.utez.manosmexicanas.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -46,4 +46,4 @@ public class PdfServlet extends HttpServlet {
             os.close();
         } catch (Exception e) { System.out.println(e.getMessage());}
     }
-}
+}*/
