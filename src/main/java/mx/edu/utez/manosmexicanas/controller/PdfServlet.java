@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import mx.edu.utez.manosmexicanas.utils.DatabaseConnectionManager;
-import net.sf.jasperreports.engine.JasperRunManager;
+/*import net.sf.jasperreports.engine.JasperRunManager;*/
 
 import java.io.*;
 import java.sql.Connection;
@@ -38,12 +38,12 @@ public class PdfServlet extends HttpServlet {
         resp.setHeader("Content-Disposition", "Attachment; filename=reporte.pdf"); //esto es para forzar la descarga del archivo
 
         //Generar el reporte
-        try {
+        /*try {
             byte[] bytes = JasperRunManager. runReportToPdf(input, mapa, con);
             OutputStream os = resp.getOutputStream();
             os.write(bytes);
             os.flush();
             os.close();
-        } catch (Exception e) { System.out.println(e.getMessage());}
+        } catch (Exception e) { System.out.println(e.getMessage());}*/
     }
 }
