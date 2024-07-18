@@ -115,7 +115,7 @@
         <div class="col-md-12">
             <div class="product-card d-flex">
                 <div class="col-md-4 text-center">
-                    <img src="img/top_crochet.jpg" alt="Top tejido crochet" class="product-image">
+                    <img src="img/image39.png" alt="Top tejido crochet" class="product-image">
                 </div>
                 <div class="col-md-8">
                     <h2 class="product-title">Top tejido crochet</h2>
@@ -135,11 +135,11 @@
             <div class="product-card mt-3">
                 <h3>Colores disponibles</h3>
                 <div class="d-flex">
-                    <div class="color-swatch"><img src="img/" alt="Blanco"></div>
-                    <div class="color-swatch"><img src="img/" alt="Negro"></div>
-                    <div class="color-swatch"><img src="img/" alt="Café"></div>
-                    <div class="color-swatch"><img src="img/" alt="Rosa claro"></div>
-                    <div class="color-swatch"><img src="img/" alt="Rosa chicle"></div>
+                    <div class="color-swatch"><img src="img/image42.png" alt="Blanco"></div>
+                    <div class="color-swatch"><img src="img/image44.png" alt="Negro"></div>
+                    <div class="color-swatch"><img src="img/image43.png" alt="Café"></div>
+                    <div class="color-swatch"><img src="img/image40.png" alt="Rosa claro"></div>
+                    <div class="color-swatch"><img src="img/image41.png" alt="Rosa chicle"></div>
                 </div>
             </div>
 
