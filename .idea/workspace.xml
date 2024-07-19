@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="registrar" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="registrar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +60,7 @@
     "Tomcat Server.Tomcat 10.1.8.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/dan-a/Documents/carrito",
+    "last_opened_file_path": "C:/Users/dan-a/IdeaProjects/manosMexicanas",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -175,6 +177,7 @@
       <workItem from="1721243617982" duration="660000" />
       <workItem from="1721322314421" duration="384000" />
       <workItem from="1721322749924" duration="408000" />
+      <workItem from="1721411461159" duration="4631000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
