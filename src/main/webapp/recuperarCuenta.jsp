@@ -126,7 +126,7 @@
             <div class="sidebar bg-light">
                 <div class="formu">
                     <form method="post" action="recuperarContra">
-                        <h2 id="titulo"><b>Bienvenido</b></h2>
+                        <h2 id="titulo"><b>Recupera tu contrasena</b></h2>
                         <br>
                         <div class="form-group mb-3">
                             <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electronico</label>

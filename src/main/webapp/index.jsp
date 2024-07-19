@@ -1,6 +1,8 @@
 <%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.VarianteProducto" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -109,7 +111,7 @@
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Crear cuenta</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
-                    <a href="html/carrito.html">
+                    <a href="ingresar.jsp">
                         <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
                 </nav>
             </div>
@@ -156,24 +158,37 @@
                     <!--TARJETA DE PRODUCTO-->
 
                     <%
-                        ProductoDao dao = new ProductoDao();
-                        ArrayList<Producto> lista = dao.obtenerProductos();
-                        for( Producto p : lista){
-                    %>
+                        ProductoDao productoDao = new ProductoDao();
+                        List<Producto> productos = null;
 
+                        try {
+                            productos = productoDao.obtenerTodosLosProductos();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        if (productos != null) {
+                            for (Producto producto : productos) {
+                    %>
                     <div class="item">
                         <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet1.jpeg" alt="producto"></a>
+                            <a href="mostrarProducto.jsp">
+                                <img src="img/crochet5.jpeg" alt="producto"></a>
                         </figure>
                         <div class="info-producto">
-                            <h6><%=p.getNombre()%> </h6>
-                            <p class="precio" style="color: #898686; font-family: Roboto Mono">$<%=p.getPrecio()%> </p>
-                            <button>Añadir al carrito</button>
+                            <h6><%= producto.getNombre_producto() %></h6>
+                            <!--<p>Descripción: <%= producto.getDescripcion() %></p> -->
+                            <p class="precio">$<%= producto.getPrecio() %></p>
+                            <p>Disponibles: <%= producto.getStockDisponible() %></p>
+                            <button><h6>añadir al carrito</h6></button>
                         </div>
                     </div>
 
-                    <% } %>
+                    <%
+                            }
+                        }
+                    %>
+
                 </div>
 
 
