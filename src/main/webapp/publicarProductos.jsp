@@ -85,16 +85,43 @@
     </style>
 </head>
 <body>
+<header>
 
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
+            <div class="col-lg-2" id="log"><a href="index.jsp">
+                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            </div>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
+            <div class="col-lg-6">
+                <form class="mb-2 mb-lg-0">
+
+                </form>
+            </div>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
+            <div class="col-lg-4">
+                <nav id="nave">
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexAdmin.jsp">Catálogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionPedidos.jsp">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="publicarProductos.jsp">Publicar</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+</header>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 sidebar">
             <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
-            <br>
+            <br><form>
             <h2>Usuario Administrador</h2>
             <p>Nombre: administrador</p>
             <p>Correo Electrónico: administrador@utez.edu.mx</p>
-            <p>Teléfono: 7771234567</p>
+            <p>Teléfono: 7771234567</p></form>
         </div>
 
         <div class="col-md-6">
