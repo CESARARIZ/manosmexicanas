@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Perfil</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
     <style>
         #nave, #log{
@@ -23,6 +23,88 @@
         body{
             background-color: #F2F2F2;
         }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .perfil {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 5px solid #dee2e6;
+        }
+
+        .info-personal {
+            background-color: #f8e6ef;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+
+        }
+        .info-personal img {
+            border-radius: 50%;
+            margin-right: 20px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            justify-self: center;
+        }
+        .info-personal div {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .mis-pedidos, .mis-compras {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        table img {
+            width: 50px;
+            height: auto;
+        }
+
+        .estatus-recibido {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+
     </style>
 </head>
 <body>
@@ -54,6 +136,84 @@
     </div>
 
 </header>
-
+<form>
+    <section class="perfil">
+        <div class="info-personal">
+            <img src="img/icono_de_perfil.png" alt="Perfil">
+            <div>
+                <h2>Maximiliano Roque Balboa</h2>
+                <p><a href="mailto:max@gmail.com">max@gmail.com</a></p>
+                <p>Número de teléfono</p>
+                <p>7771234567</p>
+            </div>
+        </div>
+    <div class="mis-pedidos">
+        <h3>Mis pedidos</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Estatus</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
+                <td>Mantel</td>
+                <td>Mantel de mesa</td>
+                <td>$150.00</td>
+                <td>Decorativos</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
+                <td>Alfombra</td>
+                <td>Alfombra colorida</td>
+                <td>$100.00</td>
+                <td>Decorativos</td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="mis-compras">
+        <h3>Mis compras</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Estatus</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
+                <td>Mantel</td>
+                <td>Mantel de mesa</td>
+                <td>$150.00</td>
+                <td>Decorativos</td>
+                <td><span class="estatus-recibido">RECIBIDO</span></td>
+            </tr>
+            <tr>
+                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
+                <td>Alfombra</td>
+                <td>Alfombra colorida</td>
+                <td>$100.00</td>
+                <td>Decorativos</td>
+                <td><span class="estatus-recibido">RECIBIDO</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section></form>
+</main>
 </body>
 </html>
