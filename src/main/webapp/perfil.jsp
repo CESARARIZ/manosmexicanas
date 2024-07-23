@@ -54,7 +54,7 @@
             border-radius: 10px;
             margin-bottom: 20px;
             text-align: center;
-            
+
         }
         .info-personal img {
             border-radius: 50%;
@@ -62,6 +62,7 @@
             width: 100px;
             height: 100px;
             object-fit: cover;
+            justify-self: center;
         }
         .info-personal div {
             flex-grow: 1;
