@@ -14,14 +14,99 @@
         #nave, #log{
             text-align: center;
         }
-        header {
-            width: 100%;
-            background-color: #061029;
-            border-bottom: 1px solid #dee2e6;
-            padding: 10px 0;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
         }
-        body{
-            background-color: #F2F2F2;
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header .logo img {
+            width: 50px;
+        }
+
+        header nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .carrito, .resumen {
+            background-color: #e6e6fa;
+            padding: 20px;
+            border-radius: 5px;
+            width: 45%;
+        }
+
+        .carrito h2, .resumen h2 {
+            margin-top: 0;
+        }
+
+        .producto {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .producto img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        .producto .detalles {
+            flex: 1;
+        }
+
+        .producto .cantidad {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .producto .cantidad input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .producto .precio {
+            width: 100px;
+        }
+
+        .producto .btn-eliminar {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .btn-agregar, .btn-realizar, .btn-vaciar {
+            background-color: #8a2be2;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
         }
     </style>
 </head>
@@ -55,5 +140,64 @@
     </div>
 
 </header>
+<main>
+<div class="carrito">
+    <h2>Carrito</h2>
+    <div class="producto">
+        <img src="img/Alfombra.jpeg" alt="Alfombra colorida">
+        <div class="detalles">
+            <p><strong>Alfombra colorida</strong></p>
+            <p>Talla: Extra larga</p>
+            <p>Color: Colorful</p>
+        </div>
+        <div class="cantidad">
+            <button class="btn-menos">-</button>
+            <input type="text" value="1" class="input-cantidad">
+            <button class="btn-mas">+</button>
+        </div>
+        <p class="precio">$100.00</p>
+        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+    </div>
+    <div class="producto">
+        <img src="img/Alfombra.jpeg" alt="Alfombra colorida">
+        <div class="detalles">
+            <p><strong>Alfombra colorida</strong></p>
+            <p>Talla: Extra larga</p>
+            <p>Color: Colorful</p>
+        </div>
+        <div class="cantidad">
+            <button class="btn-menos">-</button>
+            <input type="text" value="2" class="input-cantidad">
+            <button class="btn-mas">+</button>
+        </div>
+        <p class="precio">$200.00</p>
+        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+    </div>
+    <div class="producto">
+        <img src="img/Alfombra.jpeg" alt="Alfombra colorida">
+        <div class="detalles">
+            <p><strong>Alfombra colorida</strong></p>
+            <p>Talla: Extra larga</p>
+            <p>Color: Colorful</p>
+        </div>
+        <div class="cantidad">
+            <button class="btn-menos">-</button>
+            <input type="text" value="3" class="input-cantidad">
+            <button class="btn-mas">+</button>
+        </div>
+        <p class="precio">$300.00</p>
+        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+    </div>
+    <button class="btn-agregar">Agregar más productos</button>
+</div>
+<div class="resumen">
+    <h2>Resumen de compra</h2>
+    <p>Productos: 6</p>
+    <p>Total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $600.00</p>
+    <button class="btn-realizar">Realizar pedido</button>
+    <button class="btn-vaciar">Vaciar carrito</button>
+</div>
+</main>
+
 </body>
 </html>
