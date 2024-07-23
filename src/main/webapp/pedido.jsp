@@ -156,7 +156,7 @@
             <button class="btn-mas">+</button>
         </div>
         <p class="precio">$100.00</p>
-        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+        <button class="btn-eliminar"></button>
     </div>
     <div class="producto">
         <img src="img/Alfombra.jpeg" alt="Alfombra colorida">
@@ -171,7 +171,7 @@
             <button class="btn-mas">+</button>
         </div>
         <p class="precio">$200.00</p>
-        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+        <button class="btn-eliminar"></button>
     </div>
     <div class="producto">
         <img src="img/Alfombra.jpeg" alt="Alfombra colorida">
@@ -186,7 +186,7 @@
             <button class="btn-mas">+</button>
         </div>
         <p class="precio">$300.00</p>
-        <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
+        <button class="btn-eliminar"></button>
     </div>
     <button class="btn-agregar">Agregar más productos</button>
 </div>
