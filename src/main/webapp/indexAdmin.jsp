@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Manos Mexicanas</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
     <style>
         .sidebar{
 
@@ -225,6 +225,80 @@
                     </div>
                 </div>
                 <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
+                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet7.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje1.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje2.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet8.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet9.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje3.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
                     <!--TARJETA DE PRODUCTO-->
                     <div class="item">

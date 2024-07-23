@@ -1,9 +1,16 @@
-
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession sessionn = request.getSession(false);
+    Usuario usuario = null;
+    if (sessionn != null) {
+        usuario = (Usuario) sessionn.getAttribute("usuario");
+    }
+%>
 <html>
 <head>
     <title>Manos Mexicanas</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
     <style>
         .sidebar{
 
@@ -119,12 +126,16 @@
                         <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Pedidos</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <% if (usuario != null) { %>
+                                <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
+                                <% } else { %>
                                 Perfil
+                                <% } %>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
-                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="verPerfil.jsp">Ver perfil</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="perfil.jsp">Ver perfil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="logout.jsp">Cerrar sesión</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
                             </div>
                         </div>
                         <a href="carrito.jsp" class="nav-item nav-link">
@@ -247,6 +258,81 @@
                     </div>
                 </div>
                 <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
+                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet7.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje1.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje2.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet8.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/crochet9.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                    <!--TARJETA DE PRODUCTO-->
+                    <div class="item">
+                        <figure>
+                            <a href="html/mostrarProducto.html">
+                                <img src="img/traje3.jpeg" alt="producto"></a>
+                        </figure>
+                        <div class="info-producto">
+                            <h4>ropa </h4>
+                            <p class="precio">$50</p>
+                            <button><h6>añadir al carrito</h6></button>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
                     <!--TARJETA DE PRODUCTO-->
                     <div class="item">

@@ -36,17 +36,25 @@ public class UsuarioServlet extends HttpServlet {
             resp.sendRedirect(ruta);
         }else{
             //SI EXISTE EL USUARIO SE REDIRIGE AL INDEX CORRESPONDIENTE
-            String tipo = u.getTipo_usuario();
-            if(tipo.equals("admin")){
-                ruta="indexAdmin.jsp";
+            String estado = u.getEstado();
+            if(estado.equals("Activo")){
+                String tipo = u.getTipo_usuario();
+                if(tipo.equals("admin")){
+                    ruta="indexAdmin.jsp";
+                    HttpSession sesion = req.getSession();
+                    sesion.setAttribute("usuario",u);
+                    resp.sendRedirect(ruta);
+                }else {
+                    ruta="indexCliente.jsp";
+                    //GUARDAR USUARIO EN LA SESION
+                    HttpSession sesion = req.getSession();
+                    sesion.setAttribute("usuario",u);
+                    resp.sendRedirect(ruta);
+                }
+            }else{
+                ruta="ingresar.jsp";
                 HttpSession sesion = req.getSession();
-                sesion.setAttribute("usuario",u);
-                resp.sendRedirect(ruta);
-            }else {
-                ruta="indexCliente.jsp";
-                //GUARDAR USUARIO EN LA SESION
-                HttpSession sesion = req.getSession();
-                sesion.setAttribute("usuario",u);
+                sesion.setAttribute("mensaje","Usuario Bloqueado.");
                 resp.sendRedirect(ruta);
             }
         }
