@@ -1,14 +1,44 @@
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.ColorProducto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <style>
-        .sidebar{
+        body {
+            background-color: #F2F2F2;
+        }
 
-            padding: 20px 0;
-            position: relative; /* Fijar la barra de filtros */
-            top: 20px; /* Ajustar la posición superior según sea necesario */
+        .product-image {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .btn-add-cart {
+            background-color: #ffc0cb;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .star-rating {
+            color: #FFD700;
+            font-size: 1.5rem;
+        }
+        .color-swatch img {
+            max-width: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .review-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
         }
         header {
             width: 100%;
@@ -16,148 +46,156 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        body{
-            background-color: #F2F2F2;
-        }
-        .filter-box {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        .filter-box h5 {
-            margin-bottom: 10px;
-        }
-        .filter-box label {
-            display: block;
+        .navbar {
+            padding: 5px 0;
         }
         #log {
             text-align: left;
         }
-        /* Nuevas clases */
-        .navbar {
-            padding: 5px 0;
-        }
-        .filter-box {
-            margin: 0 20px; /* Añadir un poco de espacio a los lados */
-            margin-top: 20px;
-        }
-        #nave, #log{
+        #nave, #log {
             text-align: center;
         }
-        img{
-            max-width: 190px;
-            border-radius: 10px;
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
         }
-        .item{
-            border-radius: 10px;
-            border: 1px solid black;
-            margin-right: 10px;
-            margin-top: 20px;
+        .product-price {
+            font-size: 1.2rem;
+            color: gray;
         }
-
-        /*esto degine la sombrita que le sale a los cuadraditos*/
-        .item:hover{
-            box-shadow: 0 10px 20px rgb(0, 0, 0);
+        .reviewer-name {
+            font-weight: bold;
         }
-        /*esto ordena tanto texto como boton*/
-        .info-producto{
-            padding: 1px 20px;
+        .review-card {
             display: flex;
-            flex-direction: column;
-            gap:5px;
-        }
-
-
-        /*esto le da estilo al boton de busqueda*/
-        .info-producto button{
-            border: none;
-            background: none;
-            background-color: #000;
-            color: #fff;
-            padding: 15px 10px;
-            cursor: pointer;
+            align-items: center;
+            background-color: #f8f9fa;
             border-radius: 10px;
-            margin: 7px;
+            padding: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-
 <header class="">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <div class="col-lg-2" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="" width="100px" height="80px">
+                </a>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
             <div class="col-lg-6">
                 <form class="mb-2 mb-lg-0">
                     <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
                 </form>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="pedido.jsp">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="index.jsp">Catalogo</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="perfil.jsp">Perfil</a>
                     <a href="carrito.jsp">
-                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
+                        <img src="img/carritoB.png" alt="" width="45px" height="45px">
+                    </a>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="product-card d-flex">
-                <div class="col-md-4 text-center">
-                    <img src="img/image39.png" alt="Top tejido crochet" class="product-image">
+<div class="container mt-5" style="background-color: #FFFFFF; border-radius: 10px; align-items: center; ">
+    <%
+        HttpSession sesion = request.getSession();
+        Producto p = (Producto) sesion.getAttribute("producto");
+        if (p != null) {
+    %>
+    <div class="row justify-content-center">
+        <div class="col-md-6 mt-4 mb-4">
+            <div class="text-center">
+                <img src="img/image39.png" alt="Top tejido crochet" class="product-image">
+                <h2 class="product-title"><%= p.getNombre_producto() %></h2>
+                <p class="product-price">$<%= p.getPrecio() %></p>
+
+                <p>Disponibles: <%= p.getStockDisponible() %></p>
+
+                <div class="star-rating">
+                    ★★★★☆
                 </div>
-                <div class="col-md-8">
-                    <h2 class="product-title">Top tejido crochet</h2>
-                    <p class="product-price">$100</p>
-                    <div class="star-rating">
-                        ★★★★☆
+                <button class="btn-add-cart">Añadir al Carrito</button>
+            </div>
+        </div>
+        <div class="col-md-6 mt-4 mb-4">
+
+                <h5>Descripción del producto</h5>
+                <p><%= p.getDescripcion() %></p>
+
+            <form action="AddToCartServlet" method="post">
+
+                <div class="mb-3">
+                    <label for="talla" class="form-label">Selecciona la talla:</label>
+                    <div id="talla">
+                        <%
+                            List<Talla> tallas = p.getTallas();
+                            if (tallas != null && !tallas.isEmpty()) {
+                                for (Talla talla : tallas) {
+                                    String tallaId = "talla_" + talla.getId_talla(); // Genera un ID único para cada input
+                        %>
+                        <input type="radio" class="btn-check" name="talla" id="<%= tallaId %>" value="<%= talla.getNombre() %>" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
+                        <%
+                            }
+                        } else {
+                        %>
+                        <p>No hay tallas disponibles.</p>
+                        <%
+                            }
+                        %>
                     </div>
-                    <button class="btn-add-cart">Añadir al Carrito</button>
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label for="color" class="form-label">Selecciona el color:</label>
+                    <div id="color">
+                        <%
+                            List<ColorProducto> colores = p.getColores();
+                            if (colores != null && !colores.isEmpty()) {
+                                for (ColorProducto color : colores) {
+                                    String colorId = "color" + color.getId_color(); // Genera un ID único para cada input
+                        %>
+                        <input type="radio" class="btn-check" name="color" id="<%= colorId %>" value="<%= color.getNombre() %>" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
+                        <%
+                            }
+                        } else {
+                        %>
+                        <p>No hay colores disponibles.</p>
+                        <%
+                            }
+                        %>
 
-            <div class="product-card mt-3">
-                <h3>Descripción del producto</h3>
-                <p>Top negro tejido a crochet. Este top combina la elegancia del negro clásico con el encanto artesanal del crochet, creando una pieza única que no pasará desapercibida. Cada detalle ha sido cuidadosamente tejido a mano, utilizando hilo de alta calidad para asegurar tanto durabilidad como comodidad.</p>
-            </div>
-
-            <div class="product-card mt-3">
-                <h3>Colores disponibles</h3>
-                <div class="d-flex">
-                    <div class="color-swatch"><img src="img/image42.png" alt="Blanco"></div>
-                    <div class="color-swatch"><img src="img/image44.png" alt="Negro"></div>
-                    <div class="color-swatch"><img src="img/image43.png" alt="Café"></div>
-                    <div class="color-swatch"><img src="img/image40.png" alt="Rosa claro"></div>
-                    <div class="color-swatch"><img src="img/image41.png" alt="Rosa chicle"></div>
+                    </div>
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1">
+                </div>
+                <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+            </form>
 
-            <div class="product-card mt-3">
-                <h3>Opiniones del producto</h3>
-                <div class="review-card d-flex align-items-center">
+                <h5>Opiniones</h5>
+                <div class="review-card" style="border-radius: 5px;background-color: #f2f2f2">
                     <img src="img/user.jpg" alt="Janette MM">
                     <div>
                         <p class="reviewer-name">Janette MM</p>
                         <div class="star-rating">
                             ★★★★☆
                         </div>
-                        <p>Me encantó!!! Es de muy buena calidad y el envío fue súper rápido</p>
+                        <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
                     </div>
                 </div>
-            </div>
+
         </div>
     </div>
+    <% } %>
 </div>
 </body>
 </html>

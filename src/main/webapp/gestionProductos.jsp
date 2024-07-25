@@ -2,7 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: dan-a
   Date: 30/06/2024
@@ -129,16 +130,21 @@
         <tbody>
         <%
             ProductoDao dao = new ProductoDao();
-            ArrayList<Producto> lista = dao.obtenerProductos();
+            List<Producto> lista = null;
+            try {
+                lista = dao.obtenerTodosLosProductos();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             for( Producto p : lista){
         %>
         <tr>
             <td><%=p.getId_producto()%></td>
-            <td><%=p.getNombre()%></td>
+            <td><%=p.getNombre_producto()%></td>
             <td><%=p.getDescripcion()%></td>
             <td><%=p.getCategoria()%></td>
             <td><%=p.getPrecio()%></td>
-            <td><%=p.getStock()%></td>
+            <td><%=p.getStockDisponible()%></td>
             <td>
                 <button style="border: none;">
                     <img src="img/agregarProd.png" alt="" style="width: 20px; height: 20px;">

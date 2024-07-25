@@ -17,11 +17,12 @@
 <head>
     <title>Corfirmar Producto</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         header {
             width: 100%;
             background-color: #061029;
-            border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
         .navbar {
@@ -40,33 +41,11 @@
         .navbar-nav {
             align-items: center; /* Centramos verticalmente los enlaces */
         }
-        .color-circle {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 5px;
-            cursor: pointer;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-group input[type="radio"] {
-            display: none;
-        }
-        .form-group label span {
-            display: inline-block;
-            padding: 5px 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-        .form-group input[type="radio"]:checked + label span {
-            background-color: #0d6efd;
-            color: white;
-        }
+
+         .checked {
+             color: orange;
+         }
+    </style>
     </style>
 </head>
 <body>
@@ -81,9 +60,7 @@
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
             <div class="col-md-6">
-                <form class="mb-2 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
-                </form>
+
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-md-4 d-flex justify-content-center">
@@ -113,54 +90,70 @@
         </div>
     </div>
 </header>
-
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-6">
-            <img src="img/image44.png" alt="Top estilo crochet" class="img-fluid" width="260" height="230">
-        </div>
-        <div class="col-md-6">
-            <h1>Especifica tu producto</h1>
-            <form action="addToCart.jsp" method="post">
-                <div class="form-group">
-                    <label>Selecciona el color:</label>
-                    <input type="radio" name="color" id="color_negro" value="Negro">
-                    <label for="color_negro"><span class="color-circle" style="background-color: black;"></span>Negro</label>
-
-                    <input type="radio" name="color" id="color_rosa" value="Rosa">
-                    <label for="color_rosa"><span class="color-circle" style="background-color: pink;"></span>Rosa</label>
-
-                    <input type="radio" name="color" id="color_azul" value="Azul">
-                    <label for="color_azul"><span class="color-circle" style="background-color: blue;"></span>Azul</label>
-
-                    <input type="radio" name="color" id="color_rojo" value="Rojo">
-                    <label for="color_rojo"><span class="color-circle" style="background-color: red;"></span>Rojo</label>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center">Especifica tu producto</h2>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img src="img/traje1.jpeg" class="img-fluid" alt="Producto" width="320" height="340" style="border-radius: 10px">
+                    <h3>Top estilo crochet</h3>
+                    <p>$100</p>
+                    <div class="rating">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Selecciona la talla:</label>
-                    <input type="radio" name="size" id="size_ch" value="CH">
-                    <label for="size_ch"><span>CH</span></label>
+                <div class="col-md-6">
+                    <form action="AddToCartServlet" method="post">
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Selecciona el color:</label>
+                            <div id="color">
+                                <input type="radio" class="btn-check" name="color" id="negro" value="negro" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="negro">Negro</label>
 
-                    <input type="radio" name="size" id="size_m" value="M">
-                    <label for="size_m"><span>M</span></label>
+                                <input type="radio" class="btn-check" name="color" id="rosa" value="rosa" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="rosa">Rosa</label>
 
-                    <input type="radio" name="size" id="size_g" value="G">
-                    <label for="size_g"><span>G</span></label>
+                                <input type="radio" class="btn-check" name="color" id="azul" value="azul" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="azul">Azul</label>
 
-                    <input type="radio" name="size" id="size_extg" value="EXT G">
-                    <label for="size_extg"><span>EXT G</span></label>
+                                <input type="radio" class="btn-check" name="color" id="rojo" value="rojo" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="rojo">Rojo</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="talla" class="form-label">Selecciona la talla:</label>
+                            <div id="talla">
+                                <input type="radio" class="btn-check" name="talla" id="ch" value="ch" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="ch">CH</label>
+
+                                <input type="radio" class="btn-check" name="talla" id="m" value="m" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="m">M</label>
+
+                                <input type="radio" class="btn-check" name="talla" id="g" value="g" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="g">G</label>
+
+                                <input type="radio" class="btn-check" name="talla" id="extg" value="extg" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="extg">EXT G</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="quantity">Selecciona la cantidad:</label>
-                    <input type="number" name="quantity" id="quantity" class="form-control" min="1" value="1">
-                </div>
-                <br>
-                <button type="submit" class="btn btn-primary btn-block">Añadir al carrito</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 <script src="js/bootstrap.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

@@ -22,7 +22,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         String correo = req.getParameter("email");
         String pass1 = req.getParameter("pass1");
         String pass2 = req.getParameter("pass2");
-        String ruta = "index.jsp";
+        String ruta = "ingresar.jsp";
         if (pass1.equals(pass2)) {
             pass1 = pass2;
             //3) utilizar el dao con la función insert para insertar una persona en la BD

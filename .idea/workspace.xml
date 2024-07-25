@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="manosMexicanas:war" />
       <artifact name="manosMexicanas:war exploded" />
     </artifacts-to-build>
   </component>
@@ -9,7 +10,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="especificacion" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="x">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/CarritoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ViewProductoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/VarianteProducto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/especificacion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/especificacion.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -51,46 +67,84 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.8.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/IdeaProjects/manosMexicanas&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.8.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/dan-a/IdeaProjects/manosMexicanas",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dan-a\IdeaProjects\manosMexicanas\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.8" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/manosMexicanas_war_exploded/" />
+    <configuration name="Tomcat 10.1.8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.8" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="manosMexicanas:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/manosMexicanas_war_exploded" />
           </settings>
         </artifact>
+        <artifact name="manosMexicanas:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/manosMexicanas_war" />
+          </settings>
+        </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="09937386-638f-4b71-bf40-c53f8cd24d86" />
+        <option name="BASE_DIRECTORY_NAME" value="9a0a67e3-d0a1-490d-a4e0-d6173211506f" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50028" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
         <option name="USE_ENV_VARIABLES" value="true" />
         <STARTUP>
           <option name="USE_DEFAULT" value="true" />
@@ -124,6 +178,7 @@
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
           <artifact name="manosMexicanas:war exploded" />
+          <artifact name="manosMexicanas:war" />
         </option>
       </method>
     </configuration>
@@ -177,7 +232,12 @@
       <workItem from="1721322749924" duration="408000" />
       <workItem from="1721411461159" duration="4631000" />
       <workItem from="1721418707703" duration="10387000" />
-      <workItem from="1721750911704" duration="6881000" />
+      <workItem from="1721750911704" duration="10793000" />
+      <workItem from="1721775776357" duration="237000" />
+      <workItem from="1721776920407" duration="909000" />
+      <workItem from="1721777895403" duration="1121000" />
+      <workItem from="1721779229686" duration="6612000" />
+      <workItem from="1721925452391" duration="9606000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -315,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721760351633</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="x">
+      <option name="closed" value="true" />
+      <created>1721767120476</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1721767120476</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,6 +413,7 @@
     <MESSAGE value="Productos" />
     <MESSAGE value="w" />
     <MESSAGE value="especificacion" />
-    <option name="LAST_COMMIT_MESSAGE" value="especificacion" />
+    <MESSAGE value="x" />
+    <option name="LAST_COMMIT_MESSAGE" value="x" />
   </component>
 </project>

@@ -7,22 +7,24 @@ public class Producto {
     private int id_producto;
     private String nombre_producto;
     private String descripcion;
-    private int id_categoria;
+    private String categoria;
     private double precio;
     private int stockDisponible;
-    private List<VarianteProducto> variantes;
+    private List<Talla> tallas;
+    private List<ColorProducto> colores;
 
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, int id_categoria, double precio, int stockDisponible, List<VarianteProducto> variantes) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, String categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
-        this.id_categoria = id_categoria;
+        this.categoria = categoria;
         this.precio = precio;
         this.stockDisponible = stockDisponible;
-        this.variantes = variantes;
+        this.tallas = tallas;
+        this.colores = colores;
     }
 
     public int getId_producto() {
@@ -49,12 +51,12 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public int getId_categoria() {
-        return id_categoria;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public double getPrecio() {
@@ -73,11 +75,19 @@ public class Producto {
         this.stockDisponible = stockDisponible;
     }
 
-    public List<VarianteProducto> getVariantes() {
-        return variantes;
+    public List<Talla> getTallas() {
+        return tallas;
     }
 
-    public void setVariantes(List<VarianteProducto> variantes) {
-        this.variantes = variantes;
+    public void setTallas(List<Talla> tallas) {
+        this.tallas = tallas;
+    }
+
+    public List<ColorProducto> getColores() {
+        return colores;
+    }
+
+    public void setColores(List<ColorProducto> colores) {
+        this.colores = colores;
     }
 }

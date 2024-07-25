@@ -1,4 +1,7 @@
 <%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     HttpSession sessionn = request.getSession(false);
@@ -70,10 +73,12 @@
             border-radius: 10px;
         }
         .item{
+            width: 190px; /* Establece el ancho deseado para el div */
             border-radius: 10px;
             border: 1px solid black;
             margin-right: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
+            overflow: hidden; /* Asegura que el contenido no se desborde */
         }
 
         /*esto degine la sombrita que le sale a los cuadraditos*/
@@ -82,7 +87,7 @@
         }
         /*esto ordena tanto texto como boton*/
         .info-producto{
-            padding: 1px 20px;
+            padding: 1px 10px;
             display: flex;
             flex-direction: column;
             gap:5px;
@@ -93,12 +98,35 @@
         .info-producto button{
             border: none;
             background: none;
-            background-color: #000;
+            background-color: #FE7DCC;
             color: #fff;
-            padding: 15px 10px;
+            padding: 10px 15px; /* Espacio interno del botón */
             cursor: pointer;
             border-radius: 10px;
-            margin: 7px;
+            margin: 2px;
+            font-size: 15px;
+        }
+
+        .item img {
+            width: 100%; /* Asegura que la imagen ocupe el ancho del div */
+            height: auto; /* Mantiene la proporción de la imagen */
+        }
+
+
+        .info-producto h6 {
+            font-size: 14px; /* Tamaño de fuente para el nombre del producto */
+            overflow-wrap: break-word; /* Hace que los nombres largos hagan salto de línea */
+        }
+
+        .info-producto .precio {
+            font-weight: bold; /* Destaca el precio */
+        }
+
+
+
+        .info-producto button h6 {
+            margin: 0; /* Elimina el margen del h6 dentro del botón */
+            font-size: 14px; /* Tamaño de fuente del texto en el botón */
         }
     </style>
 </head>
@@ -179,239 +207,62 @@
                 <label><input type="checkbox" name="color" value="amarillo"> Amarillo</label>
             </div>
         </div>
+
         <div class="col-md-10">
             <main class="py-3">
                 <h1>Catálogo</h1>
                 <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
-                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 20px;">
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet1.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
+                <div class="row">
+                    <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 20px;">
+                        <%
+                            ProductoDao productoDao = new ProductoDao();
+                            List<Producto> productos = null;
+
+                            try {
+                                productos = productoDao.obtenerTodosLosProductos();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            if (productos != null) {
+                                int count = 0;
+                                for (Producto producto : productos) {
+                                    if (count > 0 && count % 6 == 0) {
+                        %>
+                        <div class="w-100"></div>
+                        <%
+                            }
+                        %>
+                        <div class="item mt-4">
+                            <figure>
+                                <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
+                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" height="210" width="190">
+                                </a>
+                            </figure>
+                            <div class="info-producto">
+                                <h6><%= producto.getNombre_producto() %></h6>
+                                <p class="precio">$<%= producto.getPrecio() %></p>
+                                <p>Disponibles: <%= producto.getStockDisponible() %></p>
+                                <button><h6>Añadir al carrito</h6></button>
+                            </div>
                         </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet2.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet3.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet4.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="mostrarProducto.jsp">
-                                <img src="img/crochet5.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet6.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                </div>
-                <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
-                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet7.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje1.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje2.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet8.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet9.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje3.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
+                        <%
+                                    count++;
+                                }
+                            }
+                        %>
                     </div>
                 </div>
 
-                <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 30px;">
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet7.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje1.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje2.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet8.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/crochet9.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                    <!--TARJETA DE PRODUCTO-->
-                    <div class="item">
-                        <figure>
-                            <a href="html/mostrarProducto.html">
-                                <img src="img/traje3.jpeg" alt="producto"></a>
-                        </figure>
-                        <div class="info-producto">
-                            <h4>ropa </h4>
-                            <p class="precio">$50</p>
-                            <button><h6>añadir al carrito</h6></button>
-                        </div>
-                    </div>
-                </div>
 
 
 
             </main>
         </div>
+
+
+
+
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
