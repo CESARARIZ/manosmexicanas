@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form action="AddToCartServlet" method="post">
+                    <form action="carrito" method="post">
                         <div class="mb-3">
                             <label for="color" class="form-label">Selecciona el color:</label>
                             <div id="color">

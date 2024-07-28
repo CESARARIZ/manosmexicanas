@@ -3,7 +3,26 @@
 <%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %>
 <%@ page import="java.util.List" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.ColorProducto" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession sessionn = request.getSession(false);
+    Usuario usuario = null;
+    int id_usuario = 0;
+    String tipo_usuario="";
+    String ruta = "index.jsp";
+    if (sessionn != null) {
+        usuario = (Usuario) sessionn.getAttribute("usuario");
+        id_usuario = usuario.getId();
+        tipo_usuario = usuario.getTipo_usuario();
+        if ("cliente".equals(tipo_usuario)) {
+            ruta = "indexCliente.jsp";
+        } else if ("admin".equals(tipo_usuario)) {
+            ruta = "indexAdmin.jsp";
+        }
+
+    }
+%>
 <html>
 <head>
     <title>Manos Mexicanas</title>
@@ -93,8 +112,12 @@
             </div>
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="index.jsp">Catalogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="perfil.jsp">Perfil</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="<%= ruta %>">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="perfil.jsp"><% if (usuario != null) { %>
+                        <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
+                        <% } else { %>
+                        Perfil
+                        <% } %></a>
                     <a href="carrito.jsp">
                         <img src="img/carritoB.png" alt="" width="45px" height="45px">
                     </a>
@@ -103,7 +126,7 @@
         </div>
     </div>
 </header>
-<div class="container mt-5" style="background-color: #FFFFFF; border-radius: 10px; align-items: center; ">
+<div class="container mt-5" style="background-color: #FFFFFF; border-radius: 10px; align-items: center;">
     <%
         HttpSession sesion = request.getSession();
         Producto p = (Producto) sesion.getAttribute("producto");
@@ -114,23 +137,17 @@
             <div class="text-center">
                 <img src="img/image39.png" alt="Top tejido crochet" class="product-image">
                 <h2 class="product-title"><%= p.getNombre_producto() %></h2>
-                <p class="product-price">$<%= p.getPrecio() %></p>
-
+                <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
                 <p>Disponibles: <%= p.getStockDisponible() %></p>
-
                 <div class="star-rating">
                     ★★★★☆
                 </div>
-                <button class="btn-add-cart">Añadir al Carrito</button>
             </div>
         </div>
         <div class="col-md-6 mt-4 mb-4">
-
-                <h5>Descripción del producto</h5>
-                <p><%= p.getDescripcion() %></p>
-
-            <form action="AddToCartServlet" method="post">
-
+            <h5>Descripción del producto</h5>
+            <p><%= p.getDescripcion() %></p>
+            <form id="form-carrito" action="carrito" method="post">
                 <div class="mb-3">
                     <label for="talla" class="form-label">Selecciona la talla:</label>
                     <div id="talla">
@@ -138,9 +155,9 @@
                             List<Talla> tallas = p.getTallas();
                             if (tallas != null && !tallas.isEmpty()) {
                                 for (Talla talla : tallas) {
-                                    String tallaId = "talla_" + talla.getId_talla(); // Genera un ID único para cada input
+                                    String tallaId = "talla_" + talla.getId_talla();
                         %>
-                        <input type="radio" class="btn-check" name="talla" id="<%= tallaId %>" value="<%= talla.getNombre() %>" autocomplete="off">
+                        <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off">
                         <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
                         <%
                             }
@@ -159,9 +176,9 @@
                             List<ColorProducto> colores = p.getColores();
                             if (colores != null && !colores.isEmpty()) {
                                 for (ColorProducto color : colores) {
-                                    String colorId = "color" + color.getId_color(); // Genera un ID único para cada input
+                                    String colorId = "color" + color.getId_color();
                         %>
-                        <input type="radio" class="btn-check" name="color" id="<%= colorId %>" value="<%= color.getNombre() %>" autocomplete="off">
+                        <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off">
                         <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
                         <%
                             }
@@ -171,31 +188,60 @@
                         <%
                             }
                         %>
-
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1">
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" oninput="calculateTotal()">
+                    <p>Total: $<span id="total">0.00</span></p>
                 </div>
-                <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                <input type="hidden" id="totalHidden" name="total" value="0.00">
+                <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                <input type="submit" class="btn btn-primary" value="Añadir al carrito">
             </form>
-
-                <h5>Opiniones</h5>
-                <div class="review-card" style="border-radius: 5px;background-color: #f2f2f2">
-                    <img src="img/user.jpg" alt="Janette MM">
-                    <div>
-                        <p class="reviewer-name">Janette MM</p>
-                        <div class="star-rating">
-                            ★★★★☆
-                        </div>
-                        <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
+            <h5>Opiniones</h5>
+            <div class="review-card" style="border-radius: 5px; background-color: #f2f2f2">
+                <img src="img/albañil_mantenimiento.jpeg" alt="Janette MM">
+                <div>
+                    <p class="reviewer-name">Janette MM</p>
+                    <div class="star-rating">
+                        ★★★★☆
                     </div>
+                    <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
                 </div>
-
+            </div>
         </div>
     </div>
     <% } %>
 </div>
+<script>
+    function calculateTotal() {
+        var precio = parseFloat(document.getElementById("precio").innerText);
+        var cantidad = parseInt(document.getElementById("cantidad").value);
+
+        if (isNaN(precio) || isNaN(cantidad) || cantidad < 1) {
+            console.error("Precio o cantidad no son números válidos.");
+            document.getElementById("total").innerText = "0.00";
+            document.getElementById("totalHidden").value = "0.00";
+            return;
+        }
+
+        var total = precio * cantidad;
+        document.getElementById("total").innerText = total.toFixed(2);
+        document.getElementById("totalHidden").value = total.toFixed(2);
+    }
+
+    function addToCart() {
+        var form = document.getElementById("form-carrito");
+        var formData = new FormData(form);
+
+        alert("Total añadido al carrito: $" + formData.get("total"));
+
+        // Aquí puedes usar fetch o XMLHttpRequest para enviar el formulario sin recargar la página.
+    }
+
+    calculateTotal();
+</script>
 </body>
 </html>
