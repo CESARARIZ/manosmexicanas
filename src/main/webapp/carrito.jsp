@@ -109,6 +109,7 @@
             border: none;
             padding: 10px;
             cursor: pointer;
+            display: block;
             border-radius: 5px;
             margin-top: 10px;
             border-bottom-color: #0a0a0a;
