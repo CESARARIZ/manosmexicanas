@@ -162,11 +162,12 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="perfil.jsp">Ver perfil</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="pedido.jsp">Pedidos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
                             </div>
                         </div>
-                        <a href="carrito.jsp" class="nav-item nav-link">
+                        <a href="verCarrito" class="nav-item nav-link">
                             <img src="img/carritoB.png" alt="Carrito de compras" width="45px" height="45px">
                         </a>
                     </div>
@@ -243,7 +244,10 @@
                                 <h6><%= producto.getNombre_producto() %></h6>
                                 <p class="precio">$<%= producto.getPrecio() %></p>
                                 <p>Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button><h6>Añadir al carrito</h6></button>
+                                <form action="especificacion.jsp" method="get">
+                                    <input type="hidden" name="id" value="<%= producto.getId_producto() %>">
+                                    <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                                </form>
                             </div>
                         </div>
                         <%

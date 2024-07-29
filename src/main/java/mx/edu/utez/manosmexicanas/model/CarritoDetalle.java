@@ -4,6 +4,7 @@ public class CarritoDetalle {
     private int id_detalle_carrito;
     private int id_carrito;
     private int id_producto;
+    private int id_categoria;
     private int id_talla;
     private int id_color;
     private int cantidad;
@@ -11,10 +12,11 @@ public class CarritoDetalle {
 
     public CarritoDetalle() {};
 
-    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_talla, int id_color, int cantidad, double total) {
+    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double total) {
         this.id_detalle_carrito = id_detalle_carrito;
         this.id_carrito = id_carrito;
         this.id_producto = id_producto;
+        this.id_categoria = id_categoria;
         this.id_talla = id_talla;
         this.id_color = id_color;
         this.cantidad = cantidad;
@@ -43,6 +45,14 @@ public class CarritoDetalle {
 
     public void setId_producto(int id_producto) {
         this.id_producto = id_producto;
+    }
+
+    public int getId_categoria() {
+        return id_categoria;
+    }
+
+    public void setId_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
     public int getId_talla() {

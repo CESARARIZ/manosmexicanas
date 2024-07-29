@@ -1,11 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dan-a
-  Date: 30/06/2024
-  Time: 02:42 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.CarritoDetalle" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.CarritoDetalleDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.DetalleCarritoDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<DetalleCarritoDTO> lista = (List<DetalleCarritoDTO>) request.getAttribute("carrito");
+
+%>
+
 <html>
 <head>
     <title>Carrito</title>
@@ -16,7 +20,7 @@
         }
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            background-color: #F2F2F2;
             margin: 0;
             padding: 0;
         }
@@ -40,11 +44,7 @@
             text-decoration: none;
         }
 
-        main {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-        }
+
 
         .carrito, .resumen {
             background-color: #ffe4e1;
@@ -141,6 +141,52 @@
             height: 2px;
             background-color: #333;
         }
+        .cart-item-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .cart-actions {
+            display: flex;
+            align-items: center;
+        }
+        .cart-actions button,
+        .cart-actions input {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 38px; /* Ajustar para centrar el texto verticalmente */
+            border: 1px solid black;
+            background-color: #f8e8f0;
+            font-size: 20px;
+        }
+        .cart-actions input {
+            max-width: 40px;
+        }
+        .btn-increase,
+        .btn-decrease {
+            border: none;
+            background-color: #f8e8f0;
+        }
+        .btn-increase, .btn-decrease {
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .btn-increase:hover, .btn-decrease:hover {
+            background-color: #e9ecef;
+        }
+        .quantity {
+            max-width: 60px;
+        }
+        .rounded-left {
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .rounded-right {
+            border-top-right-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
+        }
 
     </style>
 </head>
@@ -162,73 +208,97 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Crear cuenta</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
-                    <a href="ingresar.jsp">
-                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexCliente.jsp">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="perfil.jsp">Perfil</a>
                 </nav>
             </div>
         </div>
     </div>
 </header>
-<main>
-    <div class="carrito">
-        <h2>Carrito</h2>
-        <hr>
-        <div class="producto">
-            <div class="detalles">
-                <p><strong>Alfombra colorida</strong></p>
-                <p>Talla: Extra larga</p>
-                <p>Color: Colorful</p>
-            </div>
-            <div class="cantidad">
-                <button class="btn-menos">-</button>
-                <input type="text" value="1" class="input-cantidad">
-                <button class="btn-mas">+</button>
-            </div>
-            <p class="precio">$100.00</p>
-            <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
-        </div>
-        <div class="producto">
-            <div class="detalles">
-                <p><strong>Alfombra colorida</strong></p>
-                <p>Talla: Extra larga</p>
-                <p>Color: Colorful</p>
-            </div>
-            <div class="cantidad">
-                <button class="btn-menos">-</button>
-                <input type="text" value="2" class="input-cantidad">
-                <button class="btn-mas">+</button>
-            </div>
-            <p class="precio">$200.00</p>
-            <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
-        </div>
-        <div class="producto">
-            <div class="detalles">
-                <p><strong>Alfombra colorida</strong></p>
-                <p>Talla: Extra larga</p>
-                <p>Color: Colorful</p>
-            </div>
-            <div class="cantidad">
-                <button class="btn-menos">-</button>
-                <input type="text" value="3" class="input-cantidad">
-                <button class="btn-mas">+</button>
-            </div>
-            <p class="precio">$300.00</p>
-            <button class="btn-eliminar"><img src="img/eliminar_icono.png" alt="eliminar"></button>
-        </div>
-        <button class="btn-agregar">Agregar más productos</button>
-    </div>
-    <div class="resumen">
-        <h2>Resumen de compra</h2>
-        <hr>
-        <p>Productos: 6</p>
-        <p>Total: $600.00</p>
-        <br>
-        <button class="btn-realizar">Realizar pedido</button>
-        <button class="btn-vaciar">Vaciar carrito</button>
-    </div>
-</main>
 
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-md-8" style="background-color: #FFFFFF">
+
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="8" class="text-start bg-light mb-2 align-middle">
+                        <br>
+                        <h2>Carrito de compras</h2>
+                        <br>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                    if (lista != null && !lista.isEmpty()) {
+                        int contador = 1; // Inicializa el contador
+                        for (DetalleCarritoDTO dc : lista) {
+                %>
+                <tr>
+                    <td class="text-center align-middle"><%= contador %></td> <!-- Muestra el contador -->
+                    <td class="align-middle">
+                        <h3><%= dc.getNombre_producto() %></h3>
+                        <p><strong>Categoría:</strong> <%= dc.getNombre_categoria() %><br>
+                            <strong>Talla:</strong> <%= dc.getNombre_talla() %><br>
+                            <strong>Color:</strong> <%= dc.getNombre_color() %></p>
+                    </td>
+                    <td class="text-center align-middle">
+                        <div class="input-group cart-actions d-flex justify-content-center align-items-center">
+                            <button class="btn btn-increase rounded-left">+</button>
+                            <input type="text" class="form-control text-center quantity" value="<%= dc.getCantidad()%>" readonly>
+                            <button class="btn btn-decrease rounded-right">-</button>
+                        </div>
+                    </td>
+                    <td class="text-center align-middle">$<%= dc.getTotal() %></td>
+                    <td class="text-center align-middle">
+                        <button class="btn btn-danger" style="border: none;">
+                            <img src="img/bote.png" alt="Eliminar" style="width: 25px; height: 25px;">
+                        </button>
+                    </td>
+                </tr>
+                <%
+                        contador++; // Incrementa el contador
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="5" class="text-center align-middle">No hay productos en el carrito.</td>
+                </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-3 ms-5 " style="background-color: #FFFFFF">
+            <h3>Total a pagar:</h3>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="js/bootstrap.js"></script>
+<script>
+    document.querySelectorAll('.btn-increase').forEach(button => {
+        button.addEventListener('click', function() {
+            let input = this.parentNode.querySelector('.quantity');
+            let currentValue = parseInt(input.value);
+            input.value = currentValue + 1;
+        });
+    });
+
+    document.querySelectorAll('.btn-decrease').forEach(button => {
+        button.addEventListener('click', function() {
+            let input = this.parentNode.querySelector('.quantity');
+            let currentValue = parseInt(input.value);
+            if (currentValue > 1) {
+                input.value = currentValue - 1;
+            }
+        });
+    });
+</script>
 </body>
 </html>
+

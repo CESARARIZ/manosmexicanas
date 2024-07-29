@@ -7,16 +7,15 @@ public class Producto {
     private int id_producto;
     private String nombre_producto;
     private String descripcion;
-    private String categoria;
+    private Categoria categoria; // Cambiar de String a Categoria
     private double precio;
     private int stockDisponible;
     private List<Talla> tallas;
     private List<ColorProducto> colores;
 
-
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, String categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
@@ -27,6 +26,7 @@ public class Producto {
         this.colores = colores;
     }
 
+    // Getters y Setters
     public int getId_producto() {
         return id_producto;
     }
@@ -51,11 +51,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -91,3 +91,4 @@ public class Producto {
         this.colores = colores;
     }
 }
+

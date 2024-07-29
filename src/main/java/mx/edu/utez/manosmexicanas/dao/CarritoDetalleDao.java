@@ -32,16 +32,17 @@ public class CarritoDetalleDao {
 
     public boolean insertDetalleCarrito(CarritoDetalle cd) {
         boolean flag = false;
-        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_talla, id_color, cantidad, total) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria,id_talla, id_color, cantidad, total) VALUES (?, ?,?, ?, ?, ?, ?)";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
             ps.setInt(1, cd.getId_carrito());
             ps.setInt(2, cd.getId_producto());
-            ps.setInt(3, cd.getId_talla());
-            ps.setInt(4, cd.getId_color());
-            ps.setInt(5, cd.getCantidad());
-            ps.setDouble(6, cd.getTotal());
+            ps.setInt(3, cd.getId_categoria());
+            ps.setInt(4, cd.getId_talla());
+            ps.setInt(5, cd.getId_color());
+            ps.setInt(6, cd.getCantidad());
+            ps.setDouble(7, cd.getTotal());
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }
@@ -51,40 +52,39 @@ public class CarritoDetalleDao {
         return flag;
     }
 
-    public List<DetalleCarritoDTO> getDetallesCarrito(int id_carrito) {
-        List<DetalleCarritoDTO> detallesCarrito = new ArrayList<DetalleCarritoDTO>();
-        String sql = "SELECT " +
-                "cp.id_carrito_producto, " +
-                "p.nombre AS nombre_producto, " +
-                "i.url AS imagen, " +
-                "t.nombre AS nombre_talla, " +
-                "c.nombre AS nombre_color, " +
-                "cp.cantidad, " +
-                "cp.total " +
-                "FROM carrito_producto cp " +
-                "JOIN productos p ON cp.id_producto = p.id_producto " +
-                "JOIN tallas t ON cp.id_talla = t.id_talla " +
-                "JOIN colores c ON cp.id_color = c.id_color " +
-                "JOIN imagenes i ON p.id_producto = i.id_producto " +
-                "WHERE cp.id_carrito = ?";
-        try {
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id_carrito);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                DetalleCarritoDTO dto = new DetalleCarritoDTO();
-                dto.setId_carrito(rs.getInt("id_carrito"));
-                dto.setNombre_producto(rs.getString("nombre_producto"));
-                dto.setNombre_talla(rs.getString("nombre_talla"));
-                dto.setNombre_color(rs.getString("nombre_color"));
-                dto.setCantidad(rs.getInt("cantidad"));
-                dto.setTotal(rs.getDouble("total"));
-                detallesCarrito.add(dto);
+
+        public List<DetalleCarritoDTO> getDetallesCarrito(int id_usuario) {
+            List<DetalleCarritoDTO> detalles = new ArrayList<>();
+            String sql = "SELECT cp.id_carrito_producto, p.nombre AS nombre_producto, c.nombre_categoria AS nombre_categoria, " +
+                    "t.talla AS nombre_talla, co.color AS nombre_color, cp.cantidad, cp.total " +
+                    "FROM carrito_producto cp " +
+                    "JOIN carrito_compra cc ON cp.id_carrito = cc.id_carrito " +
+                    "JOIN productos p ON cp.id_producto = p.id_producto " +
+                    "JOIN categorias c ON cp.id_categoria = c.id_categoria " +
+                    "JOIN tallas t ON cp.id_talla = t.id_talla " +
+                    "JOIN colores co ON cp.id_color = co.id_color " +
+                    "WHERE cc.id_usuario = ?";
+            try {
+                Connection con = DatabaseConnectionManager.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, id_usuario);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    DetalleCarritoDTO detalle = new DetalleCarritoDTO();
+                    detalle.setId_detalle_carrito(rs.getInt("id_carrito_producto"));
+                    detalle.setNombre_producto(rs.getString("nombre_producto"));
+                    detalle.setNombre_categoria(rs.getString("nombre_categoria"));
+                    detalle.setNombre_talla(rs.getString("nombre_talla"));
+                    detalle.setNombre_color(rs.getString("nombre_color"));
+                    detalle.setCantidad(rs.getInt("cantidad"));
+                    detalle.setTotal(rs.getDouble("total"));
+                    detalles.add(detalle);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return detalles;
         }
-        return detallesCarrito;
-    }
+
+
 }

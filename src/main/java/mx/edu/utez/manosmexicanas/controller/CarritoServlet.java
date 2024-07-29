@@ -18,6 +18,7 @@ public class CarritoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int id_usuario = Integer.parseInt(req.getParameter("id_usuario"));
         int id_producto = Integer.parseInt(req.getParameter("id_producto"));
+        int id_categoria = Integer.parseInt(req.getParameter("id_categoria"));
         int id_talla = Integer.parseInt(req.getParameter("id_talla"));
         int id_color = Integer.parseInt(req.getParameter("id_color"));
         int cantidad = Integer.parseInt(req.getParameter("cantidad"));
@@ -37,6 +38,7 @@ public class CarritoServlet extends HttpServlet {
             CarritoDetalle carritoDetalle = new CarritoDetalle();
             carritoDetalle.setId_carrito(id_carrito);
             carritoDetalle.setId_producto(id_producto);
+            carritoDetalle.setId_categoria(id_categoria);
             carritoDetalle.setId_talla(id_talla);
             carritoDetalle.setId_color(id_color);
             carritoDetalle.setCantidad(cantidad);

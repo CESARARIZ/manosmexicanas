@@ -4,6 +4,7 @@ public class DetalleCarritoDTO {
     private int id_detalle_carrito;
     private int id_carrito;
     private String nombre_producto;
+    private String nombre_categoria;
     private String nombre_talla;
     private String nombre_color;
     private int cantidad;
@@ -11,10 +12,11 @@ public class DetalleCarritoDTO {
 
     public DetalleCarritoDTO() {}
 
-    public DetalleCarritoDTO(int id_detalle_carrito, int id_carrito, String nombre_producto, String nombre_talla, String nombre_color, int cantidad, double total) {
+    public DetalleCarritoDTO(int id_detalle_carrito, int id_carrito, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total) {
         this.id_detalle_carrito = id_detalle_carrito;
         this.id_carrito = id_carrito;
         this.nombre_producto = nombre_producto;
+        this.nombre_categoria = nombre_categoria;
         this.nombre_talla = nombre_talla;
         this.nombre_color = nombre_color;
         this.cantidad = cantidad;
@@ -43,6 +45,14 @@ public class DetalleCarritoDTO {
 
     public void setNombre_producto(String nombre_producto) {
         this.nombre_producto = nombre_producto;
+    }
+
+    public String getNombre_categoria() {
+        return nombre_categoria;
+    }
+
+    public void setNombre_categoria(String nombre_categoria) {
+        this.nombre_categoria = nombre_categoria;
     }
 
     public String getNombre_talla() {
@@ -77,3 +87,4 @@ public class DetalleCarritoDTO {
         this.total = total;
     }
 }
+

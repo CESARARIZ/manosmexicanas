@@ -1,9 +1,6 @@
-<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
-<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
-<%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %>
 <%@ page import="java.util.List" %>
-<%@ page import="mx.edu.utez.manosmexicanas.model.ColorProducto" %>
 <%@ page import="java.util.Objects" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     HttpSession sessionn = request.getSession(false);
@@ -15,7 +12,7 @@
         usuario = (Usuario) sessionn.getAttribute("usuario");
         id_usuario = usuario.getId();
         tipo_usuario = usuario.getTipo_usuario();
-        if ("cliente".equals(tipo_usuario)) {
+        if ("usuario".equals(tipo_usuario)) {
             ruta = "indexCliente.jsp";
         } else if ("admin".equals(tipo_usuario)) {
             ruta = "indexAdmin.jsp";
@@ -118,7 +115,7 @@
                         <% } else { %>
                         Perfil
                         <% } %></a>
-                    <a href="carrito.jsp">
+                    <a href="verCarrito">
                         <img src="img/carritoB.png" alt="" width="45px" height="45px">
                     </a>
                 </nav>
@@ -131,6 +128,7 @@
         HttpSession sesion = request.getSession();
         Producto p = (Producto) sesion.getAttribute("producto");
         if (p != null) {
+
     %>
     <div class="row justify-content-center">
         <div class="col-md-6 mt-4 mb-4">
@@ -146,7 +144,9 @@
         </div>
         <div class="col-md-6 mt-4 mb-4">
             <h5>Descripción del producto</h5>
+            <p>Categoría: <%= p.getCategoria().getNombre_categoria() %></p>
             <p><%= p.getDescripcion() %></p>
+
             <form id="form-carrito" action="carrito" method="post">
                 <div class="mb-3">
                     <label for="talla" class="form-label">Selecciona la talla:</label>
@@ -197,6 +197,7 @@
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
                 <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                 <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                 <input type="submit" class="btn btn-primary" value="Añadir al carrito">
             </form>

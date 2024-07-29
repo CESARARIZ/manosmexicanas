@@ -18,8 +18,8 @@ public class ProductoDao {
 
     public List<Producto> obtenerTodosLosProductos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
-        String query =  "SELECT p.id_producto, p.nombre, c.nombre_categoria, p.descripcion, p.precio, p.stock\n" +
-                "FROM Productos p\n" +
+        String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock " +
+                "FROM Productos p " +
                 "JOIN Categorias c ON p.id_categoria = c.id_categoria;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -30,11 +30,19 @@ public class ProductoDao {
                 Producto producto = new Producto();
                 producto.setId_producto(resultSet.getInt("id_producto"));
                 producto.setNombre_producto(resultSet.getString("nombre"));
-                producto.setCategoria(resultSet.getString("nombre_categoria")); // Nota: Cambiado a "nombre_categoria"
                 producto.setDescripcion(resultSet.getString("descripcion"));
                 producto.setPrecio(resultSet.getDouble("precio"));
                 producto.setStockDisponible(resultSet.getInt("stock"));
 
+                // Crear y configurar el objeto Categoria
+                Categoria categoria = new Categoria();
+                categoria.setId_categoria(resultSet.getInt("id_categoria")); // Recupera el ID de la categoría
+                categoria.setNombre_categoria(resultSet.getString("nombre_categoria")); // Recupera el nombre de la categoría
+
+                // Asignar la categoria al producto
+                producto.setCategoria(categoria);
+
+                // Añadir el producto a la lista
                 productos.add(producto);
             }
 
@@ -44,11 +52,12 @@ public class ProductoDao {
         return productos;
     }
 
+
     public Producto getOne(int id_producto) {
         Producto p = new Producto();
-        String query = "SELECT p.id_producto, p.nombre, c.nombre_categoria, p.descripcion, p.precio, p.stock\n" +
-                "FROM Productos p\n" +
-                "JOIN Categorias c ON p.id_categoria = c.id_categoria\n" +
+        String query = "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock " +
+                "FROM Productos p " +
+                "JOIN Categorias c ON p.id_categoria = c.id_categoria " +
                 "WHERE p.id_producto = ?;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -60,10 +69,18 @@ public class ProductoDao {
                     p.setId_producto(rs.getInt("id_producto"));
                     p.setNombre_producto(rs.getString("nombre"));
                     p.setDescripcion(rs.getString("descripcion"));
-                    p.setCategoria(rs.getString("nombre_categoria")); // Nota: Cambiado a "nombre_categoria"
                     p.setPrecio(rs.getDouble("precio"));
                     p.setStockDisponible(rs.getInt("stock"));
 
+                    // Crear y configurar el objeto Categoria
+                    Categoria categoria = new Categoria();
+                    categoria.setId_categoria(rs.getInt("id_categoria")); // Recupera el ID de la categoría
+                    categoria.setNombre_categoria(rs.getString("nombre_categoria")); // Recupera el nombre de la categoría
+
+                    // Asignar la categoria al producto
+                    p.setCategoria(categoria);
+
+                    // Obtener tallas y colores asociados
                     List<Talla> tallas = TallasPorProducto(id_producto);
                     p.setTallas(tallas);
 
@@ -77,6 +94,7 @@ public class ProductoDao {
         }
         return p;
     }
+
 
     private List<Talla> TallasPorProducto(int id_producto) throws SQLException {
         List<Talla> tallas = new ArrayList<>();

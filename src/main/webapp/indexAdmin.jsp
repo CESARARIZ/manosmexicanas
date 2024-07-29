@@ -134,8 +134,6 @@
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionPedidos.jsp">Pedidos</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionProductos.jsp">Productos</a>
-                    <a href="carrito.html">
-                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
                 </nav>
             </div>
         </div>
