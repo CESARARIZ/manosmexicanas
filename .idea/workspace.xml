@@ -10,17 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="muestra producto con colores y tallas">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosCarritoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Carrito.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/CarritoDetalle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/DetalleCarritoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/CarritoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/CarritoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/especificacion.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/especificacion.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="carritoCompras" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -234,7 +224,7 @@
       <workItem from="1721779229686" duration="6612000" />
       <workItem from="1721925452391" duration="10020000" />
       <workItem from="1722104850401" duration="5789000" />
-      <workItem from="1722142818214" duration="4221000" />
+      <workItem from="1722142818214" duration="4525000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -388,7 +378,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721936701509</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="carritoCompras">
+      <option name="closed" value="true" />
+      <created>1722147360034</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1722147360034</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,6 +418,7 @@
     <MESSAGE value="especificacion" />
     <MESSAGE value="x" />
     <MESSAGE value="muestra producto con colores y tallas" />
-    <option name="LAST_COMMIT_MESSAGE" value="muestra producto con colores y tallas" />
+    <MESSAGE value="carritoCompras" />
+    <option name="LAST_COMMIT_MESSAGE" value="carritoCompras" />
   </component>
 </project>
