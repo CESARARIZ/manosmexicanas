@@ -23,6 +23,7 @@ public class ProductosCarritoServlet extends HttpServlet {
             CarritoDetalleDao dao = new CarritoDetalleDao();
             List<DetalleCarritoDTO> cd = dao.getDetallesCarrito(id_usuario);
             req.setAttribute("carrito", cd);
+            req.setAttribute("usuario", usuario);
             req.getRequestDispatcher("carrito.jsp").forward(req, res);
         } else {
             res.sendRedirect("indexCliente.jsp"); // Redirigir al login si el usuario no está autenticado

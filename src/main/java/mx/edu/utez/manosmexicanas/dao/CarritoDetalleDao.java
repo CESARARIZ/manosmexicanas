@@ -86,5 +86,22 @@ public class CarritoDetalleDao {
             return detalles;
         }
 
+        public Boolean deleteProducto(int id_carrito_producto) {
+        boolean flag = false;
+        String sql = "DELETE FROM carrito_producto WHERE id_carrito_producto = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id_carrito_producto);
+            if (ps.executeUpdate() > 0) {
+                flag = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return flag;
+        }
+
 
 }

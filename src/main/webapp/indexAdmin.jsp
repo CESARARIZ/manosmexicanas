@@ -1,7 +1,15 @@
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
 <%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession sessionn = request.getSession(false);
+    Usuario usuario = null;
+    if (sessionn != null) {
+        usuario = (Usuario) sessionn.getAttribute("usuario");
+    }
+%>
 <html>
 <head>
     <title>Manos Mexicanas</title>
@@ -47,8 +55,18 @@
             margin: 0 20px; /* Añadir un poco de espacio a los lados */
             margin-top: 20px;
         }
+        #nave .dropdown-menu {
+            background-color: #FFFFFF; /* Color oscuro */
+        }
+        #nave .dropdown-menu a {
+            color: #061029; /* Color de los enlaces del dropdown */
+        }
+
         #nave, #log{
             text-align: center;
+        }
+        .navbar-nav {
+            align-items: center; /* Centramos verticalmente los enlaces */
         }
         img{
             max-width: 190px;
@@ -118,22 +136,37 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-lg-2" id="log"><a href="index.jsp">
+            <div class="col-md-2" id="log"><a href="index.jsp">
                 <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
-            <div class="col-lg-5">
+            <div class="col-md-6">
                 <form class="mb-2 mb-lg-0">
                     <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
-            <div class="col-lg-5">
-                <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="publicarProductos.jsp">Publicar</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionPedidos.jsp">Pedidos</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionProductos.jsp">Productos</a>
+            <div class="col-md-4 d-flex justify-content-center">
+                <nav id="nave" class="navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="publicarProductos.jsp">Publicar</a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="perfil.jsp" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <% if (usuario != null) { %>
+                                <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
+                                <% } else { %>
+                                Perfil
+                                <% } %>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="perfilDropdown">
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionUsuarios.jsp">Clientes</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionPedidos.jsp">Pedidoss</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionProductos.jsp">Productos</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>
@@ -196,17 +229,17 @@
                         <%
                             }
                         %>
-                        <div class="item mt-4">
-                            <figure>
+                        <div class="item mt-4" style="flex: 1 1 calc(16.66% - 20px); display: flex; flex-direction: column;">
+                            <figure style="margin: 0;">
                                 <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
-                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" height="210" width="190">
+                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
                                 </a>
                             </figure>
-                            <div class="info-producto">
-                                <h6><%= producto.getNombre_producto() %></h6>
-                                <p class="precio">$<%= producto.getPrecio() %></p>
-                                <p>Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button><h6>Añadir al carrito</h6></button>
+                            <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
+                                <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
+                                <p class="precio mb-1">$<%= producto.getPrecio() %></p>
+                                <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
+                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;"><h6>Actualizar</h6></button>
                             </div>
                         </div>
                         <%
@@ -217,13 +250,14 @@
                     </div>
                 </div>
 
-
-
-
             </main>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

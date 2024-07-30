@@ -6,6 +6,7 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    Usuario usuario = (Usuario) request.getAttribute("usuario");
     List<DetalleCarritoDTO> lista = (List<DetalleCarritoDTO>) request.getAttribute("carrito");
 
 %>
@@ -202,7 +203,7 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
             <div class="col-lg-6">
                 <form class="mb-2 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
@@ -254,9 +255,12 @@
                     </td>
                     <td class="text-center align-middle">$<%= dc.getTotal() %></td>
                     <td class="text-center align-middle">
-                        <button class="btn btn-danger" style="border: none;">
-                            <img src="img/bote.png" alt="Eliminar" style="width: 25px; height: 25px;">
-                        </button>
+                        <form action="eliminarProductoCarrito" method="post">
+                            <input type="hidden" name="id_carrito_producto" value="<%= dc.getId_detalle_carrito() %>">
+                            <button type="submit" class="btn btn-danger" style="border: none;">
+                                <img src="img/bote.png" alt="Eliminar" style="width: 25px; height: 25px;">
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 <%

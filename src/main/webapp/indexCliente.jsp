@@ -122,11 +122,15 @@
             font-weight: bold; /* Destaca el precio */
         }
 
-
-
         .info-producto button h6 {
             margin: 0; /* Elimina el margen del h6 dentro del botón */
             font-size: 14px; /* Tamaño de fuente del texto en el botón */
+        }
+        .info-producto h5 {
+            margin-bottom: auto; /* Empuja el contenido hacia abajo */
+        }
+        .info-producto button {
+            margin-top: 16px; /* Añade un margen superior al botón */
         }
     </style>
 </head>
@@ -234,20 +238,17 @@
                         <%
                             }
                         %>
-                        <div class="item mt-4">
-                            <figure>
+                        <div class="item mt-4" style="flex: 1 1 calc(16.66% - 20px); display: flex; flex-direction: column;">
+                            <figure style="margin: 0;">
                                 <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
-                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" height="210" width="190">
+                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
                                 </a>
                             </figure>
-                            <div class="info-producto">
-                                <h6><%= producto.getNombre_producto() %></h6>
-                                <p class="precio">$<%= producto.getPrecio() %></p>
-                                <p>Disponibles: <%= producto.getStockDisponible() %></p>
-                                <form action="especificacion.jsp" method="get">
-                                    <input type="hidden" name="id" value="<%= producto.getId_producto() %>">
-                                    <button type="submit" class="btn btn-primary">Añadir al carrito</button>
-                                </form>
+                            <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
+                                <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
+                                <p class="precio mb-1">$<%= producto.getPrecio() %></p>
+                                <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
+                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;"><h6>Añadir al carrito</h6></button>
                             </div>
                         </div>
                         <%
@@ -257,8 +258,6 @@
                         %>
                     </div>
                 </div>
-
-
 
 
             </main>
