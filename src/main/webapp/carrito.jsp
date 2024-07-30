@@ -189,6 +189,15 @@
             border-bottom-right-radius: 0.25rem;
         }
 
+        .carrito-total {
+            position: sticky;
+            top: 0;
+        }
+        .col-md-8 {
+            height: 500px; /* Ajusta la altura según sea necesario */
+            overflow-y: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -275,7 +284,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-3 ms-5 " style="background-color: #FFFFFF">
+        <div class="col-md-3 ms-5 carrito-total" style="background-color: #FFFFFF">
             <h3>Total a pagar:</h3>
         </div>
     </div>
