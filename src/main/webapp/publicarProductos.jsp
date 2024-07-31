@@ -69,6 +69,10 @@
             flex-direction: column;
             gap:5px;
         }
+        .form-color-rouse
+        {
+            background-color: #f5eaf1;
+        }
 
 
         /*esto le da estilo al boton de busqueda*/
@@ -115,16 +119,17 @@
 </header>
 <div class="container-fluid">
     <div class="row">
+
         <div class="col-md-3 sidebar">
             <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
-            <br><form>
+            <br><form class="form-color-rouse">
             <h2>Usuario Administrador</h2>
             <p>Nombre: administrador</p>
             <p>Correo Electrónico: administrador@utez.edu.mx</p>
             <p>Teléfono: 7771234567</p></form>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h1>Publicar producto</h1>
             <form>
                 <div class="form-group">
@@ -169,8 +174,12 @@
                 <button type="submit" class="btn btn-primary">Publicar</button>
             </form>
         </div>
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;
 
-        <div class="col-md-3">
+
+        <div class="col-md-4">
             <!-- Espacio en blanco para colocar contenido adicional -->
             <div><h1>&nbsp;</h1>
                 <!-- Contenido adicional aquí -->
