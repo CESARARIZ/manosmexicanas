@@ -5,11 +5,11 @@
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <style>
-        .sidebar{
-
+        .sidebar {
             padding: 20px 0;
-            position: relative; /* Fijar la barra de filtros */
-            top: 20px; /* Ajustar la posición superior según sea necesario */
+            position: relative;
+            top: 20px;
+            text-align: center;
         }
         header {
             width: 100%;
@@ -17,7 +17,7 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        body{
+        body {
             background-color: #F2F2F2;
         }
         .filter-box {
@@ -36,47 +36,51 @@
         #log {
             text-align: left;
         }
-        /* Nuevas clases */
         .navbar {
             padding: 5px 0;
         }
         .filter-box {
-            margin: 0 20px; /* Añadir un poco de espacio a los lados */
+            margin: 0 20px;
             margin-top: 20px;
         }
-        #nave, #log{
+        #nave, #log {
             text-align: center;
         }
-        img{
+        img {
             max-width: 190px;
             border-radius: 10px;
+            margin-bottom: 20px; /* Espacio debajo de la imagen */
         }
-        .item{
+        .item {
             border-radius: 10px;
             border: 1px solid black;
             margin-right: 10px;
             margin-top: 20px;
         }
-
-        /*esto degine la sombrita que le sale a los cuadraditos*/
-        .item:hover{
+        .item:hover {
             box-shadow: 0 10px 20px rgb(0, 0, 0);
         }
-        /*esto ordena tanto texto como boton*/
-        .info-producto{
+        .info-producto {
             padding: 1px 20px;
             display: flex;
             flex-direction: column;
-            gap:5px;
+            gap: 5px;
         }
-        .form-color-rouse
-        {
+        .form-color-rouse {
             background-color: #f5eaf1;
+            text-align: left;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            width: 100%; /* Para ocupar todo el ancho del contenedor */
+            box-sizing: border-box; /* Para incluir el padding dentro del ancho */
+            text-align: center; /* Para centrar el contenido */
         }
-
-
-        /*esto le da estilo al boton de busqueda*/
-        .info-producto button{
+        .form-color-rouse p {
+            text-align: left; /* Para alinear el texto a la izquierda */
+        }
+        .info-producto button {
             border: none;
             background: none;
             background-color: #000;
@@ -90,45 +94,38 @@
 </head>
 <body>
 <header>
-
     <div class="container-fluid">
         <div class="row align-items-center">
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <div class="col-lg-2" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="" width="100px" height="80px">
+                </a>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
             <div class="col-lg-6">
-                <form class="mb-2 mb-lg-0">
-
-                </form>
+                <form class="mb-2 mb-lg-0"></form>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexAdmin.jsp">Catálogo</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionPedidos.jsp">Pedidos</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="publicarProductos.jsp">Publicar</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
-
                 </nav>
             </div>
         </div>
     </div>
-
 </header>
 <div class="container-fluid">
     <div class="row">
-
         <div class="col-md-3 sidebar">
-            <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
-            <br><form class="form-color-rouse">
-            <h2>Usuario Administrador</h2>
-            <p>Nombre: administrador</p>
-            <p>Correo Electrónico: administrador@utez.edu.mx</p>
-            <p>Teléfono: 7771234567</p></form>
+            <form class="form-color-rouse">
+                <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
+                <h2>Usuario Administrador</h2>
+                <p>Nombre: administrador</p>
+                <p>Correo Electrónico: administrador@utez.edu.mx</p>
+                <p>Teléfono: 7771234567</p>
+            </form>
         </div>
-
         <div class="col-md-4">
             <h1>Publicar producto</h1>
             <form action="addProducto">
@@ -170,19 +167,11 @@
                         </div>
                     </div>
                 </div>
-
                 <button type="submit" class="btn btn-primary">Publicar</button>
             </form>
         </div>
-        &nbsp;&nbsp;
-        &nbsp;&nbsp;
-        &nbsp;&nbsp;
-
-
         <div class="col-md-4">
-            <!-- Espacio en blanco para colocar contenido adicional -->
             <div><h1>&nbsp;</h1>
-                <!-- Contenido adicional aquí -->
                 <div class="form-group">
                     <label for="unidades">Unidades disponibles:</label>
                     <input type="number" class="form-control" id="unidades">
@@ -198,15 +187,13 @@
                 <div class="form-group">
                     <label>Adjuntar imagen del producto:</label>
                     <div class="d-flex flex-wrap">
-                        <br>
                         <button class="btn btn-outline-secondary" type="button">Adjuntar imagen...</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
 </body>
 </html>
