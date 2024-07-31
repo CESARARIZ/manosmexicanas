@@ -10,9 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="funcion borrar productos del carrito">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="ajustes pagina carrito">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Pedido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/PedidoProducto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,7 +236,8 @@
       <workItem from="1722288890037" duration="310000" />
       <workItem from="1722289374917" duration="609000" />
       <workItem from="1722312078169" duration="8893000" />
-      <workItem from="1722365136798" duration="744000" />
+      <workItem from="1722365136798" duration="797000" />
+      <workItem from="1722395976803" duration="435000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -429,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722321488719</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="ajustes pagina carrito">
+      <option name="closed" value="true" />
+      <created>1722366611071</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1722366611071</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,6 +475,7 @@
     <MESSAGE value="Mostrar Carrito de compras funcional" />
     <MESSAGE value="img de eliminar" />
     <MESSAGE value="funcion borrar productos del carrito" />
-    <option name="LAST_COMMIT_MESSAGE" value="funcion borrar productos del carrito" />
+    <MESSAGE value="ajustes pagina carrito" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajustes pagina carrito" />
   </component>
 </project>
