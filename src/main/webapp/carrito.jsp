@@ -190,11 +190,12 @@
         }
 
         .carrito-total {
+            height: 300px;
             position: sticky;
             top: 0;
         }
         .col-md-8 {
-            height: 500px; /* Ajusta la altura según sea necesario */
+             /* Ajusta la altura según sea necesario */
             overflow-y: auto;
         }
 
@@ -226,11 +227,9 @@
         </div>
     </div>
 </header>
-
 <div class="container mt-4 mb-4">
     <div class="row">
         <div class="col-md-8" style="background-color: #FFFFFF">
-
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
@@ -244,22 +243,25 @@
                 <tbody>
                 <%
                     if (lista != null && !lista.isEmpty()) {
-                        int contador = 1; // Inicializa el contador
+                        int contador = 1;
                         for (DetalleCarritoDTO dc : lista) {
                 %>
                 <tr>
-                    <td class="text-center align-middle"><%= contador %></td> <!-- Muestra el contador -->
+                    <td class="text-center align-middle"><%= contador %></td>
                     <td class="align-middle">
                         <h3><%= dc.getNombre_producto() %></h3>
-                        <p><strong>Categoría:</strong> <%= dc.getNombre_categoria() %><br>
+                        <p>
+                            <strong>Categoría:</strong> <%= dc.getNombre_categoria() %><br>
                             <strong>Talla:</strong> <%= dc.getNombre_talla() %><br>
-                            <strong>Color:</strong> <%= dc.getNombre_color() %></p>
+                            <strong>Color:</strong> <%= dc.getNombre_color() %><br>
+                            <strong>Precio:</strong> $<%= dc.getPrecio_uni() %>
+                        </p>
                     </td>
                     <td class="text-center align-middle">
                         <div class="input-group cart-actions d-flex justify-content-center align-items-center">
-                            <button class="btn btn-increase rounded-left">+</button>
-                            <input type="text" class="form-control text-center quantity" value="<%= dc.getCantidad()%>" readonly>
-                            <button class="btn btn-decrease rounded-right">-</button>
+                            <input type="button" class="btn btn-increase rounded-left text-center" value="+">
+                            <input type="text" class="form-control text-center quantity" value="<%= dc.getCantidad() %>" readonly>
+                            <input type="button" class="btn btn-decrease rounded-right text-center" value="-">
                         </div>
                     </td>
                     <td class="text-center align-middle">$<%= dc.getTotal() %></td>
@@ -273,7 +275,7 @@
                     </td>
                 </tr>
                 <%
-                        contador++; // Incrementa el contador
+                        contador++;
                     }
                 } else {
                 %>
@@ -284,12 +286,51 @@
                 </tbody>
             </table>
         </div>
+        <% if (lista != null && !lista.isEmpty()) { %>
         <div class="col-md-3 ms-5 carrito-total" style="background-color: #FFFFFF">
-            <h3>Total a pagar:</h3>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th colspan="8" class="text-start bg-light mb-2 align-middle">
+                        <br>
+                        <h3>Resumen de compra</h3>
+                        <br>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+            <form action="addPedido" method="post">
+                <%
+                    int totalProductos = 0;
+                    double totalPagar = 0.0;
+                    for (DetalleCarritoDTO dc : lista) {
+                        totalProductos += dc.getCantidad();
+                        totalPagar += dc.getTotal();
+                %>
+                <input type="hidden" name="nombre_producto" value="<%= dc.getNombre_producto() %>">
+                <input type="hidden" name="nombre_categoria" value="<%= dc.getNombre_categoria() %>">
+                <input type="hidden" name="nombre_talla" value="<%= dc.getNombre_talla() %>">
+                <input type="hidden" name="nombre_color" value="<%= dc.getNombre_color() %>">
+                <input type="hidden" name="cantidad" value="<%= dc.getCantidad() %>">
+                <input type="hidden" name="total" value="<%= dc.getTotal() %>">
+                <% } %>
+                <h6>Total de productos: <%= totalProductos %></h6>
+                <h4>Total a pagar: $<%= totalPagar %></h4>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Confirmar pedido</button>
+                    <button type="button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
+                </div>
+            </form>
         </div>
+        <% } %>
     </div>
-
 </div>
+
+
+
+
+
+
 
 
 <script src="js/bootstrap.js"></script>
@@ -311,6 +352,20 @@
             }
         });
     });
+
+    function updateQuantity(productId, change) {
+        const quantityElement = document.getElementById('quantity-' + productId);
+        let quantity = parseInt(quantityElement.value);
+
+        if (quantity + change >= 1) {
+            quantity += change;
+            quantityElement.value = quantity;
+
+            // Llama a una función para actualizar el total en el backend y obtener el nuevo total
+            updateTotal(productId, quantity);
+        }
+    }
+
 </script>
 </body>
 </html>

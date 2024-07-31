@@ -131,7 +131,7 @@
 
         <div class="col-md-4">
             <h1>Publicar producto</h1>
-            <form>
+            <form action="addProducto">
                 <div class="form-group">
                     <label for="nombre-producto">Nombre del producto:</label>
                     <input type="text" class="form-control" id="nombre-producto">

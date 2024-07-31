@@ -1,44 +1,44 @@
 package mx.edu.utez.manosmexicanas.model;
 
-public class DetalleCarritoDTO {
-    private int id_detalle_carrito;
-    private int id_carrito;
+public class PedidoDetalle {
+    private int id_pedido_detalle;
+    private int id_pedido;
     private String nombre_producto;
     private String nombre_categoria;
     private String nombre_talla;
     private String nombre_color;
     private int cantidad;
-    private double precio;
     private double total;
+    private String estado;
 
-    public DetalleCarritoDTO() {}
+    public PedidoDetalle() {}
 
-    public DetalleCarritoDTO(int id_detalle_carrito, int id_carrito, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad,double precio, double total) {
-        this.id_detalle_carrito = id_detalle_carrito;
-        this.id_carrito = id_carrito;
+    public PedidoDetalle(int id_pedido_detalle, int id_pedido, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total, String estado) {
+        this.id_pedido_detalle = id_pedido_detalle;
+        this.id_pedido = id_pedido;
         this.nombre_producto = nombre_producto;
         this.nombre_categoria = nombre_categoria;
         this.nombre_talla = nombre_talla;
         this.nombre_color = nombre_color;
         this.cantidad = cantidad;
-        this.precio = precio;
         this.total = total;
+        this.estado = estado;
     }
 
-    public int getId_detalle_carrito() {
-        return id_detalle_carrito;
+    public int getId_pedido_detalle() {
+        return id_pedido_detalle;
     }
 
-    public void setId_detalle_carrito(int id_detalle_carrito) {
-        this.id_detalle_carrito = id_detalle_carrito;
+    public void setId_pedido_detalle(int id_pedido_detalle) {
+        this.id_pedido_detalle = id_pedido_detalle;
     }
 
-    public int getId_carrito() {
-        return id_carrito;
+    public int getId_pedido() {
+        return id_pedido;
     }
 
-    public void setId_carrito(int id_carrito) {
-        this.id_carrito = id_carrito;
+    public void setId_pedido(int id_pedido) {
+        this.id_pedido = id_pedido;
     }
 
     public String getNombre_producto() {
@@ -81,13 +81,6 @@ public class DetalleCarritoDTO {
         this.cantidad = cantidad;
     }
 
-    public double getPrecio_uni() {
-        return precio;
-    }
-    public void setPrecio_uni(double precio) {
-        this.precio = precio;
-    }
-
     public double getTotal() {
         return total;
     }
@@ -95,5 +88,12 @@ public class DetalleCarritoDTO {
     public void setTotal(double total) {
         this.total = total;
     }
-}
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+}

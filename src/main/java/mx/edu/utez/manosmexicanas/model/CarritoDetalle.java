@@ -8,11 +8,12 @@ public class CarritoDetalle {
     private int id_talla;
     private int id_color;
     private int cantidad;
+    private double precio;
     private double total;
 
     public CarritoDetalle() {};
 
-    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double total) {
+    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad,double precio, double total) {
         this.id_detalle_carrito = id_detalle_carrito;
         this.id_carrito = id_carrito;
         this.id_producto = id_producto;
@@ -20,6 +21,7 @@ public class CarritoDetalle {
         this.id_talla = id_talla;
         this.id_color = id_color;
         this.cantidad = cantidad;
+        this.precio = precio;
         this.total = total;
     }
 
@@ -77,6 +79,13 @@ public class CarritoDetalle {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public double getTotal() {

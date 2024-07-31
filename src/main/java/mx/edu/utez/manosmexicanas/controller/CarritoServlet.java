@@ -22,6 +22,7 @@ public class CarritoServlet extends HttpServlet {
         int id_talla = Integer.parseInt(req.getParameter("id_talla"));
         int id_color = Integer.parseInt(req.getParameter("id_color"));
         int cantidad = Integer.parseInt(req.getParameter("cantidad"));
+        double precio = Double.parseDouble(req.getParameter("precio"));
         double total = Double.parseDouble(req.getParameter("total"));
         String ruta = "indexCliente.jsp";
 
@@ -43,6 +44,7 @@ public class CarritoServlet extends HttpServlet {
             carritoDetalle.setId_color(id_color);
             carritoDetalle.setCantidad(cantidad);
             carritoDetalle.setTotal(total);
+            carritoDetalle.setPrecio(precio);
 
             boolean insertDetalleCarrito = dao.insertDetalleCarrito(carritoDetalle);
             if (insertDetalleCarrito) {
