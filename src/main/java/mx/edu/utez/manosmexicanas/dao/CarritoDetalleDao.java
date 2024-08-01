@@ -32,7 +32,7 @@ public class CarritoDetalleDao {
 
     public boolean insertDetalleCarrito(CarritoDetalle cd) {
         boolean flag = false;
-        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria,id_talla, id_color, cantidad, total) VALUES (?, ?,?, ?, ?, ?, ?)";
+        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria,id_talla, id_color, cantidad, total, precio) VALUES (?, ?,?, ?, ?, ?, ?,?)";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
@@ -43,6 +43,7 @@ public class CarritoDetalleDao {
             ps.setInt(5, cd.getId_color());
             ps.setInt(6, cd.getCantidad());
             ps.setDouble(7, cd.getTotal());
+            ps.setDouble(8, cd.getPrecio());
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }
@@ -56,7 +57,7 @@ public class CarritoDetalleDao {
         public List<DetalleCarritoDTO> getDetallesCarrito(int id_usuario) {
             List<DetalleCarritoDTO> detalles = new ArrayList<>();
             String sql = "SELECT cp.id_carrito_producto, p.nombre AS nombre_producto, c.nombre_categoria AS nombre_categoria, " +
-                    "t.talla AS nombre_talla, co.color AS nombre_color, cp.cantidad, cp.total " +
+                    "t.talla AS nombre_talla, co.color AS nombre_color, cp.cantidad, cp.precio, cp.total " +
                     "FROM carrito_producto cp " +
                     "JOIN carrito_compra cc ON cp.id_carrito = cc.id_carrito " +
                     "JOIN productos p ON cp.id_producto = p.id_producto " +
@@ -77,6 +78,7 @@ public class CarritoDetalleDao {
                     detalle.setNombre_talla(rs.getString("nombre_talla"));
                     detalle.setNombre_color(rs.getString("nombre_color"));
                     detalle.setCantidad(rs.getInt("cantidad"));
+                    detalle.setPrecio_uni(rs.getDouble("precio"));
                     detalle.setTotal(rs.getDouble("total"));
                     detalles.add(detalle);
                 }

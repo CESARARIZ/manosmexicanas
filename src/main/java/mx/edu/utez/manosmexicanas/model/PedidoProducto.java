@@ -1,44 +1,43 @@
 package mx.edu.utez.manosmexicanas.model;
 
-public class CarritoDetalle {
-    private int id_detalle_carrito;
-    private int id_carrito;
+public class PedidoProducto {
+    private int id_pedido_producto;
+    private int id_pedido;
     private int id_producto;
     private int id_categoria;
     private int id_talla;
     private int id_color;
     private int cantidad;
-    private double precio;
+    private double precio_unitario;
     private double total;
+    public PedidoProducto() {}
 
-    public CarritoDetalle() {};
-
-    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad,double precio, double total) {
-        this.id_detalle_carrito = id_detalle_carrito;
-        this.id_carrito = id_carrito;
+    public PedidoProducto(int id_pedido_producto, int id_pedido, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double precio_unitario, double total) {
+        this.id_pedido_producto = id_pedido_producto;
+        this.id_pedido = id_pedido;
         this.id_producto = id_producto;
         this.id_categoria = id_categoria;
         this.id_talla = id_talla;
         this.id_color = id_color;
         this.cantidad = cantidad;
-        this.precio = precio;
+        this.precio_unitario = precio_unitario;
         this.total = total;
     }
 
-    public int getId_detalle_carrito() {
-        return id_detalle_carrito;
+    public int getId_pedido_producto() {
+        return id_pedido_producto;
     }
 
-    public void setId_detalle_carrito(int id_detalle_carrito) {
-        this.id_detalle_carrito = id_detalle_carrito;
+    public void setId_pedido_producto(int id_pedido_producto) {
+        this.id_pedido_producto = id_pedido_producto;
     }
 
-    public int getId_carrito() {
-        return id_carrito;
+    public int getId_pedido() {
+        return id_pedido;
     }
 
-    public void setId_carrito(int id_carrito) {
-        this.id_carrito = id_carrito;
+    public void setId_pedido(int id_pedido) {
+        this.id_pedido = id_pedido;
     }
 
     public int getId_producto() {
@@ -81,11 +80,12 @@ public class CarritoDetalle {
         this.cantidad = cantidad;
     }
 
-    public double getPrecio() {
-        return precio;
+    public double getPrecio_unitario() {
+        return precio_unitario;
     }
-    public void setPrecio(double precio) {
-        this.precio = precio;
+
+    public void setPrecio_unitario(double precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
 
     public double getTotal() {
