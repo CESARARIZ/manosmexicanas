@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import mx.edu.utez.manosmexicanas.dao.CarritoDetalleDao;
 import mx.edu.utez.manosmexicanas.dao.PedidoDao;
 import mx.edu.utez.manosmexicanas.model.Pedido;
 import mx.edu.utez.manosmexicanas.model.PedidoProducto;
@@ -51,6 +52,8 @@ public class ProductosPedidoServlet extends HttpServlet {
         PedidoDao dao = new PedidoDao();
         int id_pedido = dao.insertPedido(pedido);
 
+        CarritoDetalleDao carritoDao = new CarritoDetalleDao();
+
         if (id_pedido != -1) {
             List<PedidoProducto> pdp = new ArrayList<>();
             for (int i = 0; i < idsProducto.length; i++) {
@@ -68,7 +71,11 @@ public class ProductosPedidoServlet extends HttpServlet {
             for (PedidoProducto detalle : pdp) {
                 dao.insertDetallePedido(detalle);
             }
-            res.sendRedirect("pedido.jsp");
+            boolean eliminado = carritoDao.deleteProductos(id_usuario);
+            if (!eliminado) {
+                System.out.println("Error al eliminar productos del carrito.");
+            }
+            res.sendRedirect("carrito.jsp");
         }else{
             res.sendRedirect("404.jsp");
         }
