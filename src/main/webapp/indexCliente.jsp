@@ -6,8 +6,19 @@
 <%
     HttpSession sessionn = request.getSession(false);
     Usuario usuario = null;
+    int id_usuario = 0;
     if (sessionn != null) {
         usuario = (Usuario) sessionn.getAttribute("usuario");
+        if (usuario != null) {
+            id_usuario = usuario.getId();
+            System.out.println("ID del usuario recuperado: " + id_usuario);
+        } else {
+            // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
+            response.sendRedirect("login.jsp");
+        }
+    } else {
+        // Redirigir a la página de inicio de sesión si no hay sesión
+        response.sendRedirect("login.jsp");
     }
 %>
 <html>
@@ -155,7 +166,7 @@
             <div class="col-md-4 d-flex justify-content-center">
                 <nav id="nave" class="navbar navbar-expand-md navbar-dark">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Pedidos</a>
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if (usuario != null) { %>
@@ -166,7 +177,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="perfil.jsp">Ver perfil</a>
-                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="pedido?id_usuario=<%=usuario.getId()%>">Pedidos</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
                             </div>
