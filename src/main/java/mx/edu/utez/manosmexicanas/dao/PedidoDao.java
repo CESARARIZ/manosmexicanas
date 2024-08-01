@@ -57,12 +57,12 @@ public class PedidoDao {
 
     public List<PedidoDetalle> getPedidoDetalles(int id_usuario){
         List<PedidoDetalle> pedidoDetalles = new ArrayList<PedidoDetalle>();
-        String query = "SELECT pp.id_pedido_producto, p.nombre AS nombre_producto, c.nombre_categoria AS nombre_categoria, " +
-                "t.talla AS nombre_talla, co.color AS nombre_color, pp.cantidad, pp.total, pp.estado" +
+        String query = "SELECT pp.id_pedido_producto, pp.id_pedido, p.nombre AS nombre_producto, cat.nombre_categoria AS nombre_categoria, " +
+                "t.talla AS nombre_talla, co.color AS nombre_color, pp.cantidad, pp.total, pe.estatus " +
                 "FROM pedido_producto pp " +
                 "JOIN pedido pe ON pp.id_pedido = pe.id_pedido " +
                 "JOIN productos p ON pp.id_producto = p.id_producto " +
-                "JOIN categorias c ON pp.id_categoria = c.id_categoria " +
+                "JOIN categorias cat ON pp.id_categoria = cat.id_categoria " +
                 "JOIN tallas t ON pp.id_talla = t.id_talla " +
                 "JOIN colores co ON pp.id_color = co.id_color " +
                 "WHERE pe.id_usuario = ?";
@@ -72,20 +72,25 @@ public class PedidoDao {
             ps.setInt(1, id_usuario);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                PedidoDetalle detalle = new PedidoDetalle();
-                detalle.setId_pedido_detalle(rs.getInt("id_pedido_producto"));
-                detalle.setNombre_producto(rs.getString("nombre_producto"));
-                detalle.setNombre_categoria(rs.getString("nombre_categoria"));
-                detalle.setNombre_talla(rs.getString("nombre_talla"));
-                detalle.setNombre_color(rs.getString("nombre_color"));
-                detalle.setCantidad(rs.getInt("cantidad"));
-                detalle.setTotal(rs.getDouble("total"));
-                detalle.setEstado(rs.getString("estado"));
-                pedidoDetalles.add(detalle);
+                PedidoDetalle det = new PedidoDetalle();
+                det.setId_pedido_detalle(rs.getInt("id_pedido_producto"));
+                det.setId_pedido(rs.getInt("id_pedido"));
+                det.setNombre_producto(rs.getString("nombre_producto"));
+                det.setNombre_categoria(rs.getString("nombre_categoria"));
+                det.setNombre_talla(rs.getString("nombre_talla"));
+                det.setNombre_color(rs.getString("nombre_color"));
+                det.setCantidad(rs.getInt("cantidad"));
+                det.setTotal(rs.getDouble("total"));
+                det.setEstado(rs.getString("estatus"));
+                pedidoDetalles.add(det);
 
             }
+            rs.close();
+            ps.close();
+            con.close();
         }catch (SQLException e){
             e.printStackTrace();
+            System.out.println("Error en la consulta SQL: " + e.getMessage());
         }
         return pedidoDetalles;
     }
@@ -106,6 +111,48 @@ public class PedidoDao {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public List<PedidoDetalle> getPedidoDetallesParaAdministrador() {
+        List<PedidoDetalle> pedidoDetalles = new ArrayList<>();
+        String query = "SELECT pp.id_pedido_producto, pp.id_pedido, u.nombre_usuario, p.nombre AS nombre_producto, " +
+                "cat.nombre_categoria AS nombre_categoria, t.talla AS nombre_talla, co.color AS nombre_color, " +
+                "pp.cantidad, pp.total, pe.estatus " +
+                "FROM pedido_producto pp " +
+                "JOIN pedido pe ON pp.id_pedido = pe.id_pedido " +
+                "JOIN usuario u ON pe.id_usuario = u.id_usuario " +
+                "JOIN productos p ON pp.id_producto = p.id_producto " +
+                "JOIN categorias cat ON p.id_categoria = cat.id_categoria " +
+                "JOIN tallas t ON pp.id_talla = t.id_talla " +
+                "JOIN colores co ON pp.id_color = co.id_color " +
+                "ORDER BY pp.id_pedido_producto ASC";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                PedidoDetalle det = new PedidoDetalle();
+                det.setId_pedido_detalle(rs.getInt("id_pedido_producto"));
+                det.setId_pedido(rs.getInt("id_pedido"));
+                det.setNombre_cliente(rs.getString("nombre_usuario"));
+                det.setNombre_producto(rs.getString("nombre_producto"));
+                det.setNombre_categoria(rs.getString("nombre_categoria"));
+                det.setNombre_talla(rs.getString("nombre_talla"));
+                det.setNombre_color(rs.getString("nombre_color"));
+                det.setCantidad(rs.getInt("cantidad"));
+                det.setTotal(rs.getDouble("total"));
+                det.setEstado(rs.getString("estatus"));
+                pedidoDetalles.add(det);
+            }
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error en la consulta SQL: " + e.getMessage());
+        }
+        return pedidoDetalles;
     }
 
 }

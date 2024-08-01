@@ -3,6 +3,7 @@ package mx.edu.utez.manosmexicanas.model;
 public class PedidoDetalle {
     private int id_pedido_detalle;
     private int id_pedido;
+    private String nombre_cliente;
     private String nombre_producto;
     private String nombre_categoria;
     private String nombre_talla;
@@ -13,9 +14,10 @@ public class PedidoDetalle {
 
     public PedidoDetalle() {}
 
-    public PedidoDetalle(int id_pedido_detalle, int id_pedido, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total, String estado) {
+    public PedidoDetalle(int id_pedido_detalle, int id_pedido, String nombre_cliente, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total, String estado) {
         this.id_pedido_detalle = id_pedido_detalle;
         this.id_pedido = id_pedido;
+        this.nombre_cliente = nombre_cliente;
         this.nombre_producto = nombre_producto;
         this.nombre_categoria = nombre_categoria;
         this.nombre_talla = nombre_talla;
@@ -39,6 +41,14 @@ public class PedidoDetalle {
 
     public void setId_pedido(int id_pedido) {
         this.id_pedido = id_pedido;
+    }
+
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public void setNombre_cliente(String nombre_cliente) {
+        this.nombre_cliente = nombre_cliente;
     }
 
     public String getNombre_producto() {

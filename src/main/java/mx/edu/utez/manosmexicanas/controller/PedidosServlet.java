@@ -17,19 +17,16 @@ import java.util.List;
 @WebServlet(name="PedidosServlet", value = "/pedido")
 public class PedidosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        if (usuario != null) {
-            int id_usuario = usuario.getId();
-            PedidoDao pedidoDao = new PedidoDao();
-            List<PedidoDetalle> det = pedidoDao.getPedidoDetalles(id_usuario);
 
-            request.setAttribute("det", det);
-            request.setAttribute("usuario", usuario);
-
-
+        int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        PedidoDao pedidoDao = new PedidoDao();
+        List<PedidoDetalle> detalles = pedidoDao.getPedidoDetalles(id_usuario);
+        System.out.println("Número de detalles recuperados: " + (detalles != null ? detalles.size() : 0));
+        if(detalles == null || detalles.isEmpty()){
+            response.sendRedirect("ingresar.jsp");
         }else {
-            response.sendRedirect("ingresar.jsp"); // Redirigir al login si el usuario no está autenticado
+            request.setAttribute("pedidos", detalles);
+            request.getRequestDispatcher("pedido.jsp").forward(request, response);
         }
     }
 }
