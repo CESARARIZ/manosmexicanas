@@ -20,6 +20,8 @@ public class EliminarProductoCarritoServlet extends HttpServlet {
         boolean eliminado = dao.deleteProducto(id_carrito_producto);
         if (eliminado) {
             resp.sendRedirect("verCarrito");
+        }else{
+            resp.sendRedirect("404.jsp");
         }
     }
 }

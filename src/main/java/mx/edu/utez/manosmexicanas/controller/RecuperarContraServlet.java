@@ -30,7 +30,7 @@ public class RecuperarContraServlet extends HttpServlet {
         Usuario u = dao.getCorreo(correo);
         int id = u.getId();
         if (u.getCorreo()==null){
-            //NO EXISTE
+            resp.sendRedirect("index.jsp");
         }else{
             codigo = SimpleRandomStringGenerator.generateRandomString(lenght);
 

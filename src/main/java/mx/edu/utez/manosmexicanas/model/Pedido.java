@@ -8,6 +8,8 @@ public class Pedido {
     private Date fecha_pedido;
     private String estado;
 
+    public Pedido(){};
+
     public Pedido(int id_pedido, int id_usuario, Date fecha_pedido, String estado) {
         this.id_pedido = id_pedido;
         this.id_usuario = id_usuario;

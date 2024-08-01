@@ -49,7 +49,11 @@ public class CarritoServlet extends HttpServlet {
             boolean insertDetalleCarrito = dao.insertDetalleCarrito(carritoDetalle);
             if (insertDetalleCarrito) {
                 resp.sendRedirect(ruta);  // Redirigir a la ruta especificada si la inserción fue exitosa
+            }else{
+                resp.sendRedirect("404.jsp");
             }
+        }else{
+            resp.sendRedirect("404.jsp");
         }
 
     }

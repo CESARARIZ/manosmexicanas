@@ -30,6 +30,8 @@ public class CarritoDetalleDao {
         return idCarrito;
     }
 
+
+
     public boolean insertDetalleCarrito(CarritoDetalle cd) {
         boolean flag = false;
         String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria,id_talla, id_color, cantidad, total, precio) VALUES (?, ?,?, ?, ?, ?, ?,?)";
@@ -55,8 +57,8 @@ public class CarritoDetalleDao {
 
         public List<CarritoDetalle> getIdsDetalleCarrito(int id_usuario){
             List<CarritoDetalle> carritoDetalles = new ArrayList<>();
-            String query = "SELECT cp.id_carrito_producto, p.id_producto AS nombre_producto, c.id_categoria AS nombre_categoria, " +
-                    "t.id_talla AS nombre_talla, co.id_color AS nombre_color, cp.cantidad, cp.precio, cp.total " +
+            String query = "SELECT cp.id_carrito_producto, p.id_producto AS id_producto, c.id_categoria AS id_categoria, " +
+                    "t.id_talla AS id_talla, co.id_color AS id_color, cp.cantidad, cp.precio, cp.total " +
                     "FROM carrito_producto cp " +
                     "JOIN carrito_compra cc ON cp.id_carrito = cc.id_carrito " +
                     "JOIN productos p ON cp.id_producto = p.id_producto " +
@@ -122,21 +124,36 @@ public class CarritoDetalleDao {
         }
 
         public Boolean deleteProducto(int id_carrito_producto) {
+            boolean flag = false;
+            String sql = "DELETE FROM carrito_producto WHERE id_carrito_producto = ?";
+            try{
+                Connection con = DatabaseConnectionManager.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql);
+                ps.setInt(1, id_carrito_producto);
+                if (ps.executeUpdate() > 0) {
+                    flag = true;
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        return flag;
+        }
+    public boolean deleteProductos(int id_usuario) {
         boolean flag = false;
-        String sql = "DELETE FROM carrito_producto WHERE id_carrito_producto = ?";
+        String sql = "DELETE FROM carrito_producto WHERE id_carrito IN (SELECT id_carrito FROM carrito_compra WHERE id_usuario = ?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id_carrito_producto);
+            ps.setInt(1, id_usuario);
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-
         return flag;
-        }
+    }
+
 
 
 }

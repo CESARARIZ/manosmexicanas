@@ -32,7 +32,7 @@ public class ProductosCarritoServlet extends HttpServlet {
             req.getRequestDispatcher("carrito.jsp").forward(req, res);
 
         } else {
-            res.sendRedirect("indexCliente.jsp"); // Redirigir al login si el usuario no está autenticado
+            res.sendRedirect("ingresar.jsp"); // Redirigir al login si el usuario no está autenticado
         }
     }
 }

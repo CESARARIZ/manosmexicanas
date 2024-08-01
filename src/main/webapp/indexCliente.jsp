@@ -166,7 +166,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="perfil.jsp">Ver perfil</a>
-                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="pedido.jsp">Pedidos</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="pedido?id_usuario=<%=usuario.getId()%>">Pedidos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
                             </div>

@@ -301,27 +301,33 @@
                 </thead>
             </table>
             <form action="addPedido" method="post">
+
                 <%
+                    if (lista2 != null && !lista2.isEmpty()) {
                     int totalProductos = 0;
                     double totalPagar = 0.0;
                     for (CarritoDetalle dc : lista2) {
                         totalProductos += dc.getCantidad();
                         totalPagar += dc.getTotal();
                 %>
-                <input type="hidden" name="nombre_producto" value="<%= dc.getId_producto()%>">
-                <input type="hidden" name="nombre_categoria" value="<%= dc.getId_categoria() %>">
-                <input type="hidden" name="nombre_talla" value="<%= dc.getId_talla() %>">
-                <input type="hidden" name="nombre_color" value="<%= dc.getId_color() %>">
+                <input type="hidden" name="id_producto" value="<%= dc.getId_producto()%>">
+                <input type="hidden" name="id_categoria" value="<%= dc.getId_categoria() %>">
+                <input type="hidden" name="id_talla" value="<%= dc.getId_talla() %>">
+                <input type="hidden" name="id_color" value="<%= dc.getId_color() %>">
                 <input type="hidden" name="cantidad" value="<%= dc.getCantidad() %>">
+                <input type="hidden" name="precio_unitario" value="<%= dc.getPrecio() %>">
                 <input type="hidden" name="total" value="<%= dc.getTotal() %>">
-                <% } %>
+                    <% } %>
                 <h6>Total de productos: <%= totalProductos %></h6>
                 <h4>Total a pagar: $<%= totalPagar %></h4>
                 <div class="text-center">
+                    <input type="hidden" name="id_usuario" value="<%= usuario.getId()%>">
                     <button type="submit" class="btn btn-primary">Confirmar pedido</button>
                     <button type="button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
                 </div>
+                <% } %>
             </form>
+
         </div>
         <% } %>
     </div>
