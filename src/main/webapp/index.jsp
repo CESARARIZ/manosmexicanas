@@ -153,6 +153,7 @@
     <div class="row ">
         <div class="col-md-2 sidebar bg-light">
             <h4 class="px-1" style="text-align: center;">Filtros</h4>
+            <form method="GET" action="catalogo.jsp">
             <!--SE CREAN CAJAS PARA CADA FILTRO-->
             <div class="filter-box">
                 <h5>Categorías</h5>
@@ -178,6 +179,8 @@
                 <label><input type="checkbox" name="color" value="blanco"> Blanco</label>
                 <label><input type="checkbox" name="color" value="amarillo"> Amarillo</label>
             </div>
+                <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+            </form>
         </div>
         <div class="col-md-10">
             <main class="py-3">
@@ -188,6 +191,12 @@
                         <%
                             ProductoDao productoDao = new ProductoDao();
                             List<Producto> productos = null;
+                            List<Producto> productosFiltrados = new ArrayList<>();
+
+                            // Obtener los parámetros de los filtros
+                            String[] categorias = request.getParameterValues("category");
+                            String[] tallas = request.getParameterValues("size");
+                            String[] colores = request.getParameterValues("color");
 
                             try {
                                 productos = productoDao.obtenerTodosLosProductos();
