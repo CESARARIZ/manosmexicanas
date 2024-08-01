@@ -142,7 +142,7 @@
             <td><%=p.getId_producto()%></td>
             <td><%=p.getNombre_producto()%></td>
             <td><%=p.getDescripcion()%></td>
-            <td><%=p.getCategoria()%></td>
+            <td><%= p.getCategoria().getNombre_categoria() %></td>
             <td><%=p.getPrecio()%></td>
             <td><%=p.getStockDisponible()%></td>
             <td>
