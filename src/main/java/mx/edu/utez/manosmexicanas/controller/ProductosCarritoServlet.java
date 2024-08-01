@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import mx.edu.utez.manosmexicanas.dao.CarritoDetalleDao;
+import mx.edu.utez.manosmexicanas.model.CarritoDetalle;
 import mx.edu.utez.manosmexicanas.model.DetalleCarritoDTO;
 import mx.edu.utez.manosmexicanas.model.Usuario;
 
@@ -21,10 +22,15 @@ public class ProductosCarritoServlet extends HttpServlet {
         if (usuario != null) {
             int id_usuario = usuario.getId();
             CarritoDetalleDao dao = new CarritoDetalleDao();
+
             List<DetalleCarritoDTO> cd = dao.getDetallesCarrito(id_usuario);
+            List<CarritoDetalle> car = dao.getIdsDetalleCarrito(id_usuario);
+
+            req.setAttribute("carritoDetalle", car);
             req.setAttribute("carrito", cd);
             req.setAttribute("usuario", usuario);
             req.getRequestDispatcher("carrito.jsp").forward(req, res);
+
         } else {
             res.sendRedirect("indexCliente.jsp"); // Redirigir al login si el usuario no está autenticado
         }

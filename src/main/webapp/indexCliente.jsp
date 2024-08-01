@@ -248,7 +248,8 @@
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;"><h6>Añadir al carrito</h6></button>
+                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;"><h6>
+                                    <a href="especificarProducto?id=<%= producto.getId_producto() %>">Añadir al carrito</a></h6></button>
                             </div>
                         </div>
                         <%

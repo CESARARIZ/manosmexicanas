@@ -8,6 +8,7 @@
 <%
     Usuario usuario = (Usuario) request.getAttribute("usuario");
     List<DetalleCarritoDTO> lista = (List<DetalleCarritoDTO>) request.getAttribute("carrito");
+    List<CarritoDetalle> lista2 = (List<CarritoDetalle>) request.getAttribute("carritoDetalle");
 
 %>
 
@@ -303,14 +304,14 @@
                 <%
                     int totalProductos = 0;
                     double totalPagar = 0.0;
-                    for (DetalleCarritoDTO dc : lista) {
+                    for (CarritoDetalle dc : lista2) {
                         totalProductos += dc.getCantidad();
                         totalPagar += dc.getTotal();
                 %>
-                <input type="hidden" name="nombre_producto" value="<%= dc.getNombre_producto() %>">
-                <input type="hidden" name="nombre_categoria" value="<%= dc.getNombre_categoria() %>">
-                <input type="hidden" name="nombre_talla" value="<%= dc.getNombre_talla() %>">
-                <input type="hidden" name="nombre_color" value="<%= dc.getNombre_color() %>">
+                <input type="hidden" name="nombre_producto" value="<%= dc.getId_producto()%>">
+                <input type="hidden" name="nombre_categoria" value="<%= dc.getId_categoria() %>">
+                <input type="hidden" name="nombre_talla" value="<%= dc.getId_talla() %>">
+                <input type="hidden" name="nombre_color" value="<%= dc.getId_color() %>">
                 <input type="hidden" name="cantidad" value="<%= dc.getCantidad() %>">
                 <input type="hidden" name="total" value="<%= dc.getTotal() %>">
                 <% } %>
