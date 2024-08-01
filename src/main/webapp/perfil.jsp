@@ -136,10 +136,12 @@
     </div>
 
 </header>
-<form>
-    <section class="perfil">
-        <div class="info-personal">
-            <img src="img/icono_de_perfil.png" alt="Perfil">
+<div class="row">
+
+        <div class="col-md-2">
+            <img src="img/icono_de_perfil.png" alt="Perfil" height="35" width="35">
+        </div>
+        <div class="col-md-4">
             <div>
                 <h2>Maximiliano Roque Balboa</h2>
                 <p><a href="mailto:max@gmail.com">max@gmail.com</a></p>
@@ -147,6 +149,12 @@
                 <p>7771234567</p>
             </div>
         </div>
+</div>
+
+
+<form>
+    <section class="perfil">
+
     <div class="mis-pedidos">
         <h3>Mis pedidos</h3>
         <table>

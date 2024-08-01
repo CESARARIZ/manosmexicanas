@@ -12,7 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="funcion borrar productos del carrito">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
     &quot;Tomcat Server.Tomcat 10.1.8.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/Documents/practica&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/CA2/IdeaProjects/manosmexicanas&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -174,8 +175,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -236,6 +237,9 @@
       <workItem from="1722289374917" duration="609000" />
       <workItem from="1722312078169" duration="8893000" />
       <workItem from="1722365136798" duration="744000" />
+      <workItem from="1722370207619" duration="645000" />
+      <workItem from="1722372522958" duration="571000" />
+      <workItem from="1722474876614" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
