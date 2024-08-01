@@ -1,4 +1,8 @@
-<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %><%--
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.ColorProducto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %><%--
   Created by IntelliJ IDEA.
   User: dan-a
   Date: 23/07/2024
@@ -9,8 +13,19 @@
 <%
     HttpSession sessionn = request.getSession(false);
     Usuario usuario = null;
+    int id_usuario = 0;
+    String tipo_usuario="";
+    String ruta = "index.jsp";
     if (sessionn != null) {
         usuario = (Usuario) sessionn.getAttribute("usuario");
+        id_usuario = usuario.getId();
+        tipo_usuario = usuario.getTipo_usuario();
+        if ("usuario".equals(tipo_usuario)) {
+            ruta = "indexCliente.jsp";
+        } else if ("admin".equals(tipo_usuario)) {
+            ruta = "indexAdmin.jsp";
+        }
+
     }
 %>
 <html>
@@ -91,14 +106,20 @@
     </div>
 </header>
 <div class="container mt-5">
+    <%
+        HttpSession sesion = request.getSession();
+        Producto p = (Producto) sesion.getAttribute("producto");
+        if (p != null) {
+
+    %>
     <div class="card">
         <div class="card-body">
             <h2 class="card-title text-center">Especifica tu producto</h2>
             <div class="row">
                 <div class="col-md-6 text-center">
                     <img src="img/traje1.jpeg" class="img-fluid" alt="Producto" width="320" height="340" style="border-radius: 10px">
-                    <h3>Top estilo crochet</h3>
-                    <p>$100</p>
+                    <h3><%= p.getNombre_producto() %></h3>
+                    <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
                     <div class="rating">
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -108,52 +129,96 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <form action="carrito" method="post">
-                        <div class="mb-3">
-                            <label for="color" class="form-label">Selecciona el color:</label>
-                            <div id="color">
-                                <input type="radio" class="btn-check" name="color" id="negro" value="negro" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="negro">Negro</label>
-
-                                <input type="radio" class="btn-check" name="color" id="rosa" value="rosa" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="rosa">Rosa</label>
-
-                                <input type="radio" class="btn-check" name="color" id="azul" value="azul" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="azul">Azul</label>
-
-                                <input type="radio" class="btn-check" name="color" id="rojo" value="rojo" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="rojo">Rojo</label>
-                            </div>
-                        </div>
+                    <form id="form-carrito" action="carrito" method="post">
                         <div class="mb-3">
                             <label for="talla" class="form-label">Selecciona la talla:</label>
                             <div id="talla">
-                                <input type="radio" class="btn-check" name="talla" id="ch" value="ch" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="ch">CH</label>
-
-                                <input type="radio" class="btn-check" name="talla" id="m" value="m" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="m">M</label>
-
-                                <input type="radio" class="btn-check" name="talla" id="g" value="g" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="g">G</label>
-
-                                <input type="radio" class="btn-check" name="talla" id="extg" value="extg" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="extg">EXT G</label>
+                                <%
+                                    List<Talla> tallas = p.getTallas();
+                                    if (tallas != null && !tallas.isEmpty()) {
+                                        for (Talla talla : tallas) {
+                                            String tallaId = "talla_" + talla.getId_talla();
+                                %>
+                                <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
+                                <%
+                                    }
+                                } else {
+                                %>
+                                <p>No hay tallas disponibles.</p>
+                                <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="color" class="form-label">Selecciona el color:</label>
+                            <div id="color">
+                                <%
+                                    List<ColorProducto> colores = p.getColores();
+                                    if (colores != null && !colores.isEmpty()) {
+                                        for (ColorProducto color : colores) {
+                                            String colorId = "color" + color.getId_color();
+                                %>
+                                <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
+                                <%
+                                    }
+                                } else {
+                                %>
+                                <p>No hay colores disponibles.</p>
+                                <%
+                                    }
+                                %>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
-                            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1">
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" oninput="calculateTotal()">
+                            <p>Total: $<span id="total">0.00</span></p>
                         </div>
-                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                        <input type="hidden" id="totalHidden" name="total" value="0.00">
+                        <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                        <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
+                        <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                        <input type="hidden" name="precio" value="<%=p.getPrecio()%>">
+                        <input type="submit" class="btn btn-primary" value="Añadir al carrito">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<% } %>
 <script src="js/bootstrap.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function calculateTotal() {
+        var precio = parseFloat(document.getElementById("precio").innerText);
+        var cantidad = parseInt(document.getElementById("cantidad").value);
 
+        if (isNaN(precio) || isNaN(cantidad) || cantidad < 1) {
+            console.error("Precio o cantidad no son números válidos.");
+            document.getElementById("total").innerText = "0.00";
+            document.getElementById("totalHidden").value = "0.00";
+            return;
+        }
+
+        var total = precio * cantidad;
+        document.getElementById("total").innerText = total.toFixed(2);
+        document.getElementById("totalHidden").value = total.toFixed(2);
+    }
+
+    function addToCart() {
+        var form = document.getElementById("form-carrito");
+        var formData = new FormData(form);
+
+        alert("Total añadido al carrito: $" + formData.get("total"));
+
+        // Aquí puedes usar fetch o XMLHttpRequest para enviar el formulario sin recargar la página.
+    }
+
+    calculateTotal();
+</script>
 </body>
 </html>

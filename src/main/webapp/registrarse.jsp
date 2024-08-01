@@ -96,7 +96,7 @@
                 <label for="nombre">Nombre</label>
                 <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" maxlength="50">
                 <label for="telefono">Telefono</label>
-                <input class="form-control mb-3" type="text" name="telefono" id="telefono" placeholder="Ingrese su telefono" maxlength="12">
+                <input class="form-control mb-3" type="text" name="telefono" id="telefono" placeholder="Ingrese su telefono" maxlength="10">
                 <label for="email">Correo electronico</label>
                 <input class="form-control mb-3" type="text" name="email" id="email" placeholder="ejemplo@gmail.com" required>
                 <label for="contraseña1">Contraseña</label>

@@ -53,6 +53,39 @@ public class CarritoDetalleDao {
         return flag;
     }
 
+        public List<CarritoDetalle> getIdsDetalleCarrito(int id_usuario){
+            List<CarritoDetalle> carritoDetalles = new ArrayList<>();
+            String query = "SELECT cp.id_carrito_producto, p.id_producto AS nombre_producto, c.id_categoria AS nombre_categoria, " +
+                    "t.id_talla AS nombre_talla, co.id_color AS nombre_color, cp.cantidad, cp.precio, cp.total " +
+                    "FROM carrito_producto cp " +
+                    "JOIN carrito_compra cc ON cp.id_carrito = cc.id_carrito " +
+                    "JOIN productos p ON cp.id_producto = p.id_producto " +
+                    "JOIN categorias c ON cp.id_categoria = c.id_categoria " +
+                    "JOIN tallas t ON cp.id_talla = t.id_talla " +
+                    "JOIN colores co ON cp.id_color = co.id_color " +
+                    "WHERE cc.id_usuario = ?";
+            try{
+                Connection con = DatabaseConnectionManager.getConnection();
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setInt(1, id_usuario);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    CarritoDetalle cd = new CarritoDetalle();
+                    cd.setId_carrito(rs.getInt("id_carrito_producto"));
+                    cd.setId_producto(rs.getInt("id_producto"));
+                    cd.setId_categoria(rs.getInt("id_categoria"));
+                    cd.setId_talla(rs.getInt("id_talla"));
+                    cd.setId_color(rs.getInt("id_color"));
+                    cd.setCantidad(rs.getInt("cantidad"));
+                    cd.setTotal(rs.getDouble("total"));
+                    cd.setPrecio(rs.getDouble("precio"));
+                    carritoDetalles.add(cd);
+                }
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+            return carritoDetalles;
+        }
 
         public List<DetalleCarritoDTO> getDetallesCarrito(int id_usuario) {
             List<DetalleCarritoDTO> detalles = new ArrayList<>();
