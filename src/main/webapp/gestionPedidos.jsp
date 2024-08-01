@@ -1,4 +1,8 @@
-<%--
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.PedidoDetalle" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.PedidoDao" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: dan-a
   Date: 30/06/2024
@@ -65,6 +69,7 @@
         #tabla-redondeada tbody tr:last-child td:last-child {
             border-bottom-right-radius: 10px;
         }
+
     </style>
 </head>
 <body>
@@ -115,13 +120,42 @@
         <tr style="background-color: #FE7DCC; margin-bottom: 3px">
             <th>#</th>
             <th>Cliente</th>
-            <th>Descripcion</th>
-            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th class="text-center">Unidades</th>
             <th>Total</th>
-            <th>Status</th>
+            <th>Estatus</th>
             <th>Accion</th>
         </tr>
         </thead>
+        <tbody>
+        <%
+            PedidoDao dao = new PedidoDao();
+            List<PedidoDetalle> lista = null;
+            lista = dao.getPedidoDetallesParaAdministrador();
+            for( PedidoDetalle p : lista){
+        %>
+        <tr>
+            <td class="py-3"><%=p.getId_pedido_detalle()%></td>
+            <td class="py-3"><%=p.getNombre_cliente()%></td>
+            <td class="py-3"><%=p.getNombre_producto()%></td>
+            <td class="py-3"><%= p.getNombre_categoria()%></td>
+            <td class="py-3 text-center"><%=p.getNombre_talla()%></td>
+            <td class="py-3"><%=p.getNombre_color()%></td>
+            <td class="py-3 text-center"><%=p.getCantidad()%></td>
+            <td class="py-3">$<%=p.getTotal()%></td>
+            <td class="py-3"><%=p.getEstado()%></td>
+            <td class="py-2"><button class="btn btn-outline-success">Entregar</button></td>
+
+
+
+
+
+        </tr>
+        <% } %>
+        </tbody>
     </table>
 </div>
 </body>
