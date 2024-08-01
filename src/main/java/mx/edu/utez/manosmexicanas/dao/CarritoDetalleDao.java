@@ -117,6 +117,9 @@ public class CarritoDetalleDao {
                     detalle.setTotal(rs.getDouble("total"));
                     detalles.add(detalle);
                 }
+                rs.close();
+                ps.close();
+                con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
