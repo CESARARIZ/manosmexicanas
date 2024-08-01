@@ -1,11 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dan-a
-  Date: 30/06/2024
-  Time: 01:30 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.PedidoDetalle" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Pedidos</title>
@@ -23,6 +20,25 @@
         body{
             background-color: #F2F2F2;
         }
+
+        .navbar {
+            padding: 5px 0;
+        }
+        #nave, #log{
+            text-align: center;
+        }
+
+        #nave .dropdown-menu {
+            background-color: #FFFFFF; /* Color oscuro */
+        }
+        #nave .dropdown-menu a {
+            color: #061029; /* Color de los enlaces del dropdown */
+        }
+
+        .navbar-nav {
+            align-items: center; /* Centramos verticalmente los enlaces */
+        }
+
         .search-bar-container {
             position: relative;
             max-width: 400px; /* Máximo ancho de la barra de búsqueda */
@@ -88,7 +104,7 @@
             <div class="col-md-4 d-flex justify-content-center">
                 <nav id="nave" class="navbar navbar-expand-md navbar-dark">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Catalogo</a>
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="indexCliente.jsp">Catalogo</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                Más
@@ -127,14 +143,44 @@
         <thead>
         <tr style="background-color: #FE7DCC; margin-bottom: 3px">
             <th>#</th>
-            <th>Cliente</th>
-            <th>Descripcion</th>
-            <th>Fecha</th>
+            <th>Producto</th>
+            <th>Categoria</th>
+            <th>Talla</th>
+            <th>Color</th>
+            <th>Unidades</th>
             <th>Total</th>
-            <th>Status</th>
-            <th>Accion</th>
+            <th>Estado</th>
         </tr>
         </thead>
+        <tbody>
+        <%
+            List<PedidoDetalle> lista = (List<PedidoDetalle>) request.getAttribute("pedidos");
+            if (lista != null && !lista.isEmpty()) {
+                int contador = 1;
+                for (PedidoDetalle det : lista) {
+        %>
+        <tr>
+            <td class="text-center"><%= contador %></td>
+            <td class="text-center"><%= det.getNombre_producto() %></td>
+            <td class="text-center"><%= det.getNombre_categoria() %></td>
+            <td class="text-center"><%= det.getNombre_talla() %></td>
+            <td class="text-center"><%= det.getNombre_color() %></td>
+            <td class="text-center"><%= det.getCantidad() %></td>
+            <td class="text-center"><%= det.getTotal() %></td>
+            <td class="text-center"><%= det.getEstado() %></td>
+        </tr>
+        <%
+                contador++;
+            }
+        } else {
+        %>
+        <tr>
+            <td colspan="8" class="text-center align-middle">Aún no realizas una compra.</td>
+        </tr>
+        <%
+            }
+        %>
+        </tbody>
     </table>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
