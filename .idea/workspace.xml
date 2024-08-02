@@ -10,18 +10,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="Guarda pedido">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="servlet corregido para insertar los productos en el pedido">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/BloquearUsuarioServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/PedidosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/PedidosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/PedidoDetalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/PedidoDetalle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionPedidos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionPedidos.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionUsuarios.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionUsuarios.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -249,7 +245,11 @@
       <workItem from="1722395976803" duration="10073000" />
       <workItem from="1722435387621" duration="5897000" />
       <workItem from="1722488152380" duration="7275000" />
-      <workItem from="1722525937012" duration="9207000" />
+      <workItem from="1722525937012" duration="9745000" />
+      <workItem from="1722631659941" duration="258000" />
+      <workItem from="1722632098541" duration="302000" />
+      <workItem from="1722633940465" duration="465000" />
+      <workItem from="1722636918600" duration="2853000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -483,7 +483,71 @@
       <option name="project" value="LOCAL" />
       <updated>1722495416887</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Boton de confirmar carrito funcional">
+      <option name="closed" value="true" />
+      <created>1722536047218</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536047218</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Metodo dpara vaciar los productos del carrito">
+      <option name="closed" value="true" />
+      <created>1722536087676</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536087676</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Gestion de pedidos funcionando">
+      <option name="closed" value="true" />
+      <created>1722536112979</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536112979</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Arreglo de pequeño detalle">
+      <option name="closed" value="true" />
+      <created>1722536136345</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536136345</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Links funcionando correctamente">
+      <option name="closed" value="true" />
+      <created>1722536164893</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536164893</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Pagina funcionado donde muestra los pedidos de cada usuario">
+      <option name="closed" value="true" />
+      <created>1722536197685</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536197685</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Metodos actualizados">
+      <option name="closed" value="true" />
+      <created>1722536222128</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536222128</updated>
+    </task>
+    <task id="LOCAL-00037" summary="servlet corregido para insertar los productos en el pedido">
+      <option name="closed" value="true" />
+      <created>1722536253262</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1722536253262</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,12 +565,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="INICIO DE SESION FUNCIONAL" />
-    <MESSAGE value="AGREGE TODAS LAS PAGINAS" />
-    <MESSAGE value="modificacion pag admin" />
-    <MESSAGE value="identificacion tipo usuario" />
-    <MESSAGE value="servlets recuperacion contra" />
-    <MESSAGE value="form registrarse" />
     <MESSAGE value="gestion usuarios" />
     <MESSAGE value="productos" />
     <MESSAGE value="registrar" />
@@ -524,6 +582,14 @@
     <MESSAGE value="dao pedido y dao detalle pedido" />
     <MESSAGE value="xml" />
     <MESSAGE value="Guarda pedido" />
-    <option name="LAST_COMMIT_MESSAGE" value="Guarda pedido" />
+    <MESSAGE value="Boton de confirmar carrito funcional" />
+    <MESSAGE value="Metodo dpara vaciar los productos del carrito" />
+    <MESSAGE value="Gestion de pedidos funcionando" />
+    <MESSAGE value="Arreglo de pequeño detalle" />
+    <MESSAGE value="Links funcionando correctamente" />
+    <MESSAGE value="Pagina funcionado donde muestra los pedidos de cada usuario" />
+    <MESSAGE value="Metodos actualizados" />
+    <MESSAGE value="servlet corregido para insertar los productos en el pedido" />
+    <option name="LAST_COMMIT_MESSAGE" value="servlet corregido para insertar los productos en el pedido" />
   </component>
 </project>

@@ -36,6 +36,7 @@
             font-family: Sansita;
             font-size: 20px;
             padding: 10px;
+            vertical-align: middle;
 
         }
         tbody tr{
@@ -124,10 +125,12 @@
         <%
             UsuarioDao dao = new UsuarioDao();
             ArrayList<Usuario> lista = dao.getAll();
-            for( Usuario u : lista){
+            if (lista != null && !lista.isEmpty()) {
+                int contador = 1;
+                for( Usuario u : lista){
         %>
         <tr>
-            <td><%=u.getId()%></td>
+            <td><%=contador%></td>
             <td><%=u.getNombre_usuario()%></td>
             <td><%=u.getCorreo()%></td>
             <td><%=u.getTelefono()%></td>
@@ -139,13 +142,22 @@
                     <input type="hidden" name="estado" value="<%= u.getEstado() %>">
                     <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %>">
                         <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
-
                     </button>
                 </form>
             </td>
 
         </tr>
-        <% } %>
+        <%
+                    contador++;
+                }
+            } else {
+        %>
+        <tr>
+            <td colspan="7" class="text-center align-middle">Aún no hay clientes registrados.</td>
+        </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
 </div>

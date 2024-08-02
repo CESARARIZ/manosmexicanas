@@ -43,7 +43,7 @@
             font-family: Sansita;
             font-size: 20px;
             padding: 10px;
-
+            vertical-align: middle;
         }
         tbody tr{
             border: 0.5px solid #A7A7A7;
@@ -135,10 +135,12 @@
             PedidoDao dao = new PedidoDao();
             List<PedidoDetalle> lista = null;
             lista = dao.getPedidoDetallesParaAdministrador();
-            for( PedidoDetalle p : lista){
+            if (lista != null && !lista.isEmpty()) {
+                int contador = 1;
+                for( PedidoDetalle p : lista){
         %>
         <tr>
-            <td class="py-3"><%=p.getId_pedido_detalle()%></td>
+            <td class="py-3"><%=contador%></td>
             <td class="py-3"><%=p.getNombre_cliente()%></td>
             <td class="py-3"><%=p.getNombre_producto()%></td>
             <td class="py-3"><%= p.getNombre_categoria()%></td>
@@ -148,13 +150,19 @@
             <td class="py-3">$<%=p.getTotal()%></td>
             <td class="py-3"><%=p.getEstado()%></td>
             <td class="py-2"><button class="btn btn-outline-success">Entregar</button></td>
-
-
-
-
+        </tr>
+        <%
+                contador++;
+            }
+        } else {
+        %>
+        <tr>
+            <td colspan="10" class="text-center align-middle">Aún no hay pedidos registrados.</td>
 
         </tr>
-        <% } %>
+        <%
+            }
+        %>
         </tbody>
     </table>
 </div>

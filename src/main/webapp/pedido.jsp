@@ -55,7 +55,7 @@
             font-family: Sansita;
             font-size: 20px;
             padding: 10px;
-
+            vertical-align: middle;
         }
         tbody tr{
             border: 0.5px solid #A7A7A7;

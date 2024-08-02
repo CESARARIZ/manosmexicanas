@@ -45,6 +45,7 @@
             font-family: Sansita;
             font-size: 20px;
             padding: 10px;
+            vertical-align: middle;
 
         }
         tbody tr{
@@ -136,10 +137,13 @@
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            for( Producto p : lista){
+
+            if (lista != null && !lista.isEmpty()) {
+                int contador = 1;
+                for( Producto p : lista){
         %>
         <tr>
-            <td><%=p.getId_producto()%></td>
+            <td><%=contador%></td>
             <td><%=p.getNombre_producto()%></td>
             <td><%=p.getDescripcion()%></td>
             <td><%= p.getCategoria().getNombre_categoria() %></td>
@@ -158,7 +162,20 @@
 
 
         </tr>
-        <% } %>
+        <%
+                contador++;
+            }
+        } else {
+        %>
+        <tr>
+            <td colspan="7" class="text-center align-middle">Aún no hay productos registrados.</td>
+            <td colspan="7" class="text-center align-middle">
+                <button class="btn btn-outline-primary">Publicar productos ahors</button>
+            </td>
+        </tr>
+        <%
+            }
+        %>
         </tbody>
     </table>
 </div>

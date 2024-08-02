@@ -166,4 +166,20 @@ public class UsuarioDao {
         return flag;
     }
 
+    public boolean updateEstado (int id_usuario, String estado_usuario){
+        boolean flag = false;
+        String query = "update usuario set estado = ? where id_usuario = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1,estado_usuario);
+            ps.setInt(2,id_usuario);
+            if (ps.executeUpdate()>0){
+                flag = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }

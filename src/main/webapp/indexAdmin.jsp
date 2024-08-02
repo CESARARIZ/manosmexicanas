@@ -152,11 +152,7 @@
                         <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="publicarProductos.jsp">Publicar</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="perfil.jsp" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <% if (usuario != null) { %>
-                                <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
-                                <% } else { %>
-                                Perfil
-                                <% } %>
+                                Gestiones
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionUsuarios.jsp">Clientes</a>
