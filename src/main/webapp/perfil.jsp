@@ -139,7 +139,7 @@
 <div class="row">
 
         <div class="col-md-2">
-            <img src="img/icono_de_perfil.png" alt="Perfil" height="35" width="35">
+            <img src="img/icono_de_perfil.png" alt="Perfil" height="150" width="200">
         </div>
         <div class="col-md-4">
             <div>
