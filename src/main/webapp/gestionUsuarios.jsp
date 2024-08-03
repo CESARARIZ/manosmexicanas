@@ -127,14 +127,20 @@
             ArrayList<Usuario> lista = dao.getAll();
             if (lista != null && !lista.isEmpty()) {
                 int contador = 1;
+                String direccion="";
                 for( Usuario u : lista){
+                    if(u.getDireccion()==null){
+                        direccion="Sin direccion registrada.";
+                    }else{
+                        direccion=u.getDireccion();
+                    }
         %>
         <tr>
             <td><%=contador%></td>
             <td><%=u.getNombre_usuario()%></td>
             <td><%=u.getCorreo()%></td>
             <td><%=u.getTelefono()%></td>
-            <td><%=u.getDireccion()%></td>
+            <td><%=direccion%></td>
             <td><%=u.getEstado()%></td>
             <td>
                 <form action="eliminar" method="post">
