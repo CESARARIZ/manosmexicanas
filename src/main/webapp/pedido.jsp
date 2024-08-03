@@ -160,14 +160,14 @@
                 for (PedidoDetalle det : lista) {
         %>
         <tr>
-            <td class="text-center"><%= contador %></td>
-            <td class="text-center"><%= det.getNombre_producto() %></td>
-            <td class="text-center"><%= det.getNombre_categoria() %></td>
-            <td class="text-center"><%= det.getNombre_talla() %></td>
-            <td class="text-center"><%= det.getNombre_color() %></td>
-            <td class="text-center"><%= det.getCantidad() %></td>
-            <td class="text-center"><%= det.getTotal() %></td>
-            <td class="text-center"><%= det.getEstado() %></td>
+            <td ><%= contador %></td>
+            <td ><%= det.getNombre_producto() %></td>
+            <td><%= det.getNombre_categoria() %></td>
+            <td><%= det.getNombre_talla() %></td>
+            <td><%= det.getNombre_color() %></td>
+            <td>  <%= det.getCantidad() %></td>
+            <td>$<%= det.getTotal() %></td>
+            <td><%= det.getEstado() %></td>
         </tr>
         <%
                 contador++;

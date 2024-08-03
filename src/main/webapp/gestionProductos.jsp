@@ -118,8 +118,8 @@
     </div>
     <table class="table" id="tabla-redondeada">
         <thead>
-        <tr style="background-color: #FE7DCC; margin-bottom: 3px">
-            <th>Imagen</th>
+        <tr style="background-color: #FE7DCC; margin-bottom: 3px; height: 40px">
+            <th>#</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Categoria</th>
@@ -142,12 +142,12 @@
                 int contador = 1;
                 for( Producto p : lista){
         %>
-        <tr>
+        <tr style="height: 60px;">
             <td><%=contador%></td>
             <td><%=p.getNombre_producto()%></td>
             <td><%=p.getDescripcion()%></td>
             <td><%= p.getCategoria().getNombre_categoria() %></td>
-            <td><%=p.getPrecio()%></td>
+            <td>$<%=p.getPrecio()%></td>
             <td><%=p.getStockDisponible()%></td>
             <td>
                 <button style="border: none;">

@@ -14,11 +14,11 @@
             System.out.println("ID del usuario recuperado: " + id_usuario);
         } else {
             // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("ingresar.jsp");
         }
     } else {
         // Redirigir a la página de inicio de sesión si no hay sesión
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("ingresar.jsp");
     }
 %>
 <html>

@@ -34,7 +34,7 @@ public class CarritoDetalleDao {
 
     public boolean insertDetalleCarrito(CarritoDetalle cd) {
         boolean flag = false;
-        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria,id_talla, id_color, cantidad, total, precio) VALUES (?, ?,?, ?, ?, ?, ?,?)";
+        String query = "INSERT INTO carrito_producto (id_carrito, id_producto, id_categoria, id_talla, id_color, cantidad, total, precio) VALUES (?, ?,?, ?, ?, ?, ?,?)";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
