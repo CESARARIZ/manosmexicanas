@@ -14,11 +14,11 @@
             System.out.println("ID del usuario recuperado: " + id_usuario);
         } else {
             // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
-            response.sendRedirect("ingresar.jsp");
+            response.sendRedirect("login.jsp");
         }
     } else {
         // Redirigir a la página de inicio de sesión si no hay sesión
-        response.sendRedirect("ingresar.jsp");
+        response.sendRedirect("login.jsp");
     }
 %>
 <html>
@@ -166,7 +166,7 @@
             <div class="col-md-4 d-flex justify-content-center">
                 <nav id="nave" class="navbar navbar-expand-md navbar-dark">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Pedidos</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if (usuario != null) { %>
