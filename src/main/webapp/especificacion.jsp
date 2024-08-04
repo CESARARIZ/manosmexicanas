@@ -69,7 +69,7 @@
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-md-2" id="log">
-                <a href="index.jsp">
+                <a href="indexCliente.jsp">
                     <img src="img/logoMM.png" alt="" width="100px" height="80px">
                 </a>
             </div>
