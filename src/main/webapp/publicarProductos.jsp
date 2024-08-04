@@ -1,3 +1,6 @@
+<%@ page import="mx.edu.utez.manosmexicanas.dao.UsuarioDao" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -97,7 +100,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-2" id="log">
-                <a href="index.jsp">
+                <a href="indexCliente.jsp">
                     <img src="img/logoMM.png" alt="" width="100px" height="80px">
                 </a>
             </div>

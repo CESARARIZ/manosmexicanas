@@ -1,11 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: dan-a
-  Date: 30/06/2024
-  Time: 02:43 p. m.
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.UsuarioDao" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    HttpSession sessionn = request.getSession(false);
+    Usuario usuario = null;
+    int id_usuario = 0;
+    if (sessionn != null) {
+        usuario = (Usuario) sessionn.getAttribute("usuario");
+        if (usuario != null) {
+            id_usuario = usuario.getId();
+            System.out.println("ID del usuario recuperado: " + id_usuario);
+        } else {
+            // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
+            response.sendRedirect("login.jsp");
+        }
+    } else {
+        // Redirigir a la página de inicio de sesión si no hay sesión
+        response.sendRedirect("login.jsp");
+    }
+%>
+
 <html>
 <head>
     <title>Perfil</title>
@@ -143,10 +161,13 @@
         </div>
         <div class="col-md-4">
             <div>
-                <h2>Maximiliano Roque Balboa</h2>
-                <p><a href="mailto:max@gmail.com">max@gmail.com</a></p>
+                <%
+                    UsuarioDao dao = new UsuarioDao();
+                %>
+                <h2><%= usuario.getNombre_usuario() %></h2>
+                <p><a href="<%=usuario.getCorreo()%>"><%=usuario.getCorreo()%></a></p>
                 <p>Número de teléfono</p>
-                <p>7771234567</p>
+                <p><%=usuario.getTelefono()%></p>
             </div>
         </div>
 </div>
