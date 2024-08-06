@@ -95,11 +95,18 @@
                     </div>
                     <br>
                     <%-- Mensaje de error desde la sesión --%>
-                    <% HttpSession sesion = request.getSession();
+                    <%
+                        HttpSession sesion = request.getSession();
                         String mensaje = (String) sesion.getAttribute("mensaje");
-                        if (mensaje != null) { %>
+
+                        if (mensaje != null) {
+                    %>
                     <p style="color: red;"><%= mensaje %></p>
-                    <% } %>
+                    <%
+                            // Invalida la sesión después de mostrar el mensaje
+                            sesion.invalidate();
+                        }
+                    %>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                         <br><br>
