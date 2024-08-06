@@ -133,8 +133,8 @@
             <h1>Publicar producto</h1>
             <form action="addProducto">
                 <div class="form-group">
-                    <label for="nombre-producto">Nombre del producto:</label>
-                    <input type="text" class="form-control" id="nombre-producto">
+                    <label for="nombre_producto">Nombre del producto:</label>
+                    <input type="text" class="form-control" id="nombre_producto">
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>

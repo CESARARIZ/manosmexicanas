@@ -163,11 +163,11 @@
             <td ><%= contador %></td>
             <td ><%= det.getNombre_producto() %></td>
             <td><%= det.getNombre_categoria() %></td>
-            <td><%= det.getNombre_talla() %></td>
+            <td class="mx-1"><%= det.getNombre_talla() %></td>
             <td><%= det.getNombre_color() %></td>
-            <td>  <%= det.getCantidad() %></td>
+            <td class="mx-1">  <%= det.getCantidad() %></td>
             <td>$<%= det.getTotal() %></td>
-            <td><%= det.getEstado() %></td>
+            <td><input type="button"  class="btn <%= "Pendiente".equals(det.getEstado()) ? "btn-secondary" : "btn-success" %>" value="<%= det.getEstado() %>" readonly></td>
         </tr>
         <%
                 contador++;

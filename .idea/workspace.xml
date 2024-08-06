@@ -10,12 +10,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="Arreglo de usuarios sin direccion">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="Arreglo de detalles en las tablas para gestionar.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/VaciarCarritoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosCarritoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosCarritoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +68,7 @@
     &quot;Tomcat Server.Tomcat 10.1.8.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/Documents/practica&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/IdeaProjects/manosMexicanas&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -248,7 +251,15 @@
       <workItem from="1722633940465" duration="465000" />
       <workItem from="1722636918600" duration="3006000" />
       <workItem from="1722651622598" duration="171000" />
-      <workItem from="1722656292992" duration="3759000" />
+      <workItem from="1722656292992" duration="3819000" />
+      <workItem from="1722697699275" duration="116000" />
+      <workItem from="1722875224144" duration="4520000" />
+      <workItem from="1722880415289" duration="37000" />
+      <workItem from="1722888618228" duration="76000" />
+      <workItem from="1722893663645" duration="12000" />
+      <workItem from="1722900827836" duration="61000" />
+      <workItem from="1722903285854" duration="1115000" />
+      <workItem from="1722912864821" duration="2600000" />
     </task>
     <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
       <option name="closed" value="true" />
@@ -570,7 +581,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722657657561</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Arreglo de detalles en las tablas para gestionar.">
+      <option name="closed" value="true" />
+      <created>1722660142721</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1722660142721</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -588,7 +607,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Productos" />
     <MESSAGE value="w" />
     <MESSAGE value="especificacion" />
     <MESSAGE value="x" />
@@ -613,6 +631,7 @@
     <MESSAGE value="Arreglo de detalles en tablas y servlet bloquear usuario" />
     <MESSAGE value="workspace" />
     <MESSAGE value="Arreglo de usuarios sin direccion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Arreglo de usuarios sin direccion" />
+    <MESSAGE value="Arreglo de detalles en las tablas para gestionar." />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglo de detalles en las tablas para gestionar." />
   </component>
 </project>

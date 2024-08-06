@@ -22,7 +22,7 @@ public class ProductosCarritoServlet extends HttpServlet {
         if (usuario != null) {
             int id_usuario = usuario.getId();
             CarritoDetalleDao dao = new CarritoDetalleDao();
-
+            System.out.println("USUARIO EN SERVLET: "+id_usuario);
             List<DetalleCarritoDTO> cd = dao.getDetallesCarrito(id_usuario);
             List<CarritoDetalle> car = dao.getIdsDetalleCarrito(id_usuario);
 

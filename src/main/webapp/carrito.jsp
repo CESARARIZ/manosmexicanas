@@ -6,9 +6,26 @@
 <%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-    Usuario usuario = (Usuario) request.getAttribute("usuario");
-    List<DetalleCarritoDTO> lista = (List<DetalleCarritoDTO>) request.getAttribute("carrito");
-    List<CarritoDetalle> lista2 = (List<CarritoDetalle>) request.getAttribute("carritoDetalle");
+    HttpSession session1 = request.getSession(false);
+    Usuario usuario = null;
+    int id_usuario=0;
+    List<DetalleCarritoDTO> lista = null;
+    List<CarritoDetalle> lista2 = null;
+    if (session1 != null) {
+        usuario = (Usuario) session1.getAttribute("usuario");
+        lista = (List<DetalleCarritoDTO>) request.getAttribute("carrito");
+        lista2 = (List<CarritoDetalle>) request.getAttribute("carritoDetalle");
+        if (usuario != null) {
+            id_usuario = usuario.getId();
+            System.out.println("ID del usuario recuperado: " + id_usuario);
+        } else {
+            // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
+            response.sendRedirect("ingresar.jsp");
+        }
+    }else{
+        response.sendRedirect("ingresar.jsp");
+    }
+
 
 %>
 
@@ -221,7 +238,7 @@
             <div class="col-lg-4">
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="indexCliente.jsp">Catalogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="pedido.jsp">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="perfil.jsp">Perfil</a>
                 </nav>
             </div>
@@ -321,11 +338,15 @@
                 <h6>Total de productos: <%= totalProductos %></h6>
                 <h4>Total a pagar: $<%= totalPagar %></h4>
                 <div class="text-center">
-                    <input type="hidden" name="id_usuario" value="<%= usuario.getId()%>">
-                    <button type="submit" class="btn btn-primary">Confirmar pedido</button>
-                    <button type="button" class="btn btn-secondary" onclick="vaciarCarrito()">Vaciar carrito</button>
+                    <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                    <button type="submit" class="btn btn-outline-success">Confirmar pedido</button>
+
                 </div>
                 <% } %>
+            </form>
+            <form action="vaciarCarrito" method="post">
+                <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                <button type="submit" class="btn btn-outline-danger" >Vaciar carrito</button>
             </form>
 
         </div>

@@ -16,11 +16,11 @@
             System.out.println("ID del usuario recuperado: " + id_usuario);
         } else {
             // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("ingresar.jsp");
         }
     } else {
         // Redirigir a la página de inicio de sesión si no hay sesión
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("ingresar.jsp");
     }
 %>
 
@@ -145,7 +145,7 @@
             <div class="col-lg-4">
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexCliente.jsp">Catálogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="pedido.jsp">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                     <a href="carrito.html">
                         <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
                 </nav>
@@ -154,12 +154,14 @@
     </div>
 
 </header>
-<div class="row">
+<div class="container">
 
-        <div class="col-md-2">
+    <div class="row" style="background-color: #FE7DCC">
+
+        <div class="col-md-2 m-2">
             <img src="img/icono_de_perfil.png" alt="Perfil" height="150" width="230">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 m-2">
             <div>
                 <%
                     UsuarioDao dao = new UsuarioDao();
@@ -170,79 +172,84 @@
                 <p><%=usuario.getTelefono()%></p>
             </div>
         </div>
+    </div>
+
+    <div class="row" style="background-color: #FE7DCC">
+
+        <div class="col-md-6 text-center" style="align-items: center">
+            <form>
+                <section class="perfil">
+
+                    <div class="mis-pedidos">
+                        <h3>Mis pedidos</h3>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th>Estatus</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
+                                <td>Mantel</td>
+                                <td>Mantel de mesa</td>
+                                <td>$150.00</td>
+                                <td>Decorativos</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
+                                <td>Alfombra</td>
+                                <td>Alfombra colorida</td>
+                                <td>$100.00</td>
+                                <td>Decorativos</td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mis-compras">
+                        <h3>Mis compras</h3>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th>Estatus</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
+                                <td>Mantel</td>
+                                <td>Mantel de mesa</td>
+                                <td>$150.00</td>
+                                <td>Decorativos</td>
+                                <td><span class="estatus-recibido">RECIBIDO</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
+                                <td>Alfombra</td>
+                                <td>Alfombra colorida</td>
+                                <td>$100.00</td>
+                                <td>Decorativos</td>
+                                <td><span class="estatus-recibido">RECIBIDO</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
 </div>
-
-
-<form>
-    <section class="perfil">
-
-    <div class="mis-pedidos">
-        <h3>Mis pedidos</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Estatus</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
-                <td>Mantel</td>
-                <td>Mantel de mesa</td>
-                <td>$150.00</td>
-                <td>Decorativos</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
-                <td>Alfombra</td>
-                <td>Alfombra colorida</td>
-                <td>$100.00</td>
-                <td>Decorativos</td>
-                <td></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="mis-compras">
-        <h3>Mis compras</h3>
-        <table>
-            <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Estatus</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><img src="img/Mantel.jpeg" alt="Mantel"></td>
-                <td>Mantel</td>
-                <td>Mantel de mesa</td>
-                <td>$150.00</td>
-                <td>Decorativos</td>
-                <td><span class="estatus-recibido">RECIBIDO</span></td>
-            </tr>
-            <tr>
-                <td><img src="img/Alfombra.jpeg" alt="Alfombra"></td>
-                <td>Alfombra</td>
-                <td>Alfombra colorida</td>
-                <td>$100.00</td>
-                <td>Decorativos</td>
-                <td><span class="estatus-recibido">RECIBIDO</span></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section></form>
-</main>
 </body>
 </html>
