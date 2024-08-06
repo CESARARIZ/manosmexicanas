@@ -10,9 +10,10 @@ public class PedidoProducto {
     private int cantidad;
     private double precio_unitario;
     private double total;
+    private String estado;
     public PedidoProducto() {}
 
-    public PedidoProducto(int id_pedido_producto, int id_pedido, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double precio_unitario, double total) {
+    public PedidoProducto(int id_pedido_producto, int id_pedido, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double precio_unitario, double total, String estado) {
         this.id_pedido_producto = id_pedido_producto;
         this.id_pedido = id_pedido;
         this.id_producto = id_producto;
@@ -22,6 +23,7 @@ public class PedidoProducto {
         this.cantidad = cantidad;
         this.precio_unitario = precio_unitario;
         this.total = total;
+        this.estado = estado;
     }
 
     public int getId_pedido_producto() {
@@ -94,5 +96,13 @@ public class PedidoProducto {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

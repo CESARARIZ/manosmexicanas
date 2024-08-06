@@ -148,8 +148,25 @@
             <td class="py-3"><%=p.getNombre_color()%></td>
             <td class="py-3 text-center"><%=p.getCantidad()%></td>
             <td class="py-3">$<%=p.getTotal()%></td>
-            <td class="py-3"><%=p.getEstado()%></td>
-            <td class="py-2"><button class="btn btn-outline-success">Entregar</button></td>
+            <td class="py-3">
+                <input type="button" class="btn <%="Pendiente".equals(p.getEstado()) ? "btn-outline-danger" : "btn-outline-success" %>" value="<%="Pendiente".equals(p.getEstado()) ? "Pendiente" : "Entregado" %>" readonly>
+            </td>
+            <td class="py-2">
+                <%
+                    if("Pendiente".equals(p.getEstado())){
+                %>
+                <form action="entregarPedido" method="post">
+                    <input type="hidden" name="id_pedido_detalle" value="<%=p.getId_pedido_detalle()%>">
+                    <input type="hidden" name="id_pedido" value="<%=p.getId_pedido()%>">
+                    <input type="hidden" name="estado" value="<%=p.getEstado()%>">
+                    <input type="submit" class="btn btn-danger" value="Entregar">
+                </form>
+                <%
+                    }else{
+                %>
+                <input type="button" class="btn btn-secondary" value="Entregado" readonly>
+                <%}%>
+            </td>
         </tr>
         <%
                 contador++;

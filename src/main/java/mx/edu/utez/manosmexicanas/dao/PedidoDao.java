@@ -58,7 +58,7 @@ public class PedidoDao {
     public List<PedidoDetalle> getPedidoDetalles(int id_usuario){
         List<PedidoDetalle> pedidoDetalles = new ArrayList<PedidoDetalle>();
         String query = "SELECT pp.id_pedido_producto, pp.id_pedido, p.nombre AS nombre_producto, cat.nombre_categoria AS nombre_categoria, " +
-                "t.talla AS nombre_talla, co.color AS nombre_color, pp.cantidad, pp.total, pe.estatus " +
+                "t.talla AS nombre_talla, co.color AS nombre_color, pp.cantidad, pp.total, pp.estatus " +
                 "FROM pedido_producto pp " +
                 "JOIN pedido pe ON pp.id_pedido = pe.id_pedido " +
                 "JOIN productos p ON pp.id_producto = p.id_producto " +
@@ -97,7 +97,7 @@ public class PedidoDao {
 
     public boolean updateEstado(int id_pedido_producto, String estado){
         boolean flag = false;
-        String sql = "UPDATE pedido_producto SET estado = ? WHERE id_pedido_producto = ?";
+        String sql = "UPDATE pedido_producto SET estatus = ? WHERE id_pedido_producto = ?";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -106,6 +106,8 @@ public class PedidoDao {
             if(ps.executeUpdate() > 0){
                 flag = true;
             }
+            ps.close();
+            con.close();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -117,7 +119,7 @@ public class PedidoDao {
         List<PedidoDetalle> pedidoDetalles = new ArrayList<>();
         String query = "SELECT pp.id_pedido_producto, pp.id_pedido, u.nombre_usuario, p.nombre AS nombre_producto, " +
                 "cat.nombre_categoria AS nombre_categoria, t.talla AS nombre_talla, co.color AS nombre_color, " +
-                "pp.cantidad, pp.total, pe.estatus " +
+                "pp.cantidad, pp.total, pp.estatus " +
                 "FROM pedido_producto pp " +
                 "JOIN pedido pe ON pp.id_pedido = pe.id_pedido " +
                 "JOIN usuario u ON pe.id_usuario = u.id_usuario " +
