@@ -148,6 +148,112 @@ public class ProductoDao {
         return colores;
     }
 
+    public ArrayList<Categoria> getCategorias() {
+        Categoria c = new Categoria();
+        String query = "SELECT id_categoria,nombre_categoria FROM CATEGORIAS";
+        ArrayList<Categoria> categorias = new ArrayList<>();
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query);
+             ResultSet resultSet = ps.executeQuery()) {
+
+            while (resultSet.next()) {
+                c.setId_categoria(resultSet.getInt("id_categoria"));
+                c.setNombre_categoria(resultSet.getString("nombre_categoria"));
+                categorias.add(c);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+
+    public boolean inserCategoria(Categoria c) {
+        boolean flag = false;
+        String sql="INSERT INTO categorias (nombre_categoria) VALUES (?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, c.getNombre_categoria());
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean insert(Producto p) throws SQLException {
+        boolean flag = false;
+        String sql = "INSERT INTO Productos (nombre, descripcion, precio, stock, id_categoria) VALUES (?, ?, ?,?,?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, p.getNombre_producto());
+            ps.setString(2, p.getDescripcion());
+            ps.setDouble(3, p.getPrecio());
+            ps.setInt(4,p.getStockDisponible());
+            ps.setInt(5,p.getCategoria().getId_categoria());
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean insertColores(ColorProducto cp)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO colores (nombre)VALUES (?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, cp.getNombre());
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean insertTallas(Talla t)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO tallas (nombre)VALUES (?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, t.getNombre());
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean insertImg(Imagen img)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO imagen (id_usuario, imagen)VALUES (?,?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,img.getId_producto());
+
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
 
 
 

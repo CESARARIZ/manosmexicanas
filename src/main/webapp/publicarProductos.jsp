@@ -133,21 +133,23 @@
         <div class="col-md-9">
             <form action="" class="needs-validation" novalidate>
                 <div class="row">
-                    <div class="col-md-5 m-2">
-                        <p>parte 1</p>
+                    <div class="row mb-2 mt-3 ms-2">
+                        <h1 style="font-family: Sansita">Publicar producto</h1>
+                    </div>
+                    <div class="col-md-4 m-3 ms-4">
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Nombre del producto:</label>
-                            <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese el nombre..." required>
+                            <input type="text" class="form-control" name="nombre_producto" id="validationTooltip01" placeholder="Ingrese el nombre..." required>
                         </div>
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Descripcion:</label>
-                            <textarea type="text" class="form-control" id="validationTooltip01" rows="3" placeholder="Ingrese la descripción.." required></textarea>
+                            <textarea type="text" class="form-control" name="descripcion" id="validationTooltip01" rows="3" placeholder="Ingrese la descripción.." required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Color:</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese el color..." required>
-                                <button type="buttone" id="nuevoColor" class="btn btn-success">+</button>
+                                <input type="text" class="form-control" name="color1" id="validationTooltip01" placeholder="Ingrese el color..." required>
+                                <button type="button" id="nuevoColor" class="btn btn-success">+</button>
 
                             </div>
                             <div class="mb-3" id="coloresNuevos">
@@ -161,7 +163,7 @@
                             <label for="validationTooltip01" class="form-label">Talla:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese la talla..." required>
-                                <button type="buttone" id="nuevaTalla" class="btn btn-success">+</button>
+                                <button type="button" id="nuevaTalla" class="btn btn-success">+</button>
                             </div>
                             <div class="mb-3" id="tallasNuevas">
 
@@ -170,22 +172,24 @@
 
 
                     </div>
+                    <div class="col-md-1">
 
-                    <div class="col-md-5 m-2">
-                        <p>parte 2</p>
+                    </div>
+
+                    <div class="col-md-4 m-3">
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Unidades disponibles:</label>
                             <input type="number" class="form-control" id="validationTooltip01" placeholder="Ingrese las unidades..." required>
                         </div>
                         <div class="mb-3">
-                            <label for="validationTooltip01" class="form-label">Categoria:</label>
+                            <label for="validationCustom04" class="form-label">Categoria:</label>
                             <div class="input-group mb-3">
-                                <select class="form-select" id="validationTooltip01" aria-label="Example select with button addon">
-                                    <option selected>Selecciona...</option>
-                                    <option value="1">Ropa mujer</option>
-                                    <option value="2">Ropa hombre</option>
-                                    <option value="3">Accesorios</option>
-                                </select>
+                            <select class="form-select" id="validationCustom04" required>
+                                <option selected disabled value="">Selecciona...</option>
+                                <option value="1">Ropa mujer</option>
+                                <option value="2">Ropa hombre</option>
+                                <option value="3">Accesorios</option>
+                            </select>
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
                             </div>
                         </div>
@@ -193,14 +197,14 @@
                             <label for="validationTooltip01" class="form-label">Precio:</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" id="validationTooltip01" placeholder="name@example.com" required>
+                                <input type="text" class="form-control" id="validationTooltip01" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Adjuntar imagen del producto:</label>
                             <div class="input-group">
-                                <input class="form-control" type="file" id="validationTooltip01">
-                                <button type="buttone" id="nuevaImg" class="btn btn-success">+</button>
+                                <input class="form-control" name="img1" type="file" id="validationTooltip01" required>
+                                <button type="button" id="nuevaImg" class="btn btn-success">+</button>
                             </div>
                             <div class="mb-3" id="imgNuevas">
 
