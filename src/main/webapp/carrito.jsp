@@ -208,7 +208,7 @@
         }
 
         .carrito-total {
-            height: 300px;
+            height: 350px;
             position: sticky;
             top: 0;
         }
@@ -336,7 +336,9 @@
                 <input type="hidden" name="total" value="<%= dc.getTotal() %>">
                     <% } %>
                 <h6>Total de productos: <%= totalProductos %></h6>
+                <br>
                 <h4>Total a pagar: $<%= totalPagar %></h4>
+                <br>
                 <div class="text-center">
                     <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                     <button type="submit" class="btn btn-outline-success">Confirmar pedido</button>
@@ -344,11 +346,13 @@
                 </div>
                 <% } %>
             </form>
-            <form action="vaciarCarrito" method="post">
-                <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
-                <button type="submit" class="btn btn-outline-danger" >Vaciar carrito</button>
-            </form>
+           <div class="text-center">
+               <form action="vaciarCarrito" method="post">
+                   <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                   <button type="submit" class="btn btn-outline-danger" >Vaciar carrito</button>
+               </form>
 
+           </div>
         </div>
         <% } %>
     </div>

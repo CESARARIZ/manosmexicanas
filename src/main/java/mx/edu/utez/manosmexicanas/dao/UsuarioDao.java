@@ -188,4 +188,35 @@ public class UsuarioDao {
 
         return flag;
     }
+
+    public Usuario getCorreo(int id_usuario) {
+        Usuario u = new Usuario();
+        String query = "select * from usuario where id_usuario = ? ";
+
+        try {
+            // 1) Conectarnos a la BD
+            Connection con = DatabaseConnectionManager.getConnection();
+            // 2) Configurar el query y ejecutarlo
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id_usuario);
+            ResultSet rs = ps.executeQuery();
+            // 3) Obtener la información
+            if (rs.next()) {
+                // Entonces llenamos la información del usuario
+                u.setId(rs.getInt("id_usuario"));
+                u.setNombre_usuario(rs.getString("nombre_usuario"));
+                u.setTelefono(rs.getString("telefono"));
+                u.setCorreo(rs.getString("correo"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setContra(rs.getString("contra"));
+                u.setEstado(rs.getString("estado"));
+                u.setTipo_usuario(rs.getString("tipo_usuario"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    }
+
+
 }

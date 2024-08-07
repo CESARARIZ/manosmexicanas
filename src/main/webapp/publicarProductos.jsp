@@ -129,74 +129,239 @@
                 <p>Teléfono: 7771234567</p>
             </form>
         </div>
-        <div class="col-md-4">
-            <h1>Publicar producto</h1>
-            <form action="addProducto">
-                <div class="form-group">
-                    <label for="nombre_producto">Nombre del producto:</label>
-                    <input type="text" class="form-control" id="nombre_producto">
-                </div>
-                <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea class="form-control" id="descripcion" rows="4"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Colores:</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Color 1">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">+</button>
+
+        <div class="col-md-9">
+            <form action="" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-5 m-2">
+                        <p>parte 1</p>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Nombre del producto:</label>
+                            <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese el nombre..." required>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Color 2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">+</button>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Descripcion:</label>
+                            <textarea type="text" class="form-control" id="validationTooltip01" rows="3" placeholder="Ingrese la descripción.." required></textarea>
                         </div>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Color:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese el color..." required>
+                                <button type="buttone" id="nuevoColor" class="btn btn-success">+</button>
+
+                            </div>
+                            <div class="mb-3" id="coloresNuevos">
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label for="validationTooltip01" class="form-label">Talla:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese la talla..." required>
+                                <button type="buttone" id="nuevaTalla" class="btn btn-success">+</button>
+                            </div>
+                            <div class="mb-3" id="tallasNuevas">
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-5 m-2">
+                        <p>parte 2</p>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Unidades disponibles:</label>
+                            <input type="number" class="form-control" id="validationTooltip01" placeholder="Ingrese las unidades..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Categoria:</label>
+                            <div class="input-group mb-3">
+                                <select class="form-select" id="validationTooltip01" aria-label="Example select with button addon">
+                                    <option selected>Selecciona...</option>
+                                    <option value="1">Ropa mujer</option>
+                                    <option value="2">Ropa hombre</option>
+                                    <option value="3">Accesorios</option>
+                                </select>
+                                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Precio:</label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" id="validationTooltip01" placeholder="name@example.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Adjuntar imagen del producto:</label>
+                            <div class="input-group">
+                                <input class="form-control" type="file" id="validationTooltip01">
+                                <button type="buttone" id="nuevaImg" class="btn btn-success">+</button>
+                            </div>
+                            <div class="mb-3" id="imgNuevas">
+
+                            </div>
+                        </div>
+
+
+
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Tallas:</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Talla 1">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">+</button>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Talla 2">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button">+</button>
-                        </div>
-                    </div>
+                <div class="col-10 text-center">
+                    <button class="btn btn-primary" type="submit">Publicar</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Publicar</button>
             </form>
-        </div>
-        <div class="col-md-4">
-            <div><h1>&nbsp;</h1>
-                <div class="form-group">
-                    <label for="unidades">Unidades disponibles:</label>
-                    <input type="number" class="form-control" id="unidades">
-                </div>
-                <div class="form-group">
-                    <label for="categoria">Categoría:</label>
-                    <input type="text" class="form-control" id="categoria">
-                </div>
-                <div class="form-group">
-                    <label for="precio">Precio:</label>
-                    <input type="number" class="form-control" id="precio">
-                </div>
-                <div class="form-group">
-                    <label>Adjuntar imagen del producto:</label>
-                    <div class="d-flex flex-wrap">
-                        <button class="btn btn-outline-secondary" type="button">Adjuntar imagen...</button>
+
+            <!-- Button trigger modal -->
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoria</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="agregarCategoria" method="post">
+                                <label class="form-label mb-2">Categoria nueva:</label>
+                                <input type="text" class="form-control mt-2" name="" id="">
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="submit" class="btn btn-primary" value="Agregar">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
 </div>
+<script>
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+<script>
+    //divs
+    let nuevoDivColor = document.getElementById("coloresNuevos");
+    let nuevoDivTalla = document.getElementById("tallasNuevas");
+    let nuevoDivImg = document.getElementById("imgNuevas");
+
+    let i=2;
+    let j=2;
+    let k=2;
+
+    //botones
+    let nuevoColor = document.getElementById("nuevoColor");
+    let nuevaTalla = document.getElementById("nuevaTalla");
+    let nuevaImg = document.getElementById("nuevaImg");
+
+    nuevoColor.addEventListener("click", () =>{
+        let div = document.createElement("div");
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+
+        //elementos del label
+        label.innerText = "Color " + i + ":";
+        label.setAttribute("for", "validationTooltip01");
+        label.setAttribute("class", "form-label mt-2");
+        //elementos del input
+        input.setAttribute("type", "text");
+        input.setAttribute("name", "color "+i);
+        input.setAttribute("class", "form-control mb-2");
+        input.setAttribute("id", "validationTooltip01");
+        input.setAttribute("placeholder", "Ingresa el color "+i);
+
+        div.appendChild(label);
+        div.appendChild(input);
+        nuevoDivColor.appendChild(div);
+
+        i++;
+        event.preventDefault();
+    })
+
+    nuevaTalla.addEventListener("click", () =>{
+        let div2 = document.createElement("div");
+        let label2 = document.createElement("label");
+        let input2 = document.createElement("input");
+
+        //elementos del label
+        label2.innerText = "Talla " + j + ":";
+        label2.setAttribute("for", "validationTooltip01");
+        label2.setAttribute("class", "form-label mt-2");
+        //elementos del input
+        input2.setAttribute("type", "text");
+        input2.setAttribute("name", "talla "+j);
+        input2.setAttribute("class", "form-control mb-2");
+        input2.setAttribute("id", "validationTooltip01");
+        input2.setAttribute("placeholder", "Ingresa la talla "+j);
+
+        div2.appendChild(label2);
+        div2.appendChild(input2);
+        nuevoDivTalla.appendChild(div2);
+
+        j++;
+        event.preventDefault();
+    })
+
+    nuevaImg.addEventListener("click", () =>{
+        let div3 = document.createElement("div");
+        let label3 = document.createElement("label");
+        let input3 = document.createElement("input");
+
+        //elementos del label
+        label3.innerText = "Imagen " + k + ":";
+        label3.setAttribute("for", "validationTooltip01");
+        label3.setAttribute("class", "form-label mt-2");
+        //elementos del input
+        input3.setAttribute("type", "file");
+        input3.setAttribute("name", "img "+k);
+        input3.setAttribute("class", "form-control mb-2");
+        input3.setAttribute("id", "validationTooltip01");
+
+        div3.appendChild(label3);
+        div3.appendChild(input3);
+        nuevoDivImg.appendChild(div3);
+
+        j++;
+        event.preventDefault();
+    })
+
+</script>
+<script>
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+</script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

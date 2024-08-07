@@ -143,13 +143,15 @@
             <td><%=direccion%></td>
             <td><%=u.getEstado()%></td>
             <td>
-                <form action="eliminar" method="post">
-                    <input type="hidden" name="id_usuario" class="" value="<%= u.getId() %>">
-                    <input type="hidden" name="estado" value="<%= u.getEstado() %>">
-                    <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %>">
-                        <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
-                    </button>
-                </form>
+                <div style="vertical-align: middle">
+                    <form action="eliminar" method="post">
+                        <input type="hidden" name="id_usuario" class="" value="<%= u.getId() %>">
+                        <input type="hidden" name="estado" value="<%= u.getEstado() %>">
+                        <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %>" style="vertical-align: middle">
+                            <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
+                        </button>
+                    </form>
+                </div>
             </td>
 
         </tr>
