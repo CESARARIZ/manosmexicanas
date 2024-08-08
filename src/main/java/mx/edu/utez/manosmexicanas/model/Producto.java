@@ -12,10 +12,11 @@ public class Producto {
     private int stockDisponible;
     private List<Talla> tallas;
     private List<ColorProducto> colores;
+    private List<Imagen> imagenes;
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<Imagen> imagenes) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
@@ -24,9 +25,9 @@ public class Producto {
         this.stockDisponible = stockDisponible;
         this.tallas = tallas;
         this.colores = colores;
+        this.imagenes = imagenes;
     }
 
-    // Getters y Setters
     public int getId_producto() {
         return id_producto;
     }
@@ -89,6 +90,14 @@ public class Producto {
 
     public void setColores(List<ColorProducto> colores) {
         this.colores = colores;
+    }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
     }
 }
 
