@@ -1,6 +1,9 @@
 <%@ page import="mx.edu.utez.manosmexicanas.dao.UsuarioDao" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+<%@ page import="mx.edu.utez.manosmexicanas.model.Categoria" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -8,28 +11,23 @@
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <style>
-        .sidebar {
+        .sidebar{
+
             padding: 20px 0;
-            position: relative;
-            top: 20px;
-            text-align: center;
+            position: relative; /* Fijar la barra de filtros */
+            top: 20px; /* Ajustar la posición superior según sea necesario */
         }
         header {
             width: 100%;
             background-color: #061029;
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
+            max-height: 110px;
         }
         body {
             background-color: #F2F2F2;
         }
-        .filter-box {
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
+
         .filter-box h5 {
             margin-bottom: 10px;
         }
@@ -39,36 +37,30 @@
         #log {
             text-align: left;
         }
+        /* Nuevas clases */
         .navbar {
             padding: 5px 0;
         }
-        .filter-box {
-            margin: 0 20px;
-            margin-top: 20px;
+
+        #nave .dropdown-menu {
+            background-color: #FFFFFF; /* Color oscuro */
         }
-        #nave, #log {
+        #nave .dropdown-menu a {
+            color: #061029; /* Color de los enlaces del dropdown */
+        }
+
+        #nave, #log{
             text-align: center;
+        }
+        .navbar-nav {
+            align-items: center; /* Centramos verticalmente los enlaces */
         }
         img {
             max-width: 190px;
             border-radius: 10px;
             margin-bottom: 20px; /* Espacio debajo de la imagen */
         }
-        .item {
-            border-radius: 10px;
-            border: 1px solid black;
-            margin-right: 10px;
-            margin-top: 20px;
-        }
-        .item:hover {
-            box-shadow: 0 10px 20px rgb(0, 0, 0);
-        }
-        .info-producto {
-            padding: 1px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+
         .form-color-rouse {
             background-color: #f5eaf1;
             text-align: left;
@@ -98,28 +90,43 @@
 <body>
 <header>
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg-2" id="log">
-                <a href="indexCliente.jsp">
-                    <img src="img/logoMM.png" alt="" width="100px" height="80px">
-                </a>
+        <div class="row align-items-center" style="vertical-align: middle">
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
+            <div class="col-md-2" id="log"><a href="index.jsp">
+                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
-            <div class="col-lg-6">
-                <form class="mb-2 mb-lg-0"></form>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
+            <div class="col-md-6">
+                <form class="mb-2 mb-lg-0">
+
+                </form>
             </div>
-            <div class="col-lg-4">
-                <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexAdmin.jsp">Catálogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionPedidos.jsp">Pedidos</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="publicarProductos.jsp">Publicar</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="gestionUsuarios.jsp">Clientes</a>
+            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
+            <div class="col-md-4 d-flex justify-content-center">
+                <nav id="nave" class="navbar navbar-expand-md navbar-dark">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="indexAdmin.jsp">Catalogo</a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="perfil.jsp" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gestiones
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="perfilDropdown">
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionUsuarios.jsp">Clientes</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionPedidos.jsp">Pedidos</a>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionProductos.jsp">Productos</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
             </div>
         </div>
     </div>
 </header>
+
 <div class="container-fluid">
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-md-3 sidebar">
             <form class="form-color-rouse">
                 <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
@@ -162,7 +169,7 @@
 
                             <label for="validationTooltip01" class="form-label">Talla:</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="validationTooltip01" placeholder="Ingrese la talla..." required>
+                                <input type="text" class="form-control" name="talla1" id="validationTooltip01" placeholder="Ingrese la talla..." required>
                                 <button type="button" id="nuevaTalla" class="btn btn-success">+</button>
                             </div>
                             <div class="mb-3" id="tallasNuevas">
@@ -179,25 +186,54 @@
                     <div class="col-md-4 m-3">
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Unidades disponibles:</label>
-                            <input type="number" class="form-control" id="validationTooltip01" placeholder="Ingrese las unidades..." required>
+                            <input type="number" class="form-control" id="validationTooltip01" name="cantidad" placeholder="Ingrese las unidades..." required>
                         </div>
                         <div class="mb-3">
-                            <label for="validationCustom04" class="form-label">Categoria:</label>
+                            <label for="validationCustom04" class="form-label">Categoría:</label>
                             <div class="input-group mb-3">
-                            <select class="form-select" id="validationCustom04" required>
-                                <option selected disabled value="">Selecciona...</option>
-                                <option value="1">Ropa mujer</option>
-                                <option value="2">Ropa hombre</option>
-                                <option value="3">Accesorios</option>
-                            </select>
+                                <%
+                                    ProductoDao dao = new ProductoDao();
+                                    List<Categoria> categorias = null;
+                                    try {
+                                        categorias = dao.getCategorias();
+                                        System.out.println("Número de categorías: " + (categorias != null ? categorias.size() : 0));
+                                        for (Categoria cat : categorias) {
+                                            System.out.println("Categoría: " + cat.getNombre_categoria());
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    if (categorias != null && !categorias.isEmpty()) {
+                                %>
+                                <select class="form-select" id="validationCustom04" name="categoria" required>
+                                    <option selected disabled value="">Selecciona...</option>
+                                    <%
+                                        for (Categoria categoria : categorias) {
+                                    %>
+                                    <option value="<%= categoria.getNombre_categoria() %>"><%= categoria.getNombre_categoria() %></option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
+                                <%
+                                } else {
+                                %>
+                                <p>Sin categorías</p>
+                                <%
+                                    }
+                                %>
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
                             </div>
                         </div>
+
+
+
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Precio:</label>
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" id="validationTooltip01" placeholder="0.00" required>
+                                <input type="text" class="form-control" name="precio" id="validationTooltip01" placeholder="0.00" required>
                             </div>
                         </div>
                         <div class="mb-3">
@@ -220,10 +256,7 @@
                 </div>
             </form>
 
-            <!-- Button trigger modal -->
 
-
-            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -231,8 +264,9 @@
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoria</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <form action="agregarCategoria" method="post">
                         <div class="modal-body">
-                            <form action="agregarCategoria" method="post">
+
                                 <label class="form-label mb-2">Categoria nueva:</label>
                                 <input type="text" class="form-control mt-2" name="" id="">
 
@@ -241,8 +275,9 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                             <input type="submit" class="btn btn-primary" value="Agregar">
-                            </form>
+
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -297,7 +332,7 @@
         label.setAttribute("class", "form-label mt-2");
         //elementos del input
         input.setAttribute("type", "text");
-        input.setAttribute("name", "color "+i);
+        input.setAttribute("name", "color"+i);
         input.setAttribute("class", "form-control mb-2");
         input.setAttribute("id", "validationTooltip01");
         input.setAttribute("placeholder", "Ingresa el color "+i);
@@ -321,7 +356,7 @@
         label2.setAttribute("class", "form-label mt-2");
         //elementos del input
         input2.setAttribute("type", "text");
-        input2.setAttribute("name", "talla "+j);
+        input2.setAttribute("name", "talla"+j);
         input2.setAttribute("class", "form-control mb-2");
         input2.setAttribute("id", "validationTooltip01");
         input2.setAttribute("placeholder", "Ingresa la talla "+j);
@@ -368,6 +403,9 @@
         myInput.focus()
     })
 </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

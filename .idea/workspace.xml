@@ -10,12 +10,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="Creacion de metodos datos">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="update de formulario permitir img">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Imagen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Imagen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -266,31 +265,8 @@
       <workItem from="1723007157399" duration="5802000" />
       <workItem from="1723081701679" duration="1139000" />
       <workItem from="1723085257707" duration="276000" />
-      <workItem from="1723095024202" duration="2911000" />
-    </task>
-    <task id="LOCAL-00001" summary="INICIO DE SESION FUNCIONAL">
-      <option name="closed" value="true" />
-      <created>1719271758225</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1719271758225</updated>
-    </task>
-    <task id="LOCAL-00002" summary="INICIO DE SESION FUNCIONAL">
-      <option name="closed" value="true" />
-      <created>1719271786552</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1719271786552</updated>
-    </task>
-    <task id="LOCAL-00003" summary="AGREGE TODAS LAS PAGINAS">
-      <option name="closed" value="true" />
-      <created>1719781000724</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1719781000724</updated>
+      <workItem from="1723095024202" duration="3458000" />
+      <workItem from="1723128511687" duration="10385000" />
     </task>
     <task id="LOCAL-00004" summary="modificacion pag admin">
       <option name="closed" value="true" />
@@ -644,7 +620,47 @@
       <option name="project" value="LOCAL" />
       <updated>1723012983799</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Recibir parametros y atraer metodos daos">
+      <option name="closed" value="true" />
+      <created>1723098398187</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1723098398187</updated>
+    </task>
+    <task id="LOCAL-00049" summary="update modelo imagen">
+      <option name="closed" value="true" />
+      <created>1723098427866</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1723098427866</updated>
+    </task>
+    <task id="LOCAL-00050" summary="update modelo producto">
+      <option name="closed" value="true" />
+      <created>1723098444280</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1723098444280</updated>
+    </task>
+    <task id="LOCAL-00051" summary="agg metodos daos para llenar la base">
+      <option name="closed" value="true" />
+      <created>1723098476327</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1723098476327</updated>
+    </task>
+    <task id="LOCAL-00052" summary="update de formulario permitir img">
+      <option name="closed" value="true" />
+      <created>1723098499469</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1723098499469</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -662,11 +678,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="img de eliminar" />
-    <MESSAGE value="funcion borrar productos del carrito" />
-    <MESSAGE value="ajustes pagina carrito" />
-    <MESSAGE value="modelo pedido y detalle pedido" />
-    <MESSAGE value="dao pedido y dao detalle pedido" />
     <MESSAGE value="xml" />
     <MESSAGE value="Guarda pedido" />
     <MESSAGE value="Boton de confirmar carrito funcional" />
@@ -687,6 +698,11 @@
     <MESSAGE value="Invalida la sesion despues de desbloquear" />
     <MESSAGE value="Pagina publicar productos corregida" />
     <MESSAGE value="Creacion de metodos datos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Creacion de metodos datos" />
+    <MESSAGE value="Recibir parametros y atraer metodos daos" />
+    <MESSAGE value="update modelo imagen" />
+    <MESSAGE value="update modelo producto" />
+    <MESSAGE value="agg metodos daos para llenar la base" />
+    <MESSAGE value="update de formulario permitir img" />
+    <option name="LAST_COMMIT_MESSAGE" value="update de formulario permitir img" />
   </component>
 </project>
