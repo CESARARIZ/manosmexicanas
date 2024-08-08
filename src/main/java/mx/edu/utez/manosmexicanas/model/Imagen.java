@@ -1,18 +1,19 @@
 package mx.edu.utez.manosmexicanas.model;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class Imagen implements Serializable {
     private int id_imagen;
     private int id_producto;
-    private Byte[] img;
+    private InputStream imagen;
 
     public Imagen() {}
 
-    public Imagen(int id_imagen, int id_producto, Byte[] img) {
+    public Imagen(int id_imagen, int id_producto, InputStream imagen) {
         this.id_imagen = id_imagen;
         this.id_producto = id_producto;
-        this.img = img;
+        this.imagen = imagen;
     }
 
     public int getId_imagen() {
@@ -31,11 +32,11 @@ public class Imagen implements Serializable {
         this.id_producto = id_producto;
     }
 
-    public Byte[] getImg() {
-        return img;
+    public InputStream getImagen() {
+        return imagen;
     }
 
-    public void setImg(Byte[] img) {
-        this.img = img;
+    public void setImagen(InputStream imagen) {
+        this.imagen = imagen;
     }
 }
