@@ -10,12 +10,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="update de formulario permitir img">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="CATEGORIAS A TRAVES DE LA BD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,39 +267,9 @@
       <workItem from="1723081701679" duration="1139000" />
       <workItem from="1723085257707" duration="276000" />
       <workItem from="1723095024202" duration="3458000" />
-      <workItem from="1723128511687" duration="10385000" />
-    </task>
-    <task id="LOCAL-00004" summary="modificacion pag admin">
-      <option name="closed" value="true" />
-      <created>1719784126290</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1719784126290</updated>
-    </task>
-    <task id="LOCAL-00005" summary="modificacion pag admin">
-      <option name="closed" value="true" />
-      <created>1720111457630</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1720111457630</updated>
-    </task>
-    <task id="LOCAL-00006" summary="modificacion pag admin">
-      <option name="closed" value="true" />
-      <created>1720218587685</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1720218587685</updated>
-    </task>
-    <task id="LOCAL-00007" summary="identificacion tipo usuario">
-      <option name="closed" value="true" />
-      <created>1720367602313</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1720367602313</updated>
+      <workItem from="1723128511687" duration="11245000" />
+      <workItem from="1723143098895" duration="471000" />
+      <workItem from="1723158495398" duration="2242000" />
     </task>
     <task id="LOCAL-00008" summary="servlets recuperacion contra">
       <option name="closed" value="true" />
@@ -660,7 +631,39 @@
       <option name="project" value="LOCAL" />
       <updated>1723098499469</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="SERVLET ADD PRODUCTOS FUNCIONANDO">
+      <option name="closed" value="true" />
+      <created>1723139949519</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1723139949519</updated>
+    </task>
+    <task id="LOCAL-00054" summary="FORMULARIO ATRAE CATEGORIAS DE BD">
+      <option name="closed" value="true" />
+      <created>1723139977688</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1723139977688</updated>
+    </task>
+    <task id="LOCAL-00055" summary="METODOS DAOS CORREGIDOS">
+      <option name="closed" value="true" />
+      <created>1723139998051</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1723139998051</updated>
+    </task>
+    <task id="LOCAL-00056" summary="CATEGORIAS A TRAVES DE LA BD">
+      <option name="closed" value="true" />
+      <created>1723140036523</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1723140036523</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,10 +681,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="xml" />
-    <MESSAGE value="Guarda pedido" />
-    <MESSAGE value="Boton de confirmar carrito funcional" />
-    <MESSAGE value="Metodo dpara vaciar los productos del carrito" />
     <MESSAGE value="Gestion de pedidos funcionando" />
     <MESSAGE value="Arreglo de pequeño detalle" />
     <MESSAGE value="Links funcionando correctamente" />
@@ -703,6 +702,10 @@
     <MESSAGE value="update modelo producto" />
     <MESSAGE value="agg metodos daos para llenar la base" />
     <MESSAGE value="update de formulario permitir img" />
-    <option name="LAST_COMMIT_MESSAGE" value="update de formulario permitir img" />
+    <MESSAGE value="SERVLET ADD PRODUCTOS FUNCIONANDO" />
+    <MESSAGE value="FORMULARIO ATRAE CATEGORIAS DE BD" />
+    <MESSAGE value="METODOS DAOS CORREGIDOS" />
+    <MESSAGE value="CATEGORIAS A TRAVES DE LA BD" />
+    <option name="LAST_COMMIT_MESSAGE" value="CATEGORIAS A TRAVES DE LA BD" />
   </component>
 </project>

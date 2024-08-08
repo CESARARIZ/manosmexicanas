@@ -10,6 +10,7 @@ import mx.edu.utez.manosmexicanas.dao.PedidoDao;
 import mx.edu.utez.manosmexicanas.dao.UsuarioDao;
 import mx.edu.utez.manosmexicanas.model.Pedido;
 import mx.edu.utez.manosmexicanas.model.PedidoProducto;
+import mx.edu.utez.manosmexicanas.model.Producto;
 import mx.edu.utez.manosmexicanas.model.Usuario;
 
 import java.io.IOException;
@@ -84,6 +85,16 @@ public class ProductosPedidoServlet extends HttpServlet {
             boolean eliminado = carritoDao.deleteProductos(id_usuario);
             if (!eliminado) {
                 System.out.println("Error al eliminar productos del carrito.");
+            }
+
+            for(int i =0; i < idsProducto.length; i++){
+                PedidoProducto producto = new PedidoProducto();
+                int id_producto = Integer.parseInt(idsProducto[i]);
+                System.out.println("id_producto: " + id_producto);
+                int cantid = Integer.parseInt(cantidad[i]);
+                System.out.println("cantidad: " + cantid);
+                boolean updStock = dao.updateStock(id_producto,cantid);
+                System.out.println("updStock: " + updStock);
             }
             /*
 
