@@ -152,15 +152,16 @@ public class ProductoDao {
     //METODOS PARA PUBLICAR PRODUCTO
 
     //1 MOSTRAR LAS CATEGORIAS
-    public ArrayList<Categoria> getCategorias() {
-        Categoria c = new Categoria();
-        String query = "SELECT id_categoria,nombre_categoria FROM CATEGORIAS";
+    public List<Categoria> getCategorias() {
+
+        String query = "SELECT * FROM CATEGORIAS";
         ArrayList<Categoria> categorias = new ArrayList<>();
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
              ResultSet resultSet = ps.executeQuery()) {
 
             while (resultSet.next()) {
+                Categoria c = new Categoria();
                 c.setId_categoria(resultSet.getInt("id_categoria"));
                 c.setNombre_categoria(resultSet.getString("nombre_categoria"));
                 categorias.add(c);
@@ -173,15 +174,15 @@ public class ProductoDao {
 
     public Categoria getCategoria(String nombre_categoria) throws SQLException {
         Categoria c = new Categoria();
-        String query = "SELECT * FROM CATEGORIAS WHERE nombre_categoria = ?";
+        String query = "SELECT * FROM categorias WHERE nombre_categoria = ?"; // Asegúrate de que la consulta sea correcta
         try (Connection con = DatabaseConnectionManager.getConnection();
-        PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setString(1, nombre_categoria);
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, nombre_categoria); // Configura el parámetro correctamente
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     c.setId_categoria(rs.getInt("id_categoria"));
                     c.setNombre_categoria(rs.getString("nombre_categoria"));
-                    System.out.println("Categoria recuperada: "+c.getNombre_categoria());
+                    System.out.println("Categoria recuperada: " + c.getNombre_categoria());
                 }
             }
         }
@@ -210,7 +211,7 @@ public class ProductoDao {
     //2 INSSERTA EL PRODUCTO
     public boolean insert(Producto p) throws SQLException {
         boolean flag = false;
-        String sql = "INSERT INTO Productos (nombre, descripcion, precio, stock, id_categoria) VALUES (?, ?, ?,?,?)";
+        String sql = "INSERT INTO productos (nombre, descripcion, precio, stock, id_categoria) VALUES (?, ?, ?,?,?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -228,11 +229,34 @@ public class ProductoDao {
         return flag;
     }
 
+    public Producto getId_producto(String nombre_producto) throws SQLException {
+        Producto p = new Producto();
+        String query = "SELECT * FROM productos WHERE nombre = ?";;
+        try (Connection con = DatabaseConnectionManager.getConnection();
+        PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, nombre_producto);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    p.setId_producto(rs.getInt("id_producto"));
+                    p.setNombre_producto(rs.getString("nombre_producto"));
+                    p.setDescripcion(rs.getString("descripcion"));
+                    p.setPrecio(rs.getDouble("precio"));
+                    p.setStockDisponible(rs.getInt("stock"));
+                    p.setCategoria(getCategoria(rs.getString("id_categoria")));
+
+                }
+            }catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return p;
+    }
+
 
     //INSERTA EL COLOR
     public boolean insertColores(String color_producto)throws SQLException{
         boolean flag = false;
-        String sql = "INSERT INTO colores (nombre) VALUES (?)";
+        String sql = "INSERT INTO colores (color) VALUES (?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -247,13 +271,13 @@ public class ProductoDao {
     }
 
     //INSERTA LA TALLA
-    public boolean insertTallas(Talla t)throws SQLException{
+    public boolean insertTallas(String talla_producto)throws SQLException{
         boolean flag = false;
-        String sql = "INSERT INTO tallas (nombre)VALUES (?)";
+        String sql = "INSERT INTO tallas (talla)VALUES (?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, t.getNombre());
+            ps.setString(1, talla_producto);
             if(ps.executeUpdate() == 1){
                 flag = true;
             }
@@ -267,7 +291,7 @@ public class ProductoDao {
     //INSERTA EN LA TABLA SECUNDARIA COLORES
     public boolean insertProductoColor(int id_producto, int id_color)throws SQLException{
         boolean flag = false;
-        String sql = "INSERT INTO producto_colorres (id_producto, id_color)VALUES (?,?)";
+        String sql = "INSERT INTO producto_colores (id_producto, id_color)VALUES (?,?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -297,6 +321,43 @@ public class ProductoDao {
             e.printStackTrace();
         }
         return flag;
+    }
+
+    public int getId_color(String color) {
+        int id_color = 0;
+        String sql = "SELECT id_color FROM colores WHERE color = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, color);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                id_color = rs.getInt("id_color"); // Obtener el ID del color
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id_color;
+    }
+
+    public int getId_talla(String talla) {
+        int id_talla = 0;
+        String sql = "SELECT id_talla FROM tallas WHERE talla = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, talla);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                id_talla = rs.getInt("id_talla"); // Obtener el ID del color
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id_talla;
     }
 
     //INSERTA LA IMAGEN
@@ -335,40 +396,5 @@ public class ProductoDao {
     }
 
 
-    public int getId_color(String color) {
-        int id_color = 0;
-        String sql = "SELECT id_color FROM colores WHERE color = ?";
-        try {
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, color);
-            ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                id_color = rs.getInt("id_color"); // Obtener el ID del color
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return id_color;
-    }
-
-    public int getId_talla(String talla) {
-        int id_talla = 0;
-        String sql = "SELECT id_talla FROM colores WHERE talla = ?";
-        try {
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, talla);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                id_talla = rs.getInt("id_talla"); // Obtener el ID del color
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return id_talla;
-    }
 }
