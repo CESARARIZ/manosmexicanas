@@ -192,7 +192,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" oninput="calculateTotal()">
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" max="<%=p.getStockDisponible()%>" oninput="calculateTotal()">
                     <p>Total: $<span id="total">0.00</span></p>
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
