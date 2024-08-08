@@ -148,6 +148,10 @@ public class ProductoDao {
         return colores;
     }
 
+
+    //METODOS PARA PUBLICAR PRODUCTO
+
+    //1 MOSTRAR LAS CATEGORIAS
     public ArrayList<Categoria> getCategorias() {
         Categoria c = new Categoria();
         String query = "SELECT id_categoria,nombre_categoria FROM CATEGORIAS";
@@ -167,6 +171,24 @@ public class ProductoDao {
         return categorias;
     }
 
+    public Categoria getCategoria(String nombre_categoria) throws SQLException {
+        Categoria c = new Categoria();
+        String query = "SELECT * FROM CATEGORIAS WHERE nombre_categoria = ?";
+        try (Connection con = DatabaseConnectionManager.getConnection();
+        PreparedStatement ps = con.prepareStatement(query)) {
+            ps.setString(1, nombre_categoria);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    c.setId_categoria(rs.getInt("id_categoria"));
+                    c.setNombre_categoria(rs.getString("nombre_categoria"));
+                    System.out.println("Categoria recuperada: "+c.getNombre_categoria());
+                }
+            }
+        }
+        return c;
+    }
+
+    //POR SI AGREGARA UNA CATEGORIA
     public boolean inserCategoria(Categoria c) {
         boolean flag = false;
         String sql="INSERT INTO categorias (nombre_categoria) VALUES (?)";
@@ -185,6 +207,7 @@ public class ProductoDao {
         return flag;
     }
 
+    //2 INSSERTA EL PRODUCTO
     public boolean insert(Producto p) throws SQLException {
         boolean flag = false;
         String sql = "INSERT INTO Productos (nombre, descripcion, precio, stock, id_categoria) VALUES (?, ?, ?,?,?)";
@@ -205,13 +228,15 @@ public class ProductoDao {
         return flag;
     }
 
-    public boolean insertColores(ColorProducto cp)throws SQLException{
+
+    //INSERTA EL COLOR
+    public boolean insertColores(String color_producto)throws SQLException{
         boolean flag = false;
-        String sql = "INSERT INTO colores (nombre)VALUES (?)";
+        String sql = "INSERT INTO colores (nombre) VALUES (?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, cp.getNombre());
+            ps.setString(1, color_producto);
             if(ps.executeUpdate() == 1){
                 flag = true;
             }
@@ -221,6 +246,7 @@ public class ProductoDao {
         return flag;
     }
 
+    //INSERTA LA TALLA
     public boolean insertTallas(Talla t)throws SQLException{
         boolean flag = false;
         String sql = "INSERT INTO tallas (nombre)VALUES (?)";
@@ -237,6 +263,43 @@ public class ProductoDao {
         return flag;
     }
 
+
+    //INSERTA EN LA TABLA SECUNDARIA COLORES
+    public boolean insertProductoColor(int id_producto, int id_color)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO producto_colorres (id_producto, id_color)VALUES (?,?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id_producto);
+            ps.setInt(2,id_color);
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean insertTalla(int id_producto, int id_talla)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO producto_tallas (id_producto, id_talla)VALUES (?,?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,id_producto);
+            ps.setInt(2,id_talla);
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    //INSERTA LA IMAGEN
     public boolean insertImg(Imagen img)throws SQLException{
         boolean flag = false;
         String sql = "INSERT INTO imagen (id_usuario, imagen)VALUES (?,?)";
@@ -254,7 +317,58 @@ public class ProductoDao {
         return flag;
     }
 
+    public boolean insertImagen(Imagen imagen)throws SQLException{
+        boolean flag = false;
+        String sql = "INSERT INTO imagen (id_producto, img)VALUES (?,?)";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,imagen.getId_producto());
+            ps.setBlob(2,imagen.getImagen());
+            if(ps.executeUpdate() == 1){
+                flag = true;
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
 
 
+    public int getId_color(String color) {
+        int id_color = 0;
+        String sql = "SELECT id_color FROM colores WHERE color = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, color);
+            ResultSet rs = ps.executeQuery();
 
+            if (rs.next()) {
+                id_color = rs.getInt("id_color"); // Obtener el ID del color
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id_color;
+    }
+
+    public int getId_talla(String talla) {
+        int id_talla = 0;
+        String sql = "SELECT id_talla FROM colores WHERE talla = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, talla);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                id_talla = rs.getInt("id_talla"); // Obtener el ID del color
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return id_talla;
+    }
 }
