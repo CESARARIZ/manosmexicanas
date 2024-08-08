@@ -132,7 +132,7 @@
 </head>
 <body>
 
-<header class="">
+<header>
     <div class="container-fluid">
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
@@ -221,11 +221,12 @@
                                 for (Producto producto : productos) {
                                     if (count > 0 && count % 6 == 0) {
                         %>
+                        <!-- Nueva fila -->
                         <div class="w-100"></div>
                         <%
                             }
                         %>
-                        <div class="item mt-4" style="flex: 1 1 calc(16.66% - 20px); display: flex; flex-direction: column;">
+                        <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
                                 <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
                                     <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
