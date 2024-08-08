@@ -131,7 +131,7 @@
         </div>
 
         <div class="col-md-9">
-            <form action="" class="needs-validation" novalidate>
+            <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="row mb-2 mt-3 ms-2">
                         <h1 style="font-family: Sansita">Publicar producto</h1>
@@ -203,8 +203,8 @@
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Adjuntar imagen del producto:</label>
                             <div class="input-group">
-                                <input class="form-control" name="img1" type="file" id="validationTooltip01" required>
-                                <button type="button" id="nuevaImg" class="btn btn-success">+</button>
+                                <input class="form-control" name="img1" type="file" id="validationTooltip01"  accept="image/*" required>
+                                <button type="button" id="nuevaImg"  class="btn btn-success">+</button>
                             </div>
                             <div class="mb-3" id="imgNuevas">
 
@@ -334,7 +334,7 @@
         event.preventDefault();
     })
 
-    nuevaImg.addEventListener("click", () =>{
+    nuevaImg.addEventListener("click", (qualifiedName, value) =>{
         let div3 = document.createElement("div");
         let label3 = document.createElement("label");
         let input3 = document.createElement("input");
@@ -347,7 +347,9 @@
         input3.setAttribute("type", "file");
         input3.setAttribute("name", "img "+k);
         input3.setAttribute("class", "form-control mb-2");
+        input3.setAttribute("accept", "image/*")
         input3.setAttribute("id", "validationTooltip01");
+        input3.setAttribute("required", value)
 
         div3.appendChild(label3);
         div3.appendChild(input3);
