@@ -28,10 +28,6 @@ public class AnadirProductosServlet extends HttpServlet {
         int cantidad = Integer.parseInt(req.getParameter("cantidad"));
         String categoria = req.getParameter("categoria");
         double precio = Double.parseDouble(req.getParameter("precio"));
-        int imageIndex = 1;
-        String imageName = "img" + imageIndex;
-
-        // Recorremos todas las posibles imágenes
 
         ProductoDao productoDAO = new ProductoDao();
 
@@ -41,11 +37,6 @@ public class AnadirProductosServlet extends HttpServlet {
             cat = productoDAO.getCategoria(categoria);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
-        }
-
-        if (cat != null) {
-            System.out.println("La categoria ya existe");
-
         }
 
         // Crear el producto y asignar los valores
@@ -64,37 +55,43 @@ public class AnadirProductosServlet extends HttpServlet {
         while (req.getParameter("color" + colorIndex) != null) {
             colores.add(req.getParameter("color" + colorIndex));
             colorIndex++;
-            System.out.println("color" + colorIndex);
         }
 
         int tallaIndex = 1;
         while (req.getParameter("talla" + tallaIndex) != null) {
             tallas.add(req.getParameter("talla" + tallaIndex));
             tallaIndex++;
-            System.out.println("talla" + tallaIndex);
         }
 
         // Guardar producto y obtener el ID del producto guardado
-        boolean inserProd=false;
+        boolean inserProd = false;
         try {
             inserProd = productoDAO.insert(producto);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
-        Producto pNuevo = null;
 
+        Producto pNuevo = null;
         if (inserProd) {
             try {
                 pNuevo = productoDAO.getId_producto(nombre_producto);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
             int id_producto = pNuevo.getId_producto();
             System.out.println("Id producto nuevo: " + id_producto);
+
+            // Guardar colores y sus imágenes asociadas
             for (String color : colores) {
                 try {
                     if (productoDAO.insertColores(color)) {
-                        int colorId = productoDAO.getId_color(color); // Método para obtener el ID del color
+                        int colorId = productoDAO.getId_color(color);
+
+                        // Reiniciar el índice de la imagen para cada color
+                        int imageIndex = 1;
+                        String imageName = "img" + imageIndex;
+
                         while (req.getPart(imageName) != null) {
                             Part filePart = req.getPart(imageName);
                             if (filePart.getSize() > 0) {
@@ -108,9 +105,9 @@ public class AnadirProductosServlet extends HttpServlet {
                                 }
                             }
                             imageIndex++;
-                            imageName = "img" + imageIndex; // Cambiamos al siguiente nombre
+                            imageName = "img" + imageIndex; // Cambiamos al siguiente nombre de imagen
                         }
-                        System.out.println("Color"+colorId);
+                        System.out.println("Color: " + colorId);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -119,12 +116,11 @@ public class AnadirProductosServlet extends HttpServlet {
 
             // Guardar tallas y asociarlas al producto
             for (String talla : tallas) {
-
                 try {
                     if (productoDAO.insertTallas(talla)) {
-                        int tallaId = productoDAO.getId_talla(talla); // Método para obtener el ID de la talla
+                        int tallaId = productoDAO.getId_talla(talla);
                         productoDAO.insertTalla(id_producto, tallaId);
-                        System.out.println("Talla"+tallaId);
+                        System.out.println("Talla: " + tallaId);
                     }
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
@@ -132,13 +128,7 @@ public class AnadirProductosServlet extends HttpServlet {
             }
 
             resp.sendRedirect("indexAdmin.jsp");
-
-
         }
-
-
     }
-
-
 
 }

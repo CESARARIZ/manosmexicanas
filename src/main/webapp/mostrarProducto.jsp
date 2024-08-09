@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.*" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     HttpSession sessionn = request.getSession(false);
@@ -16,6 +17,8 @@
             ruta = "indexCliente.jsp";
         } else if ("admin".equals(tipo_usuario)) {
             ruta = "indexAdmin.jsp";
+        }else {
+            ruta = "index.jsp";
         }
 
     }
@@ -128,12 +131,43 @@
         HttpSession sesion = request.getSession();
         Producto p = (Producto) sesion.getAttribute("producto");
         if (p != null) {
-
+        int id_producto =0;
     %>
     <div class="row justify-content-center">
         <div class="col-md-6 mt-4 mb-4">
             <div class="text-center">
-                <img src="mostrarImagen?id_producto=<%=p.getId_producto()%>" alt="<%=p.getNombre_producto()%>" class="product-image" width="350" height="450">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+                    <div class="carousel-inner">
+                        <%
+                            ProductoDao productoDao = new ProductoDao();
+                            List<Producto> productos = null;
+
+                            try {
+                                productos = productoDao.obtenerTodosLosProductos();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            for (int i = 0; i < productos.size(); i++) {
+
+                        %>
+                        <div class="carousel-item active" data-bs-interval="10000">
+                            <a href="mostrarProducto?id=<%= p.getId_producto() %>">
+                                <img src="mostrarImagen?id_producto=<%=p.getId_producto()%>" alt="<%= p.getNombre_producto() %>" class=" product-image img-fluid"  width="350" height="450">
+                            </a>
+                        </div>
+                        <% } %>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
                 <h2 class="product-title"><%= p.getNombre_producto() %></h2>
                 <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
                 <p>Disponibles: <%= p.getStockDisponible() %></p>
@@ -197,7 +231,6 @@
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
                 <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
-                <input type="hidden" name="img" value="<%=p.getImagenes()%>">
                 <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                 <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                 <input type="hidden" name="precio" value="<%=p.getPrecio()%>">

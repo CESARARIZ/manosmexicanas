@@ -8,6 +8,8 @@
     Usuario usuario = null;
     if (sessionn != null) {
         usuario = (Usuario) sessionn.getAttribute("usuario");
+    }else {
+        response.sendRedirect("ingresar.jsp");
     }
 %>
 <html>
@@ -228,9 +230,32 @@
                         %>
                         <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
-                                <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
-                                    <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
-                                </a>
+                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <%
+                                            for (int i = 0; i < productos.size(); i++) {
+
+                                        %>
+                                        <div class="carousel-item active" data-bs-interval="10000">
+                                            <a href="mostrarProducto?id=<%= producto.getId_producto() %>">
+                                                <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                            </a>
+                                        </div>
+                                        <% } %>
+                                    </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                </div>
+
+
                             </figure>
                             <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>

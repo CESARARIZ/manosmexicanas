@@ -19,7 +19,7 @@ public class ProductoDao {
 
     public List<Producto> obtenerTodosLosProductos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
-        String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock " +
+        String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
                         "FROM Productos p " +
                         "JOIN Categorias c ON p.id_categoria = c.id_categoria;";
 
@@ -34,6 +34,7 @@ public class ProductoDao {
                 producto.setDescripcion(resultSet.getString("descripcion"));
                 producto.setPrecio(resultSet.getDouble("precio"));
                 producto.setStockDisponible(resultSet.getInt("stock"));
+                producto.setEstado(resultSet.getString("estatus"));
 
                 // Crear y configurar el objeto Categoria
                 Categoria categoria = new Categoria();
@@ -56,7 +57,7 @@ public class ProductoDao {
 
     public Producto getOne(int id_producto) {
         Producto p = new Producto();
-        String query = "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock " +
+        String query = "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
                 "FROM Productos p " +
                 "JOIN Categorias c ON p.id_categoria = c.id_categoria " +
                 "WHERE p.id_producto = ?;";
@@ -72,6 +73,7 @@ public class ProductoDao {
                     p.setDescripcion(rs.getString("descripcion"));
                     p.setPrecio(rs.getDouble("precio"));
                     p.setStockDisponible(rs.getInt("stock"));
+                    p.setEstado(rs.getString("estatus"));
 
                     // Crear y configurar el objeto Categoria
                     Categoria categoria = new Categoria();
@@ -364,7 +366,7 @@ public class ProductoDao {
 
     public List<ProductoColor> getImagenesPorProducto(int id_producto, int id_color) throws SQLException {
         List<ProductoColor> listaImagenes = new ArrayList<>();
-        String sql = "SELECT id_color, img FROM producto_colores WHERE id_producto = ?";
+        String sql = "SELECT id_producto, id_color, img FROM producto_colores WHERE id_producto = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -404,7 +406,25 @@ public class ProductoDao {
         return id_producto;
     }
 
+    public boolean uptEstado (int id_producto, String estado_producto){
+        boolean flag = false;
+        String query = "update productos set estatus = ? where id_producto = ?";
+        try {
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, estado_producto);
+            ps.setInt(2, id_producto);
+            if (ps.executeUpdate() > 0) {
+                flag = true;
+            }
+            ps.close();
+            con.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
 
+        return flag;
+    }
 
 
 

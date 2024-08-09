@@ -33,9 +33,7 @@
         .sidebar {
             padding: 20px;
         }
-    body{
-        background-color: #F2F2F2;
-    }
+
     #titulo{
         text-align: center;
         font-family: Sansita;
@@ -78,7 +76,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5 col-sm-8 col-12 sidebar" id="mar">
-            <div class="formu">
+            <div class="formu" style="background-color: #FFFFFF">
                 <form method="post" action="login" >
                 <h2 id="titulo"><b>Inicia sesión</b></h2>
                 <br>

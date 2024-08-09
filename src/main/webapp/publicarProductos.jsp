@@ -239,12 +239,15 @@
                             <label for="validationTooltip01" class="form-label mt-2">Adjuntar imagen del producto:</label>
                             <input class="form-control" name="img1" type="file" id="validationTooltip01"  accept="image/*" required>
 
-                            <div class="mb-1 mt-2" id="coloresNuevos">
+                            <div class="mb-3">
+                                <div class="mb-1 mt-2" id="coloresNuevos">
 
-                            </div>
 
-                            <div class="mb-3" id="imgNuevas">
 
+                                </div>
+                                <div class="mb-3" id="imgNuevas">
+
+                                </div>
                             </div>
 
                         </div>
@@ -393,9 +396,9 @@
 
         div3.appendChild(label3);
         div3.appendChild(input3);
-        nuevoDivImg.appendChild(div3);
+        nuevoDivColor.appendChild(div3);
 
-        j++;
+        k++;
         event.preventDefault();
     })
 

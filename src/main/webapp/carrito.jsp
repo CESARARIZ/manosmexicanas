@@ -268,13 +268,15 @@
                                 double totalPagar = 0.0;
                                 for (CarritoDetalle dc2 : lista2) {
                                     int id_producto = dc2.getId_producto();
+                                    System.out.println("Id producto: "+id_producto);
                                     int id_color = dc2.getId_color();
-
+                                    System.out.println("Id color: "+id_color);
                 %>
                 <tr>
                     <td class="text-center align-middle"><%= contador %></td>
                     <td>
-                        <img src="mostrarImg?nombre_producto=<%=id_producto%>?nombre_color=<%=id_color%>" alt="">
+                        <img src="mostrarImg?nombre_producto=<%=id_producto%>&nombre_color=<%=id_color%>" alt="" width="130" height="150">
+
                     </td>
                     <td class="align-middle">
                         <h3><%= dc.getNombre_producto() %></h3>

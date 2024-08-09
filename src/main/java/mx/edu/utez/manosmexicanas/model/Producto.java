@@ -14,10 +14,11 @@ public class Producto {
     private List<Talla> tallas;
     private List<ColorProducto> colores;
     private List<InputStream> imagenes;
+    private String estado;
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<InputStream> imagenes) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<InputStream> imagenes, String estado) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
@@ -27,6 +28,7 @@ public class Producto {
         this.tallas = tallas;
         this.colores = colores;
         this.imagenes = imagenes;
+        this.estado = estado;
     }
 
     public int getId_producto() {
@@ -99,6 +101,14 @@ public class Producto {
 
     public void setImagenes(List<InputStream> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
 

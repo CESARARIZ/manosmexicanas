@@ -215,15 +215,46 @@
                         %>
                         <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
-                                <a href="ingresar.jsp">
-                                    <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
-                                </a>
+                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+                                    <div class="carousel-inner">
+                                        <%
+                                            for (int i = 0; i < productos.size(); i++) {
+
+                                        %>
+                                        <div class="carousel-item active" data-bs-interval="10000">
+                                            <a href="ingresar.jsp">
+                                                <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                            </a>
+                                        </div>
+                                        <% } %>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+
+
                             </figure>
                             <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;"><h6>Añadir al carrito</h6></button>
+                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: <%= "Disponible".equals(producto.getEstado()) ? "#28a745" : "#6c757d" %>;">
+                                    <h6>
+                                        <% if ("Disponible".equals(producto.getEstado())) { %>
+                                        <a href="ingresar.jsp" style="color: white; text-decoration: none;">Añadir al carrito</a>
+                                        <% } else { %>
+                                        No disponible
+                                        <% } %>
+                                    </h6>
+                                </button>
+
                             </div>
                         </div>
                         <%

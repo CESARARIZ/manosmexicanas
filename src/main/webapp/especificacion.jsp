@@ -2,7 +2,8 @@
 <%@ page import="mx.edu.utez.manosmexicanas.model.Producto" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.ColorProducto" %>
 <%@ page import="java.util.List" %>
-<%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %><%--
+<%@ page import="mx.edu.utez.manosmexicanas.model.Talla" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %><%--
   Created by IntelliJ IDEA.
   User: dan-a
   Date: 23/07/2024
@@ -24,6 +25,8 @@
             ruta = "indexCliente.jsp";
         } else if ("admin".equals(tipo_usuario)) {
             ruta = "indexAdmin.jsp";
+        }else{
+            ruta = "index.jsp";
         }
 
     }
@@ -117,7 +120,37 @@
             <h2 class="card-title text-center">Especifica tu producto</h2>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img src="img/traje1.jpeg" class="img-fluid" alt="Producto" width="320" height="340" style="border-radius: 10px">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <%
+                                ProductoDao productoDao = new ProductoDao();
+                                List<Producto> productos = null;
+
+                                try {
+                                    productos = productoDao.obtenerTodosLosProductos();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                                for (int i = 0; i < productos.size(); i++) {
+
+                            %>
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <a href="mostrarProducto?id=<%= p.getId_producto() %>">
+                                    <img src="mostrarImagen?id_producto=<%=p.getId_producto()%>" alt="<%= p.getNombre_producto() %>" class=" product-image img-fluid"  width="350" height="450">
+                                </a>
+                            </div>
+                            <% } %>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                     <h3><%= p.getNombre_producto() %></h3>
                     <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
                     <div class="rating">

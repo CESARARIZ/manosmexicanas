@@ -125,6 +125,7 @@
             <th>Categoria</th>
             <th>Precio</th>
             <th>Stock</th>
+            <th>Estado</th>
             <th>Acción</th>
         </tr>
         </thead>
@@ -149,13 +150,17 @@
             <td><%= p.getCategoria().getNombre_categoria() %></td>
             <td>$<%=p.getPrecio()%></td>
             <td><%=p.getStockDisponible()%></td>
+            <td><%=p.getEstado()%></td>
             <td>
-                <button style="border: none;">
-                    <img src="img/agregarProd.png" alt="" style="width: 20px; height: 20px;">
-                </button>
-                <button style="border: none;">
-                    <img src="img/bloquearProd.png" alt="" style="width: 20px; height: 20px; ">
-                </button>
+                <div style="vertical-align: middle">
+                    <form action="desactivarProducto" method="post">
+                        <input type="hidden" name="id_producto" class="" value="<%= p.getId_producto() %>">
+                        <input type="hidden" name="estado" value="<%= p.getEstado() %>">
+                        <button type="submit" class="btn <%= "Disponible".equals(p.getEstado()) ? "btn-danger" : "btn-success" %>" style="vertical-align: middle">
+                            <img src="<%= "Disponible".equals(p.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Disponible".equals(p.getEstado()) ? "No disponible" : "Disponible" %>" style="width: 20px; height: 20px;">
+                        </button>
+                    </form>
+                </div>
             </td>
 
 
