@@ -14,6 +14,7 @@ import mx.edu.utez.manosmexicanas.model.Producto;
 import mx.edu.utez.manosmexicanas.model.Talla;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,11 @@ public class AnadirProductosServlet extends HttpServlet {
         int cantidad = Integer.parseInt(req.getParameter("cantidad"));
         String categoria = req.getParameter("categoria");
         double precio = Double.parseDouble(req.getParameter("precio"));
+        int imageIndex = 1;
+        String imageName = "img" + imageIndex;
+
+        // Recorremos todas las posibles imágenes
+
         ProductoDao productoDAO = new ProductoDao();
 
         // Obtener la categoría por nombre
@@ -89,7 +95,21 @@ public class AnadirProductosServlet extends HttpServlet {
                 try {
                     if (productoDAO.insertColores(color)) {
                         int colorId = productoDAO.getId_color(color); // Método para obtener el ID del color
-                        productoDAO.insertProductoColor(id_producto, colorId);
+                        while (req.getPart(imageName) != null) {
+                            Part filePart = req.getPart(imageName);
+                            if (filePart.getSize() > 0) {
+                                InputStream inputStream = filePart.getInputStream();
+
+                                // Llama al método DAO para guardar la imagen
+                                try {
+                                    ProductoDao.insertProductoColor(id_producto, colorId, inputStream);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            imageIndex++;
+                            imageName = "img" + imageIndex; // Cambiamos al siguiente nombre
+                        }
                         System.out.println("Color"+colorId);
                     }
                 } catch (SQLException e) {
