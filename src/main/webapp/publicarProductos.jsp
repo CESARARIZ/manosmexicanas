@@ -127,7 +127,7 @@
 
 <div class="container-fluid">
     <div class="row mt-2">
-        <div class="col-md-3 sidebar">
+        <div class="col-md-2 sidebar ms-2">
             <form class="form-color-rouse">
                 <img src="img/icono_de_perfil.png" alt="Usuario Administrador">
                 <h2>Usuario Administrador</h2>
@@ -140,10 +140,10 @@
         <div class="col-md-9">
             <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
                 <div class="row">
-                    <div class="row mb-2 mt-3 ms-2">
+                    <div class="row mb-2 mt-3 ms-4">
                         <h1 style="font-family: Sansita">Publicar producto</h1>
                     </div>
-                    <div class="col-md-4 m-3 ms-4">
+                    <div class="col-md-4 m-3 ms-5">
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Nombre del producto:</label>
                             <input type="text" class="form-control" name="nombre_producto" id="validationTooltip01" placeholder="Ingrese el nombre..." required>
@@ -151,18 +151,6 @@
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Descripcion:</label>
                             <textarea type="text" class="form-control" name="descripcion" id="validationTooltip01" rows="3" placeholder="Ingrese la descripción.." required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="validationTooltip01" class="form-label">Color:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="color1" id="validationTooltip01" placeholder="Ingrese el color..." required>
-                                <button type="button" id="nuevoColor" class="btn btn-success">+</button>
-
-                            </div>
-                            <div class="mb-3" id="coloresNuevos">
-
-                            </div>
-
                         </div>
 
                         <div class="mb-3">
@@ -177,6 +165,11 @@
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="validationTooltip01" class="form-label">Unidades disponibles:</label>
+                            <input type="number" class="form-control" id="validationTooltip01" name="cantidad" placeholder="Ingrese las unidades..." required>
+                        </div>
+
 
                     </div>
                     <div class="col-md-1">
@@ -184,10 +177,7 @@
                     </div>
 
                     <div class="col-md-4 m-3">
-                        <div class="mb-3">
-                            <label for="validationTooltip01" class="form-label">Unidades disponibles:</label>
-                            <input type="number" class="form-control" id="validationTooltip01" name="cantidad" placeholder="Ingrese las unidades..." required>
-                        </div>
+
                         <div class="mb-3">
                             <label for="validationCustom04" class="form-label">Categoría:</label>
                             <div class="input-group mb-3">
@@ -219,10 +209,13 @@
                                 <%
                                 } else {
                                 %>
-                                <p>Sin categorías</p>
+                                <select class="form-select" id="validationCustom04" name="categoria" required>
+                                <option selected disabled value="">Sin categorias...</option>
+                                </select>
                                 <%
                                     }
                                 %>
+
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
                             </div>
                         </div>
@@ -237,14 +230,26 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="validationTooltip01" class="form-label">Adjuntar imagen del producto:</label>
+                            <label for="validationTooltip01" class="form-label">Color:</label>
                             <div class="input-group">
-                                <input class="form-control" name="img1" type="file" id="validationTooltip01"  accept="image/*" required>
-                                <button type="button" id="nuevaImg"  class="btn btn-success">+</button>
+                                <input type="text" class="form-control" name="color1" id="validationTooltip01" placeholder="Ingrese el color..." required>
+                                <button type="button" id="nuevoColor" class="btn btn-success">+</button>
+
                             </div>
+                            <label for="validationTooltip01" class="form-label mt-2">Adjuntar imagen del producto:</label>
+                            <input class="form-control" name="img1" type="file" id="validationTooltip01"  accept="image/*" required>
+
+                            <div class="mb-1 mt-2" id="coloresNuevos">
+
+                            </div>
+
                             <div class="mb-3" id="imgNuevas">
 
                             </div>
+
+                        </div>
+                        <div class="mb-3">
+
                         </div>
 
 
@@ -369,7 +374,7 @@
         event.preventDefault();
     })
 
-    nuevaImg.addEventListener("click", (qualifiedName, value) =>{
+    nuevoColor.addEventListener("click", (qualifiedName, value) =>{
         let div3 = document.createElement("div");
         let label3 = document.createElement("label");
         let input3 = document.createElement("input");

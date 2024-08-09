@@ -10,13 +10,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="CATEGORIAS A TRAVES DE LA BD">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="IMPLEMENTACION DEL MEOTODO UPD STOCK">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImagenServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImgCarritoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/ProductoColor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ImagenDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/CarritoDetalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/CarritoDetalle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Imagen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,31 +279,8 @@
       <workItem from="1723095024202" duration="3458000" />
       <workItem from="1723128511687" duration="11245000" />
       <workItem from="1723143098895" duration="471000" />
-      <workItem from="1723158495398" duration="2242000" />
-    </task>
-    <task id="LOCAL-00008" summary="servlets recuperacion contra">
-      <option name="closed" value="true" />
-      <created>1720462558795</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1720462558795</updated>
-    </task>
-    <task id="LOCAL-00009" summary="form registrarse">
-      <option name="closed" value="true" />
-      <created>1720463531362</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1720463531362</updated>
-    </task>
-    <task id="LOCAL-00010" summary="gestion usuarios">
-      <option name="closed" value="true" />
-      <created>1720584630371</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1720584630371</updated>
+      <workItem from="1723158495398" duration="2770000" />
+      <workItem from="1723180038715" duration="6879000" />
     </task>
     <task id="LOCAL-00011" summary="productos">
       <option name="closed" value="true" />
@@ -663,7 +650,31 @@
       <option name="project" value="LOCAL" />
       <updated>1723140036523</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="IMPLEMETACION DE EL METODO ACTUALIZAR STOCK">
+      <option name="closed" value="true" />
+      <created>1723161066524</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1723161066528</updated>
+    </task>
+    <task id="LOCAL-00058" summary="ACTUALIZACION DEL MAXIMO DE UNIDADES A TRAVES DEL STOCK EN BD">
+      <option name="closed" value="true" />
+      <created>1723161130517</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1723161130517</updated>
+    </task>
+    <task id="LOCAL-00059" summary="IMPLEMENTACION DEL MEOTODO UPD STOCK">
+      <option name="closed" value="true" />
+      <created>1723161172130</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1723161172130</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -681,9 +692,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Gestion de pedidos funcionando" />
-    <MESSAGE value="Arreglo de pequeño detalle" />
-    <MESSAGE value="Links funcionando correctamente" />
     <MESSAGE value="Pagina funcionado donde muestra los pedidos de cada usuario" />
     <MESSAGE value="Metodos actualizados" />
     <MESSAGE value="servlet corregido para insertar los productos en el pedido" />
@@ -706,6 +714,9 @@
     <MESSAGE value="FORMULARIO ATRAE CATEGORIAS DE BD" />
     <MESSAGE value="METODOS DAOS CORREGIDOS" />
     <MESSAGE value="CATEGORIAS A TRAVES DE LA BD" />
-    <option name="LAST_COMMIT_MESSAGE" value="CATEGORIAS A TRAVES DE LA BD" />
+    <MESSAGE value="IMPLEMETACION DE EL METODO ACTUALIZAR STOCK" />
+    <MESSAGE value="ACTUALIZACION DEL MAXIMO DE UNIDADES A TRAVES DEL STOCK EN BD" />
+    <MESSAGE value="IMPLEMENTACION DEL MEOTODO UPD STOCK" />
+    <option name="LAST_COMMIT_MESSAGE" value="IMPLEMENTACION DEL MEOTODO UPD STOCK" />
   </component>
 </project>

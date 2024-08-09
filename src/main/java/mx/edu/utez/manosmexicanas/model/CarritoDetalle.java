@@ -1,8 +1,11 @@
 package mx.edu.utez.manosmexicanas.model;
 
+import java.io.InputStream;
+
 public class CarritoDetalle {
     private int id_detalle_carrito;
     private int id_carrito;
+    private InputStream img;
     private int id_producto;
     private int id_categoria;
     private int id_talla;
@@ -13,9 +16,10 @@ public class CarritoDetalle {
 
     public CarritoDetalle() {};
 
-    public CarritoDetalle(int id_detalle_carrito, int id_carrito, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad,double precio, double total) {
+    public CarritoDetalle(int id_detalle_carrito, int id_carrito, InputStream img, int id_producto, int id_categoria, int id_talla, int id_color, int cantidad, double precio, double total) {
         this.id_detalle_carrito = id_detalle_carrito;
         this.id_carrito = id_carrito;
+        this.img = img;
         this.id_producto = id_producto;
         this.id_categoria = id_categoria;
         this.id_talla = id_talla;
@@ -24,6 +28,7 @@ public class CarritoDetalle {
         this.precio = precio;
         this.total = total;
     }
+
 
     public int getId_detalle_carrito() {
         return id_detalle_carrito;
@@ -39,6 +44,14 @@ public class CarritoDetalle {
 
     public void setId_carrito(int id_carrito) {
         this.id_carrito = id_carrito;
+    }
+
+    public InputStream getImg() {
+        return img;
+    }
+
+    public void setImg(InputStream img) {
+        this.img = img;
     }
 
     public int getId_producto() {
@@ -84,6 +97,7 @@ public class CarritoDetalle {
     public double getPrecio() {
         return precio;
     }
+
     public void setPrecio(double precio) {
         this.precio = precio;
     }

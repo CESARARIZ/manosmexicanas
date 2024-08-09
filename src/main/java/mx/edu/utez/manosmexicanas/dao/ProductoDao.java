@@ -6,6 +6,7 @@ import mx.edu.utez.manosmexicanas.model.*;
 import mx.edu.utez.manosmexicanas.utils.DatabaseConnectionManager;
 
 import java.awt.*;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,8 +20,8 @@ public class ProductoDao {
     public List<Producto> obtenerTodosLosProductos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
         String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock " +
-                "FROM Productos p " +
-                "JOIN Categorias c ON p.id_categoria = c.id_categoria;";
+                        "FROM Productos p " +
+                        "JOIN Categorias c ON p.id_categoria = c.id_categoria;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -289,14 +290,15 @@ public class ProductoDao {
 
 
     //INSERTA EN LA TABLA SECUNDARIA COLORES
-    public boolean insertProductoColor(int id_producto, int id_color)throws SQLException{
+    public static boolean insertProductoColor(int id_producto, int id_color, InputStream img)throws SQLException{
         boolean flag = false;
-        String sql = "INSERT INTO producto_colores (id_producto, id_color)VALUES (?,?)";
+        String sql = "INSERT INTO producto_colores (id_producto, id_color, img)VALUES (?,?,?)";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,id_producto);
             ps.setInt(2,id_color);
+            ps.setBlob(3,img);
             if(ps.executeUpdate() == 1){
                 flag = true;
             }
@@ -360,40 +362,50 @@ public class ProductoDao {
         return id_talla;
     }
 
-    //INSERTA LA IMAGEN
-    public boolean insertImg(Imagen img)throws SQLException{
-        boolean flag = false;
-        String sql = "INSERT INTO imagen (id_usuario, imagen)VALUES (?,?)";
-        try{
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,img.getId_producto());
+    public List<ProductoColor> getImagenesPorProducto(int id_producto, int id_color) throws SQLException {
+        List<ProductoColor> listaImagenes = new ArrayList<>();
+        String sql = "SELECT id_color, img FROM producto_colores WHERE id_producto = ?";
 
-            if(ps.executeUpdate() == 1){
-                flag = true;
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id_producto);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ProductoColor productoColor = new ProductoColor();
+                productoColor.setId_producto(id_producto);  // Asignar el id_producto al objeto Producto
+                productoColor.setId_producto_color(rs.getInt("id_color"));
+                productoColor.setImg(rs.getBlob("img").getBinaryStream());  // Obtener el InputStream de la imagen
+
+                listaImagenes.add(productoColor);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("Error al obtener las imágenes del producto", e);
+        }
+
+        return listaImagenes;
+    }
+
+    public int getIdProducto(String nombre_producto) throws SQLException {
+        int id_producto = 0;
+        String sql = "SELECT id_producto FROM productos WHERE nombre_producto = ?";
+        try (Connection con = DatabaseConnectionManager.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, nombre_producto);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                id_producto = rs.getInt("id_producto");
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
-        return flag;
+        return id_producto;
     }
 
-    public boolean insertImagen(Imagen imagen)throws SQLException{
-        boolean flag = false;
-        String sql = "INSERT INTO imagen (id_producto, img)VALUES (?,?)";
-        try{
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,imagen.getId_producto());
-            ps.setBlob(2,imagen.getImagen());
-            if(ps.executeUpdate() == 1){
-                flag = true;
-            }
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return flag;
-    }
+
+
 
 
 

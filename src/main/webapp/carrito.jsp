@@ -263,9 +263,19 @@
                     if (lista != null && !lista.isEmpty()) {
                         int contador = 1;
                         for (DetalleCarritoDTO dc : lista) {
+                            if (lista2 != null && !lista2.isEmpty()) {
+                                int totalProductos = 0;
+                                double totalPagar = 0.0;
+                                for (CarritoDetalle dc2 : lista2) {
+                                    int id_producto = dc2.getId_producto();
+                                    int id_color = dc2.getId_color();
+
                 %>
                 <tr>
                     <td class="text-center align-middle"><%= contador %></td>
+                    <td>
+                        <img src="mostrarImg?nombre_producto=<%=id_producto%>?nombre_color=<%=id_color%>" alt="">
+                    </td>
                     <td class="align-middle">
                         <h3><%= dc.getNombre_producto() %></h3>
                         <p>
@@ -292,7 +302,8 @@
                         </form>
                     </td>
                 </tr>
-                <%
+                <%          }
+                        }
                         contador++;
                     }
                 } else {

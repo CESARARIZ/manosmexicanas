@@ -133,7 +133,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 mt-4 mb-4">
             <div class="text-center">
-                <img src="img/image39.png" alt="Top tejido crochet" class="product-image">
+                <img src="mostrarImagen?id_producto=<%=p.getId_producto()%>" alt="<%=p.getNombre_producto()%>" class="product-image" width="350" height="450">
                 <h2 class="product-title"><%= p.getNombre_producto() %></h2>
                 <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
                 <p>Disponibles: <%= p.getStockDisponible() %></p>
@@ -197,6 +197,7 @@
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
                 <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                <input type="hidden" name="img" value="<%=p.getImagenes()%>">
                 <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                 <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                 <input type="hidden" name="precio" value="<%=p.getPrecio()%>">

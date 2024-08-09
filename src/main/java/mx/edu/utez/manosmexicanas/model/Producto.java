@@ -1,5 +1,6 @@
 package mx.edu.utez.manosmexicanas.model;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +13,11 @@ public class Producto {
     private int stockDisponible;
     private List<Talla> tallas;
     private List<ColorProducto> colores;
-    private List<Imagen> imagenes;
+    private List<InputStream> imagenes;
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<Imagen> imagenes) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<InputStream> imagenes) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
@@ -92,11 +93,11 @@ public class Producto {
         this.colores = colores;
     }
 
-    public List<Imagen> getImagenes() {
+    public List<InputStream> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<Imagen> imagenes) {
+    public void setImagenes(List<InputStream> imagenes) {
         this.imagenes = imagenes;
     }
 }
