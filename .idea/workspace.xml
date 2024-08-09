@@ -11,7 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="archivor war">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manosMexicanas-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,15 +274,7 @@
       <workItem from="1723180038715" duration="7140000" />
       <workItem from="1723217996984" duration="10872000" />
       <workItem from="1723237475412" duration="2767000" />
-      <workItem from="1723241304131" duration="727000" />
-    </task>
-    <task id="LOCAL-00017" summary="especificacion">
-      <option name="closed" value="true" />
-      <created>1721760351633</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1721760351633</updated>
+      <workItem from="1723241304131" duration="1947000" />
     </task>
     <task id="LOCAL-00018" summary="x">
       <option name="closed" value="true" />
@@ -666,7 +660,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723241383858</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="archivor war">
+      <option name="closed" value="true" />
+      <created>1723242781408</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1723242781408</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

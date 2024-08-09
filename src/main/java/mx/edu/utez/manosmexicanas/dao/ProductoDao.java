@@ -20,8 +20,8 @@ public class ProductoDao {
     public List<Producto> obtenerTodosLosProductos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
         String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
-                        "FROM Productos p " +
-                        "JOIN Categorias c ON p.id_categoria = c.id_categoria;";
+                        "FROM productos p " +
+                        "JOIN categorias c ON p.id_categoria = c.id_categoria;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
@@ -58,8 +58,8 @@ public class ProductoDao {
     public Producto getOne(int id_producto) {
         Producto p = new Producto();
         String query = "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
-                "FROM Productos p " +
-                "JOIN Categorias c ON p.id_categoria = c.id_categoria " +
+                "FROM productos p " +
+                "JOIN categorias c ON p.id_categoria = c.id_categoria " +
                 "WHERE p.id_producto = ?;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -102,8 +102,8 @@ public class ProductoDao {
     private List<Talla> TallasPorProducto(int id_producto) throws SQLException {
         List<Talla> tallas = new ArrayList<>();
         String query = "SELECT t.id_talla, t.talla " +
-                "FROM Tallas t " +
-                "JOIN Producto_Tallas pt ON t.id_talla = pt.id_talla " +
+                "FROM tallas t " +
+                "JOIN producto_Tallas pt ON t.id_talla = pt.id_talla " +
                 "WHERE pt.id_producto = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -128,8 +128,8 @@ public class ProductoDao {
     private List<ColorProducto> ColoressPorProducto(int id_producto) throws SQLException {
         List<ColorProducto> colores = new ArrayList<>();
         String query = "SELECT c.id_color, c.color\n" +
-                "FROM Colores c\n" +
-                "JOIN Producto_Colores pc ON c.id_color = pc.id_color\n" +
+                "FROM colores c\n" +
+                "JOIN producto_Colores pc ON c.id_color = pc.id_color\n" +
                 "WHERE pc.id_producto = ?;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
