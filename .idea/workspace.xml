@@ -10,20 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="IMPLEMENTACION DE FUNCIONES PARA GUARDAR Y MOSTRAR IMAGENES">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/DesactivarProducto.java" afterDir="false" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="MUESTRA IMAGEN EN INDEX Y EN CARRITO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,15 +268,8 @@
       <workItem from="1723143098895" duration="471000" />
       <workItem from="1723158495398" duration="2770000" />
       <workItem from="1723180038715" duration="7140000" />
-      <workItem from="1723217996984" duration="10523000" />
-    </task>
-    <task id="LOCAL-00014" summary="registrar">
-      <option name="closed" value="true" />
-      <created>1721418722707</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1721418722707</updated>
+      <workItem from="1723217996984" duration="10872000" />
+      <workItem from="1723237475412" duration="1278000" />
     </task>
     <task id="LOCAL-00015" summary="Productos">
       <option name="closed" value="true" />
@@ -672,7 +655,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723187216261</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="MUESTRA IMAGEN EN INDEX Y EN CARRITO">
+      <option name="closed" value="true" />
+      <created>1723230682063</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1723230682063</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +681,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Arreglo de detalles en tablas y servlet bloquear usuario" />
     <MESSAGE value="workspace" />
     <MESSAGE value="Arreglo de usuarios sin direccion" />
     <MESSAGE value="Arreglo de detalles en las tablas para gestionar." />
@@ -715,6 +705,7 @@
     <MESSAGE value="RECIBE Y GUARDA IMAGEN" />
     <MESSAGE value="MUESTRA IMAGEN A TRAVES DE SERVLET" />
     <MESSAGE value="IMPLEMENTACION DE FUNCIONES PARA GUARDAR Y MOSTRAR IMAGENES" />
-    <option name="LAST_COMMIT_MESSAGE" value="IMPLEMENTACION DE FUNCIONES PARA GUARDAR Y MOSTRAR IMAGENES" />
+    <MESSAGE value="MUESTRA IMAGEN EN INDEX Y EN CARRITO" />
+    <option name="LAST_COMMIT_MESSAGE" value="MUESTRA IMAGEN EN INDEX Y EN CARRITO" />
   </component>
 </project>

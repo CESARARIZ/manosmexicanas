@@ -231,6 +231,7 @@
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
                 <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                <input type="hidden" name="nombre_producto" value="<%=p.getNombre_producto()%>">
                 <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                 <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                 <input type="hidden" name="precio" value="<%=p.getPrecio()%>">

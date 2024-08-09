@@ -63,10 +63,12 @@ public class UsuarioDao {
 
     public ArrayList<Usuario> getAll() {
         ArrayList<Usuario> lista = new ArrayList<>();
-        String query = "select * from usuario";
+        String tipo = "usuario";
+        String query = "select * from usuario where tipo_usuario = ?";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, tipo);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Usuario u = new Usuario();

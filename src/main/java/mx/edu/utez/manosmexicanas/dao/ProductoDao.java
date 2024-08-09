@@ -241,7 +241,7 @@ public class ProductoDao {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     p.setId_producto(rs.getInt("id_producto"));
-                    p.setNombre_producto(rs.getString("nombre_producto"));
+                    p.setNombre_producto(rs.getString("nombre"));
                     p.setDescripcion(rs.getString("descripcion"));
                     p.setPrecio(rs.getDouble("precio"));
                     p.setStockDisponible(rs.getInt("stock"));
