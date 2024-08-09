@@ -216,7 +216,7 @@
                         <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
                                 <a href="ingresar.jsp">
-                                    <img src="img/crochet1.jpeg" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
+                                    <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: auto;">
                                 </a>
                             </figure>
                             <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
