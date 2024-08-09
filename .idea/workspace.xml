@@ -10,9 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="correccion de errores">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" afterDir="false" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="archivor war">
+      <change beforePath="$PROJECT_DIR$/manosMexicanas-1.0-SNAPSHOT.war" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +72,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dan-a\IdeaProjects\manosMexicanas" />
       <recent name="C:\Users\dan-a\IdeaProjects\manosMexicanas\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -272,14 +272,7 @@
       <workItem from="1723180038715" duration="7140000" />
       <workItem from="1723217996984" duration="10872000" />
       <workItem from="1723237475412" duration="2767000" />
-    </task>
-    <task id="LOCAL-00016" summary="w">
-      <option name="closed" value="true" />
-      <created>1721750938216</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1721750938216</updated>
+      <workItem from="1723241304131" duration="727000" />
     </task>
     <task id="LOCAL-00017" summary="especificacion">
       <option name="closed" value="true" />
@@ -665,7 +658,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723239119302</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="archivor war">
+      <option name="closed" value="true" />
+      <created>1723241383858</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1723241383858</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,7 +684,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Arreglo de usuarios sin direccion" />
     <MESSAGE value="Arreglo de detalles en las tablas para gestionar." />
     <MESSAGE value="vaciar carrito funcionando" />
     <MESSAGE value="Funcion de bloquear usuario" />
@@ -708,6 +708,7 @@
     <MESSAGE value="IMPLEMENTACION DE FUNCIONES PARA GUARDAR Y MOSTRAR IMAGENES" />
     <MESSAGE value="MUESTRA IMAGEN EN INDEX Y EN CARRITO" />
     <MESSAGE value="correccion de errores" />
-    <option name="LAST_COMMIT_MESSAGE" value="correccion de errores" />
+    <MESSAGE value="archivor war" />
+    <option name="LAST_COMMIT_MESSAGE" value="archivor war" />
   </component>
 </project>

@@ -157,7 +157,7 @@ public class ProductoDao {
     //1 MOSTRAR LAS CATEGORIAS
     public List<Categoria> getCategorias() {
 
-        String query = "SELECT * FROM CATEGORIAS";
+        String query = "SELECT * FROM categorias";
         ArrayList<Categoria> categorias = new ArrayList<>();
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);
