@@ -10,13 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="archivor war">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/utils/DatabaseConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="ACTUALIZAR DIRECCION DE USUARIO" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -280,15 +274,7 @@
       <workItem from="1723258998684" duration="85000" />
       <workItem from="1723264557399" duration="1006000" />
       <workItem from="1723313285181" duration="8000" />
-      <workItem from="1723487544082" duration="1597000" />
-    </task>
-    <task id="LOCAL-00019" summary="muestra producto con colores y tallas">
-      <option name="closed" value="true" />
-      <created>1721936701509</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1721936701509</updated>
+      <workItem from="1723487544082" duration="1940000" />
     </task>
     <task id="LOCAL-00020" summary="carritoCompras">
       <option name="closed" value="true" />
@@ -674,7 +660,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723244129859</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="ACTUALIZAR DIRECCION DE USUARIO">
+      <option name="closed" value="true" />
+      <created>1723489487086</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1723489487089</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +686,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Arreglo de detalles en las tablas para gestionar." />
     <MESSAGE value="vaciar carrito funcionando" />
     <MESSAGE value="Funcion de bloquear usuario" />
     <MESSAGE value="Funcion de entregar pedidos y actualizar estado" />
@@ -717,6 +710,7 @@
     <MESSAGE value="MUESTRA IMAGEN EN INDEX Y EN CARRITO" />
     <MESSAGE value="correccion de errores" />
     <MESSAGE value="archivor war" />
-    <option name="LAST_COMMIT_MESSAGE" value="archivor war" />
+    <MESSAGE value="ACTUALIZAR DIRECCION DE USUARIO" />
+    <option name="LAST_COMMIT_MESSAGE" value="ACTUALIZAR DIRECCION DE USUARIO" />
   </component>
 </project>

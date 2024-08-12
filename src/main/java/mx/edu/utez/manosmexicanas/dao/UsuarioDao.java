@@ -220,5 +220,45 @@ public class UsuarioDao {
         return u;
     }
 
+    public Usuario getDireccion(int id_usuario){
+        Usuario u = new Usuario();
+        String query = "select * from usuario where id_usuario = ? ";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, id_usuario);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                u.setId(rs.getInt("id_usuario"));
+                u.setNombre_usuario(rs.getString("nombre_usuario"));
+                u.setTelefono(rs.getString("telefono"));
+                u.setCorreo(rs.getString("correo"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setContra(rs.getString("contra"));
+                u.setEstado(rs.getString("estado"));
+                u.setTipo_usuario(rs.getString("tipo_usuario"));
+            }
 
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return u;
+    }
+
+    public boolean uptDireccion(int id_usuario, String direccion){
+        boolean flag = false;
+        String query = "update usuario set direccion = ? where id_usuario = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, direccion);
+            ps.setInt(2, id_usuario);
+            if (ps.executeUpdate()>0){
+                flag = true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }
