@@ -30,6 +30,12 @@ public class ProductosPedidoServlet extends HttpServlet {
         String[] cantidad = req.getParameterValues("cantidad");
         String[] precio = req.getParameterValues("precio_unitario");
         String[] totales = req.getParameterValues("total");
+/*
+        if (direccion == null) {
+            // Redirigir al carrito con un parámetro indicando que se debe mostrar el modal
+            response.sendRedirect("carrito.jsp?mostrarModal=true");
+            return;
+        } */
 
         System.out.println("id_usuario: " + req.getParameter("id_usuario"));
         System.out.println("idsProducto: " + Arrays.toString(idsProducto));

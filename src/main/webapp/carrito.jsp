@@ -367,16 +367,49 @@
 
            </div>
         </div>
+
+
+        <%
+            // Mostrar el modal si el parámetro mostrarModal está presente
+            String mostrarModal = request.getParameter("mostrarModal");
+            if (mostrarModal != null && mostrarModal.equals("true")) {
+        %>
+        <script>
+            var direccionModal = new bootstrap.Modal(document.getElementById('direccionModal'));
+            direccionModal.show();
+        </script>
         <% } %>
     </div>
+    <!-- Modal para ingresar la dirección -->
+    <div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="direccionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="direccionModalLabel">Ingresar Dirección</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="GuardarDireccionServlet" method="post">
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="direccion" name="direccion" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ciudad" class="form-label">Ciudad</label>
+                            <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoPostal" class="form-label">Código Postal</label>
+                            <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
+                        </div>
+                        <input type="hidden" name="id_usuario" value="<%= id_usuario %>">
+                        <button type="submit" class="btn btn-primary">Guardar Dirección</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-
-
 
 <script src="js/bootstrap.js"></script>
 <script>

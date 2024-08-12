@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.io.InputStream" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -216,15 +217,17 @@
                         <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-
                                     <div class="carousel-inner">
                                         <%
-                                            for (int i = 0; i < productos.size(); i++) {
+                                            // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
+                                            List<InputStream> imagenes = producto.getImagenes(); // Este método debe retornar una lista con los IDs de las imágenes
 
+                                            for (int i = 0; i < imagenes.size(); i++) {
+                                                String imgUrl = "mostrarImagen?id_imagen=" + imagenes.get(i);
                                         %>
-                                        <div class="carousel-item active" data-bs-interval="10000">
+                                        <div class="carousel-item <%= i == 0 ? "active" : "" %>" data-bs-interval="10000">
                                             <a href="ingresar.jsp">
-                                                <img src="mostrarImagen?id_producto=<%=producto.getId_producto()%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                                <img src="<%= imgUrl %>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
                                             </a>
                                         </div>
                                         <% } %>
@@ -238,6 +241,7 @@
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
+
 
 
                             </figure>

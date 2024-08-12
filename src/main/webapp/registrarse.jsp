@@ -113,7 +113,7 @@
                 <br>
                 <center>
                     <button class="btn btn-primary mb-3" type="submit">Crear cuenta</button><br>
-                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="index.jsp">inicia sesión</a> </label>
+                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">inicia sesión</a> </label>
                 </center>
             </form>
         </div>
