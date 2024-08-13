@@ -1,6 +1,4 @@
-<%@ page import="mx.edu.utez.manosmexicanas.dao.UsuarioDao" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
+
 <%@ page import="mx.edu.utez.manosmexicanas.model.Categoria" %>
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page import="java.util.List" %>
@@ -179,43 +177,11 @@
                     <div class="col-md-4 m-3">
 
                         <div class="mb-3">
-                            <label for="validationCustom04" class="form-label">Categoría:</label>
+                            <label for="categoria_select" class="form-label">Categoría:</label>
                             <div class="input-group mb-3">
-                                <%
-                                    ProductoDao dao = new ProductoDao();
-                                    List<Categoria> categorias = null;
-                                    try {
-                                        categorias = dao.getCategorias();
-                                        System.out.println("Número de categorías: " + (categorias != null ? categorias.size() : 0));
-                                        for (Categoria cat : categorias) {
-                                            System.out.println("Categoría: " + cat.getNombre_categoria());
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if (categorias != null && !categorias.isEmpty()) {
-                                %>
-                                <select class="form-select" id="validationCustom04" name="categoria" required>
-                                    <option selected disabled value="">Selecciona...</option>
-                                    <%
-                                        for (Categoria categoria : categorias) {
-                                    %>
-                                    <option value="<%= categoria.getNombre_categoria() %>"><%= categoria.getNombre_categoria() %></option>
-                                    <%
-                                        }
-                                    %>
+                                <select class="form-select" id="categoria_select" name="categoria" required>
+                                    <option selected disabled value="">Seleccione...</option>
                                 </select>
-                                <%
-                                } else {
-                                %>
-                                <select class="form-select" id="validationCustom04" name="categoria" required>
-                                <option selected disabled value="">Sin categorias...</option>
-                                </select>
-                                <%
-                                    }
-                                %>
-
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
                             </div>
                         </div>
@@ -249,14 +215,9 @@
 
                                 </div>
                             </div>
-
                         </div>
                         <div class="mb-3">
-
                         </div>
-
-
-
                     </div>
                 </div>
                 <div class="col-10 text-center">
@@ -269,31 +230,73 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoria</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="agregarCategoria" method="post">
-                        <div class="modal-body">
-
-                                <label class="form-label mb-2">Categoria nueva:</label>
-                                <input type="text" class="form-control mt-2" name="" id="">
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-primary" value="Agregar">
-
-                        </div>
+                        <form action="newCategoria" method="post" id="categoria_form">
+                            <div class="modal-body">
+                                <label class="form-label mb-2">Categoría nueva:</label>
+                                <input type="text" class="form-control mt-2" name="nombre_categoria" id="nombre_categoria" required>
+                            </div>
                         </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary" onclick="enviarCate()">Agregar</button>
+                            </div>
+
                     </div>
                 </div>
             </div>
+
 
         </div>
     </div>
 
 </div>
+<script>
+    function limpiarSelect(id){
+        let select = document.getElementById(id);
+
+        let def = document.createElement("option");
+        def.setAttribute("selected", "");
+        def.text = "Selecciona...";
+        select.replaceChildren(def);
+    }
+</script>
+
+<script>
+    function loadCategorias() {
+        let req = new XMLHttpRequest();
+        let categoriaSelect = document.getElementById("categoria_select");
+
+        limpiarSelect("categoria_select"); // Limpia el select antes de agregar nuevas opciones
+
+        req.onreadystatechange = function() {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    let respuesta = JSON.parse(req.responseText);
+                    for (let key in respuesta) {
+                        if (respuesta.hasOwnProperty(key)) {
+                            let option = document.createElement("option");
+                            option.setAttribute("value", respuesta[key].id_categoria);
+                            option.text = respuesta[key].nombre_categoria;
+                            categoriaSelect.appendChild(option);
+                        }
+                    }
+                } else if (req.status == 400) {
+                    console.log('Hubo un error 400');
+                } else {
+                    console.log('Algo diferente a 200 fue retornado');
+                }
+            }
+        };
+
+        req.open("GET", "getCategorias", true);
+        req.send(null);
+    }
+</script>
+
+
 <script>
     (() => {
         'use strict'
@@ -411,6 +414,74 @@
         myInput.focus()
     })
 </script>
+
+<script>
+    function enviarCate() {
+        let form = document.querySelector("#categoria_form"); // Selecciona el formulario
+
+        // Asegúrate de que el formulario es válido antes de enviarlo
+        if (!form.checkValidity()) {
+            alert("Por favor, completa todos los campos obligatorios.");
+            return;
+        }
+
+        var req = new XMLHttpRequest();
+        req.open("POST", "newCategoria", true);
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        req.onload = function() {
+            if (req.readyState == 4 && req.status == 200) {
+                let myModalEl = document.getElementById('exampleModal');
+                let modal = bootstrap.Modal.getInstance(myModalEl);
+                modal.hide(); // Cierra el modal
+                updateCategorias(); // Actualiza la lista de categorías
+            } else {
+                alert("¡No se pudo registrar la categoría! Por favor, contacte a soporte técnico.");
+            }
+        };
+        req.send(new URLSearchParams(new FormData(form)).toString()); // Envía el formulario
+    }
+
+    function updateCategorias() {
+        let select = document.getElementById("categoria_select");
+        var req = new XMLHttpRequest();
+
+        limpiarSelect("categoria_select");
+
+        req.open("GET", "newCategoria", true); // Supone que hay un endpoint que devuelve las categorías
+        req.onreadystatechange = function() {
+            if (req.readyState === XMLHttpRequest.DONE) {
+                if (req.status == 200) {
+                    let respuesta = JSON.parse(req.responseText);
+                    for (let key in respuesta) {
+                        if (respuesta.hasOwnProperty(key)) {
+                            let option = document.createElement("option");
+                            option.setAttribute("value", respuesta[key].id_categoria);
+                            option.text = respuesta[key].nombre_categoria;
+                            select.appendChild(option);
+                        }
+                    }
+                    // Selecciona automáticamente la última categoría añadida
+                    select.selectedIndex = select.options.length - 1;
+                } else {
+                    console.log('Error al actualizar las categorías');
+                }
+            }
+        };
+        req.send(null);
+    }
+
+
+    function limpiarSelect(id) {
+        let select = document.getElementById(id);
+        while (select.options.length > 0) {
+            select.remove(0);
+        }
+    }
+
+</script>
+
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

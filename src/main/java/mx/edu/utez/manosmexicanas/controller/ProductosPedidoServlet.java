@@ -30,30 +30,31 @@ public class ProductosPedidoServlet extends HttpServlet {
         String[] cantidad = req.getParameterValues("cantidad");
         String[] precio = req.getParameterValues("precio_unitario");
         String[] totales = req.getParameterValues("total");
-/*
-        if (direccion == null) {
-            // Redirigir al carrito con un parámetro indicando que se debe mostrar el modal
-            response.sendRedirect("carrito.jsp?mostrarModal=true");
-            return;
-        } */
-
-        System.out.println("id_usuario: " + req.getParameter("id_usuario"));
-        System.out.println("idsProducto: " + Arrays.toString(idsProducto));
-        System.out.println("idsCategoria: " + Arrays.toString(idsCategoria));
-        System.out.println("idsTalla: " + Arrays.toString(idsTalla));
-        System.out.println("idsColor: " + Arrays.toString(idsColor));
-        System.out.println("cantidad: " + Arrays.toString(cantidad));
-        System.out.println("precio: " + Arrays.toString(precio));
-        System.out.println("totales: " + Arrays.toString(totales));
-
-        if (idsProducto == null || idsCategoria == null || idsTalla == null || idsColor == null || cantidad == null || precio == null || totales == null) {
-            throw new ServletException("Faltan parámetros en la solicitud.");
-        }
-
         int id_usuario = Integer.parseInt(req.getParameter("id_usuario"));
-        Date fecha_pedido = new Date();
 
-        Pedido pedido = new Pedido();
+        UsuarioDao usuarioDao = new UsuarioDao();
+        Usuario u = usuarioDao.getDireccion(id_usuario);
+
+        if(u.getDireccion()==null){
+            res.sendRedirect("carrito.jsp?mostrarModal=true");
+        }else{
+            System.out.println("id_usuario: " + req.getParameter("id_usuario"));
+            System.out.println("idsProducto: " + Arrays.toString(idsProducto));
+            System.out.println("idsCategoria: " + Arrays.toString(idsCategoria));
+            System.out.println("idsTalla: " + Arrays.toString(idsTalla));
+            System.out.println("idsColor: " + Arrays.toString(idsColor));
+            System.out.println("cantidad: " + Arrays.toString(cantidad));
+            System.out.println("precio: " + Arrays.toString(precio));
+            System.out.println("totales: " + Arrays.toString(totales));
+
+            if (idsProducto == null || idsCategoria == null || idsTalla == null || idsColor == null || cantidad == null || precio == null || totales == null) {
+                throw new ServletException("Faltan parámetros en la solicitud.");
+            }
+
+
+            Date fecha_pedido = new Date();
+
+            Pedido pedido = new Pedido();
         /*
         //MANDAR CONFIRMACION DE COMPRA AL CORREO
         UsuarioDao usuarioDao = new UsuarioDao();
@@ -63,45 +64,45 @@ public class ProductosPedidoServlet extends HttpServlet {
 
         } */
 
-        pedido.setId_usuario(id_usuario);
-        pedido.setFecha_pedido(fecha_pedido);
+            pedido.setId_usuario(id_usuario);
+            pedido.setFecha_pedido(fecha_pedido);
 
-        PedidoDao dao = new PedidoDao();
-        int id_pedido = dao.insertPedido(pedido);
+            PedidoDao dao = new PedidoDao();
+            int id_pedido = dao.insertPedido(pedido);
 
-        CarritoDetalleDao carritoDao = new CarritoDetalleDao();
+            CarritoDetalleDao carritoDao = new CarritoDetalleDao();
 
-        if (id_pedido != -1) {
-            List<PedidoProducto> pdp = new ArrayList<>();
-            for (int i = 0; i < idsProducto.length; i++) {
-                PedidoProducto pp = new PedidoProducto();
-                pp.setId_pedido(id_pedido);
-                pp.setId_producto(Integer.parseInt(idsProducto[i]));
-                pp.setId_categoria(Integer.parseInt(idsCategoria[i]));
-                pp.setId_talla(Integer.parseInt(idsTalla[i]));
-                pp.setId_color(Integer.parseInt(idsColor[i]));
-                pp.setCantidad(Integer.parseInt(cantidad[i]));
-                pp.setPrecio_unitario(Double.parseDouble(precio[i]));
-                pp.setTotal(Double.parseDouble(totales[i]));
-                pdp.add(pp);
-            }
-            for (PedidoProducto detalle : pdp) {
-                dao.insertDetallePedido(detalle);
-            }
-            boolean eliminado = carritoDao.deleteProductos(id_usuario);
-            if (!eliminado) {
-                System.out.println("Error al eliminar productos del carrito.");
-            }
+            if (id_pedido != -1) {
+                List<PedidoProducto> pdp = new ArrayList<>();
+                for (int i = 0; i < idsProducto.length; i++) {
+                    PedidoProducto pp = new PedidoProducto();
+                    pp.setId_pedido(id_pedido);
+                    pp.setId_producto(Integer.parseInt(idsProducto[i]));
+                    pp.setId_categoria(Integer.parseInt(idsCategoria[i]));
+                    pp.setId_talla(Integer.parseInt(idsTalla[i]));
+                    pp.setId_color(Integer.parseInt(idsColor[i]));
+                    pp.setCantidad(Integer.parseInt(cantidad[i]));
+                    pp.setPrecio_unitario(Double.parseDouble(precio[i]));
+                    pp.setTotal(Double.parseDouble(totales[i]));
+                    pdp.add(pp);
+                }
+                for (PedidoProducto detalle : pdp) {
+                    dao.insertDetallePedido(detalle);
+                }
+                boolean eliminado = carritoDao.deleteProductos(id_usuario);
+                if (!eliminado) {
+                    System.out.println("Error al eliminar productos del carrito.");
+                }
 
-            for(int i =0; i < idsProducto.length; i++){
-                PedidoProducto producto = new PedidoProducto();
-                int id_producto = Integer.parseInt(idsProducto[i]);
-                System.out.println("id_producto: " + id_producto);
-                int cantid = Integer.parseInt(cantidad[i]);
-                System.out.println("cantidad: " + cantid);
-                boolean updStock = dao.updateStock(id_producto,cantid);
-                System.out.println("updStock: " + updStock);
-            }
+                for(int i =0; i < idsProducto.length; i++){
+                    PedidoProducto producto = new PedidoProducto();
+                    int id_producto = Integer.parseInt(idsProducto[i]);
+                    System.out.println("id_producto: " + id_producto);
+                    int cantid = Integer.parseInt(cantidad[i]);
+                    System.out.println("cantidad: " + cantid);
+                    boolean updStock = dao.updateStock(id_producto,cantid);
+                    System.out.println("updStock: " + updStock);
+                }
             /*
 
             if(user.getCorreo()!=null){
@@ -118,10 +119,16 @@ public class ProductosPedidoServlet extends HttpServlet {
 
                 }
              */
-            res.sendRedirect("carrito.jsp");
-        }else{
-            res.sendRedirect("404.jsp");
+                res.sendRedirect("carrito.jsp");
+            }else{
+                res.sendRedirect("404.jsp");
+            }
         }
+
+
+
+
+
 
     }
 

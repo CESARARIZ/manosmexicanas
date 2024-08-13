@@ -220,10 +220,10 @@
                                     <div class="carousel-inner">
                                         <%
                                             // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
-                                            List<InputStream> imagenes = producto.getImagenes(); // Este método debe retornar una lista con los IDs de las imágenes
+                                            List<Integer> imagenes = producto.getImagenes(); // Este método debe retornar una lista con los IDs de las imágenes
 
                                             for (int i = 0; i < imagenes.size(); i++) {
-                                                String imgUrl = "mostrarImagen?id_imagen=" + imagenes.get(i);
+                                                String imgUrl = "mostrarImagen?id_pc=" + imagenes.get(i);
                                         %>
                                         <div class="carousel-item <%= i == 0 ? "active" : "" %>" data-bs-interval="10000">
                                             <a href="ingresar.jsp">

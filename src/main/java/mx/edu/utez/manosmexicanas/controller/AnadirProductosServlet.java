@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import mx.edu.utez.manosmexicanas.dao.CategoriaDao;
 import mx.edu.utez.manosmexicanas.dao.ProductoDao;
 import mx.edu.utez.manosmexicanas.model.Categoria;
 import mx.edu.utez.manosmexicanas.model.ColorProducto;
@@ -26,18 +27,14 @@ public class AnadirProductosServlet extends HttpServlet {
         String nombre_producto = req.getParameter("nombre_producto");
         String descripcion = req.getParameter("descripcion");
         int cantidad = Integer.parseInt(req.getParameter("cantidad"));
-        String categoria = req.getParameter("categoria");
+        int id_categoria = Integer.parseInt(req.getParameter("id_categoria"));
         double precio = Double.parseDouble(req.getParameter("precio"));
 
         ProductoDao productoDAO = new ProductoDao();
-
+        CategoriaDao catDao = new CategoriaDao();
         // Obtener la categoría por nombre
         Categoria cat = null;
-        try {
-            cat = productoDAO.getCategoria(categoria);
-        } catch (SQLException ex) {
-            throw new RuntimeException(ex);
-        }
+        cat = catDao.getOne(id_categoria);
 
         // Crear el producto y asignar los valores
         Producto producto = new Producto();

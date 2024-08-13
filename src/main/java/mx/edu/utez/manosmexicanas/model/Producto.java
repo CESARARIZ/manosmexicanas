@@ -13,12 +13,12 @@ public class Producto {
     private int stockDisponible;
     private List<Talla> tallas;
     private List<ColorProducto> colores;
-    private List<InputStream> imagenes;
+    private List<Integer> imagenes;
     private String estado;
 
     public Producto() {}
 
-    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<InputStream> imagenes, String estado) {
+    public Producto(int id_producto, String nombre_producto, String descripcion, Categoria categoria, double precio, int stockDisponible, List<Talla> tallas, List<ColorProducto> colores, List<Integer> imagenes, String estado) {
         this.id_producto = id_producto;
         this.nombre_producto = nombre_producto;
         this.descripcion = descripcion;
@@ -95,11 +95,11 @@ public class Producto {
         this.colores = colores;
     }
 
-    public List<InputStream> getImagenes() {
+    public List<Integer> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<InputStream> imagenes) {
+    public void setImagenes(List<Integer> imagenes) {
         this.imagenes = imagenes;
     }
 

@@ -256,6 +256,8 @@ public class UsuarioDao {
             if (ps.executeUpdate()>0){
                 flag = true;
             }
+            ps.close();
+            con.close();
         }catch (SQLException e){
             e.printStackTrace();
         }

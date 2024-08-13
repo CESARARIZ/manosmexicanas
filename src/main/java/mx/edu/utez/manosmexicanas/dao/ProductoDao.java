@@ -89,6 +89,9 @@ public class ProductoDao {
 
                     List<ColorProducto> colores = ColoressPorProducto(id_producto);
                     p.setColores(colores);
+
+                    List<Integer> img = obtenerIdsImagenesPorProducto(id_producto);
+                    p.setImagenes(img);
                 }
             }
 
@@ -424,6 +427,26 @@ public class ProductoDao {
         }
 
         return flag;
+    }
+
+    private List<Integer> obtenerIdsImagenesPorProducto(int idProducto) {
+        List<Integer> idsImagenes = new ArrayList<>();
+        String query = "SELECT id_pc FROM producto_colores WHERE id_producto = ?";
+
+        try (Connection connection = DatabaseConnectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, idProducto);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                idsImagenes.add(resultSet.getInt("id_imagen"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return idsImagenes;
     }
 
 

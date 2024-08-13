@@ -17,11 +17,11 @@ import java.sql.SQLException;
 public class MostrarImagenServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id_producto = Integer.parseInt(req.getParameter("id_producto"));
-        String query = "SELECT img FROM producto_colores WHERE id_producto = ?";
+        int id_pc = Integer.parseInt(req.getParameter("id_pc"));
+        String query = "SELECT img FROM producto_colores WHERE id_pc = ?";
         try (Connection connection = DatabaseConnectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, id_producto);
+            preparedStatement.setInt(1, id_pc);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
