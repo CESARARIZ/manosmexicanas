@@ -144,12 +144,12 @@
         <tr style="background-color: #FE7DCC; margin-bottom: 3px">
             <th>#</th>
             <th>Producto</th>
-            <th>Categoria</th>
             <th>Talla</th>
             <th>Color</th>
             <th>Unidades</th>
             <th>Total</th>
             <th>Estado</th>
+            <th>Calificar</th>
         </tr>
         </thead>
         <tbody>
@@ -162,12 +162,16 @@
         <tr>
             <td ><%= contador %></td>
             <td ><%= det.getNombre_producto() %></td>
-            <td><%= det.getNombre_categoria() %></td>
             <td class="mx-1"><%= det.getNombre_talla() %></td>
             <td><%= det.getNombre_color() %></td>
             <td class="mx-2">  <%= det.getCantidad() %></td>
             <td>$<%= det.getTotal() %></td>
             <td><input type="button"  class="btn <%= "Pendiente".equals(det.getEstado()) ? "btn-secondary" : "btn-success" %>" value="<%= det.getEstado() %>" readonly></td>
+            <td>
+                <input type="button"
+                       class="btn <%= "Calificado".equals(det.getEstado()) || "Pendiente".equals(det.getEstado()) ? "btn-secondary" : "btn-success" %>"
+                       value="<%= "Calificado".equals(det.getEstado()) ? "Calificado" : "Calificar" %>" id="calificarButton">
+            </td>
         </tr>
         <%
                 contador++;
@@ -183,6 +187,53 @@
         </tbody>
     </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="rateModal" tabindex="-1" aria-labelledby="rateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rateModalLabel">Calificar y Comentar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de calificación y comentario -->
+                <form>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Calificación</label>
+                        <select id="rating" class="form-select">
+                            <option value="1">1 Estrella</option>
+                            <option value="2">2 Estrellas</option>
+                            <option value="3">3 Estrellas</option>
+                            <option value="4">4 Estrellas</option>
+                            <option value="5">5 Estrellas</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comentario</label>
+                        <textarea id="comment" class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("calificarButton").addEventListener("click", function() {
+        if (this.classList.contains("btn-success")) {
+            // Mostrar modal solo si el botón tiene clase 'btn-success'
+            var myModal = new bootstrap.Modal(document.getElementById('rateModal'));
+            myModal.show();
+        }
+    });
+</script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

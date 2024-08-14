@@ -3,6 +3,7 @@
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.io.InputStream" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
@@ -219,19 +220,23 @@
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <%
-                                            try{
                                             // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
-                                            List<Integer> imagenes = producto.getImagenes(); // Este método debe retornar una lista con los IDs de las imágenes
-
-                                            for (int i = 0; i < imagenes.size(); i++) {
-                                                String imgUrl = "mostrarImagen?id_pc=" + imagenes.get(i);
+                                            List<Integer> imagenes = productoDao.idsImagenes(producto.getId_producto()); // Este método debe retornar una lista con los IDs de las imágenes
+                                            int index = 0;
+                                            System.out.println("Tamaño de imagenes: " + imagenes.size());
+                                            for (Integer image : imagenes) {
+                                                System.out.println("ID de la imagen: " + image);
                                         %>
-                                        <div class="carousel-item <%= i == 0 ? "active" : "" %>" data-bs-interval="10000">
+                                        <!-- Asegúrate de que solo el primer elemento tenga la clase 'active' -->
+                                        <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="10000">
                                             <a href="ingresar.jsp">
-                                                <img src="<%= imgUrl %>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
                                             </a>
                                         </div>
-                                        <% } %>
+                                        <%
+                                                index++;
+                                            }
+                                        %>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -242,6 +247,7 @@
                                         <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
+
 
 
 
@@ -275,6 +281,8 @@
         </div>
     </div>
 </div>
+<script>var myCarousel = document.querySelector('#carouselExampleInterval');
+var carousel = new bootstrap.Carousel(myCarousel);</script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>

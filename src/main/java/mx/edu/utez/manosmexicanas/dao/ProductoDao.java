@@ -229,6 +229,8 @@ public class ProductoDao {
             if(ps.executeUpdate() == 1){
                 flag = true;
             }
+            ps.close();
+            con.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -249,7 +251,8 @@ public class ProductoDao {
                     p.setPrecio(rs.getDouble("precio"));
                     p.setStockDisponible(rs.getInt("stock"));
                     p.setCategoria(getCategoria(rs.getString("id_categoria")));
-                }
+                } ps.close();
+                con.close();
             }catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -268,7 +271,8 @@ public class ProductoDao {
             ps.setString(1, color_producto);
             if(ps.executeUpdate() == 1){
                 flag = true;
-            }
+            } ps.close();
+            con.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -285,7 +289,8 @@ public class ProductoDao {
             ps.setString(1, talla_producto);
             if(ps.executeUpdate() == 1){
                 flag = true;
-            }
+            } ps.close();
+            con.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -305,7 +310,8 @@ public class ProductoDao {
             ps.setBlob(3,img);
             if(ps.executeUpdate() == 1){
                 flag = true;
-            }
+            } ps.close();
+            con.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -322,7 +328,8 @@ public class ProductoDao {
             ps.setInt(2,id_talla);
             if(ps.executeUpdate() == 1){
                 flag = true;
-            }
+            } ps.close();
+            con.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -450,6 +457,24 @@ public class ProductoDao {
     }
 
 
-
+    public List<Integer> idsImagenes(int id_producto){
+        List<Integer> idsImagenes = new ArrayList<>();
+        String sql = "SELECT id_pc FROM producto_colores WHERE id_producto = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id_producto);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                idsImagenes.add(rs.getInt("id_pc"));
+                System.out.println("idsImagenes: " + idsImagenes);
+            }
+            ps.close();
+            con.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return idsImagenes;
+    }
 
 }

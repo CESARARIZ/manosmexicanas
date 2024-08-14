@@ -207,21 +207,22 @@
                             <div class="mb-3">
                                 <div class="mb-1 mt-2" id="coloresNuevos">
 
-
-
                                 </div>
-                                <div class="mb-3" id="imgNuevas">
 
-                                </div>
                             </div>
                         </div>
                         <div class="mb-3">
                         </div>
                     </div>
                 </div>
-                <div class="col-10 text-center">
-                    <button class="btn btn-primary" type="submit">Publicar</button>
+                <div class="col-md-12 text-center">
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <button class="btn" type="submit" style="background-color: #FF97D7; font-size: 20px; display: flex; align-items: center; justify-content: center;">
+                            Publicar
+                        </button>
+                    </div>
                 </div>
+
             </form>
 
 
@@ -252,6 +253,16 @@
     </div>
 
 </div>
+<script>
+    function limpiarSelect(id){
+        let select = document.getElementById(id);
+
+        let def = document.createElement("option");
+        def.setAttribute("selected", "");
+        def.text = "Selecciona...";
+        select.replaceChildren(def);
+    }
+</script>
 <script>
     function loadCategorias() {
         let req = new XMLHttpRequest();
@@ -285,92 +296,87 @@
 
 
 <script>
-    //divs
+
+    // Divs
     let nuevoDivColor = document.getElementById("coloresNuevos");
     let nuevoDivTalla = document.getElementById("tallasNuevas");
-    let nuevoDivImg = document.getElementById("imgNuevas");
 
-    let i=2;
-    let j=2;
-    let k=2;
 
-    //botones
+    let colorIndex = 2; // Empezar con el índice de color 1
+    let imgIndex = 2;   // Empezar con el índice de imagen 1
+
+    // Botones
     let nuevoColor = document.getElementById("nuevoColor");
     let nuevaTalla = document.getElementById("nuevaTalla");
-    let nuevaImg = document.getElementById("nuevaImg");
 
-    nuevoColor.addEventListener("click", () =>{
-        let div = document.createElement("div");
-        let label = document.createElement("label");
-        let input = document.createElement("input");
+    // Añadir color e imagen
+    nuevoColor.addEventListener("click", (event) => {
+        // Crear el campo para el nuevo color
+        let colorDiv = document.createElement("div");
+        let colorLabel = document.createElement("label");
+        let colorInput = document.createElement("input");
 
-        //elementos del label
-        label.innerText = "Color " + i + ":";
-        label.setAttribute("for", "validationTooltip01");
-        label.setAttribute("class", "form-label mt-2");
-        //elementos del input
-        input.setAttribute("type", "text");
-        input.setAttribute("name", "color"+i);
-        input.setAttribute("class", "form-control mb-2");
-        input.setAttribute("id", "validationTooltip01");
-        input.setAttribute("placeholder", "Ingresa el color "+i);
+        colorLabel.innerText = "Color " + colorIndex + ":";
+        colorLabel.setAttribute("for", "color" + colorIndex);
+        colorLabel.setAttribute("class", "form-label mt-2");
 
-        div.appendChild(label);
-        div.appendChild(input);
-        nuevoDivColor.appendChild(div);
+        colorInput.setAttribute("type", "text");
+        colorInput.setAttribute("name", "color" + colorIndex);
+        colorInput.setAttribute("class", "form-control mb-2");
+        colorInput.setAttribute("id", "color" + colorIndex);
+        colorInput.setAttribute("placeholder", "Ingresa el color " + colorIndex);
 
-        i++;
+        colorDiv.appendChild(colorLabel);
+        colorDiv.appendChild(colorInput);
+        nuevoDivColor.appendChild(colorDiv);
+
+        // Crear el campo para la nueva imagen asociada al color
+        let imgDiv = document.createElement("div");
+        let imgLabel = document.createElement("label");
+        let imgInput = document.createElement("input");
+
+        imgLabel.innerText = "Imagen " + imgIndex + ":";
+        imgLabel.setAttribute("for", "img" + imgIndex);
+        imgLabel.setAttribute("class", "form-label mt-2");
+
+        imgInput.setAttribute("type", "file");
+        imgInput.setAttribute("name", "img" + imgIndex);
+        imgInput.setAttribute("class", "form-control mb-2");
+        imgInput.setAttribute("accept", "image/*");
+        imgInput.setAttribute("id", "img" + imgIndex);
+
+        imgDiv.appendChild(imgLabel);
+        imgDiv.appendChild(imgInput);
+        nuevoDivColor.appendChild(imgDiv);
+
+        colorIndex++;
+        imgIndex++;
+
         event.preventDefault();
-    })
+    });
 
-    nuevaTalla.addEventListener("click", () =>{
-        let div2 = document.createElement("div");
-        let label2 = document.createElement("label");
-        let input2 = document.createElement("input");
+    // Añadir talla
+    nuevaTalla.addEventListener("click", (event) => {
+        let tallaDiv = document.createElement("div");
+        let tallaLabel = document.createElement("label");
+        let tallaInput = document.createElement("input");
 
-        //elementos del label
-        label2.innerText = "Talla " + j + ":";
-        label2.setAttribute("for", "validationTooltip01");
-        label2.setAttribute("class", "form-label mt-2");
-        //elementos del input
-        input2.setAttribute("type", "text");
-        input2.setAttribute("name", "talla"+j);
-        input2.setAttribute("class", "form-control mb-2");
-        input2.setAttribute("id", "validationTooltip01");
-        input2.setAttribute("placeholder", "Ingresa la talla "+j);
+        tallaLabel.innerText = "Talla " + colorIndex + ":"; // Usar el índice de color para las tallas
+        tallaLabel.setAttribute("for", "talla" + colorIndex);
+        tallaLabel.setAttribute("class", "form-label mt-2");
 
-        div2.appendChild(label2);
-        div2.appendChild(input2);
-        nuevoDivTalla.appendChild(div2);
+        tallaInput.setAttribute("type", "text");
+        tallaInput.setAttribute("name", "talla" + colorIndex);
+        tallaInput.setAttribute("class", "form-control mb-2");
+        tallaInput.setAttribute("id", "talla" + colorIndex);
+        tallaInput.setAttribute("placeholder", "Ingresa la talla " + colorIndex);
 
-        j++;
+        tallaDiv.appendChild(tallaLabel);
+        tallaDiv.appendChild(tallaInput);
+        nuevoDivTalla.appendChild(tallaDiv);
+
         event.preventDefault();
-    })
-
-    nuevoColor.addEventListener("click", (qualifiedName, value) =>{
-        let div3 = document.createElement("div");
-        let label3 = document.createElement("label");
-        let input3 = document.createElement("input");
-
-        //elementos del label
-        label3.innerText = "Imagen " + k + ":";
-        label3.setAttribute("for", "validationTooltip01");
-        label3.setAttribute("class", "form-label mt-2");
-        //elementos del input
-        input3.setAttribute("type", "file");
-        input3.setAttribute("name", "img "+k);
-        input3.setAttribute("class", "form-control mb-2");
-        input3.setAttribute("accept", "image/*")
-        input3.setAttribute("id", "validationTooltip01");
-        input3.setAttribute("required", value)
-
-        div3.appendChild(label3);
-        div3.appendChild(input3);
-        nuevoDivColor.appendChild(div3);
-
-        k++;
-        event.preventDefault();
-    })
+    });
 
 </script>
 <script>
@@ -411,10 +417,10 @@
 <script>
     function updateCategorias() {
         let select = document.getElementById("categoria_select"); // El select donde se muestran las categorías
-        var req = new XMLHttpRequest();
+        let req = new XMLHttpRequest();
 
         // Limpia el select antes de actualizar
-        limpiarSelect("categoria_select");
+        if(document.getElementById("categoria_select")){limpiarSelect("categoria_select");}
 
         req.open("GET", "newCategoria", true); // Supone que hay un endpoint que devuelve las categorías
         req.onreadystatechange = function() {
@@ -431,6 +437,8 @@
                     }
                 } else {
                     console.log('Error al actualizar las categorías');
+                    console.log(req.status);
+                    console.log(req.readyState );
                 }
             }
         };

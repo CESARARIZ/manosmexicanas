@@ -141,22 +141,23 @@
                     <div class="carousel-inner">
                         <%
                             ProductoDao productoDao = new ProductoDao();
-                            List<Producto> productos = null;
-
-                            try {
-                                productos = productoDao.obtenerTodosLosProductos();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            for (int i = 0; i < productos.size(); i++) {
-
+                            // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
+                            List<Integer> imagenes = productoDao.idsImagenes(p.getId_producto()); // Este método debe retornar una lista con los IDs de las imágenes
+                            int index = 0;
+                            System.out.println("Tamaño de imagenes: " + imagenes.size());
+                            for (Integer image : imagenes) {
+                                System.out.println("ID de la imagen: " + image);
                         %>
-                        <div class="carousel-item active" data-bs-interval="10000">
-                            <a href="mostrarProducto?id=<%= p.getId_producto() %>">
-                                <img src="mostrarImagen?id_producto=<%=p.getId_producto()%>" alt="<%= p.getNombre_producto() %>" class=" product-image img-fluid"  width="350" height="450">
+                        <!-- Asegúrate de que solo el primer elemento tenga la clase 'active' -->
+                        <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="10000">
+                            <a href=mostrarProducto?id=<%= p.getId_producto() %>">
+                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= p.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
                             </a>
                         </div>
-                        <% } %>
+                        <%
+                                index++;
+                            }
+                        %>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

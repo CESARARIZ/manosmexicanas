@@ -22,6 +22,7 @@ public class MostrarImgCarritoServlet extends HttpServlet {
             throws ServletException, IOException {
         int id_producto = Integer.parseInt(request.getParameter("nombre_producto"));
         int id_color = Integer.parseInt(request.getParameter("nombre_color"));
+        System.out.println("ID COLOR REC EN SERVLET: " + id_color);
         String query = "SELECT img FROM producto_colores WHERE id_producto = ? AND id_color = ?";
 
         try (Connection connection = DatabaseConnectionManager.getConnection();
