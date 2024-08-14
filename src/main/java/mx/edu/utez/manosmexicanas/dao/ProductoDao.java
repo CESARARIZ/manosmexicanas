@@ -249,7 +249,6 @@ public class ProductoDao {
                     p.setPrecio(rs.getDouble("precio"));
                     p.setStockDisponible(rs.getInt("stock"));
                     p.setCategoria(getCategoria(rs.getString("id_categoria")));
-
                 }
             }catch (SQLException e) {
                 e.printStackTrace();
@@ -441,6 +440,7 @@ public class ProductoDao {
 
             while (resultSet.next()) {
                 idsImagenes.add(resultSet.getInt("id_imagen"));
+                System.out.println("idsImagenes: " + idsImagenes);
             }
         } catch (SQLException e) {
             e.printStackTrace();

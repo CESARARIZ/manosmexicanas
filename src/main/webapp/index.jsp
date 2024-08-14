@@ -219,6 +219,7 @@
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <%
+                                            try{
                                             // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
                                             List<Integer> imagenes = producto.getImagenes(); // Este método debe retornar una lista con los IDs de las imágenes
 

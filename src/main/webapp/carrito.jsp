@@ -367,7 +367,7 @@
 
            </div>
         </div>
-
+        <% } %>
 
         <%
             // Mostrar el modal si el parámetro mostrarModal está presente

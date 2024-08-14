@@ -48,22 +48,22 @@ public class CategoriaDao {
         return flag;
     }
 
-    public Categoria getOne(int id_categoria) {
-        Categoria categoria = null;
-        String sql = "select * from categorias where id_categoria = ?";
+    public Categoria getOne(String categoria) {
+        Categoria cat = null;
+        String sql = "select * from categorias where nombre_categoria = ?";
         try{
             Connection con=DatabaseConnectionManager.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, id_categoria);
+            stmt.setString(1, categoria);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
-                categoria = new Categoria();
-                categoria.setId_categoria(rs.getInt("id_categoria"));
-                categoria.setNombre_categoria(rs.getString("nombre_categoria"));
+                cat = new Categoria();
+                cat.setId_categoria(rs.getInt("id_categoria"));
+                cat.setNombre_categoria(rs.getString("nombre_categoria"));
             }
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return categoria;
+        return cat;
     }
 }

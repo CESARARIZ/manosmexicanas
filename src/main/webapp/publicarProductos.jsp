@@ -85,7 +85,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="loadCategorias()">
 <header>
     <div class="container-fluid">
         <div class="row align-items-center" style="vertical-align: middle">
@@ -180,13 +180,12 @@
                             <label for="categoria_select" class="form-label">Categoría:</label>
                             <div class="input-group mb-3">
                                 <select class="form-select" id="categoria_select" name="categoria" required>
-                                    <option selected disabled value="">Seleccione...</option>
+                                    <option value="" disabled selected>Seleccione...</option>
                                 </select>
+
                                 <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar</button>
                             </div>
                         </div>
-
-
 
                         <div class="mb-3">
                             <label for="validationTooltip01" class="form-label">Precio:</label>
@@ -233,20 +232,20 @@
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form action="newCategoria" method="post" id="categoria_form">
+                        <form id="categoria_form" method="post" action="newCategoria">
                             <div class="modal-body">
                                 <label class="form-label mb-2">Categoría nueva:</label>
                                 <input type="text" class="form-control mt-2" name="nombre_categoria" id="nombre_categoria" required>
                             </div>
-                        </form>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary" onclick="enviarCate()">Agregar</button>
+                                <button type="button" class="btn btn-primary" onclick="enviarCategoria()">Agregar</button>
                             </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
+
 
 
         </div>
@@ -254,31 +253,19 @@
 
 </div>
 <script>
-    function limpiarSelect(id){
-        let select = document.getElementById(id);
-
-        let def = document.createElement("option");
-        def.setAttribute("selected", "");
-        def.text = "Selecciona...";
-        select.replaceChildren(def);
-    }
-</script>
-
-<script>
     function loadCategorias() {
         let req = new XMLHttpRequest();
         let categoriaSelect = document.getElementById("categoria_select");
 
-        limpiarSelect("categoria_select"); // Limpia el select antes de agregar nuevas opciones
-
         req.onreadystatechange = function() {
             if (req.readyState == XMLHttpRequest.DONE) {
                 if (req.status == 200) {
-                    let respuesta = JSON.parse(req.responseText);
+                    let respuesta = JSON.parse(req.responseText); // Convierte la respuesta JSON a un objeto JavaScript
                     for (let key in respuesta) {
                         if (respuesta.hasOwnProperty(key)) {
+                            // Crear y agregar las opciones al select
                             let option = document.createElement("option");
-                            option.setAttribute("value", respuesta[key].id_categoria);
+                            option.setAttribute("value", respuesta[key].nombre_categoria);
                             option.text = respuesta[key].nombre_categoria;
                             categoriaSelect.appendChild(option);
                         }
@@ -291,32 +278,12 @@
             }
         };
 
-        req.open("GET", "getCategorias", true);
-        req.send(null);
+        req.open("GET", "newCategoria", true); // Asumiendo que "getCategorias" es el endpoint que devuelve las categorías
+        req.send(null); // Envía la solicitud
     }
 </script>
 
 
-<script>
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
-</script>
 <script>
     //divs
     let nuevoDivColor = document.getElementById("coloresNuevos");
@@ -416,7 +383,7 @@
 </script>
 
 <script>
-    function enviarCate() {
+    function enviarCategoria() {
         let form = document.querySelector("#categoria_form"); // Selecciona el formulario
 
         // Asegúrate de que el formulario es válido antes de enviarlo
@@ -431,7 +398,7 @@
         req.onload = function() {
             if (req.readyState == 4 && req.status == 200) {
                 let myModalEl = document.getElementById('exampleModal');
-                let modal = bootstrap.Modal.getInstance(myModalEl);
+                let modal = bootstrap.Modal.getInstance(myModalEl)
                 modal.hide(); // Cierra el modal
                 updateCategorias(); // Actualiza la lista de categorías
             } else {
@@ -440,11 +407,13 @@
         };
         req.send(new URLSearchParams(new FormData(form)).toString()); // Envía el formulario
     }
-
+</script>
+<script>
     function updateCategorias() {
-        let select = document.getElementById("categoria_select");
+        let select = document.getElementById("categoria_select"); // El select donde se muestran las categorías
         var req = new XMLHttpRequest();
 
+        // Limpia el select antes de actualizar
         limpiarSelect("categoria_select");
 
         req.open("GET", "newCategoria", true); // Supone que hay un endpoint que devuelve las categorías
@@ -455,13 +424,11 @@
                     for (let key in respuesta) {
                         if (respuesta.hasOwnProperty(key)) {
                             let option = document.createElement("option");
-                            option.setAttribute("value", respuesta[key].id_categoria);
+                            option.setAttribute("value", respuesta[key].nombre_categoria);
                             option.text = respuesta[key].nombre_categoria;
                             select.appendChild(option);
                         }
                     }
-                    // Selecciona automáticamente la última categoría añadida
-                    select.selectedIndex = select.options.length - 1;
                 } else {
                     console.log('Error al actualizar las categorías');
                 }
@@ -469,16 +436,8 @@
         };
         req.send(null);
     }
-
-
-    function limpiarSelect(id) {
-        let select = document.getElementById(id);
-        while (select.options.length > 0) {
-            select.remove(0);
-        }
-    }
-
 </script>
+
 
 
 

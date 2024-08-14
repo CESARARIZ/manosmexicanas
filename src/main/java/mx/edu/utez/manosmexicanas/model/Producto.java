@@ -1,5 +1,7 @@
 package mx.edu.utez.manosmexicanas.model;
 
+import mx.edu.utez.manosmexicanas.dao.CategoriaDao;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
