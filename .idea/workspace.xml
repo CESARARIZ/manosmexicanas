@@ -10,14 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="MOSTRAR VARIAS IMAGENES FUNCIONAL">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="CORRECION DE ERRORES" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -295,15 +288,7 @@
       <workItem from="1723657151339" duration="5175000" />
       <workItem from="1723666185978" duration="396000" />
       <workItem from="1723684054374" duration="4807000" />
-      <workItem from="1723691158379" duration="1725000" />
-    </task>
-    <task id="LOCAL-00024" summary="funcion borrar productos del carrito">
-      <option name="closed" value="true" />
-      <created>1722321488719</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1722321488719</updated>
+      <workItem from="1723691158379" duration="1810000" />
     </task>
     <task id="LOCAL-00025" summary="ajustes pagina carrito">
       <option name="closed" value="true" />
@@ -689,7 +674,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723662330828</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="CORRECION DE ERRORES">
+      <option name="closed" value="true" />
+      <created>1723692953614</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1723692953614</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +700,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Pagina publicar productos corregida" />
     <MESSAGE value="Creacion de metodos datos" />
     <MESSAGE value="Recibir parametros y atraer metodos daos" />
     <MESSAGE value="update modelo imagen" />
@@ -732,6 +724,7 @@
     <MESSAGE value="agregar categoria de forma asincrona" />
     <MESSAGE value="guardar categoria de forma asincrona correctamente" />
     <MESSAGE value="MOSTRAR VARIAS IMAGENES FUNCIONAL" />
-    <option name="LAST_COMMIT_MESSAGE" value="MOSTRAR VARIAS IMAGENES FUNCIONAL" />
+    <MESSAGE value="CORRECION DE ERRORES" />
+    <option name="LAST_COMMIT_MESSAGE" value="CORRECION DE ERRORES" />
   </component>
 </project>
