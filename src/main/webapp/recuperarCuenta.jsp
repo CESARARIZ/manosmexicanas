@@ -3,6 +3,9 @@
 <head>
     <title>Ingresar</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #F2F2F2;
@@ -60,8 +63,10 @@
 
         #titulo {
             text-align: center;
-            font-family: Verdana, sans-serif; /* Cambiado a Verdana */
-            font-size: 30px; /* Tamaño ajustado */
+            font-family: "Sansita", sans-serif; /* Cambiado a Sansita */
+            font-size: 36px; /* Tamaño ajustado */
+            font-weight: 400;
+            font-style: normal;
         }
 
         .form-group {
@@ -72,20 +77,20 @@
         .form-group input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            /*border: 1px solid #ccc;
+            border-radius: 5px;*/
             box-sizing: border-box;
             font-family: Arial, sans-serif; /* Fuente sencilla */
         }
 
         .text-center button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-family: Arial, sans-serif; /* Fuente sencilla */
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
+            background-color: #ffdaf1; /* Color d fondo */
+            font-size: 18px;
+            color: #000000; /* Color letras */
+            /*font-weight: bold;*/
+            border: 2px solid #ffdaf1; /* Borde */
         }
 
         .text-center button:hover {
