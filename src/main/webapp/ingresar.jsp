@@ -1,11 +1,10 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Ingresar</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
     <style>
-        #nave, #log{
+        #nave, #log {
             text-align: center;
         }
         header {
@@ -14,8 +13,9 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
-        body{
+        body {
             background-color: #F2F2F2;
+            font-family: Arial, sans-serif; /* Cambiado a Arial */
         }
 
         .formu {
@@ -23,50 +23,50 @@
             border: 1px solid black;
             padding: 30px;
             height: auto;
-
+            background-color: #FFFFFF; /* Añadido fondo blanco para contraste */
         }
-        .container{
+        .container {
             margin-top: 1%;
             background-color: #F2F2F2;
         }
-        /* Estilos personalizados */
         .sidebar {
             padding: 20px;
         }
-
-    #titulo{
-        text-align: center;
-        font-family: Sansita;
-        font-size: 50px;
-    }
-    #mar{
-        background-color: #F2F2F2;
-    }
+        #titulo {
+            text-align: center;
+            font-family: Verdana, sans-serif; /* Cambiado a Verdana */
+            font-size: 36px; /* Tamaño ajustado */
+        }
+        p, label, input, a {
+            font-family: Helvetica, sans-serif; /* Cambiado a Helvetica */
+            font-size: 16px; /* Tamaño más uniforme */
+        }
+        #mar {
+            background-color: #F2F2F2;
+        }
+        .btn-primary {
+            font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
+            font-size: 18px;
+        }
     </style>
-
-
 </head>
 <body>
 
 <header>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <div class="col-lg-2" id="log">
+                <a href="index.jsp"><img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LsuA BARRA DE BUSQUEDA-->
             <div class="col-lg-6">
                 <form class="mb-2 mb-lg-0">
-
+                    <!-- Aquí podrías agregar una barra de búsqueda si es necesario -->
                 </form>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="index.jsp">Catálogo</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Registrarse</a>
-
                 </nav>
             </div>
         </div>
@@ -76,35 +76,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5 col-sm-8 col-12 sidebar" id="mar">
-            <div class="formu" style="background-color: #FFFFFF">
-                <form method="post" action="login" >
-                <h2 id="titulo"><b>Inicia sesión</b></h2>
-                <br>
-                <p style="font-family: Roboto; font-size: 18px">Ingresa tu correo electrónico y contraseña para acceder a tu cuenta.</p>
-                <br>
-
+            <div class="formu">
+                <form method="post" action="login">
+                    <h2 id="titulo"><b>Inicia sesión</b></h2>
+                    <br>
+                    <p>Ingresa tu correo electrónico y contraseña para acceder a tu cuenta.</p>
+                    <br>
                     <div class="form-group mb-3">
-                        <label for="correo" style="font-family: Roboto; font-size: 18px">Correo electrónico</label>
-                        <input type="email"  style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="Ingresa tu correo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" class="form-control mb-3" id="correo" name="correo" required placeholder="Ingresa tu correo">
                     </div>
                     <div class="form-group mb-3">
-                        <label for="contra" style="font-family: Roboto; font-size: 18px">Contraseña</label>
-                        <input type="password" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="contra" name="contra" required placeholder="Ingresa tu contraseña">
+                        <label for="contra">Contraseña</label>
+                        <input type="password" class="form-control mb-3" id="contra" name="contra" required placeholder="Ingresa tu contraseña">
                     </div>
                     <br>
-                    <%-- Mensaje de error desde la sesión --%>
-                    <%
-                        HttpSession sesion = request.getSession();
+                    <% HttpSession sesion = request.getSession();
                         String mensaje = (String) sesion.getAttribute("mensaje");
-
-                        if (mensaje != null) {
-                    %>
+                        if (mensaje != null) { %>
                     <p style="color: red;"><%= mensaje %></p>
-                    <%
-                            // Invalida la sesión después de mostrar el mensaje
-                            sesion.invalidate();
-                        }
-                    %>
+                    <% } %>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                         <br><br>
