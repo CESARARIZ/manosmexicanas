@@ -59,7 +59,6 @@
             color: #000000; /* Color letras */
             /*font-weight: bold;*/
             border: 2px solid #ffdaf1; /* Borde */
-
         }
     </style>
 </head>

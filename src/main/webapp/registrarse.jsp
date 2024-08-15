@@ -4,6 +4,9 @@
 <head>
     <title>Title</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         #nave, #log {
             text-align: center;
@@ -20,7 +23,7 @@
         }
         #formRegistro {
             border-radius: 10px;
-            border: 1px solid black;
+            /*border: 1px solid black;*/
             padding: 30px;
             height: auto;
             margin-top: 2%;
@@ -28,8 +31,10 @@
         }
         #titulo {
             text-align: center;
-            font-family: Verdana, sans-serif; /* Cambiado a Verdana */
+            font-family: "Sansita", sans-serif; /* Cambiado a Sansita */
             font-size: 36px; /* Tamaño ajustado */
+            font-weight: 400;
+            font-style: normal;
         }
         #sub {
             font-family: Helvetica, sans-serif; /* Cambiado a Helvetica */
@@ -45,8 +50,13 @@
             background-color: #F2F2F2;
         }
         .btn-primary {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
+            background-color: #ffdaf1; /* Color d fondo */
             font-size: 18px;
+            color: #000000; /* Color letras */
+            /*font-weight: bold;*/
+            border: 2px solid #ffdaf1; /* Borde */
         }
     </style>
 </head>
@@ -77,7 +87,7 @@
         <div class="col-md-6 sidebar">
 
             <form method="post" action="sign_in" class="formulario" id="formRegistro">
-                <h4 id="titulo">CREAR CUENTA</h4>
+                <h2 id="titulo"><b>Crear cuenta</b></h2><br>
                 <h8 id="sub">Ingresa tus datos para crear una cuenta nueva.</h8><br><br>
                 <label for="nombre">Nombre</label>
                 <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" maxlength="50">
@@ -98,8 +108,8 @@
                 <% } %>
                 <br>
                 <center>
-                    <button class="btn btn-primary mb-3" type="submit">Crear cuenta</button><br>
-                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="index.jsp">Inicia sesión</a></label>
+                    <button class="btn btn-primary mb-3" type="submit">Continuar</button><br>
+                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">Inicia sesión</a></label>
                 </center>
             </form>
         </div>
