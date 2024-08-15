@@ -11,9 +11,11 @@
 <head>
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         .sidebar{
-
             padding: 20px 0;
             position: relative; /* Fijar la barra de filtros */
             top: 20px; /* Ajustar la posición superior según sea necesario */
@@ -78,7 +80,6 @@
             flex-direction: column;
             gap:5px;
         }
-
 
         /*esto le da estilo al boton de busqueda*/
         .info-producto button{
@@ -154,17 +155,17 @@
     <!--SE UTILZA UNA FILA PARA REALIZAR LA BARRA DE FILTROS-->
     <div class="row ">
         <div class="col-md-2 sidebar bg-light">
-            <h4 class="px-1" style="text-align: center;">Filtros</h4>
+            <h4 class="px-1"  style="font-family: 'Sansita', sans-serif; text-align: center">Filtros</h4>
             <form method="GET" action="catalogo.jsp">
             <!--SE CREAN CAJAS PARA CADA FILTRO-->
             <div class="filter-box">
-                <h5>Categorías</h5>
+                <h5  style="font-family: 'Sansita', sans-serif;">Categorías</h5>
                 <label><input type="checkbox" name="category" value="ropa-hombre"> Ropa Hombre</label>
                 <label><input type="checkbox" name="category" value="ropa-mujer"> Ropa Mujer</label>
             </div>
             <!--SE CREAN CAJAS PARA CADA FILTRO-->
             <div class="filter-box">
-                <h5>Tallas</h5>
+                <h5  style="font-family: 'Sansita', sans-serif;">Tallas</h5>
                 <label><input type="checkbox" name="size" value="s"> S</label>
                 <label><input type="checkbox" name="size" value="m"> M</label>
                 <label><input type="checkbox" name="size" value="l"> L</label>
@@ -173,7 +174,7 @@
             </div>
             <!--SE CREAN CAJAS PARA CADA FILTRO-->
             <div class="filter-box">
-                <h5>Colores</h5>
+                <h5  style="font-family: 'Sansita', sans-serif;">Colores</h5>
                 <label><input type="checkbox" name="color" value="rojo"> Rojo</label>
                 <label><input type="checkbox" name="color" value="azul"> Azul</label>
                 <label><input type="checkbox" name="color" value="verde"> Verde</label>
@@ -186,7 +187,7 @@
         </div>
         <div class="col-md-10">
             <main class="py-3">
-                <h1>Catálogo</h1>
+                <h1 style="font-family: 'Sansita', sans-serif;">Catálogo</h1>
                 <!--SE CREAN CLASES PARA CADA COLUMNA, SE UTILIZA MARGIN TOP PARA LA SEPARACION TANTO SUPERIOR COMO INFERIOR DE LA OTRA COLUMNA-->
                 <div class="row">
                     <div class="col-md-12" style="display: flex; flex-wrap: wrap; margin-top: 20px;">
