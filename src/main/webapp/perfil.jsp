@@ -28,6 +28,9 @@
 <head>
     <title>Perfil</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         #nave, #log{
             text-align: center;
@@ -58,16 +61,16 @@
         }
 
         .perfil {
-            background-color: #fff;
+            background-color: #ffffff;
             padding: 20px;
             margin: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 5px solid #dee2e6;
+            /*border: 5px solid #dee2e6;*/
         }
 
         .info-personal {
-            background-color: #f8e6ef;
+            background-color: #ffdaf1;
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -181,7 +184,7 @@
                 <section class="perfil">
 
                     <div class="mis-pedidos">
-                        <h3>Mis pedidos</h3>
+                        <h3 style="font-family: 'Sansita', sans-serif;">Mis pedidos</h3>
                         <table>
                             <thead>
                             <tr>
@@ -214,7 +217,7 @@
                         </table>
                     </div>
                     <div class="mis-compras">
-                        <h3>Mis compras</h3>
+                        <h3 style="font-family: 'Sansita', sans-serif;">Mis compras</h3>
                         <table>
                             <thead>
                             <tr>

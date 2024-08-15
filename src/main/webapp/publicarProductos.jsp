@@ -8,6 +8,9 @@
 <head>
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         .sidebar{
 
@@ -139,7 +142,7 @@
             <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
                 <div class="row">
                     <div class="row mb-2 mt-3 ms-4">
-                        <h1 style="font-family: Sansita">Publicar producto</h1>
+                        <h1 style="font-family: 'Sansita', sans-serif;">Publicar producto</h1>
                     </div>
                     <div class="col-md-4 m-3 ms-5">
                         <div class="mb-3">
@@ -216,9 +219,10 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn" type="submit" style="background-color: #FF97D7; font-size: 20px; display: flex; align-items: center; justify-content: center;">
+                        <button class="btn" type="submit" style="background-color: #FF97D7;">
                             Publicar
                         </button>
+
                     </div>
                 </div>
 
