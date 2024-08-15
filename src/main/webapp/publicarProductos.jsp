@@ -211,8 +211,7 @@
 
                             </div>
                         </div>
-                        <div class="mb-3">
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
@@ -303,7 +302,8 @@
 
 
     let colorIndex = 2; // Empezar con el índice de color 1
-    let imgIndex = 2;   // Empezar con el índice de imagen 1
+    let imgIndex = 2;
+    let tallaIndex = 2;// Empezar con el índice de imagen 1
 
     // Botones
     let nuevoColor = document.getElementById("nuevoColor");
@@ -361,15 +361,15 @@
         let tallaLabel = document.createElement("label");
         let tallaInput = document.createElement("input");
 
-        tallaLabel.innerText = "Talla " + colorIndex + ":"; // Usar el índice de color para las tallas
-        tallaLabel.setAttribute("for", "talla" + colorIndex);
+        tallaLabel.innerText = "Talla " + tallaIndex + ":"; // Usar el índice de color para las tallas
+        tallaLabel.setAttribute("for", "talla" + tallaIndex);
         tallaLabel.setAttribute("class", "form-label mt-2");
 
         tallaInput.setAttribute("type", "text");
-        tallaInput.setAttribute("name", "talla" + colorIndex);
+        tallaInput.setAttribute("name", "talla" + tallaIndex);
         tallaInput.setAttribute("class", "form-control mb-2");
-        tallaInput.setAttribute("id", "talla" + colorIndex);
-        tallaInput.setAttribute("placeholder", "Ingresa la talla " + colorIndex);
+        tallaInput.setAttribute("id", "talla" + tallaIndex);
+        tallaInput.setAttribute("placeholder", "Ingresa la talla " + tallaIndex);
 
         tallaDiv.appendChild(tallaLabel);
         tallaDiv.appendChild(tallaInput);

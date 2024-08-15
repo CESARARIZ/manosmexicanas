@@ -10,16 +10,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="guardar categoria de forma asincrona correctamente">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="MOSTRAR VARIAS IMAGENES FUNCIONAL">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImagenServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImagenServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImgCarritoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/MostrarImgCarritoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/AnadirProductosServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +65,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Tomcat Server.Tomcat 10.1.8.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/dan-a/IdeaProjects/Ejemplo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -295,15 +292,10 @@
       <workItem from="1723613208964" duration="2804000" />
       <workItem from="1723616039785" duration="23000" />
       <workItem from="1723648538809" duration="4527000" />
-      <workItem from="1723657151339" duration="4742000" />
-    </task>
-    <task id="LOCAL-00023" summary="img de eliminar">
-      <option name="closed" value="true" />
-      <created>1722276364050</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1722276364050</updated>
+      <workItem from="1723657151339" duration="5175000" />
+      <workItem from="1723666185978" duration="396000" />
+      <workItem from="1723684054374" duration="4807000" />
+      <workItem from="1723691158379" duration="1725000" />
     </task>
     <task id="LOCAL-00024" summary="funcion borrar productos del carrito">
       <option name="closed" value="true" />
@@ -689,7 +681,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723616055478</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="MOSTRAR VARIAS IMAGENES FUNCIONAL">
+      <option name="closed" value="true" />
+      <created>1723662330828</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1723662330828</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +707,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Invalida la sesion despues de desbloquear" />
     <MESSAGE value="Pagina publicar productos corregida" />
     <MESSAGE value="Creacion de metodos datos" />
     <MESSAGE value="Recibir parametros y atraer metodos daos" />
@@ -732,6 +731,7 @@
     <MESSAGE value="metodos dao en usuario para atraer y modificar la direccion" />
     <MESSAGE value="agregar categoria de forma asincrona" />
     <MESSAGE value="guardar categoria de forma asincrona correctamente" />
-    <option name="LAST_COMMIT_MESSAGE" value="guardar categoria de forma asincrona correctamente" />
+    <MESSAGE value="MOSTRAR VARIAS IMAGENES FUNCIONAL" />
+    <option name="LAST_COMMIT_MESSAGE" value="MOSTRAR VARIAS IMAGENES FUNCIONAL" />
   </component>
 </project>

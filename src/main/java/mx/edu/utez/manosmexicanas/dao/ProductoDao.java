@@ -446,7 +446,7 @@ public class ProductoDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                idsImagenes.add(resultSet.getInt("id_imagen"));
+                idsImagenes.add(resultSet.getInt("id_pc"));
                 System.out.println("idsImagenes: " + idsImagenes);
             }
         } catch (SQLException e) {

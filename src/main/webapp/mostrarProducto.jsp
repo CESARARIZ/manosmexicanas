@@ -21,6 +21,8 @@
             ruta = "index.jsp";
         }
 
+    }else{
+        response.sendRedirect("ingresar.jsp");
     }
 %>
 <html>
@@ -134,7 +136,7 @@
         int id_producto =0;
     %>
     <div class="row justify-content-center">
-        <div class="col-md-6 mt-4 mb-4">
+        <div class="col-md-5 mt-4 mb-4">
             <div class="text-center">
                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 
@@ -151,7 +153,7 @@
                         <!-- Asegúrate de que solo el primer elemento tenga la clase 'active' -->
                         <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="10000">
                             <a href=mostrarProducto?id=<%= p.getId_producto() %>">
-                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= p.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= p.getNombre_producto() %>" class="img-fluid" style="width: 150px; height: 200px;">
                             </a>
                         </div>
                         <%
@@ -177,7 +179,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mt-4 mb-4">
+        <div class="col-md-5 mt-4 mb-4">
             <h5>Descripción del producto</h5>
             <p>Categoría: <%= p.getCategoria().getNombre_categoria() %></p>
             <p><%= p.getDescripcion() %></p>
@@ -192,7 +194,7 @@
                                 for (Talla talla : tallas) {
                                     String tallaId = "talla_" + talla.getId_talla();
                         %>
-                        <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off">
+                        <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off" required>
                         <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
                         <%
                             }
@@ -213,7 +215,7 @@
                                 for (ColorProducto color : colores) {
                                     String colorId = "color" + color.getId_color();
                         %>
-                        <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off">
+                        <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off" required>
                         <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
                         <%
                             }
@@ -227,7 +229,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" max="<%=p.getStockDisponible()%>" oninput="calculateTotal()">
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" max="<%=p.getStockDisponible()%>" oninput="calculateTotal()" required>
                     <p>Total: $<span id="total">0.00</span></p>
                 </div>
                 <input type="hidden" id="totalHidden" name="total" value="0.00">
@@ -236,7 +238,17 @@
                 <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                 <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                 <input type="hidden" name="precio" value="<%=p.getPrecio()%>">
-                <input type="submit" class="btn btn-primary" value="Añadir al carrito">
+                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; text-decoration: none; background-color: <%= "Disponible".equals(p.getEstado()) ? "#28a745" : "#6c757d" %>;"
+                        <%= "Disponible".equals(p.getEstado()) ? "type='submit'" : "disabled" %> >
+                    <h6>
+                        <% if ("Disponible".equals(p.getEstado())) { %>
+                        Añadir al carrito
+                        <% } else { %>
+                        No disponible
+                        <% } %>
+                    </h6>
+                </button>
+
             </form>
             <h5>Opiniones</h5>
             <div class="review-card" style="border-radius: 5px; background-color: #f2f2f2">

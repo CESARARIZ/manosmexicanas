@@ -100,7 +100,7 @@
         .info-producto button{
             border: none;
             background: none;
-            background-color: #FE7DCC;
+            background-color: #28a745;
             color: #fff;
             padding: 10px 15px; /* Espacio interno del botón */
             cursor: pointer;
@@ -270,7 +270,7 @@
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
                                 <button class="btn btn-success" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white;">
-                                    <a href="gestionProductos.jsp"><h6>Actualizar</h6></a></button>
+                                    <a href="gestionProductos.jsp" style="color: white; text-decoration: none;">Actualizar</a></button>
                             </div>
                         </div>
                         <%

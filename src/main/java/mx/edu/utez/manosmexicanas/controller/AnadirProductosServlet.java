@@ -51,12 +51,14 @@ public class AnadirProductosServlet extends HttpServlet {
             int colorIndex = 1;
             while (req.getParameter("color" + colorIndex) != null) {
                 colores.add(req.getParameter("color" + colorIndex));
+                System.out.println("Color ingresado en form: " + colorIndex);
                 colorIndex++;
             }
 
             int tallaIndex = 1;
             while (req.getParameter("talla" + tallaIndex) != null) {
                 tallas.add(req.getParameter("talla" + tallaIndex));
+                System.out.println("Talla ingresado en form: " + tallaIndex);
                 tallaIndex++;
             }
 
@@ -80,36 +82,34 @@ public class AnadirProductosServlet extends HttpServlet {
                 System.out.println("Id producto nuevo: " + id_producto);
 
                 // Guardar colores y sus imágenes asociadas
-                for (String color : colores) {
+                for (int i = 0; i < colores.size(); i++) {
+                    String color = colores.get(i);
+                    System.out.println("Color en primer for: " + color);
                     try {
                         if (productoDAO.insertColores(color)) {
                             int colorId = productoDAO.getId_color(color);
 
-                            // Reiniciar el índice de la imagen para cada color
-                            int imageIndex = 1;
-                            String imageName = "img" + imageIndex;
+                            // El índice de la imagen debe coincidir con el índice del color
+                            String imageName = "img" + (i + 1);
+                            Part filePart = req.getPart(imageName);
+                            if (filePart != null && filePart.getSize() > 0) {
+                                InputStream inputStream = filePart.getInputStream();
 
-                            while (req.getPart(imageName) != null) {
-                                Part filePart = req.getPart(imageName);
-                                if (filePart.getSize() > 0) {
-                                    InputStream inputStream = filePart.getInputStream();
-
-                                    // Llama al método DAO para guardar la imagen
-                                    try {
-                                        ProductoDao.insertProductoColor(id_producto, colorId, inputStream);
-                                    } catch (SQLException e) {
-                                        e.printStackTrace();
-                                    }
+                                // Llama al método DAO para guardar la imagen
+                                try {
+                                    ProductoDao.insertProductoColor(id_producto, colorId, inputStream);
+                                    System.out.println("Imagen asociada guardada para el color: " + color);
+                                } catch (SQLException e) {
+                                    e.printStackTrace();
                                 }
-                                imageIndex++;
-                                imageName = "img" + imageIndex; // Cambiamos al siguiente nombre de imagen
                             }
-                            System.out.println("Color: " + colorId);
+                            System.out.println("Color ya guardado en base: " + colorId);
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
                     }
                 }
+
 
                 // Guardar tallas y asociarlas al producto
                 for (String talla : tallas) {
@@ -117,7 +117,7 @@ public class AnadirProductosServlet extends HttpServlet {
                         if (productoDAO.insertTallas(talla)) {
                             int tallaId = productoDAO.getId_talla(talla);
                             productoDAO.insertTalla(id_producto, tallaId);
-                            System.out.println("Talla: " + tallaId);
+                            System.out.println("Talla ya guardada: " + tallaId);
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
