@@ -30,7 +30,10 @@ public class RecuperarContraServlet extends HttpServlet {
         Usuario u = dao.getCorreo(correo);
         int id = u.getId();
         if (u.getCorreo()==null){
-            resp.sendRedirect("index.jsp");
+            HttpSession sesion = req.getSession();
+            sesion.setAttribute("mensajeCorreo","El correo no existe.");
+            //SI NO EXISTE SE REDIRIGE AL MISMO LOGIN PARA MOSTRAR EL ERROR
+            resp.sendRedirect("recuperarCuenta.jsp");
         }else{
             codigo = SimpleRandomStringGenerator.generateRandomString(lenght);
 

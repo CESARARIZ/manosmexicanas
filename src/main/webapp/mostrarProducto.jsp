@@ -114,8 +114,8 @@
             </div>
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="<%= ruta %>">Catalogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="perfil.jsp"><% if (usuario != null) { %>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="<%= ruta %>">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="perfil.jsp"><% if (usuario != null) { %>
                         <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
                         <% } else { %>
                         Perfil

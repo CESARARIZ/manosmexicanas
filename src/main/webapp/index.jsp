@@ -26,6 +26,9 @@
             border-bottom: 1px solid #dee2e6;
             padding: 10px 0;
         }
+        .search-bar {
+            width: 80%; /* Puedes ajustar este valor */
+        }
         body{
             background-color: #F2F2F2;
         }
@@ -124,32 +127,42 @@
     </style>
 </head>
 <body>
-
-<header class="">
+<header class="py-3">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <!-- Columna para el logo -->
+            <div class="col-6 col-lg-3" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                </a>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
-            <div class="col-lg-6">
-                <form class="mb-2 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+
+            <!-- Columna para la barra de búsqueda -->
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0">
+                <form class="w-100 w-lg-75">
+                    <div class="input-group">
+                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit" style="background-color: #FFB2EA;">
+                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
+                        </button>
+                    </div>
                 </form>
             </div>
-            <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
-            <div class="col-lg-4">
+
+            <!-- Columna para los enlaces -->
+            <div class="col-6 col-lg-4 text-start mt-3 mt-lg-0">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Crear cuenta</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
+                    <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="registrarse.jsp">Crear cuenta</a>
+                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="ingresar.jsp">Ingresar</a>
                     <a href="ingresar.jsp">
-                        <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
+                        <img src="img/carritoB.png" alt="Carrito" width="45" height="45">
+                    </a>
                 </nav>
             </div>
         </div>
     </div>
 </header>
+
 
 <div class="container-fluid">
     <!--SE UTILZA UNA FILA PARA REALIZAR LA BARRA DE FILTROS-->

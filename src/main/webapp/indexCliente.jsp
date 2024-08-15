@@ -169,9 +169,9 @@
             <div class="col-md-4 d-flex justify-content-center">
                 <nav id="nave" class="navbar navbar-expand-md navbar-dark">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none"  style="color:#FFB2EA"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none"  style="color:#FFB2EA" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if (usuario != null) { %>
                                 <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
                                 <% } else { %>

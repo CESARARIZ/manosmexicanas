@@ -106,9 +106,9 @@
             <div class="col-md-4 d-flex justify-content-center">
                 <nav id="nave" class="navbar navbar-expand-md navbar-dark">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color: #0d6efd" href="indexAdmin.jsp">Catalogo</a>
+                        <a class="nav-item nav-link me-3 py-1 text-decoration-none" style="color:#FFB2EA" href="indexAdmin.jsp">Catalogo</a>
                         <div class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none" style="color: #0d6efd" href="perfil.jsp" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none"  style="color:#FFB2EA" href="perfil.jsp" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Gestiones
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">

@@ -238,9 +238,9 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="indexCliente.jsp">Catalogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #0d6efd" href="perfil.jsp">Perfil</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="indexCliente.jsp">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="perfil.jsp">Perfil</a>
                 </nav>
             </div>
         </div>

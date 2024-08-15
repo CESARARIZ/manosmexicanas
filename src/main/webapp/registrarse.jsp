@@ -52,30 +52,34 @@
         .btn-primary {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
-            background-color: #ffdaf1; /* Color d fondo */
+            background-color: #FFB2EA; /* Color d fondo */
             font-size: 18px;
             color: #000000; /* Color letras */
             /*font-weight: bold;*/
-            border: 2px solid #ffdaf1; /* Borde */
+            border: 2px solid #ffa8e2;
         }
     </style>
 </head>
 <body>
-<header>
+<header class="py-3">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-lg-2" id="log">
-                <a href="index.jsp"><img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <!-- Columna para el logo -->
+            <div class="col-6 col-lg-3" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                </a>
             </div>
-            <div class="col-lg-6">
-                <form class="mb-2 mb-lg-0">
-                    <!-- Aquí podrías agregar una barra de búsqueda si es necesario -->
-                </form>
+
+            <!-- Columna para la barra de búsqueda -->
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0">
             </div>
-            <div class="col-lg-4">
+
+            <!-- Columna para los enlaces -->
+            <div class="col-6 col-lg-4 text-start mt-3 mt-lg-0">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="index.jsp">Catálogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="ingresar.jsp">Ingresar</a>
+                    <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="ingresar.jsp">Ingresar</a>
+                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catalogo</a>
                 </nav>
             </div>
         </div>
@@ -84,21 +88,21 @@
 
 <div class="container">
     <div class="row justify-content-center" style="background-color: #F2F2F2;">
-        <div class="col-md-6 sidebar">
+        <div class="col-md-6 sidebar shadow-lg p-3 mb-5 bg-white rounded">
 
             <form method="post" action="sign_in" class="formulario" id="formRegistro">
                 <h2 id="titulo"><b>Crear cuenta</b></h2><br>
                 <h8 id="sub">Ingresa tus datos para crear una cuenta nueva.</h8><br><br>
                 <label for="nombre">Nombre</label>
-                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" maxlength="50">
+                <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre..." maxlength="50" required>
                 <label for="telefono">Teléfono</label>
-                <input class="form-control mb-3" type="text" name="telefono" id="telefono" placeholder="Ingrese su teléfono" maxlength="10">
+                <input class="form-control mb-3" type="text" name="telefono" id="telefono" placeholder="Ingrese su teléfono..." maxlength="10" required>
                 <label for="email">Correo electrónico</label>
                 <input class="form-control mb-3" type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required>
                 <label for="contraseña1">Contraseña</label>
-                <input class="form-control mb-3" type="password" name="pass1" id="contraseña1" placeholder="Ingresa tu contraseña" required>
+                <input class="form-control mb-3" type="password" name="pass1" id="contraseña1" placeholder="Ingresa tu contraseña..." required>
                 <label for="contraseña2">Confirmar contraseña</label>
-                <input class="form-control mb-3" type="password" name="pass2" id="contraseña2" placeholder="Confirma tu contraseña" required>
+                <input class="form-control mb-3" type="password" name="pass2" id="contraseña2" placeholder="Confirma tu contraseña..." required>
                 <%
                     HttpSession sesion1 = request.getSession();
                     String mensaje2 = (String) sesion1.getAttribute("mensaje2");
@@ -108,7 +112,7 @@
                 <% } %>
                 <br>
                 <center>
-                    <button class="btn btn-primary mb-3" type="submit">Continuar</button><br>
+                    <button class="btn btn-primary mb-3 btn-lg" type="submit">Confirmar</button><br>
                     <label for="index" id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">Inicia sesión</a></label>
                 </center>
             </form>

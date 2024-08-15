@@ -54,31 +54,35 @@
         .btn-primary {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
-            background-color: #ffdaf1; /* Color d fondo */
+            background-color: #FFB2EA; /* Color d fondo */
             font-size: 18px;
             color: #000000; /* Color letras */
             /*font-weight: bold;*/
-            border: 2px solid #ffdaf1; /* Borde */
+            border: 2px solid #ffa8e2; /* Borde */
         }
     </style>
 </head>
 <body>
 
-<header>
+<header class="py-3">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-lg-2" id="log">
-                <a href="index.jsp"><img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <!-- Columna para el logo -->
+            <div class="col-6 col-lg-3" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                </a>
             </div>
-            <div class="col-lg-6">
-                <form class="mb-2 mb-lg-0">
-                    <!-- Aquí podrías agregar una barra de búsqueda si es necesario -->
-                </form>
+
+            <!-- Columna para la barra de búsqueda -->
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0">
             </div>
-            <div class="col-lg-4">
+
+            <!-- Columna para los enlaces -->
+            <div class="col-6 col-lg-4 text-start mt-3 mt-lg-0">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="index.jsp">Catálogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="registrarse.jsp">Registrarse</a>
+                    <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="registrarse.jsp">Crear cuenta</a>
+                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catalogo</a>
                 </nav>
             </div>
         </div>
@@ -87,7 +91,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5 col-sm-8 col-12 sidebar" id="mar">
+        <div class="col-md-5 col-sm-8 col-12 sidebar shadow-lg p-3 mb-5 bg-white rounded" id="mar">
             <div class="formu">
                 <form method="post" action="login">
                     <h2 id="titulo"><b>Inicia sesión</b></h2>
@@ -105,8 +109,11 @@
                     <br>
                     <% HttpSession sesion = request.getSession();
                         String mensaje = (String) sesion.getAttribute("mensaje");
+                        String msj = (String) sesion.getAttribute("mensajeContraNueva");
                         if (mensaje != null) { %>
                     <p style="color: red;"><%= mensaje %></p>
+                    <% }else if(msj != null){ %>
+                    <p style="color: green"><%=msj%></p>
                     <% } %>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
