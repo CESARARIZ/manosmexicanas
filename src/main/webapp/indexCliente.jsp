@@ -154,15 +154,20 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
-            <div class="col-md-2" id="log">
-                <a href="indexCliente.jsp">
-                    <img src="img/logoMM.png" alt="" width="100px" height="80px">
+            <div class="col-6 col-lg-3" id="log">
+                <a href="index.jsp">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
                 </a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
-            <div class="col-md-6">
-                <form class="mb-2 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-lg-0 align-items-center">
+                <form class="w-100 w-lg-75 align-items-center">
+                    <div class="input-group mt-3 ">
+                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit" style="background-color: #FFB2EA;">
+                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
+                        </button>
+                    </div>
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->

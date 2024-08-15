@@ -138,7 +138,7 @@
             </div>
 
             <!-- Columna para la barra de búsqueda -->
-            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0">
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0 align-items-center">
                 <form class="w-100 w-lg-75">
                     <div class="input-group">
                         <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">

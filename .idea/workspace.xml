@@ -10,15 +10,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="work">
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="img de lupa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/RecuperarContraServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/RecuperarContraServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UpdateContraServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UpdateContraServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/newContraseña.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/newContraseña.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/recuperarCuenta.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -298,23 +294,7 @@
       <workItem from="1723666185978" duration="396000" />
       <workItem from="1723684054374" duration="4807000" />
       <workItem from="1723691158379" duration="1810000" />
-      <workItem from="1723735962769" duration="6936000" />
-    </task>
-    <task id="LOCAL-00026" summary="modelo pedido y detalle pedido">
-      <option name="closed" value="true" />
-      <created>1722396592347</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1722396592347</updated>
-    </task>
-    <task id="LOCAL-00027" summary="dao pedido y dao detalle pedido">
-      <option name="closed" value="true" />
-      <created>1722441537160</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1722441537160</updated>
+      <workItem from="1723735962769" duration="7670000" />
     </task>
     <task id="LOCAL-00028" summary="xml">
       <option name="closed" value="true" />
@@ -692,7 +672,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723735978186</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="correciones recuperar contraseña">
+      <option name="closed" value="true" />
+      <created>1723743239121</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1723743239121</updated>
+    </task>
+    <task id="LOCAL-00076" summary="img de lupa">
+      <option name="closed" value="true" />
+      <created>1723743254254</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1723743254254</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,8 +706,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Recibir parametros y atraer metodos daos" />
-    <MESSAGE value="update modelo imagen" />
     <MESSAGE value="update modelo producto" />
     <MESSAGE value="agg metodos daos para llenar la base" />
     <MESSAGE value="update de formulario permitir img" />
@@ -735,6 +729,8 @@
     <MESSAGE value="MOSTRAR VARIAS IMAGENES FUNCIONAL" />
     <MESSAGE value="CORRECION DE ERRORES" />
     <MESSAGE value="work" />
-    <option name="LAST_COMMIT_MESSAGE" value="work" />
+    <MESSAGE value="correciones recuperar contraseña" />
+    <MESSAGE value="img de lupa" />
+    <option name="LAST_COMMIT_MESSAGE" value="img de lupa" />
   </component>
 </project>
