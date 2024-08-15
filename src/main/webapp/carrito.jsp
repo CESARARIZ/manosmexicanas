@@ -33,6 +33,9 @@
 <head>
     <title>Carrito</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         #nave, #log{
             text-align: center;
@@ -62,8 +65,6 @@
             margin-left: 20px;
             text-decoration: none;
         }
-
-
 
         .carrito, .resumen {
             background-color: #ffe4e1;
@@ -247,13 +248,13 @@
 </header>
 <div class="container mt-4 mb-4">
     <div class="row">
-        <div class="col-md-8" style="background-color: #FFFFFF">
+        <div class="col-md-8" style="...">
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
                     <th colspan="8" class="text-start bg-light mb-2 align-middle">
                         <br>
-                        <h2>Carrito de compras</h2>
+                        <h2 style="font-family: 'Sansita', sans-serif;">Carrito de compras</h2>
                         <br>
                     </th>
                 </tr>

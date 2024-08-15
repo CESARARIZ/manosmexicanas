@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresar Correo</title>
+    <title>Ingresar</title>
     <link rel='stylesheet' type='text/css' media='screen' href='${pageContext.request.contextPath}/css/bootstrap.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #F2F2F2;
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; /* Fuente sencilla */
         }
 
         header {
@@ -39,6 +40,7 @@
             color: #fff;
             margin-left: 20px;
             text-decoration: none;
+            font-family: Arial, sans-serif; /* Fuente sencilla */
         }
 
         .container {
@@ -61,29 +63,34 @@
 
         #titulo {
             text-align: center;
-            font-family: Sansita;
-            font-size: 30px;
+            font-family: "Sansita", sans-serif; /* Cambiado a Sansita */
+            font-size: 36px; /* Tamaño ajustado */
+            font-weight: 400;
+            font-style: normal;
         }
 
         .form-group {
             text-align: left;
+            font-family: Helvetica, sans-serif; /* Cambiado a Helvetica */
         }
 
         .form-group input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            /*border: 1px solid #ccc;
+            border-radius: 5px;*/
             box-sizing: border-box;
+            font-family: Arial, sans-serif; /* Fuente sencilla */
         }
 
         .text-center button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
+            background-color: #ffdaf1; /* Color d fondo */
+            font-size: 18px;
+            color: #000000; /* Color letras */
+            /*font-weight: bold;*/
+            border: 2px solid #ffdaf1; /* Borde */
         }
 
         .text-center button:hover {
@@ -93,6 +100,7 @@
         .text-center a {
             color: #007bff;
             text-decoration: none;
+            font-family: Arial, sans-serif; /* Fuente sencilla */
         }
 
         .text-center a:hover {
@@ -103,6 +111,7 @@
             color: #fff;
             text-decoration: none;
             margin-left: 20px;
+            font-family: Arial, sans-serif; /* Fuente sencilla */
         }
     </style>
 </head>
@@ -111,7 +120,7 @@
 <header>
     <div class="container-fluid">
         <div id="log">
-            <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+            <img src="img/logoMM.png" alt="" width="100px" height="80px">
         </div>
         <div id="nave">
             <a href="index.jsp">Catálogo</a>
@@ -120,28 +129,28 @@
     </div>
 </header>
 <center>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 d-flex justify-content-center">
-            <div class="sidebar bg-light">
-                <div class="formu">
-                    <form method="post" action="recuperarContra">
-                        <h2 id="titulo"><b>Recupera tu contrasena</b></h2>
-                        <br>
-                        <div class="form-group mb-3">
-                            <label for="correo" style="font-family: Roboto; font-size: 18px;">Correo electronico</label>
-                            <input type="email" style="font-family: Monserrat; font-size: 17px" class="form-control mb-3" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
-                        </div>
-                        <br>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Verificar</button>
-                            <br><br>
-                        </div>
-                    </form>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 d-flex justify-content-center">
+                <div class="sidebar bg-light">
+                    <div class="formu">
+                        <form method="post" action="recuperarContra">
+                            <h2 id="titulo"><b>Recupera tu contraseña</b></h2>
+                            <br>
+                            <div class="form-group mb-3">
+                                <label for="correo">Correo electrónico</label>
+                                <input type="email" class="form-control mb-3" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
+                            </div>
+                            <br>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Verificar</button>
+                                <br><br>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div></center>
+    </div></center>
 </body>
 </html>
