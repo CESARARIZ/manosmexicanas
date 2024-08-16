@@ -19,6 +19,7 @@
             ruta = "indexAdmin.jsp";
         }else {
             ruta = "index.jsp";
+            response.sendRedirect("ingresar.jsp");
         }
 
     }else{
@@ -34,18 +35,6 @@
             background-color: #F2F2F2;
         }
 
-        .product-image {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        .btn-add-cart {
-            background-color: #ffc0cb;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
         .star-rating {
             color: #FFD700;
             font-size: 1.5rem;
@@ -128,7 +117,7 @@
         </div>
     </div>
 </header>
-<div class="container mt-5" style="background-color: #FFFFFF; border-radius: 10px; align-items: center;">
+<div class="container mt-5" style=" border-radius: 10px; align-items: center;">
     <%
         HttpSession sesion = request.getSession();
         Producto p = (Producto) sesion.getAttribute("producto");
@@ -136,130 +125,142 @@
         int id_producto =0;
     %>
     <div class="row justify-content-center">
-        <div class="col-md-5 mt-4 mb-4">
-            <div class="text-center">
-                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="col-md-10" style="background-color: #FFFFFF;">
+            <div class="row justify-content-center">
+                <div class="col-md-5 justify-content-center mt-4 mb-4 m-2" style="background-color: #FFFFFF;">
+                    <div class="text-center">
+                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 
-                    <div class="carousel-inner">
-                        <%
-                            ProductoDao productoDao = new ProductoDao();
-                            // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
-                            List<Integer> imagenes = productoDao.idsImagenes(p.getId_producto()); // Este método debe retornar una lista con los IDs de las imágenes
-                            int index = 0;
-                            System.out.println("Tamaño de imagenes: " + imagenes.size());
-                            for (Integer image : imagenes) {
-                                System.out.println("ID de la imagen: " + image);
-                        %>
-                        <!-- Asegúrate de que solo el primer elemento tenga la clase 'active' -->
-                        <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="10000">
-                            <a href=mostrarProducto?id=<%= p.getId_producto() %>">
-                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= p.getNombre_producto() %>" class="img-fluid" style="width: 150px; height: 200px;">
-                            </a>
+                            <div id="carouselProducto<%= p.getId_producto() %>" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <%
+                                        ProductoDao productoDao = new ProductoDao();
+                                        List<Integer> imagenes = productoDao.idsImagenes(p.getId_producto());
+                                        int index = 0;
+
+                                        for (Integer image : imagenes) {
+                                    %>
+                                    <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="6000">
+                                        <a href="#">
+                                            <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= p.getNombre_producto() %>" class="img-fluid" style="width: 300px; height: 500px; object-fit: cover;">
+                                        </a>
+                                    </div>
+                                    <%
+                                            index++;
+                                        }
+                                    %>
+                                </div>
+                                <!-- Verificar si hay más de una imagen antes de mostrar los botones -->
+                                <%
+                                    if (imagenes.size() > 1) {
+                                %>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto<%= p.getId_producto() %>" data-bs-slide="prev" style="background-color: transparent; border: none;">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0) brightness(0);"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto<%= p.getId_producto() %>" data-bs-slide="next" style="background-color: transparent; border: none;">
+                                    <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(0) brightness(0);"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <%
+                                    }
+                                %>
+                            </div>
+
                         </div>
-                        <%
-                                index++;
-                            }
-                        %>
+
+                        <h2 class="product-title"><%= p.getNombre_producto() %></h2>
+                        <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
+                        <p>Disponibles: <%= p.getStockDisponible() %></p>
+                        <div class="star-rating">
+                            ★★★★☆
+                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+                <div class="col-md-5  justify-content-center mt-4 mb-4 mx-4 m-2" style="background-color: #FFFFFF;">
+                    <h5><b>Descripción del producto</b></h5>
+                    <p><%= p.getDescripcion() %></p>
+                    <p><b>Categoría:</b> <%= p.getCategoria().getNombre_categoria() %></p>
+
+                    <form id="form-carrito" action="carrito" method="post">
+                        <div class="mb-3">
+                            <label for="talla" class="form-label"><b>Selecciona la talla:</b></label>
+                            <div id="talla">
+                                <%
+                                    List<Talla> tallas = p.getTallas();
+                                    if (tallas != null && !tallas.isEmpty()) {
+                                        for (Talla talla : tallas) {
+                                            String tallaId = "talla_" + talla.getId_talla();
+                                %>
+                                <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off" required>
+                                <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
+                                <%
+                                    }
+                                } else {
+                                %>
+                                <p>No hay tallas disponibles.</p>
+                                <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="color" class="form-label"><b>Selecciona el color:</b></label>
+                            <div id="color">
+                                <%
+                                    List<ColorProducto> colores = p.getColores();
+                                    if (colores != null && !colores.isEmpty()) {
+                                        for (ColorProducto color : colores) {
+                                            String colorId = "color" + color.getId_color();
+                                %>
+                                <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off" required>
+                                <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
+                                <%
+                                    }
+                                } else {
+                                %>
+                                <p>No hay colores disponibles.</p>
+                                <%
+                                    }
+                                %>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
+                            <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" max="<%=p.getStockDisponible()%>" oninput="calculateTotal()" required>
+                            <p>Total: $<span id="total">0.00</span></p>
+                        </div>
+                        <input type="hidden" id="totalHidden" name="total" value="0.00">
+                        <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                        <input type="hidden" name="nombre_producto" value="<%=p.getNombre_producto()%>">
+                        <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
+                        <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                        <input type="hidden" name="precio" value="<%=p.getPrecio()%>">
+                        <button class="text-center align-content-center" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; text-decoration: none; background-color: <%= "Disponible".equals(p.getEstado()) ? "#28a745" : "#6c757d" %>;"
+                                <%= "Disponible".equals(p.getEstado()) ? "type='submit'" : "disabled" %> >
+                            <h6>
+                                <% if ("Disponible".equals(p.getEstado())) { %>
+                                Añadir al carrito
+                                <% } else { %>
+                                No disponible
+                                <% } %>
+                            </h6>
+                        </button>
+
+                    </form>
+                    <h5>Opiniones</h5>
+                    <div class="review-card" style="border-radius: 5px; background-color: #f2f2f2">
+                        <img src="img/albañil_mantenimiento.jpeg" alt="Janette MM">
+                        <div>
+                            <p class="reviewer-name">Janette MM</p>
+                            <div class="star-rating">
+                                ★★★★☆
+                            </div>
+                            <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
+                        </div>
+                    </div>
                 </div>
 
-                <h2 class="product-title"><%= p.getNombre_producto() %></h2>
-                <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
-                <p>Disponibles: <%= p.getStockDisponible() %></p>
-                <div class="star-rating">
-                    ★★★★☆
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 mt-4 mb-4">
-            <h5>Descripción del producto</h5>
-            <p>Categoría: <%= p.getCategoria().getNombre_categoria() %></p>
-            <p><%= p.getDescripcion() %></p>
-
-            <form id="form-carrito" action="carrito" method="post">
-                <div class="mb-3">
-                    <label for="talla" class="form-label">Selecciona la talla:</label>
-                    <div id="talla">
-                        <%
-                            List<Talla> tallas = p.getTallas();
-                            if (tallas != null && !tallas.isEmpty()) {
-                                for (Talla talla : tallas) {
-                                    String tallaId = "talla_" + talla.getId_talla();
-                        %>
-                        <input type="radio" class="btn-check" name="id_talla" id="<%= tallaId %>" value="<%= talla.getId_talla() %>" autocomplete="off" required>
-                        <label class="btn btn-outline-primary" for="<%= tallaId %>"><%= talla.getNombre() %></label>
-                        <%
-                            }
-                        } else {
-                        %>
-                        <p>No hay tallas disponibles.</p>
-                        <%
-                            }
-                        %>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="color" class="form-label">Selecciona el color:</label>
-                    <div id="color">
-                        <%
-                            List<ColorProducto> colores = p.getColores();
-                            if (colores != null && !colores.isEmpty()) {
-                                for (ColorProducto color : colores) {
-                                    String colorId = "color" + color.getId_color();
-                        %>
-                        <input type="radio" class="btn-check" name="id_color" id="<%= colorId %>" value="<%= color.getId_color() %>" autocomplete="off" required>
-                        <label class="btn btn-outline-primary" for="<%= colorId %>"><%= color.getNombre() %></label>
-                        <%
-                            }
-                        } else {
-                        %>
-                        <p>No hay colores disponibles.</p>
-                        <%
-                            }
-                        %>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="cantidad" class="form-label">Selecciona la cantidad:</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="1" min="1" max="<%=p.getStockDisponible()%>" oninput="calculateTotal()" required>
-                    <p>Total: $<span id="total">0.00</span></p>
-                </div>
-                <input type="hidden" id="totalHidden" name="total" value="0.00">
-                <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
-                <input type="hidden" name="nombre_producto" value="<%=p.getNombre_producto()%>">
-                <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
-                <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
-                <input type="hidden" name="precio" value="<%=p.getPrecio()%>">
-                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; text-decoration: none; background-color: <%= "Disponible".equals(p.getEstado()) ? "#28a745" : "#6c757d" %>;"
-                        <%= "Disponible".equals(p.getEstado()) ? "type='submit'" : "disabled" %> >
-                    <h6>
-                        <% if ("Disponible".equals(p.getEstado())) { %>
-                        Añadir al carrito
-                        <% } else { %>
-                        No disponible
-                        <% } %>
-                    </h6>
-                </button>
-
-            </form>
-            <h5>Opiniones</h5>
-            <div class="review-card" style="border-radius: 5px; background-color: #f2f2f2">
-                <img src="img/albañil_mantenimiento.jpeg" alt="Janette MM">
-                <div>
-                    <p class="reviewer-name">Janette MM</p>
-                    <div class="star-rating">
-                        ★★★★☆
-                    </div>
-                    <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
-                </div>
             </div>
         </div>
     </div>
@@ -293,5 +294,10 @@
 
     calculateTotal();
 </script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

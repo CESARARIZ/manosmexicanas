@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import mx.edu.utez.manosmexicanas.dao.UsuarioDao;
 import mx.edu.utez.manosmexicanas.model.Usuario;
+import mx.edu.utez.manosmexicanas.utils.GmailSender;
 import mx.edu.utez.manosmexicanas.utils.SimpleRandomStringGenerator;
 import mx.edu.utez.manosmexicanas.utils.SimpleRandomStringGenerator.*;
 //import mx.edu.utez.manosmexicanas.utils.GmailSender;
@@ -41,13 +42,13 @@ public class RecuperarContraServlet extends HttpServlet {
                 String asunto= "Recuperar contraseña";
                 String mensaje = "<a href=\"http://localhost:8080/manosMexicanas_war_exploded/recuperarContra?codigo="+codigo+"&id=" + id +"\"> Haz click aqui para recuperar tu contraseña </a> ";
 
-            /*
+
                 try {
                     GmailSender msj = new GmailSender();
                     msj.sendMail(correo, asunto, mensaje);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
-                } */
+                }
             }
 
 

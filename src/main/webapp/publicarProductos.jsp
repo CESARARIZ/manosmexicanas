@@ -379,6 +379,7 @@
         tallaDiv.appendChild(tallaInput);
         nuevoDivTalla.appendChild(tallaDiv);
 
+        tallaIndex++;
         event.preventDefault();
     });
 

@@ -19,11 +19,12 @@ public class PedidosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int id_usuario = Integer.parseInt(request.getParameter("id_usuario"));
+        System.out.println("Id del usuario para sus pedidos"+id_usuario);
         PedidoDao pedidoDao = new PedidoDao();
         List<PedidoDetalle> detalles = pedidoDao.getPedidoDetalles(id_usuario);
         System.out.println("Número de detalles recuperados: " + (detalles != null ? detalles.size() : 0));
         if(detalles == null || detalles.isEmpty()){
-            response.sendRedirect("ingresar.jsp");
+            response.sendRedirect("pedido.jsp");
         }else {
             request.setAttribute("pedidos", detalles);
             request.getRequestDispatcher("pedido.jsp").forward(request, response);

@@ -12,6 +12,7 @@ import mx.edu.utez.manosmexicanas.model.Pedido;
 import mx.edu.utez.manosmexicanas.model.PedidoProducto;
 import mx.edu.utez.manosmexicanas.model.Producto;
 import mx.edu.utez.manosmexicanas.model.Usuario;
+import mx.edu.utez.manosmexicanas.utils.GmailSender;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class ProductosPedidoServlet extends HttpServlet {
 
         UsuarioDao usuarioDao = new UsuarioDao();
         Usuario u = usuarioDao.getDireccion(id_usuario);
+        System.out.println("Direccion: " + u.getDireccion());
 
         if(u.getDireccion()==null){
             res.sendRedirect("carrito.jsp?mostrarModal=true");
@@ -55,14 +57,15 @@ public class ProductosPedidoServlet extends HttpServlet {
             Date fecha_pedido = new Date();
 
             Pedido pedido = new Pedido();
-        /*
+
         //MANDAR CONFIRMACION DE COMPRA AL CORREO
-        UsuarioDao usuarioDao = new UsuarioDao();
+
         Usuario user = usuarioDao.getCorreo(id_usuario);
         String nombre = user.getNombre_usuario();
         String correo = user.getCorreo();
+        System.out.println("Correo del cliente: "+correo);
 
-        } */
+
 
             pedido.setId_usuario(id_usuario);
             pedido.setFecha_pedido(fecha_pedido);
@@ -103,22 +106,27 @@ public class ProductosPedidoServlet extends HttpServlet {
                     boolean updStock = dao.updateStock(id_producto,cantid);
                     System.out.println("updStock: " + updStock);
                 }
+
             /*
+            if(user.getCorreo()!=null) {
 
-            if(user.getCorreo()!=null){
 
-
-                String asunto= "¡Gracias por tu compra! Tu pedido ha sido confirmado.";
-                String mensaje = "<h1> Estimado/a " +  nombre + "</h1> <br> <p>Nos complace informarte que tu pedido ha sido confirmado. <br> ¡Gracias por tu compra!</p>";
+                String asunto = "¡Gracias por tu compra!";
+                String mensaje = "<h1> Estimado/a " + nombre + "</h1> <br> <p>Nos complace informarte que tu pedido ha sido confirmado. <br> ¡Gracias por tu compra!</p>";
 
                 try {
-                    GmailSender msj = new GmailSender();
-                    msj.sendMail(correo, asunto, mensaje);
+                    GmailSender msjCompra = new GmailSender();
+                    msjCompra.sendMail(correo, asunto, mensaje);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
 
                 }
+
+
+            }
+
              */
+
                 res.sendRedirect("carrito.jsp");
             }else{
                 res.sendRedirect("404.jsp");

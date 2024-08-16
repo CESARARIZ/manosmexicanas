@@ -231,20 +231,18 @@
                         %>
                         <div class="item mt-4" style="flex: 0 0 calc(16.66% - 20px); max-width: calc(16.66% - 20px); display: flex; flex-direction: column; margin-right: 10px; margin-bottom: 20px;">
                             <figure style="margin: 0;">
-                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                <!-- Carrusel con id único -->
+                                <div id="carouselProducto<%= producto.getId_producto() %>" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <%
-                                            // Aquí se supone que 'imagenes' es una lista de URLs o ids de las imágenes del producto.
-                                            List<Integer> imagenes = productoDao.idsImagenes(producto.getId_producto()); // Este método debe retornar una lista con los IDs de las imágenes
+                                            List<Integer> imagenes = productoDao.idsImagenes(producto.getId_producto());
                                             int index = 0;
-                                            System.out.println("Tamaño de imagenes: " + imagenes.size());
+
                                             for (Integer image : imagenes) {
-                                                System.out.println("ID de la imagen: " + image);
                                         %>
-                                        <!-- Asegúrate de que solo el primer elemento tenga la clase 'active' -->
-                                        <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="10000">
+                                        <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="6000">
                                             <a href="ingresar.jsp">
-                                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px;">
+                                                <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px; object-fit: cover;">
                                             </a>
                                         </div>
                                         <%
@@ -252,21 +250,26 @@
                                             }
                                         %>
                                     </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <!-- Verificar si hay más de una imagen antes de mostrar los botones -->
+                                    <%
+                                        if (imagenes.size() > 1) {
+                                    %>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProducto<%= producto.getId_producto() %>" data-bs-slide="prev" style="background-color: transparent; border: none;">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(0) brightness(0);"></span>
                                         <span class="visually-hidden">Previous</span>
                                     </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProducto<%= producto.getId_producto() %>" data-bs-slide="next" style="background-color: transparent; border: none;">
+                                        <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(0) brightness(0);"></span>
                                         <span class="visually-hidden">Next</span>
                                     </button>
+                                    <%
+                                        }
+                                    %>
                                 </div>
-
-
-
-
                             </figure>
-                            <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
+
+
+                        <div class="info-producto" style="padding: 10px; flex: 1; display: flex; flex-direction: column;">
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
@@ -295,8 +298,10 @@
         </div>
     </div>
 </div>
-<script>var myCarousel = document.querySelector('#carouselExampleInterval');
-var carousel = new bootstrap.Carousel(myCarousel);</script>
+<script>
+    var myCarousel = document.querySelector('#carouselExampleInterval');
+    var carousel = new bootstrap.Carousel(myCarousel);
+</script>
 <script src="js/bootstrap.js"></script>
 </body>
 </html>
