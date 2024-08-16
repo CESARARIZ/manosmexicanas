@@ -36,12 +36,13 @@ public class UpdateContraServlet extends HttpServlet {
                 resp.sendRedirect("ingresar.jsp");
                 sesion.setAttribute("mensajeContraNueva","Tu contraseña se actualizo.");
             } else {
-                resp.sendRedirect("newContraseña.jsp?codigo=" + codigo + "&id=" + id);
+                resp.sendRedirect("newContrasenia.jsp?codigo=" + codigo + "&id=" + id);
+                sesion.setAttribute("mensajeContra","No se actualizo tu contraseña");
             }
         }else{
 
             sesion.setAttribute("mensajeContra","Las contraseñas no coinciden");
-            resp.sendRedirect("newContraseña.jsp?codigo=" + codigo + "&id=" + id);
+            resp.sendRedirect("newContrasenia.jsp?codigo=" + codigo + "&id=" + id);
         }
 
     }

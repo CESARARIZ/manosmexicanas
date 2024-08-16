@@ -146,12 +146,12 @@
             <td><%=u.getTelefono()%></td>
             <td><%=direccion%></td>
             <td><%=u.getEstado()%></td>
-            <td>
-                <div style="vertical-align: middle">
-                    <form action="eliminar" method="post">
+            <td class="align-content-center">
+                <div class="align-content-center">
+                    <form action="eliminar" method="post" class="align-content-center">
                         <input type="hidden" name="id_usuario" class="" value="<%= u.getId() %>">
                         <input type="hidden" name="estado" value="<%= u.getEstado() %>">
-                        <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %>" style="vertical-align: middle">
+                        <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %> align-middle mt-3" style="vertical-align: middle">
                             <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
                         </button>
                     </form>

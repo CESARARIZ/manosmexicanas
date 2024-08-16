@@ -40,7 +40,8 @@ public class RecuperarContraServlet extends HttpServlet {
 
             if (dao.updateCodigo(correo, codigo)){
                 String asunto= "Recuperar contraseña";
-                String mensaje = "<a href=\"http://localhost:8080/manosMexicanas_war_exploded/recuperarContra?codigo="+codigo+"&id=" + id +"\"> Haz click aqui para recuperar tu contraseña </a> ";
+                String mensaje = "<a href=\"http://localhost:8080/manosMexicanas_war_exploded/recuperarContra?codigo=" + codigo + "&id=" + id + "\"> Haz click aqui para recuperar tu contraseña </a>";
+
 
 
                 try {
@@ -50,25 +51,33 @@ public class RecuperarContraServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
             }
-
+            resp.sendRedirect("ingresar.jsp");
 
         }
     }
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+        String idParam = req.getParameter("id");
         String codigo = req.getParameter("codigo");
+
+        if (idParam == null || codigo == null) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Parámetros inválidos.");
+            return;
+        }
+
+        int id = Integer.parseInt(idParam);
 
         UsuarioDao dao = new UsuarioDao();
 
-
-        if (dao.getCodigo(codigo)){
-
+        if (dao.getCodigo(codigo)) {
             Usuario u = new Usuario();
             u.setId(id);
             u.setCodigo(codigo);
-            String rutaa = "newContraseña.jsp?codigo=" + codigo + "&id=" + id;
+            String rutaa = "newContrasenia.jsp?codigo=" + codigo + "&id=" + id;
             resp.sendRedirect(rutaa);
+        } else {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Código no válido.");
         }
     }
+
 }
 

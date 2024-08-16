@@ -28,14 +28,14 @@ import static jakarta.mail.Message.RecipientType.TO;
 
 public class GmailSender {
     private static final String TOKENS_DIRECTORY_PATH = "src/main/resources/tokens";
-    private static final String FROM = "manosmexicanasutz@gmail.com";
+    private static final String FROM = "utezmanosmexicanas@gmail.com";
     private final Gmail service;
 
     public GmailSender() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
         service = new Gmail.Builder(httpTransport, jsonFactory, getCredentials(httpTransport, jsonFactory))
-                .setApplicationName("manosmexicanas")
+                .setApplicationName("MANOSMEXICANAS")
                 .build();
     }
 
@@ -82,7 +82,7 @@ public class GmailSender {
                 }
             }
         }
-        /*
+/*
         public static void main(String[] args) throws Exception {
             new GmailSender().sendMail("20233tn088@utez.edu.mx","A new message",
                     "<h1>Manos Mexicanas; Aguilar Popoca Angel Daniel, Arizmendi Aguilar Cesar leonardo, Millan Millan Janetthe, Roque Ocampo Maximiliano </h1>");

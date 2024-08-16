@@ -26,6 +26,13 @@ public class CarritoServlet extends HttpServlet {
         double total = Double.parseDouble(req.getParameter("total"));
         String ruta = "indexCliente.jsp";
 
+        System.out.println("ID PRODUCTO CARRITO: "+ id_producto);
+        System.out.println("ID CATEGORIA CARRITO: "+ id_producto);
+        System.out.println("ID TALLA CARRITO: "+ id_producto);
+        System.out.println("ID COLOR CARRITO: "+ id_producto);
+        System.out.println("ID CANTIDAD CARRITO: "+ id_producto);
+
+
         CarritoDetalleDao dao = new CarritoDetalleDao();
         Carrito carrito = new Carrito();
         carrito.setId_usuario(id_usuario);
@@ -33,6 +40,7 @@ public class CarritoServlet extends HttpServlet {
 
         // Insertar carrito y obtener el ID generado
         int id_carrito = dao.inserCarrito(carrito);
+        System.out.println("ID CARRITO: "+id_carrito);
 
         if (id_carrito != -1) {
             // Insertar detalle del carrito

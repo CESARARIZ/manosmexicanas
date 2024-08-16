@@ -64,7 +64,7 @@ public class UsuarioDao {
     public ArrayList<Usuario> getAll() {
         ArrayList<Usuario> lista = new ArrayList<>();
         String tipo = "usuario";
-        String query = "select * from usuario where tipo_usuario = ?";
+        String query = "select * from usuarios_clientes where tipo_usuario = ?";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
@@ -153,7 +153,7 @@ public class UsuarioDao {
     //ACTUALIZAR CONTRASEÑA Y CODIGO
     public boolean updateContra (int id, String contra){
         boolean flag = false;
-        String query = "update usuario set contra = sha2(?,256), codigo = NULL where id = ?";
+        String query = "update usuario set contra = sha2(?,256), codigo = NULL where id_usuario = ?";
         try{
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);

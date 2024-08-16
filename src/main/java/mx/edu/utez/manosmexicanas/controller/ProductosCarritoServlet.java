@@ -24,7 +24,9 @@ public class ProductosCarritoServlet extends HttpServlet {
             CarritoDetalleDao dao = new CarritoDetalleDao();
             System.out.println("USUARIO EN SERVLET: "+id_usuario);
             List<DetalleCarritoDTO> cd = dao.getDetallesCarrito(id_usuario);
+            System.out.println("Carritos encontrados: "+cd);
             List<CarritoDetalle> car = dao.getIdsDetalleCarrito(id_usuario);
+            System.out.println("Carritos ids encontrados: "+car);
 
             req.setAttribute("carritoDetalle", car);
             req.setAttribute("carrito", cd);

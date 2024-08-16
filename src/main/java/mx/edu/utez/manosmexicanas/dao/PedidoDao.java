@@ -157,26 +157,4 @@ public class PedidoDao {
         return pedidoDetalles;
     }
 
-    public boolean updateStock(int id_producto, int stock) {
-        boolean flag = false;
-        String sql = "UPDATE productos SET stock = stock - ? WHERE id_producto = ?";
-
-        try (Connection con = DatabaseConnectionManager.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, stock);
-            ps.setInt(2, id_producto);
-
-            if (ps.executeUpdate() > 0) {
-                flag = true;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();  // Considera registrar la excepción en lugar de imprimirla
-        }
-
-        return flag;
-    }
-
-
 }

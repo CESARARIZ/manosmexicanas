@@ -162,12 +162,7 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
             <div class="col-12 col-lg-5 d-flex justify-content-center mt-lg-0 align-items-center">
                 <form class="w-100 w-lg-75 align-items-center">
-                    <div class="input-group mt-3 ">
-                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn" type="submit" style="background-color: #FFB2EA;">
-                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
-                        </button>
-                    </div>
+
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->

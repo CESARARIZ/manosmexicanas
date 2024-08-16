@@ -125,7 +125,7 @@
         <tr style="background-color: #FE7DCC; margin-bottom: 3px; height: 40px">
             <th>#</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
+            <th  style="max-width: 300px">Descripcion</th>
             <th>Categoria</th>
             <th>Precio</th>
             <th>Stock</th>
@@ -150,18 +150,18 @@
         <tr style="height: 60px;">
             <td><%=contador%></td>
             <td><%=p.getNombre_producto()%></td>
-            <td><%=p.getDescripcion()%></td>
+            <td style="max-width: 300px"><%=p.getDescripcion()%></td>
             <td><%= p.getCategoria().getNombre_categoria() %></td>
             <td>$<%=p.getPrecio()%></td>
             <td><%=p.getStockDisponible()%></td>
             <td><%=p.getEstado()%></td>
             <td>
                 <div style="vertical-align: middle">
-                    <form action="desactivarProducto" method="post">
+                    <form action="desactivarProducto" method="post" style="vertical-align: middle">
                         <input type="hidden" name="id_producto" class="" value="<%= p.getId_producto() %>">
                         <input type="hidden" name="estado" value="<%= p.getEstado() %>">
-                        <button type="submit" class="btn <%= "Disponible".equals(p.getEstado()) ? "btn-danger" : "btn-success" %>" style="vertical-align: middle">
-                            <img src="<%= "Disponible".equals(p.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Disponible".equals(p.getEstado()) ? "No disponible" : "Disponible" %>" style="width: 20px; height: 20px;">
+                        <button type="submit" class="btn <%= "Disponible".equals(p.getEstado()) ? "btn-danger" : "btn-success" %> align-middle mt-3" style="vertical-align: middle">
+                            <img src="<%= "Disponible".equals(p.getEstado()) ? "img/apagar.png" : "img/encender.png" %>" alt="<%= "Disponible".equals(p.getEstado()) ? "No disponible" : "Disponible" %>" style="width: 35px; height: 35px;">
                         </button>
                     </form>
                 </div>

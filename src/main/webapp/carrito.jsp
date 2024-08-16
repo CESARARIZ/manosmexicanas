@@ -9,6 +9,7 @@
     HttpSession session1 = request.getSession(false);
     Usuario usuario = null;
     int id_usuario=0;
+    String direccion="";
     List<DetalleCarritoDTO> lista = null;
     List<CarritoDetalle> lista2 = null;
     if (session1 != null) {
@@ -17,6 +18,7 @@
         lista2 = (List<CarritoDetalle>) request.getAttribute("carritoDetalle");
         if (usuario != null) {
             id_usuario = usuario.getId();
+            direccion = usuario.getDireccion();
             System.out.println("ID del usuario recuperado: " + id_usuario);
         } else {
             // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
@@ -261,25 +263,20 @@
                 </thead>
                 <tbody>
                 <%
-                    if (lista != null && !lista.isEmpty()) {
+                    if (lista != null && !lista.isEmpty() && lista2 != null && !lista2.isEmpty()) {
                         int contador = 1;
-                        for (DetalleCarritoDTO dc : lista) {
-                            if (lista2 != null && !lista2.isEmpty()) {
-                                int totalProductos = 0;
-                                double totalPagar = 0.0;
-                                for (CarritoDetalle dc2 : lista2) {
-                                    int id_producto = dc2.getId_producto();
-                                    System.out.println("Id producto: "+id_producto);
-                                    int id_color = dc2.getId_color();
-                                    System.out.println("Id color: "+id_color);
+                        for (int i = 0; i < lista.size(); i++) {
+                            DetalleCarritoDTO dc = lista.get(i); // Obtenemos el elemento actual de 'lista'
+                            CarritoDetalle dc2 = lista2.get(i); // Obtenemos el elemento correspondiente de 'lista2'
                 %>
                 <tr>
                     <td class="text-center align-middle"><%= contador %></td>
                     <td>
-                        <img src="mostrarImg?nombre_producto=<%=id_producto%>&nombre_color=<%=id_color%>" alt="" width="130" height="150">
-
+                        <!-- Usamos los IDs de 'lista2' para las imágenes -->
+                        <img src="mostrarImg?nombre_producto=<%=dc2.getId_producto()%>&nombre_color=<%=dc2.getId_color()%>" alt="" width="130" height="150">
                     </td>
                     <td class="align-middle">
+                        <!-- Mostramos los nombres de 'lista' -->
                         <h3><%= dc.getNombre_producto() %></h3>
                         <p>
                             <strong>Categoría:</strong> <%= dc.getNombre_categoria() %><br>
@@ -305,8 +302,7 @@
                         </form>
                     </td>
                 </tr>
-                <%          }
-                        }
+                <%
                         contador++;
                     }
                 } else {
@@ -354,9 +350,15 @@
                 <h4>Total a pagar: $<%= totalPagar %></h4>
                 <br>
                 <div class="text-center">
+                    <%
+                        if(direccion != null){
+                    %>
                     <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                     <button type="submit" class="btn btn-outline-success">Confirmar pedido</button>
+                    <% }else{%>
+                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirmar pedido</button>
 
+                    <% } %>
                 </div>
                 <% } %>
             </form>
@@ -370,42 +372,28 @@
         </div>
         <% } %>
 
-        <%
-            // Mostrar el modal si el parámetro mostrarModal está presente
-            String mostrarModal = request.getParameter("mostrarModal");
-            if (mostrarModal != null && mostrarModal.equals("true")) {
-        %>
-        <!-- Modal para ingresar la dirección -->
-        <div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="direccionModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="direccionModalLabel">Ingresar Dirección</h5>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form action="GuardarDireccionServlet" method="post">
-                            <div class="mb-3">
-                                <label for="direccion" class="form-label">Dirección</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="ciudad" class="form-label">Ciudad</label>
-                                <input type="text" class="form-control" id="ciudad" name="ciudad" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="codigoPostal" class="form-label">Código Postal</label>
-                                <input type="text" class="form-control" id="codigoPostal" name="codigoPostal" required>
-                            </div>
-                            <input type="hidden" name="id_usuario" value="<%= id_usuario %>">
-                            <button type="submit" class="btn btn-primary">Guardar Dirección</button>
-                        </form>
-                    </div>
+                    <form id="categoria_form" method="post" action="addDireccion">
+                        <div class="modal-body">
+                            <label class="form-label mb-2">Confirma tu dirección:</label>
+                            <input type="text" class="form-control mt-2" name="direccion" id="direccion" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                            <button type="submit" class="btn btn-primary" >Agregar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <% } %>
     </div>
 
 </div>

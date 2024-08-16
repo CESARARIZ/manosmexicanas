@@ -19,9 +19,7 @@ public class ProductoDao {
 
     public List<Producto> obtenerTodosLosProductos() throws SQLException {
         List<Producto> productos = new ArrayList<>();
-        String query =  "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
-                        "FROM productos p " +
-                        "JOIN categorias c ON p.id_categoria = c.id_categoria;";
+        String query =  "SELECT * FROM productos_info ";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
              PreparedStatement ps = con.prepareStatement(query);

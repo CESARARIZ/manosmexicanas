@@ -153,24 +153,25 @@
             <td class="py-3 text-center"><%=p.getCantidad()%></td>
             <td class="py-3">$<%=p.getTotal()%></td>
             <td class="py-3">
-                <input type="button" class="btn <%="Pendiente".equals(p.getEstado()) ? "btn-outline-danger" : "btn-outline-success" %>" value="<%="Pendiente".equals(p.getEstado()) ? "Pendiente" : "Entregado" %>" readonly>
+                <input type="button" class="btn <%="Pendiente".equals(p.getEstado()) ? "btn-danger" : "btn-success" %>" value="<%="Pendiente".equals(p.getEstado()) ? "Pendiente" : "Entregado" %>" readonly>
             </td>
-            <td class="py-2">
+            <td class="d-flex align-items-center py-2">
                 <%
                     if("Pendiente".equals(p.getEstado())){
                 %>
-                <form action="entregarPedido" method="post">
+                <form action="entregarPedido" method="post" class="align-middle">
                     <input type="hidden" name="id_pedido_detalle" value="<%=p.getId_pedido_detalle()%>">
                     <input type="hidden" name="id_pedido" value="<%=p.getId_pedido()%>">
                     <input type="hidden" name="estado" value="<%=p.getEstado()%>">
-                    <input type="submit" class="btn btn-danger" value="Entregar">
+                    <input type="submit" class="btn btn-outline-danger align-middle mt-4" value="Entregar">
                 </form>
                 <%
-                    }else{
+                } else {
                 %>
-                <input type="button" class="btn btn-secondary" value="Entregado" readonly>
-                <%}%>
+                <input type="button" class="btn btn-secondary align-middle mt-4" value="Entregado" readonly>
+                <% } %>
             </td>
+
         </tr>
         <%
                 contador++;

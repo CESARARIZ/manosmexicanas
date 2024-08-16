@@ -37,9 +37,8 @@ public class ProductosPedidoServlet extends HttpServlet {
         Usuario u = usuarioDao.getDireccion(id_usuario);
         System.out.println("Direccion: " + u.getDireccion());
 
-        if(u.getDireccion()==null){
-            res.sendRedirect("carrito.jsp?mostrarModal=true");
-        }else{
+
+
             System.out.println("id_usuario: " + req.getParameter("id_usuario"));
             System.out.println("idsProducto: " + Arrays.toString(idsProducto));
             System.out.println("idsCategoria: " + Arrays.toString(idsCategoria));
@@ -49,7 +48,7 @@ public class ProductosPedidoServlet extends HttpServlet {
             System.out.println("precio: " + Arrays.toString(precio));
             System.out.println("totales: " + Arrays.toString(totales));
 
-            if (idsProducto == null || idsCategoria == null || idsTalla == null || idsColor == null || cantidad == null || precio == null || totales == null) {
+            if (idsProducto == null || idsCategoria == null || idsColor == null || cantidad == null || precio == null || totales == null) {
                 throw new ServletException("Faltan parámetros en la solicitud.");
             }
 
@@ -103,35 +102,23 @@ public class ProductosPedidoServlet extends HttpServlet {
                     System.out.println("id_producto: " + id_producto);
                     int cantid = Integer.parseInt(cantidad[i]);
                     System.out.println("cantidad: " + cantid);
-                    boolean updStock = dao.updateStock(id_producto,cantid);
-                    System.out.println("updStock: " + updStock);
-                }
-
-            /*
-            if(user.getCorreo()!=null) {
-
-
-                String asunto = "¡Gracias por tu compra!";
-                String mensaje = "<h1> Estimado/a " + nombre + "</h1> <br> <p>Nos complace informarte que tu pedido ha sido confirmado. <br> ¡Gracias por tu compra!</p>";
-
-                try {
-                    GmailSender msjCompra = new GmailSender();
-                    msjCompra.sendMail(correo, asunto, mensaje);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-
                 }
 
 
+                if(user.getCorreo()!=null) {
+                    String asunto = "¡Gracias por tu compra!";
+                    String mensaje = "<h1> Estimado/a " + nombre + "</h1> <br> <p>Nos complace informarte que tu pedido ha sido confirmado. <br> ¡Gracias por tu compra!</p>";
+                    try {
+                        GmailSender msjCompra = new GmailSender();
+                        msjCompra.sendMail(correo, asunto, mensaje);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    res.sendRedirect("carrito.jsp");
+                }else{
+                    res.sendRedirect("404.jsp");
+                }
             }
-
-             */
-
-                res.sendRedirect("carrito.jsp");
-            }else{
-                res.sendRedirect("404.jsp");
-            }
-        }
 
 
 
