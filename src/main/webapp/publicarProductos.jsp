@@ -139,7 +139,7 @@
         </div>
 
         <div class="col-md-9">
-            <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate>
+            <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate onsubmit="return validarFormulario()">
                 <div class="row">
                     <div class="row mb-2 mt-3 ms-4">
                         <h1 style="font-family: 'Sansita', sans-serif;">Publicar producto</h1>
@@ -236,7 +236,7 @@
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar categoría</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form id="categoria_form" method="post" action="newCategoria">
+                        <form id="categoria_form" method="post" action="newCategoria" onsubmit="return validarFormulario()">
                             <div class="modal-body">
                                 <label class="form-label mb-2">Categoría nueva:</label>
                                 <input type="text" class="form-control mt-2" name="nombre_categoria" id="nombre_categoria" required>
@@ -256,6 +256,73 @@
     </div>
 
 </div>
+<script>
+    function validarFormulario() {
+        // Validar nombre del producto
+        var nombreProducto = document.querySelector("input[name='nombre_producto']").value.trim();
+        if (nombreProducto === "") {
+            alert("El nombre del producto no puede estar vacío.");
+            return false;
+        }
+
+        // Validar descripción
+        var descripcion = document.querySelector("textarea[name='descripcion']").value.trim();
+        if (descripcion === "") {
+            alert("La descripción no puede estar vacía.");
+            return false;
+        }
+
+        // Validar tallas dinámicas
+        var tallas = document.querySelectorAll("input[name^='talla']");
+        for (var i = 0; i < tallas.length; i++) {
+            if (tallas[i].value.trim() === "") {
+                alert("La talla en el campo " + (i + 1) + " no puede estar vacía.");
+                return false;
+            }
+        }
+
+        // Validar cantidad
+        var cantidad = document.querySelector("input[name='cantidad']").value.trim();
+        if (cantidad === "" || isNaN(cantidad) || parseInt(cantidad) <= 0) {
+            alert("La cantidad debe ser un número positivo.");
+            return false;
+        }
+
+        // Validar categoría
+        var categoria = document.querySelector("select[name='categoria']").value;
+        if (categoria === "") {
+            alert("Debe seleccionar una categoría.");
+            return false;
+        }
+
+        // Validar precio
+        var precio = document.querySelector("input[name='precio']").value.trim();
+        if (precio === "" || isNaN(precio) || parseFloat(precio) <= 0) {
+            alert("El precio debe ser un número positivo.");
+            return false;
+        }
+
+        // Validar colores dinámicos
+        var colores = document.querySelectorAll("input[name^='color']");
+        for (var j = 0; j < colores.length; j++) {
+            if (colores[j].value.trim() === "") {
+                alert("El color en el campo " + (j + 1) + " no puede estar vacío.");
+                return false;
+            }
+        }
+
+        // Validar que se haya subido al menos una imagen
+        var imagenes = document.querySelectorAll("input[type='file']");
+        if (imagenes.length === 0 || imagenes[0].files.length === 0) {
+            alert("Debe adjuntar al menos una imagen del producto.");
+            return false;
+        }
+
+        // Si todas las validaciones pasan, permitir el envío del formulario
+        return true;
+    }
+
+</script>
 <script>
     function limpiarSelect(id){
         let select = document.getElementById(id);

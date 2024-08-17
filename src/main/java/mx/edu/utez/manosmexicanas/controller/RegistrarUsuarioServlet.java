@@ -22,29 +22,37 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         String correo = req.getParameter("email");
         String pass1 = req.getParameter("pass1");
         String pass2 = req.getParameter("pass2");
-        String ruta = "ingresar.jsp";
+        String ruta;
+
         if (pass1.equals(pass2)) {
-            pass1 = pass2;
-            //3) utilizar el dao con la función insert para insertar una persona en la BD
-            UsuarioDao dao = new UsuarioDao();
+            // Crear el usuario y llamar al DAO
             Usuario u = new Usuario();
-            {
-                u.setNombre_usuario(nombre);
-                u.setTelefono(telefono);
-                u.setCorreo(correo);
-                u.setContra(pass1);
-            };
-            boolean insert = dao.insert(u);
-            //4) una vez insertada la persona redirigir el usuario hacia el index.jsp
-            if (insert) {
-                resp.sendRedirect(ruta);
+            u.setNombre_usuario(nombre);
+            u.setTelefono(telefono);
+            u.setCorreo(correo);
+            u.setContra(pass1);
+
+            UsuarioDao dao = new UsuarioDao();
+            String mensaje = dao.insert(u);
+
+            // Manejar el mensaje recibido del DAO
+            if ("Usuario registrado exitosamente.".equals(mensaje)) {
+                // Redirigir a la página de inicio de sesión o a donde quieras
+                ruta = "ingresar.jsp";
+            } else {
+                // Enviar el mensaje a la página de registro
+                HttpSession sesion = req.getSession();
+                sesion.setAttribute("mensaje2", mensaje);
+                ruta = "registrarse.jsp";
             }
-        }else{
+
+        } else {
             HttpSession sesion = req.getSession();
-            sesion.setAttribute("mensaje2","Las contraseñas no coinciden");
-            resp.sendRedirect("registrarse.jsp");
+            sesion.setAttribute("mensaje2", "Las contraseñas no coinciden");
+            ruta = "registrarse.jsp";
         }
 
-
+        resp.sendRedirect(ruta);
     }
+
 }

@@ -4,6 +4,10 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setDateHeader("Expires", 0); // Proxies
+
     HttpSession sessionn = request.getSession(false);
     Usuario usuario = null;
     int id_usuario = 0;
@@ -160,9 +164,14 @@
                 </a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
-            <div class="col-12 col-lg-5 d-flex justify-content-center mt-lg-0 align-items-center">
-                <form class="w-100 w-lg-75 align-items-center">
-
+            <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0 align-items-center">
+                <form class="w-100 w-lg-75">
+                    <div class="input-group">
+                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn" type="submit" style="background-color: #FFB2EA;">
+                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
+                        </button>
+                    </div>
                 </form>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->

@@ -3,10 +3,7 @@ package mx.edu.utez.manosmexicanas.dao;
 import mx.edu.utez.manosmexicanas.model.Categoria;
 import mx.edu.utez.manosmexicanas.utils.DatabaseConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,20 +30,20 @@ public class CategoriaDao {
 
     public boolean insert(Categoria categoria) {
         boolean flag = false;
-        String query = "insert into categorias(nombre_categoria) values(?)";
-        try (Connection con=DatabaseConnectionManager.getConnection()) {
-            try (PreparedStatement stmt = con.prepareStatement(query)) {
+        String query = "{CALL verificarCategoria(?)}"; // Cambiar a procedimiento almacenado
+        try (Connection con = DatabaseConnectionManager.getConnection()) {
+            try (CallableStatement stmt = con.prepareCall(query)) {
                 stmt.setString(1, categoria.getNombre_categoria());
-
-                if(stmt.executeUpdate()>0){
+                if (stmt.executeUpdate() > 0) {
                     flag = true;
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return flag;
     }
+
 
     public Categoria getOne(String categoria) {
         Categoria cat = null;

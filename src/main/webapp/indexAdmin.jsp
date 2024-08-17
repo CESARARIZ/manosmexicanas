@@ -4,6 +4,10 @@
 <%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setDateHeader("Expires", 0); // Proxies
+
     HttpSession sessionn = request.getSession(false);
     Usuario usuario = null;
     if (sessionn != null) {

@@ -3,10 +3,7 @@ package mx.edu.utez.manosmexicanas.dao;
 import mx.edu.utez.manosmexicanas.model.Usuario;
 import mx.edu.utez.manosmexicanas.utils.DatabaseConnectionManager;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class UsuarioDao {
@@ -42,23 +39,33 @@ public class UsuarioDao {
         return u;
     }
 
-    public boolean insert(Usuario u) {
-        boolean flag = false;
-        String query = "insert into usuario(nombre_usuario,telefono,correo,contra) values(?,?,?,sha2(?,256))";
-        try {
-            Connection con = DatabaseConnectionManager.getConnection();
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, u.getNombre_usuario());
-            ps.setString(2, u.getTelefono());
-            ps.setString(3, u.getCorreo());
-            ps.setString(4, u.getContra());
-            if (ps.executeUpdate() == 1) {
-                flag = true;
-            }
+    public String insert(Usuario u) {
+        String resultado = "";
+        String procedure = "{call RegistrarUsuario(?, ?, ?, ?, ?)}";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             CallableStatement cs = con.prepareCall(procedure)) {
+
+            // Establecer los parámetros de entrada
+            cs.setString(1, u.getNombre_usuario());
+            cs.setString(2, u.getTelefono());
+            cs.setString(3, u.getCorreo());
+            cs.setString(4, u.getContra());
+
+            // Registrar el parámetro de salida
+            cs.registerOutParameter(5, Types.VARCHAR);
+
+            // Ejecutar el procedimiento almacenado
+            cs.execute();
+
+            // Obtener el mensaje de salida
+            resultado = cs.getString(5);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return flag;
+
+        return resultado;
     }
 
     public ArrayList<Usuario> getAll() {

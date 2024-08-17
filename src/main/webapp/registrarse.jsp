@@ -90,34 +90,85 @@
     <div class="row justify-content-center" style="background-color: #F2F2F2;">
         <div class="col-md-6 sidebar shadow-lg p-3 mb-5 bg-white rounded">
 
-            <form method="post" action="sign_in" class="formulario" id="formRegistro">
+            <form method="post" action="sign_in" class="formulario" id="formRegistro" onsubmit="return validarFormulario()">
                 <h2 id="titulo"><b>Crear cuenta</b></h2><br>
                 <h8 id="sub">Ingresa tus datos para crear una cuenta nueva.</h8><br><br>
+
                 <label for="nombre">Nombre</label>
                 <input class="form-control mb-3" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre..." maxlength="50" required>
+
                 <label for="telefono">Teléfono</label>
                 <input class="form-control mb-3" type="text" name="telefono" id="telefono" placeholder="Ingrese su teléfono..." maxlength="10" required>
+
                 <label for="email">Correo electrónico</label>
                 <input class="form-control mb-3" type="email" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+
                 <label for="contraseña1">Contraseña</label>
                 <input class="form-control mb-3" type="password" name="pass1" id="contraseña1" placeholder="Ingresa tu contraseña..." required>
+
                 <label for="contraseña2">Confirmar contraseña</label>
                 <input class="form-control mb-3" type="password" name="pass2" id="contraseña2" placeholder="Confirma tu contraseña..." required>
+
                 <%
                     HttpSession sesion1 = request.getSession();
                     String mensaje2 = (String) sesion1.getAttribute("mensaje2");
 
                     if (mensaje2 != null) { %>
-                <p style="color: red;"><%=mensaje2%></p>
+                <div class="alert alert-danger" role="alert">
+                    <%= mensaje2 %>
+                </div>
+                <% sesion1.removeAttribute("mensaje2"); %> <!-- Limpiar el mensaje -->
                 <% } %>
+
+
                 <br>
                 <center>
                     <button class="btn btn-primary mb-3 btn-lg" type="submit">Confirmar</button><br>
-                    <label for="index" id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">Inicia sesión</a></label>
+                    <label id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">Inicia sesión</a></label>
                 </center>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    function validarFormulario() {
+        // Obtener los valores de los campos
+        var nombre = document.getElementById("nombre").value.trim();
+        var telefono = document.getElementById("telefono").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var pass1 = document.getElementById("contraseña1").value.trim();
+        var pass2 = document.getElementById("contraseña2").value.trim();
+
+        // Validar que ningún campo esté vacío
+        if (nombre === "") {
+            alert("El nombre no puede estar vacío.");
+            return false;
+        }
+
+        if (telefono === "") {
+            alert("El teléfono no puede estar vacío.");
+            return false;
+        }
+
+        if (email === "") {
+            alert("El correo electrónico no puede estar vacío.");
+            return false;
+        }
+
+        if (pass1 === "") {
+            alert("La contraseña no puede estar vacía.");
+            return false;
+        }
+
+        if (pass2 === "") {
+            alert("La confirmación de contraseña no puede estar vacía.");
+            return false;
+        }
+        // Si todas las validaciones pasan, permitir el envío del formulario
+        return true;
+    }
+</script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>

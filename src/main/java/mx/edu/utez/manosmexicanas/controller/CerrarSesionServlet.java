@@ -16,7 +16,8 @@ public class CerrarSesionServlet extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        response.sendRedirect("index.jsp"); // Redirigir a la página de inicio de sesión u otra página
+        response.sendRedirect("index.jsp");
+
     }
 
 
