@@ -26,19 +26,31 @@ public class NuevaCategoriaServlet extends HttpServlet {
         resp.getWriter().write(json);
     }
 
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nombre_categoria = req.getParameter("nombre_categoria");
 
-        Categoria cat = new Categoria();
-        cat.setNombre_categoria(nombre_categoria);
-
         CategoriaDao dao = new CategoriaDao();
 
+        // Verificar si la categoría ya existe
+        Categoria categoriaExistente = dao.getOne(nombre_categoria);
+
         resp.setContentType("text/plain");
-        if(dao.insert(cat)){
-            resp.getWriter().write("Listo");
-        }else{
-            resp.getWriter().write("Error");
+
+        if (categoriaExistente != null) {
+            // Si ya existe, enviar un mensaje específico
+            resp.getWriter().write("EXISTE");
+        } else {
+            Categoria cat = new Categoria();
+            cat.setNombre_categoria(nombre_categoria);
+
+            if (dao.insert(cat)) {
+                resp.getWriter().write("Listo");
+            } else {
+                resp.getWriter().write("Error");
+            }
         }
     }
+
+
 }

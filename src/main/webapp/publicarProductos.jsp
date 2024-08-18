@@ -141,7 +141,7 @@
         <div class="col-md-9">
             <form action="addProducto" class="needs-validation" method="post" enctype="multipart/form-data" novalidate onsubmit="return validarFormulario()">
                 <div class="row">
-                    <div class="row mb-2 mt-3 ms-4">
+                    <div class="row mb-2 mt-3 ms-4 mx-5">
                         <h1 style="font-family: 'Sansita', sans-serif;">Publicar producto</h1>
                     </div>
                     <div class="col-md-4 m-3 ms-5">
@@ -452,19 +452,22 @@
 
 </script>
 <script>
-    const myModal = document.getElementById('myModal')
-    const myInput = document.getElementById('myInput')
+    document.addEventListener("DOMContentLoaded", function() {
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
 
-    myModal.addEventListener('shown.bs.modal', () => {
-        myInput.focus()
-    })
+        if (myModal && myInput) {
+            myModal.addEventListener("shown.bs.modal", () => {
+                myInput.focus()
+            })
+        }
+    });
 </script>
 
 <script>
     function enviarCategoria() {
-        let form = document.querySelector("#categoria_form"); // Selecciona el formulario
+        let form = document.querySelector("#categoria_form");
 
-        // Asegúrate de que el formulario es válido antes de enviarlo
         if (!form.checkValidity()) {
             alert("Por favor, completa todos los campos obligatorios.");
             return;
@@ -475,16 +478,21 @@
         req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         req.onload = function() {
             if (req.readyState == 4 && req.status == 200) {
-                let myModalEl = document.getElementById('exampleModal');
-                let modal = bootstrap.Modal.getInstance(myModalEl)
-                modal.hide(); // Cierra el modal
-                updateCategorias(); // Actualiza la lista de categorías
-            } else {
-                alert("¡No se pudo registrar la categoría! Por favor, contacte a soporte técnico.");
+                if (req.responseText.trim() === "EXISTE") {
+                    alert("La categoría ya existe.");
+                } else if (req.responseText.trim() === "Listo") {
+                    let myModalEl = document.getElementById('exampleModal');
+                    let modal = bootstrap.Modal.getInstance(myModalEl)
+                    modal.hide(); // Cierra el modal
+                    updateCategorias(); // Actualiza la lista de categorías
+                } else {
+                    alert("¡No se pudo registrar la categoría! Por favor, contacte a soporte técnico.");
+                }
             }
         };
-        req.send(new URLSearchParams(new FormData(form)).toString()); // Envía el formulario
+        req.send(new URLSearchParams(new FormData(form)).toString());
     }
+
 </script>
 <script>
     function updateCategorias() {

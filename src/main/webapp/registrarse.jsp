@@ -52,11 +52,20 @@
         .btn-primary {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
-            background-color: #FFB2EA; /* Color d fondo */
+            background-color: #ff15c0; /* Color d fondo */
             font-size: 18px;
-            color: #000000; /* Color letras */
+            color: white; /* Color letras */
             /*font-weight: bold;*/
-            border: 2px solid #ffa8e2;
+            border: 2px solid #ff15c0;
+        }
+        .btn-primary:hover{
+            background-color: #7a34cf ;
+        }
+        .custom-link{
+            color: #ff15c0;
+        }
+        .custom-link:hover{
+            color: #7a34cf ;
         }
     </style>
 </head>
@@ -124,7 +133,7 @@
                 <br>
                 <center>
                     <button class="btn btn-primary mb-3 btn-lg" type="submit">Confirmar</button><br>
-                    <label id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp">Inicia sesión</a></label>
+                    <label id="enl">¿Ya tienes una cuenta? <a href="ingresar.jsp" class="custom-link">Inicia sesión</a></label>
                 </center>
             </form>
         </div>

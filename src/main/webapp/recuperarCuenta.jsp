@@ -36,11 +36,11 @@
         .btn-primary {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
-            background-color: #FFB2EA; /* Color d fondo */
+            background-color: #ff15c0; /* Color d fondo */
             font-size: 18px;
             color: #000000; /* Color letras */
             /*font-weight: bold;*/
-            border: 2px solid #ffa8e2; /* Borde */
+            border: 2px solid #ff15c0; /* Borde */
         }
     </style>
 </head>
@@ -93,29 +93,6 @@
                 </form>
             </div>
         </div>
-        <!--
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-10 d-flex justify-content-center">
-                <div class="sidebar bg-light">
-                    <div class="formu col-lg-12">
-                        <form method="post" action="recuperarContra">
-                            <h2 id="titulo"><b>Recupera tu contraseña</b></h2>
-                            <br>
-                            <div class="form-group mb-3">
-                                <label for="correo">Correo electrónico</label>
-                                <input type="email" class="form-control mb-3" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
-                            </div>
-                            <br>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Verificar</button>
-                                <br><br>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
     </div>
 </body>
 </html>

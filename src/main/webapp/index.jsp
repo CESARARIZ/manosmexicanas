@@ -273,7 +273,7 @@
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: <%= "Disponible".equals(producto.getEstado()) ? "#28a745" : "#6c757d" %>;">
+                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: <%= "Disponible".equals(producto.getEstado()) ? "#ff15c0" : "#6c757d" %>;">
                                     <h6>
                                         <% if ("Disponible".equals(producto.getEstado())) { %>
                                         <a href="ingresar.jsp" style="color: white; text-decoration: none;">Añadir al carrito</a>

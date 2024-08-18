@@ -147,8 +147,8 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" href="indexCliente.jsp">Catálogo</a>
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #FFB2EA" href="indexCliente.jsp">Catálogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none" style="color: #FFB2EA" href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                     <a href="carrito.html">
                         <img src="img/carritoB.png" alt="" width="45px" height="45px"></a>
                 </nav>

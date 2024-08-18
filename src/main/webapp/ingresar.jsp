@@ -54,11 +54,20 @@
         .btn-primary {
             box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif; /* Fuente sencilla para el botón */
-            background-color: #FFB2EA; /* Color d fondo */
+            background-color: #ff15c0; /* Color d fondo */
             font-size: 18px;
-            color: #000000; /* Color letras */
+            color: white; /* Color letras */
             /*font-weight: bold;*/
-            border: 2px solid #ffa8e2; /* Borde */
+            border: 2px solid #ff15c0; /* Borde */
+        }
+        .btn-primary:hover{
+            background-color: #7a34cf ;
+        }
+        .custom-link{
+            color: #ff15c0;
+        }
+        .custom-link:hover{
+            color: #7a34cf ;
         }
     </style>
 </head>
@@ -118,8 +127,8 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         <br><br>
-                        <p><a href="recuperarCuenta.jsp">Olvidé mi contraseña</a></p>
-                        <p>¿No tienes una cuenta? <a href="registrarse.jsp">Crear cuenta</a></p>
+                        <p><a href="recuperarCuenta.jsp" class="custom-link">Olvidé mi contraseña</a></p>
+                        <p>¿No tienes una cuenta? <a href="registrarse.jsp" class="custom-link">Crear cuenta</a></p>
                     </div>
                 </form>
             </div>

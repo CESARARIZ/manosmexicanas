@@ -166,11 +166,10 @@
                                     }
                                 %>
                             </div>
-
                         </div>
 
                         <h2 class="product-title"><%= p.getNombre_producto() %></h2>
-                        <p class="product-price">Precio por unidad: $<span id="precio"><%= p.getPrecio() %></span></p>
+                        <p class="product-price">Precio: $<span id="precio"><%= p.getPrecio() %></span></p>
                         <p>Disponibles: <%= p.getStockDisponible() %></p>
                         <div class="star-rating">
                             ★★★★☆
@@ -236,7 +235,7 @@
                         <input type="hidden" name="id_categoria" value="<%= p.getCategoria().getId_categoria() %>">
                         <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                         <input type="hidden" name="precio" value="<%=p.getPrecio()%>">
-                        <button class="text-center align-content-center" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; text-decoration: none; background-color: <%= "Disponible".equals(p.getEstado()) ? "#28a745" : "#6c757d" %>;"
+                        <button class="text-center align-content-center" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; text-decoration: none; background-color: <%= "Disponible".equals(p.getEstado()) ? "#FFB2EA" : "#6c757d" %>;"
                                 <%= "Disponible".equals(p.getEstado()) ? "type='submit'" : "disabled" %> >
                             <h6>
                                 <% if ("Disponible".equals(p.getEstado())) { %>

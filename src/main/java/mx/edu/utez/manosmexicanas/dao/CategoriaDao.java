@@ -30,11 +30,11 @@ public class CategoriaDao {
 
     public boolean insert(Categoria categoria) {
         boolean flag = false;
-        String query = "{CALL verificarCategoria(?)}"; // Cambiar a procedimiento almacenado
+        String query = "INSERT INTO categorias(nombre_categoria) values (?)"; // Cambiar a procedimiento almacenado
         try (Connection con = DatabaseConnectionManager.getConnection()) {
-            try (CallableStatement stmt = con.prepareCall(query)) {
-                stmt.setString(1, categoria.getNombre_categoria());
-                if (stmt.executeUpdate() > 0) {
+            try (PreparedStatement ps = con.prepareStatement(query)) {
+                ps.setString(1, categoria.getNombre_categoria());
+                if (ps.executeUpdate() > 0) {
                     flag = true;
                 }
             }
