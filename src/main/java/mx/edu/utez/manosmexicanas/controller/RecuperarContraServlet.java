@@ -43,13 +43,13 @@ public class RecuperarContraServlet extends HttpServlet {
                 String mensaje = "<a href=\"http://localhost:8080/manosMexicanas_war_exploded/recuperarContra?codigo=" + codigo + "&id=" + id + "\"> Haz click aqui para recuperar tu contraseña </a>";
 
 
-
+                /*
                 try {
                     GmailSender msj = new GmailSender();
                     msj.sendMail(correo, asunto, mensaje);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
-                }
+                }  */
             }
             resp.sendRedirect("ingresar.jsp");
 

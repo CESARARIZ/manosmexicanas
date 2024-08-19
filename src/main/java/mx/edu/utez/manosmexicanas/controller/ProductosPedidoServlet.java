@@ -108,12 +108,13 @@ public class ProductosPedidoServlet extends HttpServlet {
                 if(user.getCorreo()!=null) {
                     String asunto = "¡Gracias por tu compra!";
                     String mensaje = "<h1> Estimado/a " + nombre + "</h1> <br> <p>Nos complace informarte que tu pedido ha sido confirmado. <br> ¡Gracias por tu compra!</p>";
+                   /*
                     try {
                         GmailSender msjCompra = new GmailSender();
                         msjCompra.sendMail(correo, asunto, mensaje);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
-                    }
+                    } */
                     res.sendRedirect("carrito.jsp");
                 }else{
                     res.sendRedirect("404.jsp");
