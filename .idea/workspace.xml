@@ -10,12 +10,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="comentarios funcionando">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/DesactivarProductoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="desactivar">
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/DesactivarProducto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ProductosPedidoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/RecuperarContraServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/RecuperarContraServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,15 +339,7 @@
       <workItem from="1723952780389" duration="37000" />
       <workItem from="1723952827970" duration="9991000" />
       <workItem from="1724006032662" duration="24690000" />
-      <workItem from="1724074508069" duration="3455000" />
-    </task>
-    <task id="LOCAL-00034" summary="Links funcionando correctamente">
-      <option name="closed" value="true" />
-      <created>1722536164893</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1722536164893</updated>
+      <workItem from="1724074508069" duration="3894000" />
     </task>
     <task id="LOCAL-00035" summary="Pagina funcionado donde muestra los pedidos de cada usuario">
       <option name="closed" value="true" />
@@ -735,7 +725,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724050798801</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="desactivar">
+      <option name="closed" value="true" />
+      <created>1724078484045</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1724078484045</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -753,7 +751,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SERVLET ADD PRODUCTOS FUNCIONANDO" />
     <MESSAGE value="FORMULARIO ATRAE CATEGORIAS DE BD" />
     <MESSAGE value="METODOS DAOS CORREGIDOS" />
     <MESSAGE value="CATEGORIAS A TRAVES DE LA BD" />
@@ -778,6 +775,7 @@
     <MESSAGE value="correciones" />
     <MESSAGE value="detalles de colores" />
     <MESSAGE value="comentarios funcionando" />
-    <option name="LAST_COMMIT_MESSAGE" value="comentarios funcionando" />
+    <MESSAGE value="desactivar" />
+    <option name="LAST_COMMIT_MESSAGE" value="desactivar" />
   </component>
 </project>
