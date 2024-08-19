@@ -244,5 +244,24 @@ public class PedidoDao {
         return pedidoDetalles;
     }
 
+    public boolean uptStock(int id_producto, int stock){
+        boolean flag = false;
+        String sql = "UPDATE productos SET stock = stock - ? WHERE id_producto = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, stock);
+            ps.setInt(2, id_producto);
+            if(ps.executeUpdate() > 0){
+                flag = true;
+            }
+            ps.close();
+            con.close();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
 
 }

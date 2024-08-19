@@ -287,9 +287,7 @@
                     </td>
                     <td class="text-center align-middle">
                         <div class="input-group cart-actions d-flex justify-content-center align-items-center">
-                            <input type="button" class="btn btn-increase rounded-left text-center" value="+">
                             <input type="text" class="form-control text-center quantity" value="<%= dc.getCantidad() %>" readonly>
-                            <input type="button" class="btn btn-decrease rounded-right text-center" value="-">
                         </div>
                     </td>
                     <td class="text-center align-middle">$<%= dc.getTotal() %></td>

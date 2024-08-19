@@ -90,11 +90,14 @@ public class ProductosPedidoServlet extends HttpServlet {
                 }
                 for (PedidoProducto detalle : pdp) {
                     dao.insertDetallePedido(detalle);
+                    PedidoDao dao2 = new PedidoDao();
+                    dao2.uptStock(detalle.getId_producto(), detalle.getCantidad());
                 }
                 boolean eliminado = carritoDao.deleteProductos(id_usuario);
                 if (!eliminado) {
                     System.out.println("Error al eliminar productos del carrito.");
                 }
+
 
                 for(int i =0; i < idsProducto.length; i++){
                     PedidoProducto producto = new PedidoProducto();

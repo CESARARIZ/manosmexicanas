@@ -140,11 +140,11 @@
 
             <!-- Columna para la barra de búsqueda -->
             <div class="col-12 col-lg-5 d-flex justify-content-center mt-3 mt-lg-0 align-items-center">
-                <form class="w-100 w-lg-75">
+                <form class="w-100 w-lg-75" action="indexF.jsp" method="GET">
                     <div class="input-group">
-                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search" name="query">
                         <button class="btn" type="submit" style="background-color: #FFB2EA;">
-                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
+                            <img src="${pageContext.request.contextPath}/img/lupa.png" alt="Buscar" width="20" height="20">
                         </button>
                     </div>
                 </form>

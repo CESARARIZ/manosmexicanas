@@ -32,7 +32,7 @@ public class MostrarImgCarritoServlet extends HttpServlet {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 byte[] imgBytes = resultSet.getBytes("img");
-                response.setContentType("image/jpeg");
+                response.setContentType("image/png");
                 OutputStream outputStream = response.getOutputStream();
                 outputStream.write(imgBytes);
                 outputStream.flush();

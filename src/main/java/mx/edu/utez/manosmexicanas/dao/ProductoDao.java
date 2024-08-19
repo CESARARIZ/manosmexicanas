@@ -107,7 +107,7 @@ public class ProductoDao {
         List<Talla> tallas = new ArrayList<>();
         String query = "SELECT t.id_talla, t.talla " +
                 "FROM tallas t " +
-                "JOIN producto_Tallas pt ON t.id_talla = pt.id_talla " +
+                "JOIN producto_tallas pt ON t.id_talla = pt.id_talla " +
                 "WHERE pt.id_producto = ?";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -133,7 +133,7 @@ public class ProductoDao {
         List<ColorProducto> colores = new ArrayList<>();
         String query = "SELECT c.id_color, c.color\n" +
                 "FROM colores c\n" +
-                "JOIN producto_Colores pc ON c.id_color = pc.id_color\n" +
+                "JOIN producto_colores pc ON c.id_color = pc.id_color\n" +
                 "WHERE pc.id_producto = ?;";
 
         try (Connection con = DatabaseConnectionManager.getConnection();
@@ -521,6 +521,44 @@ public class ProductoDao {
         }
         return flag;
     }
+
+    public List<Producto> buscarProductosPorNombre(String nombre) {
+        List<Producto> productos = new ArrayList<>();
+        String query = "SELECT p.id_producto, p.nombre, c.id_categoria, c.nombre_categoria, p.descripcion, p.precio, p.stock, p.estatus " +
+                "FROM productos p " +
+                "JOIN categorias c ON p.id_categoria = c.id_categoria " +
+                "WHERE p.nombre LIKE ?";
+
+        try (Connection con = DatabaseConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, "%" + nombre + "%");
+            System.out.println("Name a buscar: " +nombre);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Producto producto = new Producto();
+                    producto.setId_producto(rs.getInt("id_producto"));
+                    producto.setNombre_producto(rs.getString("nombre"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                    producto.setPrecio(rs.getDouble("precio"));
+                    producto.setStockDisponible(rs.getInt("stock"));
+                    producto.setEstado(rs.getString("estatus"));
+
+                    Categoria categoria = new Categoria();
+                    categoria.setId_categoria(rs.getInt("id_categoria"));
+                    categoria.setNombre_categoria(rs.getString("nombre_categoria"));
+                    producto.setCategoria(categoria);
+
+                    productos.add(producto);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return productos;
+    }
+
+
 
 
 }

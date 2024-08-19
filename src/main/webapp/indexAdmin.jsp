@@ -265,7 +265,7 @@
                                             for (Integer image : imagenes) {
                                         %>
                                         <div class="carousel-item <%= (index == 0) ? "active" : "" %>" data-bs-interval="6000">
-                                            <a href="mostrarProducto?id=<%=producto.getId_producto() %>">
+                                            <a href="#">
                                                 <img src="mostrarImagen?id_pc=<%=image%>" alt="<%= producto.getNombre_producto() %>" class="img-fluid" style="width: 100%; height: 200px; object-fit: cover;">
                                             </a>
                                         </div>
