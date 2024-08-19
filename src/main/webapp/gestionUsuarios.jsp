@@ -152,7 +152,7 @@
                         <input type="hidden" name="id_usuario" class="" value="<%= u.getId() %>">
                         <input type="hidden" name="estado" value="<%= u.getEstado() %>">
                         <button type="submit" class="btn <%= "Activo".equals(u.getEstado()) ? "btn-danger" : "btn-success" %> align-middle mt-3" style="vertical-align: middle">
-                            <img src="<%= "Activo".equals(u.getEstado()) ? "${pageContext.request.contextPath}/img/bloquear-usuario.png" : "${pageContext.request.contextPath}/img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
+                            <img src="<%= "Activo".equals(u.getEstado()) ? "img/bloquear-usuario.png" : "img/desbloquear.png" %>" alt="<%= "Activo".equals(u.getEstado()) ? "Bloquear" : "Desbloquear" %>" style="width: 20px; height: 20px;">
                         </button>
                     </form>
                 </div>
