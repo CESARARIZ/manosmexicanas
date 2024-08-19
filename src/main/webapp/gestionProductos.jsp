@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
         #nave, #log{
             text-align: center;
@@ -158,19 +159,51 @@
             <td>
                 <div style="vertical-align: middle">
                     <form action="desactivarProducto" method="post" style="vertical-align: middle">
-                        <input type="hidden" name="id_producto" class="" value="<%= p.getId_producto() %>">
+                        <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
                         <input type="hidden" name="estado" value="<%= p.getEstado() %>">
-                        <button type="submit" class="btn <%= "Disponible".equals(p.getEstado()) ? "btn-danger" : "btn-success" %> align-middle mt-3" style="vertical-align: middle">
-                            <img src="<%= "Disponible".equals(p.getEstado()) ? "img/apagar.png" : "img/encender.png" %>" alt="<%= "Disponible".equals(p.getEstado()) ? "No disponible" : "Disponible" %>" style="width: 35px; height: 35px;">
+                        <input type="hidden" name="stock" value="0">
+                        <% if ("Disponible".equals(p.getEstado())) { %>
+                        <input type="submit" class="btn btn-danger align-middle mt-3" style="vertical-align: middle" value="Desactivar">
+                        <% } else { %>
+                        <!-- Botón que activa el modal si el producto está inactivo -->
+                        <!-- Botón que activa el modal si el producto está inactivo -->
+                        <button type="button" class="btn btn-success align-middle mt-3" style="vertical-align: middle" data-bs-toggle="modal" data-bs-target="#modalActivarProducto<%= p.getId_producto() %>">
+                            Activar
                         </button>
+                        <% } %>
                     </form>
                 </div>
             </td>
 
-
-
-
         </tr>
+
+        <!-- Modal para ingresar el número de unidades nuevas -->
+        <!-- Modal para ingresar el número de unidades nuevas -->
+        <div class="modal fade" id="modalActivarProducto<%= p.getId_producto() %>" tabindex="-1" aria-labelledby="modalLabel<%= p.getId_producto() %>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel<%= p.getId_producto() %>">Activar Producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="desactivarProducto" method="post">
+                            <input type="hidden" name="id_producto" value="<%= p.getId_producto() %>">
+                            <input type="hidden" name="estado" value="Disponible">
+                            <div class="mb-3">
+                                <label for="stock" class="form-label">Número de Unidades</label>
+                                <input type="number" class="form-control" id="stock" name="stock" min="1" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Activar Producto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <%
                 contador++;
             }
@@ -179,7 +212,7 @@
         <tr>
             <td colspan="7" class="text-center align-middle">Aún no hay productos registrados.</td>
             <td colspan="7" class="text-center align-middle">
-                <button class="btn btn-outline-primary">Publicar productos ahors</button>
+                <button class="btn btn-outline-primary">Publicar productos ahora.</button>
             </td>
         </tr>
         <%
@@ -188,5 +221,16 @@
         </tbody>
     </table>
 </div>
+<script>
+    var direccionModal = new bootstrap.Modal(document.getElementById('direccionModal'));
+    direccionModal.show();
+</script>
+<script src="js/bootstrap.js"></script>
+<!-- Bootstrap CSS -->
+
+
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

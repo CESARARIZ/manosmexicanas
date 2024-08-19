@@ -428,25 +428,34 @@ public class ProductoDao {
         return id_producto;
     }
 
-    public boolean uptEstado (int id_producto, String estado_producto){
+    public boolean uptEstado(int id_producto, String estado_producto, int stock) {
         boolean flag = false;
-        String query = "update productos set estatus = ? where id_producto = ?";
+        String query = "UPDATE productos SET estatus = ?, stock = ? WHERE id_producto = ?";
         try {
             Connection con = DatabaseConnectionManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, estado_producto);
-            ps.setInt(2, id_producto);
-            if (ps.executeUpdate() > 0) {
+            ps.setString(1, estado_producto);  // Actualiza el estado del producto
+            ps.setInt(2, stock);               // Actualiza el stock del producto
+            ps.setInt(3, id_producto);         // Condición para actualizar el producto específico
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated > 0) {
                 flag = true;
+                System.out.println("Producto actualizado correctamente. ID: " + id_producto + " Estado: " + estado_producto + " Stock: " + stock);
+            } else {
+                System.out.println("No se pudo actualizar el producto. ID: " + id_producto);
             }
+
             ps.close();
             con.close();
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            System.out.println("Error al actualizar el estado y stock del producto: " + e.getMessage());
             e.printStackTrace();
         }
-
         return flag;
     }
+
+
 
     private List<Integer> obtenerIdsImagenesPorProducto(int idProducto) {
         List<Integer> idsImagenes = new ArrayList<>();

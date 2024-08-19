@@ -10,35 +10,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="detalles de colores">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ActualizarStockServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/CalificarProductoServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/ComprasUsuarioServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/PedidosUsuarioServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ComentarioDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/Comentario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/compras.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/pedidos.jsp" afterDir="false" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="comentarios funcionando">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/DesactivarProductoServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/IngresarDireccionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/IngresarDireccionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/PedidosServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/PedidosServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/UsuarioServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CarritoDetalleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CategoriaDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/CategoriaDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/PedidoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/controller/DesactivarProducto.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/ProductoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/dao/UsuarioDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/PedidoDetalle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mx/edu/utez/manosmexicanas/model/PedidoDetalle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/carrito.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexAdmin.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/indexCliente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ingresar.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mostrarProducto.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pedido.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/perfil.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/publicarProductos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registrarse.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/gestionProductos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,15 +340,8 @@
       <workItem from="1723916770865" duration="777000" />
       <workItem from="1723952780389" duration="37000" />
       <workItem from="1723952827970" duration="9991000" />
-      <workItem from="1724006032662" duration="24299000" />
-    </task>
-    <task id="LOCAL-00033" summary="Arreglo de pequeño detalle">
-      <option name="closed" value="true" />
-      <created>1722536136345</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1722536136345</updated>
+      <workItem from="1724006032662" duration="24690000" />
+      <workItem from="1724074508069" duration="3455000" />
     </task>
     <task id="LOCAL-00034" summary="Links funcionando correctamente">
       <option name="closed" value="true" />
@@ -757,7 +727,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723963244037</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="comentarios funcionando">
+      <option name="closed" value="true" />
+      <created>1724050798796</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1724050798801</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -775,7 +753,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update de formulario permitir img" />
     <MESSAGE value="SERVLET ADD PRODUCTOS FUNCIONANDO" />
     <MESSAGE value="FORMULARIO ATRAE CATEGORIAS DE BD" />
     <MESSAGE value="METODOS DAOS CORREGIDOS" />
@@ -800,6 +777,7 @@
     <MESSAGE value="img de lupa" />
     <MESSAGE value="correciones" />
     <MESSAGE value="detalles de colores" />
-    <option name="LAST_COMMIT_MESSAGE" value="detalles de colores" />
+    <MESSAGE value="comentarios funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="comentarios funcionando" />
   </component>
 </project>
