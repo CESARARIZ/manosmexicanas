@@ -157,7 +157,7 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-6 col-lg-3" id="log">
                 <a href="index.jsp">
-                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                    <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
                 </a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
@@ -166,7 +166,7 @@
                     <div class="input-group  mt-3">
                         <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn" type="submit" style="background-color: #FFB2EA;">
-                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
+                            <img src="${pageContext.request.contextPath}/img/lupa.png" alt="Buscar" width="20" height="20">
                         </button>
                     </div>
                 </form>
@@ -343,6 +343,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>

@@ -99,14 +99,12 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-md-2" id="log">
                 <a href="indexCliente.jsp">
-                    <img src="img/logoMM.png" alt="" width="100px" height="80px">
+                    <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="" width="100px" height="80px">
                 </a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
             <div class="col-md-6">
-                <form class="mb-2 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Search">
-                </form>
+
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-md-4 d-flex justify-content-center">

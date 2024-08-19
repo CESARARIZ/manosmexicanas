@@ -229,7 +229,7 @@
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-lg-2" id="log"><a href="indexCliente.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+                <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDAD-->
             <div class="col-lg-6">
@@ -297,7 +297,7 @@
                         <form action="eliminarProductoCarrito" method="post">
                             <input type="hidden" name="id_carrito_producto" value="<%= dc.getId_detalle_carrito() %>">
                             <button type="submit" class="btn btn-danger" style="border: none;">
-                                <img src="img/bote.png" alt="Eliminar" style="width: 25px; height: 25px;">
+                                <img src="${pageContext.request.contextPath}/img/bote.png" alt="Eliminar" style="width: 25px; height: 25px;">
                             </button>
                         </form>
                     </td>
@@ -400,7 +400,7 @@
     var direccionModal = new bootstrap.Modal(document.getElementById('direccionModal'));
     direccionModal.show();
 </script>
-<script src="js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <script>
     document.querySelectorAll('.btn-increase').forEach(button => {
         button.addEventListener('click', function() {

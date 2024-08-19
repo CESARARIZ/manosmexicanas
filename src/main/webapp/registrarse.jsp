@@ -76,7 +76,7 @@
             <!-- Columna para el logo -->
             <div class="col-6 col-lg-3" id="log">
                 <a href="index.jsp">
-                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                    <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
                 </a>
             </div>
 
@@ -178,6 +178,6 @@
         return true;
     }
 </script>
-<script src="js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>

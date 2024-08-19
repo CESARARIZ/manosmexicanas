@@ -83,7 +83,7 @@
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
             <div class="col-lg-2" id="log"><a href="index.jsp">
-                <img src="img/logoMM.png" alt="" width="100px" height="80px"></a>
+                <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="" width="100px" height="80px"></a>
             </div>
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LA BARRA DE BUSQUEDA-->
             <div class="col-lg-6">
@@ -188,5 +188,6 @@
         </tbody>
     </table>
 </div>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </body>
 </html>

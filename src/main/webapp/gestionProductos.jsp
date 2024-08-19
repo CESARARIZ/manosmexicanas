@@ -225,7 +225,7 @@
     var direccionModal = new bootstrap.Modal(document.getElementById('direccionModal'));
     direccionModal.show();
 </script>
-<script src="js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <!-- Bootstrap CSS -->
 
 
