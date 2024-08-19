@@ -11,10 +11,11 @@ public class PedidoDetalle {
     private int cantidad;
     private double total;
     private String estado;
+    private String comentado;
 
     public PedidoDetalle() {}
 
-    public PedidoDetalle(int id_pedido_detalle, int id_pedido, String nombre_cliente, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total, String estado) {
+    public PedidoDetalle(int id_pedido_detalle, int id_pedido, String nombre_cliente, String nombre_producto, String nombre_categoria, String nombre_talla, String nombre_color, int cantidad, double total, String estado, String comentado) {
         this.id_pedido_detalle = id_pedido_detalle;
         this.id_pedido = id_pedido;
         this.nombre_cliente = nombre_cliente;
@@ -25,6 +26,7 @@ public class PedidoDetalle {
         this.cantidad = cantidad;
         this.total = total;
         this.estado = estado;
+        this.comentado = comentado;
     }
 
     public int getId_pedido_detalle() {
@@ -105,5 +107,13 @@ public class PedidoDetalle {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getComentado() {
+        return comentado;
+    }
+
+    public void setComentado(String comentado) {
+        this.comentado = comentado;
     }
 }

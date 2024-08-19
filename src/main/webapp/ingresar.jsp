@@ -91,7 +91,7 @@
             <div class="col-6 col-lg-4 text-start mt-3 mt-lg-0">
                 <nav id="nave">
                     <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="registrarse.jsp">Crear cuenta</a>
-                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catalogo</a>
+                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catálogo</a>
                 </nav>
             </div>
         </div>
@@ -116,14 +116,30 @@
                         <input type="password" class="form-control mb-3" id="contra" name="contra" required placeholder="Ingresa tu contraseña">
                     </div>
                     <br>
-                    <% HttpSession sesion = request.getSession();
+                    <%
+                        HttpSession sesion = request.getSession();
                         String mensaje = (String) sesion.getAttribute("mensaje");
                         String msj = (String) sesion.getAttribute("mensajeContraNueva");
-                        if (mensaje != null) { %>
-                    <p style="color: red;"><%= mensaje %></p>
-                    <% }else if(msj != null){ %>
-                    <p style="color: green"><%=msj%></p>
-                    <% } %>
+
+                        if (mensaje != null) {
+                    %>
+                    <div class="alert alert-danger" role="alert"><%= mensaje %></div>
+                    <%
+                        // Limpiar el mensaje después de mostrarlo
+                        sesion.removeAttribute("mensaje");
+                    %>
+                    <%
+                    } else if (msj != null) {
+                    %>
+                    <div class="alert alert-success" role="alert"><%=msj%></div>
+                    <%
+                        // Limpiar el mensaje de éxito después de mostrarlo
+                        sesion.removeAttribute("mensajeContraNueva");
+                    %>
+                    <%
+                        }
+                    %>
+
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                         <br><br>

@@ -87,11 +87,9 @@
         /*esto le da estilo al boton de busqueda*/
         .info-producto button{
             border: none;
-            background: none;
             background-color: #FE7DCC;
             color: #fff;
             padding: 10px 15px; /* Espacio interno del botón */
-            cursor: pointer;
             border-radius: 10px;
             margin: 2px;
             font-size: 15px;
@@ -123,6 +121,9 @@
         }
         .info-producto button {
             margin-top: 16px; /* Añade un margen superior al botón */
+        }
+        .btn-estado:hover .info-producto button{
+            background-color: #7a34cf ;
         }
     </style>
 </head>
@@ -273,17 +274,21 @@
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: <%= "Disponible".equals(producto.getEstado()) ? "#ff15c0" : "#6c757d" %>;">
-                                    <h6>
-                                        <% if ("Disponible".equals(producto.getEstado())) { %>
-                                        <a href="ingresar.jsp" style="color: white; text-decoration: none;">Añadir al carrito</a>
-                                        <% } else { %>
-                                        No disponible
-                                        <% } %>
-                                    </h6>
-                                </button>
+                            <button class="btn-estado"
+                                    type="button"
+                                    style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: <%= "Disponible".equals(producto.getEstado()) && producto.getStockDisponible() > 0 ? "#ff15c0" : "#6c757d" %>;"
+                                    <%= !"Disponible".equals(producto.getEstado()) || producto.getStockDisponible() == 0 ? "disabled" : "" %> >
+                                <h6>
+                                    <% if ("Disponible".equals(producto.getEstado()) && producto.getStockDisponible() > 0) { %>
+                                    <a href="ingresar.jsp" style="color: white; text-decoration: none;">Añadir al carrito</a>
+                                    <% } else { %>
+                                    No disponible
+                                    <% } %>
+                                </h6>
+                            </button>
 
-                            </div>
+
+                        </div>
                         </div>
                         <%
                                     count++;

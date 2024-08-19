@@ -224,7 +224,7 @@
 </head>
 <body>
 
-<header class="">
+<header>
     <div class="container-fluid">
         <div class="row align-items-center">
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA EL LOGO-->
@@ -240,7 +240,7 @@
             <!--SE CREAN COLUMNAS CON TAMAÑOS PARA LOS ENLACES-->
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="indexCliente.jsp">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="indexCliente.jsp">Catálogo</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA"  href="pedido?id_usuario=<%=id_usuario%>">Pedidos</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="perfil.jsp">Perfil</a>
                 </nav>
@@ -344,6 +344,7 @@
                 <input type="hidden" name="cantidad" value="<%= dc.getCantidad() %>">
                 <input type="hidden" name="precio_unitario" value="<%= dc.getPrecio() %>">
                 <input type="hidden" name="total" value="<%= dc.getTotal() %>">
+                <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
                     <% } %>
                 <h6>Total de productos: <%= totalProductos %></h6>
                 <br>
@@ -351,13 +352,11 @@
                 <br>
                 <div class="text-center">
                     <%
-                        if(direccion != null){
-                    %>
-                    <input type="hidden" name="id_usuario" value="<%=id_usuario%>">
+                        if (direccion != null && !direccion.isEmpty()) { %>
                     <button type="submit" class="btn btn-outline-success">Confirmar pedido</button>
-                    <% }else{%>
+                    <% } else { %>
+                    <!-- Botón para abrir el modal -->
                     <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirmar pedido</button>
-
                     <% } %>
                 </div>
                 <% } %>

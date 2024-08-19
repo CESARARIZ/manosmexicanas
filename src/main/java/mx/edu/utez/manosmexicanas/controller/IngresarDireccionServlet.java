@@ -20,16 +20,21 @@ public class IngresarDireccionServlet extends HttpServlet {
         System.out.println("Direccion nueva: "+direccion);
 
         HttpSession session = request.getSession();
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        request.setAttribute("usuario", usuario);
+
 
         UsuarioDao dao = new UsuarioDao();
 
-        boolean uptDire = dao.uptDireccion(id_usuario, direccion);
-        if(uptDire){
-            request.setAttribute("usuario", usuario);
-            response.sendRedirect("verCarrito");
+        dao.uptDireccion(id_usuario, direccion);
+
+        // Actualiza la dirección en el objeto Usuario en sesión
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        if (usuario != null) {
+            usuario.setDireccion(direccion);
+            session.setAttribute("usuario", usuario);
         }
+
+        // Redirige de vuelta al carrito
+        response.sendRedirect("verCarrito");
 
     }
 

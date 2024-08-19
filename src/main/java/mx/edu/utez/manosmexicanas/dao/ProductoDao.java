@@ -45,6 +45,9 @@ public class ProductoDao {
                 // Añadir el producto a la lista
                 productos.add(producto);
             }
+            ps.close();
+            con.close();
+            resultSet.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -346,6 +349,9 @@ public class ProductoDao {
             if (rs.next()) {
                 id_color = rs.getInt("id_color"); // Obtener el ID del color
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -364,6 +370,9 @@ public class ProductoDao {
             if (rs.next()) {
                 id_talla = rs.getInt("id_talla"); // Obtener el ID del color
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -389,6 +398,9 @@ public class ProductoDao {
 
                 listaImagenes.add(productoColor);
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
             throw new SQLException("Error al obtener las imágenes del producto", e);
@@ -407,6 +419,9 @@ public class ProductoDao {
             if (rs.next()) {
                 id_producto = rs.getInt("id_producto");
             }
+            ps.close();
+            con.close();
+            rs.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -447,6 +462,9 @@ public class ProductoDao {
                 idsImagenes.add(resultSet.getInt("id_pc"));
                 System.out.println("idsImagenes: " + idsImagenes);
             }
+            preparedStatement.close();
+            connection.close();
+            resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -469,10 +487,31 @@ public class ProductoDao {
             }
             ps.close();
             con.close();
+            rs.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
         return idsImagenes;
     }
+
+    public boolean actualizarStock(int id_producto, int nuevoStock) throws SQLException {
+        boolean flag = false;
+        String query = "UPDATE productos SET stock = ? WHERE id_producto = ?";
+        try{
+            Connection con = DatabaseConnectionManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setInt(1, nuevoStock);
+            ps.setInt(2, id_producto);
+            if (ps.executeUpdate() > 0) {
+                return true;
+            }
+            ps.close();
+            con.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
 
 }

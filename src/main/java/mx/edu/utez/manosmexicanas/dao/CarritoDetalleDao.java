@@ -24,6 +24,9 @@ public class CarritoDetalleDao {
                     idCarrito = rs.getInt(1);
                 }
             }
+            ps.close();
+            con.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -49,6 +52,9 @@ public class CarritoDetalleDao {
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }
+            ps.close();
+            con.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -83,6 +89,9 @@ public class CarritoDetalleDao {
                     cd.setPrecio(rs.getDouble("precio"));
                     carritoDetalles.add(cd);
                 }
+                ps.close();
+                con.close();
+                rs.close();
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -136,6 +145,9 @@ public class CarritoDetalleDao {
                 if (ps.executeUpdate() > 0) {
                     flag = true;
                 }
+                ps.close();
+                con.close();
+
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -151,6 +163,8 @@ public class CarritoDetalleDao {
             if (ps.executeUpdate() > 0) {
                 flag = true;
             }
+            ps.close();
+            con.close();
         }catch (SQLException e){
             e.printStackTrace();
         }

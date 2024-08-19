@@ -1,12 +1,12 @@
-<%@ page import="mx.edu.utez.manosmexicanas.model.Usuario" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.PedidoDetalle" %>
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.List" %><%--
+  Created by IntelliJ IDEA.
+  User: dan-a
+  Date: 18/08/2024
+  Time: 05:37 p. m.
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%
-    int id_usuario = (int) request.getAttribute("id_usuario");
-%>
-
 <html>
 <head>
     <title>Pedidos</title>
@@ -115,7 +115,7 @@
                         <a class="nav-item nav-link me-3 py-1 text-decoration-none"  style="color:#FFB2EA" href="indexCliente.jsp">Catálogo</a>
                         <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle me-3 py-1 text-decoration-none"  style="color:#FFB2EA" href="#" id="perfilDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                               Más
+                                Más
                             </a>
                             <div class="dropdown-menu" aria-labelledby="perfilDropdown">
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="perfil.jsp">Ver perfil</a>
@@ -174,108 +174,62 @@
             <td><%= det.getNombre_color() %></td>
             <td class="mx-2">  <%= det.getCantidad() %></td>
             <td>$<%= det.getTotal() %></td>
-            <td><input type="button" class="btn <%= "Pendiente".equals(det.getEstado()) ? "btn-danger" : "btn-secondary" %>" value="<%= det.getEstado() %>" readonly></td>
+            <td><input type="button"  class="btn <%= "Pendiente".equals(det.getEstado()) ? "btn-secondary" : "btn-success" %>" value="<%= det.getEstado() %>" readonly></td>
             <td>
-                <%
-                    String estado = det.getEstado(); // Obtener el estado del producto
-                    String comentado = det.getComentado(); // Verificar si ya fue comentado
-                    String claseBoton = "";
-                    String textoBoton = "";
-
-                    if ("Comentado".equals(comentado)) {
-                        // Si el producto ya fue comentado, mostramos un botón de lectura
-                        claseBoton = "btn-secondary";
-                        textoBoton = "Calificado";
-                    } else if ("Pendiente".equals(estado)) {
-                        // Si el estado es Pendiente, mostrar el botón en secondary
-                        claseBoton = "btn-secondary";
-                        textoBoton = "Calificar";
-                    } else if ("Entregado".equals(estado)) {
-                        // Si el estado es Entregado, mostrar el botón en success
-                        claseBoton = "btn-success";
-                        textoBoton = "Calificar";
-                    }
-                %>
                 <input type="button"
-                       class="btn <%= claseBoton %>"
-                       value="<%= textoBoton %>"
-                       id="calificarButton<%= contador %>"
-
-                        <%
-                            // Solo permitir que el modal se abra si el botón es success y dice "Calificar"
-                            if ("btn-success".equals(claseBoton) && "Calificar".equals(textoBoton)) {
-                        %>
-                       data-bs-toggle="modal"
-                       data-bs-target="#rateModal<%= contador %>"
-                        <%
-                        } else {
-                        %>
-                       readonly
-                        <%
-                            }
-                        %> />
+                       class="btn <%= "Calificado".equals(det.getEstado()) || "Pendiente".equals(det.getEstado()) ? "btn-secondary" : "btn-success" %>"
+                       value="<%= "Calificado".equals(det.getEstado()) ? "Calificado" : "Calificar" %>" id="calificarButton">
             </td>
-
         </tr>
-        <!-- Modal -->
-        <div class="modal fade" id="rateModal<%= contador %>" tabindex="-1" aria-labelledby="rateModalLabel<%= contador %>" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="rateModalLabel<%= contador %>">Calificar y Comentar</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <!-- Formulario de calificación y comentario -->
-                    <form method="post" action="calificar" onsubmit="return validarFormulario()">
-                        <div class="modal-body">
-                            <input type="hidden" name="id_usuario" value="<%=id_usuario %>">
-                            <input type="hidden" name="nombre_producto" id="id_producto<%= contador %>" value="<%=det.getNombre_producto()%>">
-                            <input type="hidden" name="id_pedido_producto" value="<%=det.getId_pedido_detalle()%>">
-
-
-                            <div class="mb-3">
-                                <label for="rating<%=contador%>" class="form-label">Calificación</label>
-                                <select id="rating<%=contador%>" class="form-select" name="calificacion">
-                                    <option value="1">1 Estrella</option>
-                                    <option value="2">2 Estrellas</option>
-                                    <option value="3">3 Estrellas</option>
-                                    <option value="4">4 Estrellas</option>
-                                    <option value="5">5 Estrellas</option>
-                                </select>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="comentario<%= contador %>" class="form-label">Comentario</label>
-                                <textarea id="comentario<%= contador %>" class="form-control" rows="3" name="comentario" maxlength="300" required></textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
         <%
                 contador++;
             }
         } else {
         %>
         <tr>
-            <td colspan="8" class="text-center align-middle">Aún no realizas una compra.</td>
+            <td colspan="8" class="text-center align-middle">Aún no realizas un pedido.</td>
         </tr>
         <%
             }
         %>
         </tbody>
-
     </table>
 </div>
 
-
+<!-- Modal -->
+<div class="modal fade" id="rateModal" tabindex="-1" aria-labelledby="rateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rateModalLabel">Calificar y Comentar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulario de calificación y comentario -->
+                <form>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Calificación</label>
+                        <select id="rating" class="form-select">
+                            <option value="1">1 Estrella</option>
+                            <option value="2">2 Estrellas</option>
+                            <option value="3">3 Estrellas</option>
+                            <option value="4">4 Estrellas</option>
+                            <option value="5">5 Estrellas</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comentario</label>
+                        <textarea id="comment" class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -288,21 +242,6 @@
     });
 </script>
 
-<script>
-    function validarFormulario() {
-        // Obtener los valores de los campos
-        var nombre = document.getElementById("comentario").value.trim();
-
-        // Validar que ningún campo esté vacío
-        if (nombre === "") {
-            alert("El comentario no puede estar vacío.");
-            return false;
-        }
-
-        // Si todas las validaciones pasan, permitir el envío del formulario
-        return true;
-    }
-</script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

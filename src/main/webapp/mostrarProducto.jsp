@@ -2,6 +2,7 @@
 <%@ page import="java.util.Objects" %>
 <%@ page import="mx.edu.utez.manosmexicanas.model.*" %>
 <%@ page import="mx.edu.utez.manosmexicanas.dao.ProductoDao" %>
+<%@ page import="mx.edu.utez.manosmexicanas.dao.ComentarioDao" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     HttpSession sessionn = request.getSession(false);
@@ -11,18 +12,16 @@
     String ruta = "index.jsp";
     if (sessionn != null) {
         usuario = (Usuario) sessionn.getAttribute("usuario");
-        id_usuario = usuario.getId();
-        tipo_usuario = usuario.getTipo_usuario();
-        if ("usuario".equals(tipo_usuario)) {
-            ruta = "indexCliente.jsp";
-        } else if ("admin".equals(tipo_usuario)) {
-            ruta = "indexAdmin.jsp";
-        }else {
-            ruta = "index.jsp";
+        if (usuario != null) {
+            id_usuario = usuario.getId();
+            tipo_usuario = usuario.getTipo_usuario();
+            System.out.println("ID del usuario recuperado: " + id_usuario);
+        } else {
+            // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
             response.sendRedirect("ingresar.jsp");
         }
-
-    }else{
+    } else {
+        // Redirigir a la página de inicio de sesión si no hay sesión
         response.sendRedirect("ingresar.jsp");
     }
 %>
@@ -30,6 +29,8 @@
 <head>
     <title>Manos Mexicanas</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         body {
             background-color: #F2F2F2;
@@ -74,16 +75,18 @@
             font-size: 1.2rem;
             color: gray;
         }
-        .reviewer-name {
-            font-weight: bold;
-        }
         .review-card {
             display: flex;
             align-items: center;
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            background-color: #f2f2f2;
+        }
+        .review-card img {
+            width: 22px;
+            height: 22px;
+            margin-right: 1px;
         }
     </style>
 </head>
@@ -103,7 +106,7 @@
             </div>
             <div class="col-lg-4">
                 <nav id="nave">
-                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="<%= ruta %>">Catalogo</a>
+                    <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="<%= ruta %>">Catálogo</a>
                     <a class="me-5 py-2 link-body-emphasis text-decoration-none"  style="color:#FFB2EA" href="perfil.jsp"><% if (usuario != null) { %>
                         <%= usuario.getNombre_usuario() %> <!-- Usando el método getNombre_usuario() -->
                         <% } else { %>
@@ -248,16 +251,47 @@
 
                     </form>
                     <h5>Opiniones</h5>
-                    <div class="review-card" style="border-radius: 5px; background-color: #f2f2f2">
-                        <img src="img/albañil_mantenimiento.jpeg" alt="Janette MM">
+                    <%
+                        ComentarioDao dao = new ComentarioDao();
+                        List<Comentario> comentarios = dao.getComentarios(p.getId_producto()); // Obtener la lista de comentarios del producto
+                        if (comentarios != null && !comentarios.isEmpty()) {
+                            for (Comentario comentario : comentarios) {
+                    %>
+                    <div class="review-card">
                         <div>
-                            <p class="reviewer-name">Janette MM</p>
-                            <div class="star-rating">
-                                ★★★★☆
-                            </div>
-                            <p>Me encantó!!! Es de muy buena calidad y <br> el envío fue súper rápido</p>
+                            <p class="reviewer-name" style="margin-bottom: 3px"><b style="font-size: 20px"><%= comentario.getNombre_usuario() %> </b> </p>
+                            <%
+                                int calificacion = comentario.getCalificacion();
+
+                                // Generar estrellas llenas
+                                for (int i = 0; i < calificacion; i++) { %>
+                            <img src="img/estrella.png" alt="">
+                            <%
+                                }
+                            %>
+                            <%
+                                // Generar estrellas vacías
+                                for (int i = calificacion; i < 5; i++) { %>
+                            <img src="img/estrella-blanca.png" alt="" >
+                            <%
+                                }
+                            %>
+                            <p style="font-size: 17px"><%= comentario.getComentario() %></p>
                         </div>
                     </div>
+                    <%
+                        }
+                    } else {
+                    %>
+                    <div class="review-card">
+                        <div>
+                            <p class="reviewer-name" style="margin-bottom: 3px"><b style="font-size: 20px">Aún no hay comentarios</b></p>
+                        </div>
+                    </div>
+                    <%
+                        }
+                    %>
+
                 </div>
 
             </div>

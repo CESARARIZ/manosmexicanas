@@ -22,6 +22,7 @@ public class CategoriaDao {
                     }
                 }
             }
+
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -58,6 +59,9 @@ public class CategoriaDao {
                 cat.setId_categoria(rs.getInt("id_categoria"));
                 cat.setNombre_categoria(rs.getString("nombre_categoria"));
             }
+            stmt.close();
+            con.close();
+            rs.close();
         }catch (SQLException e) {
             throw new RuntimeException(e);
         }

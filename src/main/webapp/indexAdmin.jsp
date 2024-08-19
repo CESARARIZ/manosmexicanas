@@ -10,9 +10,18 @@
 
     HttpSession sessionn = request.getSession(false);
     Usuario usuario = null;
+    int id_usuario = 0;
     if (sessionn != null) {
         usuario = (Usuario) sessionn.getAttribute("usuario");
-    }else {
+        if (usuario != null) {
+            id_usuario = usuario.getId();
+            System.out.println("ID del usuario recuperado: " + id_usuario);
+        } else {
+            // Redirigir a la página de inicio de sesión si el usuario no está en la sesión
+            response.sendRedirect("ingresar.jsp");
+        }
+    } else {
+        // Redirigir a la página de inicio de sesión si no hay sesión
         response.sendRedirect("ingresar.jsp");
     }
 %>
@@ -106,11 +115,9 @@
         /*esto le da estilo al boton de busqueda*/
         .info-producto button{
             border: none;
-            background: none;
             background-color: #28a745;
             color: #fff;
             padding: 10px 15px; /* Espacio interno del botón */
-            cursor: pointer;
             border-radius: 10px;
             margin: 2px;
             font-size: 15px;
@@ -136,6 +143,9 @@
         .info-producto button h6 {
             margin: 0; /* Elimina el margen del h6 dentro del botón */
             font-size: 14px; /* Tamaño de fuente del texto en el botón */
+        }
+        .btn-estado:hover{
+            background-color: #7a34cf ;
         }
     </style>
 </head>
@@ -175,6 +185,7 @@
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionPedidos.jsp">Pedidos</a>
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="gestionProductos.jsp">Productos</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="recuperarCuenta.jsp">Recuperar contraseña</a>
                                 <a class="dropdown-item link-body-emphasis text-decoration-none" style="color: #000000" href="cerrarSesion">Cerrar sesión</a>
                             </div>
                         </div>
@@ -285,8 +296,32 @@
                                 <h5 class="mb-2"><%= producto.getNombre_producto() %></h5>
                                 <p class="precio mb-1">$<%= producto.getPrecio() %></p>
                                 <p class="mt-1 mb-2" style="font-size: 15px">Disponibles: <%= producto.getStockDisponible() %></p>
-                                <button class="btn btn-success" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: #ff15c0;">
-                                    <a href="gestionProductos.jsp" style="color: white; text-decoration: none;">Actualizar</a></button>
+                                <button class="btn-estado" type="button" style="margin-top: auto; border: none; padding: 10px; border-radius: 5px; color: white; background-color: #ff15c0;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Actualizar
+                                </button>
+
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar Stock</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form id="categoria_form" method="post" action="actualizarStock">
+                                                <div class="modal-body">
+                                                    <label for="stock" class="form-label mb-2">Ingresa la cantidad en stock:</label>
+                                                    <input type="number" class="form-control" id="stock" name="stock" value="<%=producto.getStockDisponible()%>" min="0" required>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <input type="hidden" name="id_producto" value="<%=producto.getId_producto()%>">
+                                                    <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" >Actualizar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <%
@@ -301,7 +336,10 @@
         </div>
     </div>
 </div>
-
+<script>
+    var direccionModal = new bootstrap.Modal(document.getElementById('direccionModal'));
+    direccionModal.show();
+</script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

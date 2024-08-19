@@ -33,6 +33,9 @@ public class UsuarioDao {
                 u.setEstado(rs.getString("estado"));
                 u.setTipo_usuario(rs.getString("tipo_usuario"));
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -87,6 +90,9 @@ public class UsuarioDao {
                 u.setEstado(rs.getString("estado"));
                 lista.add(u);
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -112,6 +118,9 @@ public class UsuarioDao {
                 u.setTipo_usuario(rs.getString("tipo_usuario"));
                 u.setCodigo(rs.getString("codigo"));
             }
+            ps.close();
+            con.close();
+            rs.close();
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -132,6 +141,9 @@ public class UsuarioDao {
             if (ps.executeUpdate()>0){
                 flag = true;
             }
+            ps.close();
+            con.close();
+
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -151,6 +163,9 @@ public class UsuarioDao {
             if(rs.next()){
                 flag = true;
             }
+            ps.close();
+            con.close();
+            rs.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -221,6 +236,9 @@ public class UsuarioDao {
                 u.setEstado(rs.getString("estado"));
                 u.setTipo_usuario(rs.getString("tipo_usuario"));
             }
+            ps.close();
+            con.close();
+            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -245,6 +263,9 @@ public class UsuarioDao {
                 u.setEstado(rs.getString("estado"));
                 u.setTipo_usuario(rs.getString("tipo_usuario"));
             }
+            ps.close();
+            con.close();
+            rs.close();
 
         }catch (SQLException e){
             e.printStackTrace();

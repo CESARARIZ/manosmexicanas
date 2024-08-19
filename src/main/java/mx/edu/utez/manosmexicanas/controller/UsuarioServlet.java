@@ -31,7 +31,7 @@ public class UsuarioServlet extends HttpServlet {
             ruta = "ingresar.jsp";
             //No existe el usuario en la base de datos
             HttpSession sesion = req.getSession();
-            sesion.setAttribute("mensaje","El usuario no existe en la BD");
+            sesion.setAttribute("mensaje","El usuario no está registrado.");
             //SI NO EXISTE SE REDIRIGE AL MISMO LOGIN PARA MOSTRAR EL ERROR
             resp.sendRedirect(ruta);
         }else{
@@ -54,7 +54,7 @@ public class UsuarioServlet extends HttpServlet {
             }else{
                 ruta="ingresar.jsp";
                 HttpSession sesion = req.getSession();
-                sesion.setAttribute("mensaje","Usuario Bloqueado.");
+                sesion.setAttribute("mensaje","Usuario bloqueado.");
                 resp.sendRedirect(ruta);
             }
         }

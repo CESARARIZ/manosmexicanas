@@ -88,7 +88,7 @@
             <div class="col-6 col-lg-4 text-start mt-3 mt-lg-0">
                 <nav id="nave">
                     <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="ingresar.jsp">Ingresar</a>
-                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catalogo</a>
+                    <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="index.jsp">Catálogo</a>
                 </nav>
             </div>
         </div>
