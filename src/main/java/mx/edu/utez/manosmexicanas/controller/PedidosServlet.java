@@ -24,7 +24,9 @@ public class PedidosServlet extends HttpServlet {
         List<PedidoDetalle> detalles = pedidoDao.getPedidoDetalles(id_usuario);
         System.out.println("Número de detalles recuperados: " + (detalles != null ? detalles.size() : 0));
         if(detalles == null || detalles.isEmpty()){
-            response.sendRedirect("pedido.jsp");
+            request.setAttribute("id_usuario", id_usuario);
+            System.out.println("Id para pasar en la sesion: "+id_usuario);
+            request.getRequestDispatcher("pedido.jsp").forward(request, response);
         }else {
             request.setAttribute("pedidos", detalles);
             request.setAttribute("id_usuario", id_usuario);
