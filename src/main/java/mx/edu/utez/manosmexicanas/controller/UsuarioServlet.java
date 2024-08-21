@@ -51,14 +51,12 @@ public class UsuarioServlet extends HttpServlet {
                     //GUARDAR USUARIO EN LA SESION
                     HttpSession sesion = req.getSession();
                     sesion.setAttribute("usuario",u);
-                    resp.sendRedirect(ruta);
                     req.getRequestDispatcher(ruta).forward(req, resp);
                 }
             }else{
                 ruta="ingresar.jsp";
                 HttpSession sesion = req.getSession();
                 sesion.setAttribute("mensaje","Usuario bloqueado.");
-                resp.sendRedirect(ruta);
                 req.getRequestDispatcher(ruta).forward(req, resp);
             }
         }

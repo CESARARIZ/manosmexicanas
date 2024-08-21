@@ -22,7 +22,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
         String correo = req.getParameter("email");
         String pass1 = req.getParameter("pass1");
         String pass2 = req.getParameter("pass2");
-        String ruta;
+        String ruta="";
 
         if (pass1.equals(pass2)) {
             // Crear el usuario y llamar al DAO
@@ -43,7 +43,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
                 // Enviar el mensaje a la página de registro
                 HttpSession sesion = req.getSession();
                 sesion.setAttribute("mensaje2", mensaje);
-                ruta = "registrarse.jsp";
+                req.getRequestDispatcher("registrarse.jsp").forward(req, resp);
             }
 
         } else {
@@ -52,7 +52,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
             ruta = "registrarse.jsp";
         }
 
-        resp.sendRedirect(ruta);
+        req.getRequestDispatcher(ruta).forward(req,resp);
     }
 
 }

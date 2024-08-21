@@ -24,7 +24,7 @@ public class ViewProductoServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("producto", p);
-        response.sendRedirect("mostrarProducto.jsp");
+        request.getRequestDispatcher("mostrarProducto.jsp").forward(request, response);
 
     }
 }

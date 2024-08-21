@@ -33,8 +33,8 @@ public class UpdateContraServlet extends HttpServlet {
 
             // Redirigir según el resultado de la actualización
             if (actualizado) {
-                resp.sendRedirect("ingresar.jsp");
                 sesion.setAttribute("mensajeContraNueva","Tu contraseña se actualizo.");
+                req.getRequestDispatcher("ingresar.jsp").forward(req, resp);
             } else {
                 resp.sendRedirect("newContrasenia.jsp?codigo=" + codigo + "&id=" + id);
                 sesion.setAttribute("mensajeContra","No se actualizo tu contraseña");

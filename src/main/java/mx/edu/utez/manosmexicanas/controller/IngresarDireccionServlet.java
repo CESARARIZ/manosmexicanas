@@ -31,10 +31,10 @@ public class IngresarDireccionServlet extends HttpServlet {
         if (usuario != null) {
             usuario.setDireccion(direccion);
             session.setAttribute("usuario", usuario);
+            request.getRequestDispatcher("verCarrito").forward(request, response);
         }
 
-        // Redirige de vuelta al carrito
-        response.sendRedirect("verCarrito");
+
 
     }
 
