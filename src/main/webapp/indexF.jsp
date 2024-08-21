@@ -19,7 +19,7 @@
 <html>
 <head>
     <title>Manos Mexicanas</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -151,7 +151,7 @@
             <!-- Columna para el logo -->
             <div class="col-6 col-lg-3" id="log">
                 <a href="index.jsp">
-                    <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
                 </a>
             </div>
 
@@ -173,7 +173,7 @@
                     <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="registrarse.jsp">Crear cuenta</a>
                     <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="ingresar.jsp">Ingresar</a>
                     <a href="ingresar.jsp">
-                        <img src="${pageContext.request.contextPath}/img/carritoB.png" alt="Carrito" width="45" height="45">
+                        <img src="img/carritoB.png" alt="Carrito" width="45" height="45">
                     </a>
                 </nav>
             </div>
@@ -324,7 +324,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>
 

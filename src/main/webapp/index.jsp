@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Manos Mexicanas</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -134,7 +134,7 @@
             <!-- Columna para el logo -->
             <div class="col-6 col-lg-3" id="log">
                 <a href="index.jsp">
-                    <img src="${pageContext.request.contextPath}/img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
+                    <img src="img/logoMM.png" alt="Logo" class="img-fluid" width="100" height="80">
                 </a>
             </div>
 
@@ -144,7 +144,7 @@
                     <div class="input-group">
                         <input class="form-control custom-input search-bar" type="search" placeholder="Search" aria-label="Search" name="query">
                         <button class="btn" type="submit" style="background-color: #FFB2EA;">
-                            <img src="${pageContext.request.contextPath}/img/lupa.png" alt="Buscar" width="20" height="20">
+                            <img src="img/lupa.png" alt="Buscar" width="20" height="20">
                         </button>
                     </div>
                 </form>
@@ -307,6 +307,6 @@
     var myCarousel = document.querySelector('#carouselExampleInterval');
     var carousel = new bootstrap.Carousel(myCarousel);
 </script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 </body>
 </html>
