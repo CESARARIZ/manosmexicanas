@@ -156,7 +156,7 @@
                     <a class="me-5  link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="registrarse.jsp">Crear cuenta</a>
                     <a class="me-5 link-body-emphasis text-decoration-none" style="color:#FFB2EA" href="ingresar.jsp">Ingresar</a>
                     <a href="ingresar.jsp">
-                        <img src="${pageContext.request.contextPath}/img/carritoB.png" alt="Carrito" width="45" height="45">
+                        <img src="img/carritoB.png" alt="Carrito" width="45" height="45">
                     </a>
                 </nav>
             </div>

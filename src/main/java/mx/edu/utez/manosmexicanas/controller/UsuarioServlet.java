@@ -34,6 +34,7 @@ public class UsuarioServlet extends HttpServlet {
             sesion.setAttribute("mensaje","El usuario no está registrado.");
             //SI NO EXISTE SE REDIRIGE AL MISMO LOGIN PARA MOSTRAR EL ERROR
             resp.sendRedirect(ruta);
+            req.getRequestDispatcher(ruta).forward(req, resp);
         }else{
             //SI EXISTE EL USUARIO SE REDIRIGE AL INDEX CORRESPONDIENTE
             String estado = u.getEstado();
@@ -44,18 +45,21 @@ public class UsuarioServlet extends HttpServlet {
                     HttpSession sesion = req.getSession();
                     sesion.setAttribute("usuario",u);
                     resp.sendRedirect(ruta);
+                    req.getRequestDispatcher(ruta).forward(req, resp);
                 }else {
                     ruta="indexCliente.jsp";
                     //GUARDAR USUARIO EN LA SESION
                     HttpSession sesion = req.getSession();
                     sesion.setAttribute("usuario",u);
                     resp.sendRedirect(ruta);
+                    req.getRequestDispatcher(ruta).forward(req, resp);
                 }
             }else{
                 ruta="ingresar.jsp";
                 HttpSession sesion = req.getSession();
                 sesion.setAttribute("mensaje","Usuario bloqueado.");
                 resp.sendRedirect(ruta);
+                req.getRequestDispatcher(ruta).forward(req, resp);
             }
         }
     }

@@ -9,7 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="cambios en rutas" />
+    <list default="true" id="ecfef461-ea82-47e4-aea3-1a011d5d2c7f" name="Changes" comment="cambios en rutas">
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -342,15 +344,7 @@
       <workItem from="1724074508069" duration="3894000" />
       <workItem from="1724078923416" duration="12452000" />
       <workItem from="1724098049846" duration="1654000" />
-      <workItem from="1724261341056" duration="2834000" />
-    </task>
-    <task id="LOCAL-00041" summary="Arreglo de detalles en las tablas para gestionar.">
-      <option name="closed" value="true" />
-      <created>1722660142721</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1722660142721</updated>
+      <workItem from="1724261341056" duration="3141000" />
     </task>
     <task id="LOCAL-00042" summary="vaciar carrito funcionando">
       <option name="closed" value="true" />
@@ -736,7 +730,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724265255055</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="cambios en rutas">
+      <option name="closed" value="true" />
+      <created>1724265357015</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1724265357015</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
